@@ -58,23 +58,89 @@
     </div>
 
     <div class="hero__visual">
-      <div style="transform:rotate(-6deg)">
-        <div class="wallet">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <div>
-              <div class="wallet__brand">GAME LOBBY</div>
-              <div class="wallet__sub">Gamer Wallet</div>
-            </div>
-            <i data-lucide="wifi" style="opacity:.85;transform:rotate(90deg)"></i>
+      <!-- Tarjeta Mastercard virtual (co-brand) flotando detrás del teléfono -->
+      <div class="hero-card">
+        <div class="hero-card__top">
+          <div>
+            <div class="hero-card__brand">GameLobby</div>
+            <div class="hero-card__sub">Gamer Wallet</div>
           </div>
-          <div class="wallet__chip"></div>
-          <div class="wallet__num">5412&nbsp;&nbsp;87••&nbsp;&nbsp;••••&nbsp;&nbsp;2026</div>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end">
+          <i data-lucide="wifi" style="opacity:.85;transform:rotate(90deg);width:18px;height:18px"></i>
+        </div>
+        <div class="hero-card__chip"></div>
+        <div class="hero-card__num">5412&nbsp;&nbsp;87••&nbsp;&nbsp;••••&nbsp;&nbsp;2026</div>
+        <div class="hero-card__bottom">
+          <div>
+            <div class="hero-card__lbl">Titular</div>
+            <div class="hero-card__holder">ALEX RIVERA</div>
+          </div>
+          <svg class="mc mc--lg" viewBox="0 0 48 30" aria-label="Mastercard">
+            <circle cx="19" cy="15" r="13" fill="#EB001B"/>
+            <circle cx="29" cy="15" r="13" fill="#F79E1B"/>
+            <path d="M24 4.6a13 13 0 0 1 0 20.8 13 13 0 0 1 0-20.8z" fill="#FF5F00"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Teléfono: la app Wallet (plataforma + puntos + tienda + torneos) -->
+      <div class="phone">
+        <div class="phone__notch"></div>
+        <div class="phone__screen">
+          <div class="app__top">
             <div>
-              <div class="wallet__lbl">Titular</div>
-              <div class="wallet__holder">ALEX RIVERA</div>
+              <span class="app__hi-lbl">Hola,</span>
+              <span class="app__hi-name">Alex Rivera</span>
             </div>
-            <div class="wallet__tag">VIRTUAL</div>
+            <span class="app__avatar">AR</span>
+          </div>
+
+          <div class="appcard">
+            <div class="appcard__row">
+              <span class="appcard__brand">GameLobby</span>
+              <span class="appcard__virtual">VIRTUAL</span>
+            </div>
+            <div class="appcard__chip"></div>
+            <div class="appcard__num">5412&nbsp;87••&nbsp;••••&nbsp;2026</div>
+            <div class="appcard__row appcard__row--bottom">
+              <span class="appcard__holder">ALEX RIVERA</span>
+              <svg class="mc" viewBox="0 0 48 30" aria-label="Mastercard">
+                <circle cx="19" cy="15" r="13" fill="#EB001B"/>
+                <circle cx="29" cy="15" r="13" fill="#F79E1B"/>
+                <path d="M24 4.6a13 13 0 0 1 0 20.8 13 13 0 0 1 0-20.8z" fill="#FF5F00"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="app__points">
+            <div>
+              <div class="app__points-l">Tus puntos</div>
+              <div class="app__points-v">1,250 <span>pts</span></div>
+            </div>
+            <span class="app__points-trend"><i data-lucide="trending-up"></i> +320 esta semana</span>
+          </div>
+
+          <div class="app__actions">
+            <div class="app__act"><span class="app__act-ic app__act-ic--cyan"><i data-lucide="gamepad-2"></i></span>Torneos</div>
+            <div class="app__act"><span class="app__act-ic app__act-ic--pink"><i data-lucide="shopping-bag"></i></span>Tienda</div>
+            <div class="app__act"><span class="app__act-ic app__act-ic--purple"><i data-lucide="gift"></i></span>Canjear</div>
+          </div>
+
+          <div class="app__list-h">Canjea tus puntos</div>
+          <div class="app__item">
+            <span class="app__item-ic"><i data-lucide="headphones"></i></span>
+            <div class="app__item-txt">
+              <span class="app__item-t">HyperX Cloud III</span>
+              <span class="app__item-s">Auriculares gaming</span>
+            </div>
+            <span class="app__item-p">8,500 pts</span>
+          </div>
+          <div class="app__item">
+            <span class="app__item-ic app__item-ic--cyan"><i data-lucide="trophy"></i></span>
+            <div class="app__item-txt">
+              <span class="app__item-t">Torneo Valorant</span>
+              <span class="app__item-s">Premio $500 · hoy 8PM</span>
+            </div>
+            <span class="app__item-p app__item-p--live"><span class="live-dot"></span>EN VIVO</span>
           </div>
         </div>
       </div>
@@ -186,14 +252,19 @@
     <!-- Clientes que han trabajado con nosotros (distinto de partners/socios) -->
     <p class="clients-label">Marcas que ya han trabajado con nosotros</p>
     <div class="logowall logowall--clients">
+      <div class="logowall__cell">
+        <svg class="samsung-wm" viewBox="0 0 200 30" role="img" aria-label="Samsung">
+          <text x="100" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="0.5" fill="#1428A0">SAMSUNG</text>
+        </svg>
+      </div>
       <div class="logowall__cell"><img src="assets/clients/tigo.png" alt="Tigo"></div>
-      <div class="logowall__cell"><img src="assets/clients/hyperx.png" alt="HyperX" class="is-light"></div>
-      <div class="logowall__cell"><img src="assets/clients/msi.png" alt="MSI" class="is-light"></div>
+      <div class="logowall__cell"><img src="assets/clients/hyperx.png" alt="HyperX" class="is-light is-big"></div>
+      <div class="logowall__cell"><img src="assets/clients/msi.png" alt="MSI" class="is-light is-big"></div>
       <div class="logowall__cell"><img src="assets/clients/kfc.png" alt="KFC" class="is-light"></div>
       <div class="logowall__cell"><img src="assets/clients/gollo.png" alt="Gollo"></div>
       <div class="logowall__cell"><img src="assets/clients/lacuracao.png" alt="La Curacao"></div>
-      <div class="logowall__cell"><img src="assets/clients/loltec.png" alt="Loltec" class="is-light"></div>
-      <div class="logowall__cell"><img src="assets/clients/radioshack.png" alt="RadioShack"></div>
+      <div class="logowall__cell"><img src="assets/clients/loltec.png" alt="Loltec" class="is-light is-big"></div>
+      <div class="logowall__cell"><img src="assets/clients/radioshack.png" alt="RadioShack" class="is-big"></div>
     </div>
 
     <div class="tourmap">

@@ -255,32 +255,95 @@ em { font-style: normal; color: var(--gl-pink); }
 .hero__ministats { display: flex; gap: 28px; margin-top: 40px; flex-wrap: wrap; }
 .ministat__v { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: #fff; line-height: 1; }
 .ministat__l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-top: 5px; }
-.hero__visual { position: relative; display: flex; justify-content: center; }
+.hero__visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 540px; }
 
-/* ---- Wallet card ---- */
-.wallet {
-  position: relative; width: 100%; max-width: 420px; aspect-ratio: 1.6 / 1;
-  border-radius: 22px; padding: 26px; color: #fff;
-  background:
-    radial-gradient(120% 140% at 0% 0%, rgba(201,0,135,.95), rgba(201,0,135,0) 55%),
-    radial-gradient(120% 140% at 100% 100%, rgba(0,171,235,.95), rgba(0,171,235,0) 55%),
-    linear-gradient(135deg, #1a0f3a, #0d1d2e);
-  box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 40px rgba(123,63,242,.35);
-  display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+/* ---- Mastercard mark (co-brand) ---- */
+.mc { display: block; width: 38px; height: 24px; }
+.mc--lg { width: 52px; height: 33px; }
+
+/* ---- Teléfono: app Wallet ---- */
+.phone {
+  position: relative; z-index: 2; width: 300px; max-width: 80vw;
+  border-radius: 44px; padding: 11px;
+  background: linear-gradient(160deg, #262932, #0c0e12);
+  box-shadow: 0 34px 80px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.08) inset, 0 0 60px rgba(0,171,235,.22);
 }
-.wallet__brand { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: .02em; }
-.wallet__sub { font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; margin-top: 2px; }
-.wallet__chip { width: 46px; height: 34px; border-radius: 7px; background: linear-gradient(135deg,#ffe08a,#caa24a); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
-.wallet__num { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: .14em; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
-.wallet__lbl { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
-.wallet__holder { font-family: var(--font-display); font-weight: 600; font-size: 14px; margin-top: 3px; }
-.wallet__tag { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: .18em; color: #fff; padding: 5px 11px; border-radius: 999px; border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.08); }
+.phone__notch { position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 104px; height: 20px; background: #0c0e12; border-radius: 0 0 15px 15px; z-index: 3; }
+.phone__screen { border-radius: 34px; padding: 30px 15px 16px; overflow: hidden;
+  background: radial-gradient(130% 80% at 50% 0%, #1d1146 0%, #0a0e1a 62%); }
+
+.app__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 13px; }
+.app__hi-lbl { display: block; font-size: 10px; letter-spacing: .04em; color: var(--text-3); }
+.app__hi-name { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; }
+.app__avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 12px; color: #fff; background: linear-gradient(135deg, var(--gl-pink), var(--gl-purple-bright)); }
+
+.appcard { border-radius: 15px; padding: 13px 14px; color: #fff;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(201,0,135,.9), transparent 55%),
+    radial-gradient(120% 140% at 100% 100%, rgba(0,171,235,.9), transparent 55%),
+    linear-gradient(135deg, #241158, #0d1d2e);
+  box-shadow: 0 10px 26px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.1) inset; }
+.appcard__row { display: flex; justify-content: space-between; align-items: center; }
+.appcard__row--bottom { margin-top: 9px; }
+.appcard__brand { font-family: var(--font-display); font-weight: 800; font-size: 13px; }
+.appcard__virtual { font-family: var(--font-display); font-weight: 700; font-size: 7px; letter-spacing: .16em; padding: 3px 7px; border-radius: 999px; border: 1px solid rgba(255,255,255,.4); }
+.appcard__chip { width: 28px; height: 21px; border-radius: 5px; background: linear-gradient(135deg,#ffe08a,#caa24a); margin: 11px 0 7px; }
+.appcard__num { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .08em; }
+.appcard__holder { font-family: var(--font-display); font-weight: 600; font-size: 9px; letter-spacing: .04em; }
+
+.app__points { display: flex; justify-content: space-between; align-items: flex-end; margin: 14px 2px 12px; }
+.app__points-l { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); }
+.app__points-v { font-family: var(--font-display); font-weight: 800; font-size: 25px; color: #fff; line-height: 1; margin-top: 4px; }
+.app__points-v span { font-size: 12px; color: var(--gl-cyan); font-weight: 700; }
+.app__points-trend { font-size: 9px; color: var(--gl-lime); display: inline-flex; align-items: center; gap: 3px; font-weight: 600; }
+.app__points-trend i { width: 12px; height: 12px; }
+
+.app__actions { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+.app__act { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); font-family: var(--font-display); font-size: 10px; font-weight: 600; color: var(--text-2); }
+.app__act-ic { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; }
+.app__act-ic i { width: 16px; height: 16px; }
+.app__act-ic--cyan { color: var(--gl-cyan); background: rgba(0,171,235,.14); }
+.app__act-ic--pink { color: var(--gl-pink-bright); background: rgba(201,0,135,.16); }
+.app__act-ic--purple { color: var(--gl-purple-bright); background: rgba(123,63,242,.16); }
+
+.app__list-h { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin: 0 2px 8px; }
+.app__item { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); margin-bottom: 7px; }
+.app__item-ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; color: var(--gl-pink-bright); background: rgba(201,0,135,.14); flex-shrink: 0; }
+.app__item-ic i { width: 15px; height: 15px; }
+.app__item-ic--cyan { color: var(--gl-cyan); background: rgba(0,171,235,.14); }
+.app__item-txt { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.app__item-t { font-family: var(--font-display); font-weight: 600; font-size: 11px; color: #fff; }
+.app__item-s { font-size: 9px; color: var(--text-3); }
+.app__item-p { font-family: var(--font-display); font-weight: 700; font-size: 10px; color: var(--gl-cyan); white-space: nowrap; }
+.app__item-p--live { color: var(--gl-lime); display: inline-flex; align-items: center; gap: 5px; }
+
+/* ---- Tarjeta flotante (co-brand Mastercard) ---- */
+.hero-card {
+  position: absolute; z-index: 1; top: -6px; right: -28px;
+  width: 232px; aspect-ratio: 1.6 / 1; border-radius: 16px; padding: 15px 16px; color: #fff;
+  transform: rotate(9deg);
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(201,0,135,.95), transparent 55%),
+    radial-gradient(120% 140% at 100% 100%, rgba(0,171,235,.95), transparent 55%),
+    linear-gradient(135deg, #1a0f3a, #0d1d2e);
+  box-shadow: 0 22px 54px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.12) inset, 0 0 34px rgba(123,63,242,.4);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.hero-card__top { display: flex; justify-content: space-between; align-items: flex-start; }
+.hero-card__bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.hero-card__brand { font-family: var(--font-display); font-weight: 800; font-size: 15px; letter-spacing: .02em; }
+.hero-card__sub { font-family: var(--font-display); font-weight: 500; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; margin-top: 2px; }
+.hero-card__chip { width: 38px; height: 28px; border-radius: 6px; background: linear-gradient(135deg,#ffe08a,#caa24a); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.hero-card__num { font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: .1em; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+.hero-card__lbl { font-size: 8px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.hero-card__holder { font-family: var(--font-display); font-weight: 600; font-size: 12px; margin-top: 3px; }
+
 .float-chip {
-  position: absolute; display: flex; align-items: center; gap: 10px;
+  position: absolute; z-index: 4; display: flex; align-items: center; gap: 10px;
   background: rgba(13,29,46,.92); border-radius: 14px; padding: 10px 14px; backdrop-filter: blur(6px);
 }
-.float-chip--points { top: -26px; right: 0; border: 1px solid rgba(123,63,242,.5); box-shadow: var(--glow-purple); }
-.float-chip--paid { bottom: -22px; left: 6px; border: 1px solid rgba(60,206,59,.5); box-shadow: var(--glow-lime); }
+.float-chip--points { bottom: 64px; left: -36px; border: 1px solid rgba(123,63,242,.5); box-shadow: var(--glow-purple); }
+.float-chip--paid { bottom: -10px; right: -20px; border: 1px solid rgba(60,206,59,.5); box-shadow: var(--glow-lime); }
 .float-chip__icon { width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: rgba(123,63,242,.18); color: var(--gl-purple-bright); }
 .float-chip__v { font-family: var(--font-display); font-weight: 800; font-size: 16px; color: #fff; line-height: 1; }
 .float-chip__l { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-top: 3px; }
@@ -318,10 +381,13 @@ em { font-style: normal; color: var(--gl-pink); }
 .logowall__cell img { max-height: 36px; width: auto; object-fit: contain; opacity: .7; filter: grayscale(1) brightness(1.6); transition: opacity var(--dur) var(--ease-out), filter var(--dur) var(--ease-out); }
 .logowall__cell:hover img { opacity: 1; filter: grayscale(0) brightness(1); }
 .clients-label { text-align: center; margin: 40px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--text-4); }
-.logowall--clients { margin-top: 18px; }
-.logowall--clients .logowall__cell { min-height: 88px; background: #fff; }
-.logowall--clients .logowall__cell img { max-height: 30px; opacity: .82; filter: none; }
+.logowall--clients { margin-top: 18px; grid-template-columns: repeat(3, 1fr); }
+.logowall--clients .logowall__cell { min-height: 104px; background: #fff; }
+.logowall--clients .logowall__cell img { max-height: 38px; opacity: .85; filter: none; }
+.logowall--clients .logowall__cell img.is-big { max-height: 50px; }
 .logowall--clients .logowall__cell:hover img { opacity: 1; filter: none; }
+.samsung-wm { width: 76%; max-width: 168px; height: auto; opacity: .9; transition: opacity var(--dur) var(--ease-out); }
+.logowall--clients .logowall__cell:hover .samsung-wm { opacity: 1; }
 /* Logos cuyo arte es blanco/negativo: los pasamos a oscuro para que lean sobre el chip claro */
 .logowall--clients .logowall__cell img.is-light { filter: brightness(0); opacity: .72; }
 .logowall--clients .logowall__cell:hover img.is-light { filter: brightness(0); opacity: 1; }
