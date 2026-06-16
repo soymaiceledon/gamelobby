@@ -245,7 +245,8 @@ em { font-style: normal; color: var(--gl-pink); }
     radial-gradient(60% 80% at 85% 10%, rgba(0,171,235,.16), transparent 60%),
     radial-gradient(55% 70% at 8% 90%, rgba(201,0,135,.16), transparent 60%);
 }
-.hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 88px 24px 96px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 88px 24px 96px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
+.hero__inner > * { min-width: 0; }
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 60px; line-height: 1.03; letter-spacing: var(--ls-tight); color: #fff; }
 .hero h1 .pink { color: var(--gl-pink); }
 .hero h1 .cyan { color: var(--gl-cyan); }
@@ -481,7 +482,7 @@ em { font-style: normal; color: var(--gl-pink); }
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .hero h1 { font-size: 46px; }
   .grid-3 { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -500,11 +501,30 @@ em { font-style: normal; color: var(--gl-pink); }
   .heading h2 { font-size: 36px; }
 }
 @media (max-width: 560px) {
-  .hero h1 { font-size: 38px; }
+  /* Hero */
+  .hero__inner { padding: 56px 20px 52px; gap: 28px; }
+  .hero h1 { font-size: 33px; }
+  .hero__lead { font-size: 16px; margin-top: 16px; }
+  .hero__ctas { margin-top: 24px; gap: 10px; }
+  .hero__ctas .btn { width: 100%; justify-content: center; }
+  .hero__ministats { gap: 14px 22px; margin-top: 26px; }
+  .ministat__v { font-size: 23px; }
+  .hero__visual { min-height: 0; margin-top: 6px; }
+  .laptop { width: 100%; }
+  .phone { right: -2px; bottom: -16px; transform: scale(.46); }
+  .float-chip { padding: 8px 11px; gap: 8px; }
+  .float-chip__icon { width: 28px; height: 28px; }
+  .float-chip__v { font-size: 14px; }
+  .float-chip--points { top: -12px; left: -4px; }
+  .float-chip--paid { bottom: -8px; left: -4px; }
+  /* Secciones */
+  .stats-title { font-size: 30px; }
   .stats-grid { grid-template-columns: 1fr; }
   .stat, .stat:nth-child(even) { border-left: none; border-top: 1px solid var(--border-subtle); }
   .stat:first-child { border-top: none; }
   .logowall { grid-template-columns: 1fr; }
+  .heading h2 { font-size: 28px; }
+  .tourmap__title { font-size: 29px; }
   .footer__grid { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
 }
