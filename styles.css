@@ -411,13 +411,27 @@ em { font-style: normal; color: var(--gl-pink); }
 /* ---- Mapa Centroamérica ---- */
 .tourmap__map { position: relative; display: flex; align-items: center; justify-content: center; padding: 24px; border-left: 1px solid var(--border-subtle);
   background: radial-gradient(80% 90% at 60% 40%, rgba(0,171,235,.12), transparent 60%); }
-.camap { width: 100%; max-width: 520px; height: auto; overflow: visible; }
-.camap__land { fill: url(#caLand); stroke: var(--gl-cyan); stroke-width: 1.6; stroke-opacity: .85; filter: url(#caGlow); }
-.camap__route { fill: none; stroke: var(--gl-pink-bright); stroke-width: 2; stroke-dasharray: 5 7; stroke-linecap: round; opacity: .8; }
-.camap__node circle { fill: var(--gl-cyan); stroke: rgba(0,171,235,.35); stroke-width: 8; paint-order: stroke; }
-.camap__node text { font-family: var(--font-display); font-weight: 600; font-size: 14px; fill: #fff; }
-.camap__node--final circle { fill: var(--gl-pink-bright); stroke: rgba(255,45,176,.4); stroke-width: 10; filter: url(#caGlow); }
+.camap { width: 100%; max-width: 560px; height: auto; overflow: visible; }
+.camap__land { fill: url(#caLand); stroke: var(--gl-cyan); stroke-width: 1.8; stroke-opacity: .9; stroke-linejoin: round; filter: url(#caGlow); }
+.camap__sheen { fill: url(#caSheen); stroke: none; pointer-events: none; }
+.camap__border { fill: none; stroke: rgba(0,171,235,.3); stroke-width: 1; stroke-linejoin: round; stroke-linecap: round; }
+.camap__route { fill: none; stroke: rgba(0,171,235,.4); stroke-width: 2.4; stroke-dasharray: 1 11; stroke-linecap: round; }
+.camap__route-lit { fill: none; stroke: url(#caRoute); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 26 460; filter: url(#caGlow); animation: caFlow 6s linear infinite; }
+@keyframes caFlow { from { stroke-dashoffset: 486; } to { stroke-dashoffset: 0; } }
+.camap__travel { fill: #fff; filter: url(#caGlow); }
+.camap__pulse { fill: none; stroke: var(--gl-cyan); stroke-width: 1.6; transform-box: fill-box; transform-origin: center; animation: caPulse 2.8s ease-out infinite; }
+@keyframes caPulse { 0% { transform: scale(.55); opacity: .75; } 80%, 100% { transform: scale(2.8); opacity: 0; } }
+.camap__dot { fill: var(--gl-cyan); stroke: #06101a; stroke-width: 2.5; paint-order: stroke; }
+.camap__node text { font-family: var(--font-display); font-weight: 600; font-size: 14px; fill: #fff; paint-order: stroke; stroke: rgba(5,9,15,.85); stroke-width: 3.5; stroke-linejoin: round; }
+.camap__node--final .camap__pulse { stroke: var(--gl-pink-bright); }
+.camap__node--final .camap__dot { fill: var(--gl-pink-bright); filter: url(#caGlow); }
 .camap__node--final text { fill: var(--gl-pink-bright); font-weight: 700; font-size: 16px; }
+@media (prefers-reduced-motion: reduce) { .camap__route-lit, .camap__pulse, .camap__travel animateMotion { animation: none; } }
+.camap__legend { position: absolute; top: 18px; left: 22px; display: flex; gap: 16px; }
+.camap__legend span { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .02em; color: var(--text-2); }
+.camap__lg-dot { width: 9px; height: 9px; border-radius: 999px; display: inline-block; }
+.camap__lg-dot--cyan { background: var(--gl-cyan); box-shadow: 0 0 8px rgba(0,171,235,.8); }
+.camap__lg-dot--pink { background: var(--gl-pink-bright); box-shadow: 0 0 8px rgba(255,45,176,.8); }
 .tourmap__final { position: absolute; bottom: 20px; right: 22px; display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: .04em; color: #fff; background: var(--gl-pink); border-radius: 999px; padding: 7px 14px; box-shadow: var(--glow-pink); }
 .tourmap__final svg { width: 14px; height: 14px; }
 

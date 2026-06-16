@@ -270,37 +270,93 @@
       </div>
 
       <div class="tourmap__map">
-        <svg class="camap" viewBox="0 0 560 360" role="img" aria-label="Recorrido del Centro America Tour por 6 países">
+        <svg class="camap" viewBox="0 0 640 420" role="img" aria-label="Mapa de Centroamérica con el circuito del Centro America Tour por 6 países, gran final en Panamá">
           <defs>
             <linearGradient id="caLand" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#241158"/>
-              <stop offset="1" stop-color="#0c1c2c"/>
+              <stop offset="0" stop-color="#2a1566"/>
+              <stop offset=".55" stop-color="#142a44"/>
+              <stop offset="1" stop-color="#08151f"/>
             </linearGradient>
-            <filter id="caGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="4" result="b"/>
+            <linearGradient id="caRoute" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#00abeb"/>
+              <stop offset="1" stop-color="#ff2db0"/>
+            </linearGradient>
+            <radialGradient id="caSheen" cx="34%" cy="24%" r="85%">
+              <stop offset="0" stop-color="#00abeb" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#00abeb" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="caGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="3.5" result="b"/>
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
 
-          <!-- Silueta estilizada de Centroamérica -->
-          <path class="camap__land"
-            d="M70 95 C120 70 175 80 205 105 C235 120 270 120 300 150 C330 175 350 195 375 215
-               C400 235 420 225 445 235 C480 245 510 245 525 233 C536 244 536 255 522 262
-               C500 272 470 268 445 268 C415 268 395 286 365 270 C340 258 320 240 295 220
-               C270 200 235 205 205 185 C185 172 165 200 140 195 C115 190 95 175 80 150
-               C68 130 60 110 70 95 Z"/>
+          <!-- Silueta real de Centroamérica (Guatemala/Belice -> bulto de Honduras -> Mosquitia -> gancho de Panamá) -->
+          <polygon id="caLandPath" class="camap__land"
+            points="70,112 118,88 162,82 182,78 186,52 202,52 206,90 214,100 250,90 296,94 328,110
+                    352,138 378,176 388,214 378,244 398,266 422,292 454,300 500,294 544,298 582,316 602,330
+                    592,350 548,352 508,346 472,366 440,352 412,344 390,366 372,338 336,300 308,266 274,250
+                    228,236 188,232 150,214 112,190 88,162 74,138"/>
+          <use href="#caLandPath" class="camap__sheen"/>
 
-          <!-- Ruta del tour -->
-          <polyline class="camap__route" points="110,120 190,128 255,170 330,222 450,250"/>
+          <!-- Fronteras internas de los países -->
+          <g class="camap__borders">
+            <polyline class="camap__border" points="206,90 214,140 200,180 190,214"/>
+            <polyline class="camap__border" points="152,206 200,214 250,230 268,248"/>
+            <polyline class="camap__border" points="352,138 320,170 300,210 300,264"/>
+            <polyline class="camap__border" points="388,214 360,250 336,300"/>
+            <polyline class="camap__border" points="422,292 432,318 440,352"/>
+          </g>
 
-          <!-- Nodos (6 países) -->
-          <g class="camap__node"><circle cx="110" cy="120" r="6"/><text x="103" y="111" text-anchor="end">Guatemala</text></g>
-          <g class="camap__node"><circle cx="190" cy="128" r="6"/><text x="190" y="111" text-anchor="middle">Honduras</text></g>
-          <g class="camap__node"><circle cx="150" cy="178" r="6"/><text x="142" y="197" text-anchor="end">El Salvador</text></g>
-          <g class="camap__node"><circle cx="255" cy="170" r="6"/><text x="265" y="160" text-anchor="start">Nicaragua</text></g>
-          <g class="camap__node"><circle cx="330" cy="222" r="6"/><text x="322" y="243" text-anchor="end">Costa Rica</text></g>
-          <g class="camap__node camap__node--final"><circle cx="450" cy="250" r="8"/><text x="463" y="246" text-anchor="start">Panamá</text></g>
+          <!-- El circuito: une online (cyan) y presencial (rosa) en las 6 sedes -->
+          <path id="caRoutePath" class="camap__route"
+            d="M116 150 C150 178 172 212 196 224 C222 236 246 170 264 148
+               C288 162 304 188 322 206 C354 240 378 290 400 316 C444 320 484 320 524 324"/>
+          <use href="#caRoutePath" class="camap__route-lit"/>
+
+          <!-- Pulso que recorre el circuito (la marca activa en toda la región) -->
+          <circle class="camap__travel" r="5.5">
+            <animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#caRoutePath"/>
+            </animateMotion>
+          </circle>
+
+          <!-- 6 países: anillo de presencia + pin -->
+          <g class="camap__node">
+            <circle class="camap__pulse" cx="116" cy="150" r="6" style="animation-delay:0s"/>
+            <circle class="camap__dot" cx="116" cy="150" r="5.5"/>
+            <text x="108" y="138" text-anchor="end">Guatemala</text>
+          </g>
+          <g class="camap__node">
+            <circle class="camap__pulse" cx="264" cy="148" r="6" style="animation-delay:.6s"/>
+            <circle class="camap__dot" cx="264" cy="148" r="5.5"/>
+            <text x="264" y="132" text-anchor="middle">Honduras</text>
+          </g>
+          <g class="camap__node">
+            <circle class="camap__pulse" cx="196" cy="224" r="6" style="animation-delay:1.2s"/>
+            <circle class="camap__dot" cx="196" cy="224" r="5.5"/>
+            <text x="188" y="228" text-anchor="end">El Salvador</text>
+          </g>
+          <g class="camap__node">
+            <circle class="camap__pulse" cx="322" cy="206" r="6" style="animation-delay:1.8s"/>
+            <circle class="camap__dot" cx="322" cy="206" r="5.5"/>
+            <text x="336" y="200" text-anchor="start">Nicaragua</text>
+          </g>
+          <g class="camap__node">
+            <circle class="camap__pulse" cx="400" cy="316" r="6" style="animation-delay:2.4s"/>
+            <circle class="camap__dot" cx="400" cy="316" r="5.5"/>
+            <text x="392" y="338" text-anchor="end">Costa Rica</text>
+          </g>
+          <g class="camap__node camap__node--final">
+            <circle class="camap__pulse" cx="524" cy="324" r="8" style="animation-delay:3s"/>
+            <circle class="camap__dot" cx="524" cy="324" r="7"/>
+            <text x="538" y="320" text-anchor="start">Panamá</text>
+          </g>
         </svg>
+        <div class="camap__legend">
+          <span><i class="camap__lg-dot camap__lg-dot--cyan"></i>Online</span>
+          <span><i class="camap__lg-dot camap__lg-dot--pink"></i>Presencial</span>
+        </div>
         <span class="tourmap__final"><i data-lucide="trophy"></i> Gran final · Panamá</span>
       </div>
     </div>
