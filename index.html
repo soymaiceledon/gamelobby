@@ -58,31 +58,15 @@
     </div>
 
     <div class="hero__visual">
-      <!-- Tarjeta Mastercard virtual (co-brand) flotando detrás del teléfono -->
-      <div class="hero-card">
-        <div class="hero-card__top">
-          <div>
-            <div class="hero-card__brand">GameLobby</div>
-            <div class="hero-card__sub">Gamer Wallet</div>
-          </div>
-          <i data-lucide="wifi" style="opacity:.85;transform:rotate(90deg);width:18px;height:18px"></i>
+      <!-- Laptop: la plataforma de competición (torneos, rankings, comunidad) -->
+      <div class="laptop">
+        <div class="laptop__screen">
+          <img src="assets/platform-showcase.png" alt="Plataforma de competición GameLobby — torneos, rankings y comunidad en vivo">
         </div>
-        <div class="hero-card__chip"></div>
-        <div class="hero-card__num">5412&nbsp;&nbsp;87••&nbsp;&nbsp;••••&nbsp;&nbsp;2026</div>
-        <div class="hero-card__bottom">
-          <div>
-            <div class="hero-card__lbl">Titular</div>
-            <div class="hero-card__holder">ALEX RIVERA</div>
-          </div>
-          <svg class="mc mc--lg" viewBox="0 0 48 30" aria-label="Mastercard">
-            <circle cx="19" cy="15" r="13" fill="#EB001B"/>
-            <circle cx="29" cy="15" r="13" fill="#F79E1B"/>
-            <path d="M24 4.6a13 13 0 0 1 0 20.8 13 13 0 0 1 0-20.8z" fill="#FF5F00"/>
-          </svg>
-        </div>
+        <div class="laptop__base"></div>
       </div>
 
-      <!-- Teléfono: la app Wallet (plataforma + puntos + tienda + torneos) -->
+      <!-- Teléfono: la app Wallet (tarjeta Mastercard + puntos + tienda + torneos) -->
       <div class="phone">
         <div class="phone__notch"></div>
         <div class="phone__screen">
@@ -270,54 +254,54 @@
     <div class="tourmap">
       <div class="tourmap__intro">
         <span class="badge badge--pink" style="margin-bottom:18px"><span class="dot"></span>Centro America Tour · Ago–Sep</span>
-        <h3><span class="tourmap__hl">551,454</span> gamers en comunidades.<br>6 países. Una sola gira.</h3>
-        <p>Gira presencial por Centroamérica con gran final estilo Gamergy en Panamá. Acceso directo y nativo a la comunidad gamer más activa de la región — online y presencial.</p>
+        <h3 class="tourmap__title">6 países.<br>Un tour. <span class="tourmap__hl">Todo en uno.</span></h3>
+        <p>Una sola activación te conecta con la comunidad gamer más activa de Centroamérica — online y presencial, con gran final estilo Gamergy en Panamá.</p>
         <div class="tourmap__totals">
           <div class="tourmap__total">
             <div class="tourmap__total-v">551,454</div>
-            <div class="tourmap__total-l">Gamers en comunidades · 6 países</div>
+            <div class="tourmap__total-l">Gamers en comunidades</div>
           </div>
           <div class="tourmap__total">
             <div class="tourmap__total-v tourmap__total-v--cyan">3.5M</div>
-            <div class="tourmap__total-l">Alcance presencial proyectado</div>
+            <div class="tourmap__total-l">Alcance presencial</div>
           </div>
         </div>
-        <div style="margin-top:24px"><a class="btn btn--pink btn--md" href="#contacto">Patrocina el Tour</a></div>
-        <p class="tourmap__context">Parte de un mercado inicial de <strong>6.5M de gamers en comunidades</strong> en LATAM.</p>
+        <div style="margin-top:26px"><a class="btn btn--pink btn--md" href="#contacto">Patrocina el Tour</a></div>
       </div>
 
-      <div class="tourmap__grid">
-        <div class="ccard ccard--final">
-          <span class="ccard__badge"><i data-lucide="trophy"></i> Gran Final</span>
-          <div class="ccard__name"><i data-lucide="map-pin"></i> Panamá</div>
-          <div class="ccard__v">27,657</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
-        <div class="ccard">
-          <div class="ccard__name"><i data-lucide="map-pin"></i> Costa Rica</div>
-          <div class="ccard__v">136,396</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
-        <div class="ccard">
-          <div class="ccard__name"><i data-lucide="map-pin"></i> Guatemala</div>
-          <div class="ccard__v">132,479</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
-        <div class="ccard">
-          <div class="ccard__name"><i data-lucide="map-pin"></i> Nicaragua</div>
-          <div class="ccard__v">98,795</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
-        <div class="ccard">
-          <div class="ccard__name"><i data-lucide="map-pin"></i> El Salvador</div>
-          <div class="ccard__v">86,107</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
-        <div class="ccard">
-          <div class="ccard__name"><i data-lucide="map-pin"></i> Honduras</div>
-          <div class="ccard__v">70,020</div>
-          <div class="ccard__l">gamers en comunidades</div>
-        </div>
+      <div class="tourmap__map">
+        <svg class="camap" viewBox="0 0 560 360" role="img" aria-label="Recorrido del Centro America Tour por 6 países">
+          <defs>
+            <linearGradient id="caLand" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#241158"/>
+              <stop offset="1" stop-color="#0c1c2c"/>
+            </linearGradient>
+            <filter id="caGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Silueta estilizada de Centroamérica -->
+          <path class="camap__land"
+            d="M70 95 C120 70 175 80 205 105 C235 120 270 120 300 150 C330 175 350 195 375 215
+               C400 235 420 225 445 235 C480 245 510 245 525 233 C536 244 536 255 522 262
+               C500 272 470 268 445 268 C415 268 395 286 365 270 C340 258 320 240 295 220
+               C270 200 235 205 205 185 C185 172 165 200 140 195 C115 190 95 175 80 150
+               C68 130 60 110 70 95 Z"/>
+
+          <!-- Ruta del tour -->
+          <polyline class="camap__route" points="110,120 190,128 255,170 330,222 450,250"/>
+
+          <!-- Nodos (6 países) -->
+          <g class="camap__node"><circle cx="110" cy="120" r="6"/><text x="103" y="111" text-anchor="end">Guatemala</text></g>
+          <g class="camap__node"><circle cx="190" cy="128" r="6"/><text x="190" y="111" text-anchor="middle">Honduras</text></g>
+          <g class="camap__node"><circle cx="150" cy="178" r="6"/><text x="142" y="197" text-anchor="end">El Salvador</text></g>
+          <g class="camap__node"><circle cx="255" cy="170" r="6"/><text x="265" y="160" text-anchor="start">Nicaragua</text></g>
+          <g class="camap__node"><circle cx="330" cy="222" r="6"/><text x="322" y="243" text-anchor="end">Costa Rica</text></g>
+          <g class="camap__node camap__node--final"><circle cx="450" cy="250" r="8"/><text x="463" y="246" text-anchor="start">Panamá</text></g>
+        </svg>
+        <span class="tourmap__final"><i data-lucide="trophy"></i> Gran final · Panamá</span>
       </div>
     </div>
   </div>
