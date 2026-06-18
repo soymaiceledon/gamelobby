@@ -9,6 +9,15 @@
 //
 // Los leads quedan en las listas Redis: leads:waitlist y leads:b2b
 
+// Busca una variable de entorno por sufijo, ignorando el prefijo que añada
+// la integración (KV_, UPSTASH_REDIS_, REGISTROS_KV_, etc.).
+function findEnv(suffix) {
+  const key = Object.keys(process.env).find(
+    (k) => k === suffix || k.endsWith("_" + suffix)
+  );
+  return key ? process.env[key] : undefined;
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -41,8 +50,8 @@ export default async function handler(req, res) {
   let stored = false;
 
   // 1) Persistir en Vercel KV (Upstash Redis REST) si está configurado
-  const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  const kvUrl = findEnv("KV_REST_API_URL") || findEnv("UPSTASH_REDIS_REST_URL");
+  const kvToken = findEnv("KV_REST_API_TOKEN") || findEnv("UPSTASH_REDIS_REST_TOKEN");
   if (kvUrl && kvToken) {
     try {
       const r = await fetch(kvUrl, {
