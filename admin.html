@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GameLobby · Leads CRM</title>
+<style>
+  :root{
+    --bg:#070b12; --surface:#0e1623; --surface-2:#131d2c; --border:rgba(255,255,255,.08);
+    --cyan:#00abeb; --pink:#ff2db0; --t1:#fff; --t2:#c7d2e0; --t3:#8a98ad;
+    --font:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--t2);font-family:var(--font);font-size:15px;
+    background-image:radial-gradient(70% 60% at 20% 0%,rgba(0,171,235,.10),transparent 60%),radial-gradient(60% 50% at 100% 0%,rgba(255,45,176,.08),transparent 60%);}
+  a{color:var(--cyan)}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+  .brand{font-weight:800;font-size:20px;color:var(--t1);letter-spacing:-.01em}
+  .brand span{background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:12px;color:var(--t3);margin-top:2px}
+
+  /* Gate */
+  .gate{max-width:420px;margin:8vh auto 0;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px}
+  .gate h1{font-size:20px;color:var(--t1);margin:0 0 6px}
+  .gate p{font-size:13px;color:var(--t3);margin:0 0 20px;line-height:1.6}
+  label{display:block;font-size:12px;color:var(--t3);margin:0 0 7px;font-weight:600}
+  input[type=password],input[type=text],input.search{width:100%;height:46px;padding:0 14px;background:var(--surface-2);
+    border:1px solid var(--border);border-radius:11px;color:var(--t1);font-family:inherit;font-size:14px;outline:none}
+  input:focus{border-color:var(--cyan)}
+  .btn{height:46px;padding:0 20px;border:none;border-radius:11px;font-family:inherit;font-weight:600;font-size:14px;
+    color:#04121c;background:linear-gradient(90deg,var(--cyan),#37c7f5);cursor:pointer;white-space:nowrap}
+  .btn:hover{filter:brightness(1.06)}
+  .btn--ghost{background:var(--surface-2);color:var(--t2);border:1px solid var(--border)}
+  .btn--ghost:hover{border-color:var(--cyan);color:var(--t1);filter:none}
+
+  /* Toolbar */
+  .toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .tabs{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px}
+  .tab{padding:8px 16px;border-radius:9px;font-size:13px;font-weight:600;color:var(--t3);cursor:pointer;border:none;background:none;font-family:inherit}
+  .tab.active{background:var(--surface-2);color:var(--t1)}
+  .tab.active.b2b{color:var(--pink)}
+  .spacer{flex:1}
+  .search{max-width:240px}
+  .count{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--t3)}
+  .count b{color:var(--t1);font-weight:700}
+
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);font-weight:600;
+    padding:14px 16px;border-bottom:1px solid var(--border);background:var(--surface-2)}
+  td{padding:13px 16px;border-bottom:1px solid var(--border);font-size:14px;color:var(--t2);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  .nm{color:var(--t1);font-weight:600}
+  .em a{color:var(--cyan);text-decoration:none}
+  .em a:hover{text-decoration:underline}
+  .tg{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;
+    background:rgba(0,171,235,.14);color:var(--cyan)}
+  .when{color:var(--t3);font-size:13px;white-space:nowrap}
+  .empty,.msg{padding:48px 20px;text-align:center;color:var(--t3);font-size:14px;line-height:1.7}
+  .msg b{color:var(--t1)}
+  .msg code{background:var(--surface-2);padding:2px 7px;border-radius:6px;color:var(--cyan);font-size:13px}
+  .hidden{display:none!important}
+  .err{color:#ff6b6b}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Token gate -->
+  <div id="gate" class="gate">
+    <h1>Leads CRM</h1>
+    <p>Ingresa tu <b>token de administrador</b> (el valor de <code>LEADS_ADMIN_TOKEN</code> que pusiste en Vercel) para ver los leads capturados.</p>
+    <label for="tok">Token</label>
+    <input id="tok" type="password" placeholder="••••••••••••" autocomplete="off">
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn" id="enter" style="flex:1">Entrar</button>
+    </div>
+    <p id="gateErr" class="err hidden" style="margin:14px 0 0"></p>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="hidden">
+    <header>
+      <div>
+        <div class="brand">Game<span>Lobby</span> · Leads</div>
+        <div class="sub">Captura desde la landing — waitlist Wallet y B2B marcas</div>
+      </div>
+      <button class="btn btn--ghost" id="logout">Salir</button>
+    </header>
+
+    <div class="toolbar">
+      <div class="tabs">
+        <button class="tab active" data-type="waitlist">Waitlist</button>
+        <button class="tab b2b" data-type="b2b">B2B / Marcas</button>
+      </div>
+      <input class="search" id="search" type="text" placeholder="Buscar nombre o email…">
+      <div class="spacer"></div>
+      <span class="count" id="count"></span>
+      <button class="btn btn--ghost" id="refresh">Refrescar</button>
+      <button class="btn btn--ghost" id="copy">Copiar emails</button>
+      <button class="btn btn--ghost" id="csv">Exportar CSV</button>
+    </div>
+
+    <div class="panel">
+      <table>
+        <thead>
+          <tr><th style="width:170px">Fecha</th><th>Nombre</th><th>Email</th><th id="thExtra">Interés</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="state" class="msg hidden"></div>
+    </div>
+  </div>
+
+</div>
+<script>
+(function(){
+  var KEY='gl_admin_token', tok=localStorage.getItem(KEY)||'';
+  var type='waitlist', all=[];
+  var $=function(s){return document.querySelector(s)};
+
+  function showApp(on){ $('#gate').classList.toggle('hidden',on); $('#app').classList.toggle('hidden',!on); }
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function fmt(ts){ if(!ts)return '—'; try{var d=new Date(ts);return d.toLocaleString('es',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ts} }
+
+  function setState(html,isErr){
+    var s=$('#state'); $('#rows').innerHTML='';
+    if(!html){ s.classList.add('hidden'); return; }
+    s.className='msg'+(isErr?' err':''); s.innerHTML=html;
+  }
+
+  async function load(){
+    if(!tok){ showApp(false); return; }
+    showApp(true);
+    setState('Cargando…');
+    try{
+      var res=await fetch('/api/leads?type='+type+'&token='+encodeURIComponent(tok));
+      var data=await res.json().catch(function(){return {}});
+      if(res.status===401){ showApp(false); $('#gateErr').textContent='Token incorrecto.'; $('#gateErr').classList.remove('hidden'); localStorage.removeItem(KEY); tok=''; return; }
+      if(data.error==='admin_token_not_set'){ setState('Falta configurar <code>LEADS_ADMIN_TOKEN</code> en Vercel → Settings → Environment Variables, y volver a desplegar.',true); return; }
+      if(data.error==='kv_not_configured'){ setState('<b>Almacenamiento no conectado.</b><br>Conecta <b>Vercel KV</b> en tu proyecto → pestaña <b>Storage</b>, y redepliega. Aún no hay base de datos donde guardar los leads.',true); return; }
+      if(!data.ok){ setState('Error: '+esc(data.error||res.status),true); return; }
+      all=data.items||[]; render();
+    }catch(e){ setState('No se pudo conectar con /api/leads.',true); }
+  }
+
+  function filtered(){
+    var q=$('#search').value.trim().toLowerCase();
+    if(!q) return all;
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.email||'')+' '+(l.interest||'')).toLowerCase().indexOf(q)>=0; });
+  }
+
+  function render(){
+    $('#thExtra').textContent = type==='b2b' ? 'Empresa / Interés' : 'Interés';
+    var items=filtered();
+    $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
+    if(!all.length){ setState('Aún no hay leads en <b>'+(type==='b2b'?'B2B':'Waitlist')+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
+    setState('');
+    $('#rows').innerHTML=items.map(function(l){
+      return '<tr><td class="when">'+esc(fmt(l.ts))+'</td>'+
+             '<td class="nm">'+esc(l.name||'—')+'</td>'+
+             '<td class="em"><a href="mailto:'+esc(l.email)+'">'+esc(l.email||'—')+'</a></td>'+
+             '<td>'+(l.interest?'<span class="tg">'+esc(l.interest)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td></tr>';
+    }).join('');
+  }
+
+  function toCSV(){
+    var rows=[['fecha','nombre','email','interes','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.email||'',l.interest||'',l.type||type];
+    }));
+    return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
+  }
+
+  // events
+  $('#enter').onclick=function(){ var v=$('#tok').value.trim(); if(!v)return; tok=v; localStorage.setItem(KEY,v); $('#gateErr').classList.add('hidden'); load(); };
+  $('#tok').addEventListener('keydown',function(e){ if(e.key==='Enter')$('#enter').click(); });
+  $('#logout').onclick=function(){ localStorage.removeItem(KEY); tok=''; all=[]; $('#tok').value=''; showApp(false); };
+  $('#refresh').onclick=load;
+  $('#search').addEventListener('input',render);
+  document.querySelectorAll('.tab').forEach(function(t){ t.onclick=function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    t.classList.add('active'); type=t.dataset.type; $('#search').value=''; load();
+  };});
+  $('#copy').onclick=function(){
+    var emails=filtered().map(function(l){return l.email}).filter(Boolean).join(', ');
+    navigator.clipboard.writeText(emails).then(function(){ var b=$('#copy'),o=b.textContent; b.textContent='¡Copiado!'; setTimeout(function(){b.textContent=o},1200); });
+  };
+  $('#csv').onclick=function(){
+    var blob=new Blob([toCSV()],{type:'text/csv;charset=utf-8'}), url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download='gamelobby-leads-'+type+'.csv'; a.click(); URL.revokeObjectURL(url);
+  };
+
+  // boot
+  if(tok) load(); else showApp(false);
+})();
+</script>
+</body>
+</html>
