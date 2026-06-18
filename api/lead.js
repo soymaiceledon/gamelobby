@@ -41,8 +41,8 @@ export default async function handler(req, res) {
   let stored = false;
 
   // 1) Persistir en Vercel KV (Upstash Redis REST) si está configurado
-  const kvUrl = process.env.KV_REST_API_URL;
-  const kvToken = process.env.KV_REST_API_TOKEN;
+  const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+  const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
   if (kvUrl && kvToken) {
     try {
       const r = await fetch(kvUrl, {
