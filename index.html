@@ -381,8 +381,12 @@
       <form class="form" id="b2b-form">
         <h3>Contacto para marcas</h3>
         <div class="field">
-          <label for="b2b-name">Nombre y empresa</label>
-          <input id="b2b-name" name="name" placeholder="Alex Rivera · Samsung" required>
+          <label for="b2b-name">Nombre</label>
+          <input id="b2b-name" name="name" placeholder="Alex Rivera" required>
+        </div>
+        <div class="field">
+          <label for="b2b-company">Empresa</label>
+          <input id="b2b-company" name="company" placeholder="Samsung" required>
         </div>
         <div class="field">
           <label for="b2b-email">Correo corporativo</label>
@@ -460,6 +464,21 @@
         <div class="field">
           <label for="wl-email">Tu correo</label>
           <input id="wl-email" name="email" type="email" placeholder="gamer@correo.com" required>
+        </div>
+        <div class="field">
+          <label for="wl-country">Tu país</label>
+          <select id="wl-country" name="country" required>
+            <option value="" disabled selected>Elige tu país</option>
+            <option>Guatemala</option>
+            <option>El Salvador</option>
+            <option>Honduras</option>
+            <option>Nicaragua</option>
+            <option>Costa Rica</option>
+            <option>Panamá</option>
+            <option>México</option>
+            <option>Colombia</option>
+            <option>Otro</option>
+          </select>
         </div>
         <button class="btn btn--pink btn--block btn--md" type="submit">Reservar mi lugar</button>
       </form>

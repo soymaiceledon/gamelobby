@@ -107,7 +107,7 @@
     <div class="panel">
       <table>
         <thead>
-          <tr><th style="width:170px">Fecha</th><th>Nombre</th><th>Email</th><th id="thExtra">Interés</th></tr>
+          <tr id="thRow"><th style="width:160px">Fecha</th><th>Nombre</th><th>Email</th><th>Interés</th></tr>
         </thead>
         <tbody id="rows"></tbody>
       </table>
@@ -150,26 +150,31 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.email||'')+' '+(l.interest||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')).toLowerCase().indexOf(q)>=0; });
   }
 
   function render(){
-    $('#thExtra').textContent = type==='b2b' ? 'Empresa / Interés' : 'Interés';
+    var b2b = type==='b2b';
+    $('#thRow').innerHTML = '<th style="width:160px">Fecha</th><th>Nombre</th>'+
+      (b2b?'<th>Empresa</th>':'<th>País</th>')+'<th>Email</th><th>Interés</th>';
     var items=filtered();
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
-    if(!all.length){ setState('Aún no hay leads en <b>'+(type==='b2b'?'B2B':'Waitlist')+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
+    if(!all.length){ setState('Aún no hay leads en <b>'+(b2b?'B2B':'Waitlist')+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
     $('#rows').innerHTML=items.map(function(l){
       return '<tr><td class="when">'+esc(fmt(l.ts))+'</td>'+
              '<td class="nm">'+esc(l.name||'—')+'</td>'+
+             (b2b
+               ?'<td>'+(l.company?'<b style="color:var(--t1)">'+esc(l.company)+'</b>':'<span style="color:var(--t3)">—</span>')+'</td>'
+               :'<td>'+(l.country?'<span class="tg">'+esc(l.country)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td>')+
              '<td class="em"><a href="mailto:'+esc(l.email)+'">'+esc(l.email||'—')+'</a></td>'+
              '<td>'+(l.interest?'<span class="tg">'+esc(l.interest)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td></tr>';
     }).join('');
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','email','interes','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.email||'',l.interest||'',l.type||type];
+    var rows=[['fecha','nombre','empresa','pais','email','interes','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.company||'',l.country||'',l.email||'',l.interest||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }

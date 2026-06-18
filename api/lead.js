@@ -32,7 +32,9 @@ export default async function handler(req, res) {
 
   const type = body.type === "b2b" ? "b2b" : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
+  const company = String(body.company || "").trim().slice(0, 200);
   const email = String(body.email || "").trim().slice(0, 200);
+  const country = String(body.country || "").trim().slice(0, 100);
   const interest = String(body.interest || "").trim().slice(0, 200);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -41,7 +43,7 @@ export default async function handler(req, res) {
   }
 
   const lead = {
-    type, name, email, interest: interest || null,
+    type, name, company: company || null, email, country: country || null, interest: interest || null,
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,
