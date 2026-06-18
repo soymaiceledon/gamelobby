@@ -6,6 +6,8 @@
 //   KV_REST_API_URL, KV_REST_API_TOKEN  -> inyectadas automáticamente al conectar KV.
 // Opcional:
 //   LEAD_WEBHOOK_URL -> URL a la que se hace POST con cada lead (Discord/Sheets/Zapier).
+//   RESEND_API_KEY   -> activa el email de bienvenida automático (resend.com).
+//   MAIL_FROM        -> remitente verificado, ej: "GameLobby <hola@gamelobby.gg>".
 //
 // Los leads quedan en las listas Redis: leads:waitlist y leads:b2b
 
@@ -16,6 +18,56 @@ function findEnv(suffix) {
     (k) => k === suffix || k.endsWith("_" + suffix)
   );
   return key ? process.env[key] : undefined;
+}
+
+// Arma el email de bienvenida según el tipo de lead. Voz de marca:
+// español neutral-LATAM, tú informal, sin emoji, em-dashes cerrados.
+function buildWelcome(lead) {
+  const firstName = (lead.name || "").split(/\s+/)[0] || "gamer";
+  if (lead.type === "b2b") {
+    const from = lead.company ? ` desde ${lead.company}` : "";
+    const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
+    return {
+      subject: "Recibimos tu mensaje—GameLobby",
+      text:
+        `Hola ${firstName},\n\n` +
+        `Gracias por escribirnos${from}.${interest}\n\n` +
+        `GameLobby es la primera fintech gamer de Latinoamérica: conectamos a +25,000 gamers activos, +500 torneos al año y +$150,000 USD repartidos en premios.\n\n` +
+        `Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.\n\n` +
+        `El equipo de GameLobby\n`,
+      html:
+        `<p>Hola ${esc(firstName)},</p>` +
+        `<p>Gracias por escribirnos${esc(from)}.${interest ? " " + esc("Anotamos tu interés en: " + lead.interest + ".") : ""}</p>` +
+        `<p>GameLobby es la primera fintech gamer de Latinoamérica: conectamos a <strong>+25,000 gamers activos</strong>, <strong>+500 torneos al año</strong> y <strong>+$150,000 USD</strong> repartidos en premios.</p>` +
+        `<p>Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.</p>` +
+        `<p>El equipo de GameLobby</p>`,
+    };
+  }
+  const place = lead.country ? ` desde ${lead.country}` : "";
+  return {
+    subject: "Estás dentro—bienvenido a GameLobby",
+    text:
+      `Hola ${firstName},\n\n` +
+      `Reservaste tu lugar${place} en la lista de espera del Wallet de GameLobby—la primera fintech gamer de Latinoamérica.\n\n` +
+      `Serás de los primeros en activar tu tarjeta Mastercard virtual, ganar puntos por cada consumo y canjearlos por torneos, productos y saldo real.\n\n` +
+      `Mientras tanto, ya puedes competir y ganar dinero real en gamelobby.gg.\n\n` +
+      `Te avisamos apenas tu Wallet esté listo.\n\n` +
+      `El equipo de GameLobby\n`,
+    html:
+      `<p>Hola ${esc(firstName)},</p>` +
+      `<p>Reservaste tu lugar${esc(place)} en la lista de espera del Wallet de GameLobby—la primera fintech gamer de Latinoamérica.</p>` +
+      `<p>Serás de los primeros en activar tu <strong>tarjeta Mastercard virtual</strong>, ganar puntos por cada consumo y canjearlos por torneos, productos y saldo real.</p>` +
+      `<p>Mientras tanto, ya puedes competir y ganar dinero real en <a href="https://gamelobby.gg">gamelobby.gg</a>.</p>` +
+      `<p>Te avisamos apenas tu Wallet esté listo.</p>` +
+      `<p>El equipo de GameLobby</p>`,
+  };
+}
+
+// Escapa texto para insertarlo de forma segura en el HTML del email.
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+  );
 }
 
 export default async function handler(req, res) {
@@ -84,8 +136,36 @@ export default async function handler(req, res) {
     }
   }
 
-  // 3) Siempre dejar rastro en logs (visible en Vercel > Runtime Logs)
+  // 3) Email de bienvenida vía Resend si está configurado (no bloquea el éxito)
+  let welcomed = false;
+  const resendKey = process.env.RESEND_API_KEY;
+  const mailFrom = process.env.MAIL_FROM; // ej: "GameLobby <hola@gamelobby.gg>"
+  if (resendKey && mailFrom) {
+    try {
+      const msg = buildWelcome(lead);
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: mailFrom,
+          to: lead.email,
+          subject: msg.subject,
+          text: msg.text,
+          html: msg.html,
+        }),
+      });
+      welcomed = r.ok;
+      if (!r.ok) console.error("[lead] resend non-ok", r.status, await r.text());
+    } catch (e) {
+      console.error("[lead] resend error", e);
+    }
+  }
+
+  // 4) Siempre dejar rastro en logs (visible en Vercel > Runtime Logs)
   console.log("[GameLobby lead]", JSON.stringify(lead));
 
-  return res.status(200).json({ ok: true, stored });
+  return res.status(200).json({ ok: true, stored, welcomed });
 }
