@@ -542,3 +542,13 @@ em { font-style: normal; color: var(--gl-pink); }
   .footer__grid { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
 }
+
+/* Honeypot anti-spam: invisible para humanos, los bots lo rellenan */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

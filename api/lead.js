@@ -82,6 +82,12 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
+  // Anti-spam honeypot: el campo "website" está oculto para humanos.
+  // Si viene relleno, es un bot: fingimos éxito y descartamos en silencio.
+  if (String(body.website || "").trim() !== "") {
+    return res.status(200).json({ ok: true, stored: false });
+  }
+
   const type = body.type === "b2b" ? "b2b" : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
   const company = String(body.company || "").trim().slice(0, 200);
