@@ -64,6 +64,10 @@
   .msg code{background:var(--surface-2);padding:2px 7px;border-radius:6px;color:var(--cyan);font-size:13px}
   .hidden{display:none!important}
   .err{color:#ff6b6b}
+  .del{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;
+    background:rgba(255,45,176,.10);border:1px solid rgba(255,45,176,.28);border-radius:8px;
+    color:var(--pink);cursor:pointer;font-size:15px;line-height:1}
+  .del:hover{background:rgba(255,45,176,.22)}
 </style>
 </head>
 <body>
@@ -119,7 +123,7 @@
 <script>
 (function(){
   var KEY='gl_admin_token', tok=localStorage.getItem(KEY)||'';
-  var type='waitlist', all=[];
+  var type='waitlist', all=[], shown=[];
   var $=function(s){return document.querySelector(s)};
 
   function showApp(on){ $('#gate').classList.toggle('hidden',on); $('#app').classList.toggle('hidden',!on); }
@@ -156,20 +160,35 @@
   function render(){
     var b2b = type==='b2b';
     $('#thRow').innerHTML = '<th style="width:160px">Fecha</th><th>Nombre</th>'+
-      (b2b?'<th>Empresa</th>':'<th>País</th>')+'<th>Email</th><th>Interés</th>';
-    var items=filtered();
+      (b2b?'<th>Empresa</th>':'<th>País</th>')+'<th>Email</th><th>Interés</th><th style="width:56px"></th>';
+    var items=filtered(); shown=items;
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
     if(!all.length){ setState('Aún no hay leads en <b>'+(b2b?'B2B':'Waitlist')+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
-    $('#rows').innerHTML=items.map(function(l){
+    $('#rows').innerHTML=items.map(function(l,i){
       return '<tr><td class="when">'+esc(fmt(l.ts))+'</td>'+
              '<td class="nm">'+esc(l.name||'—')+'</td>'+
              (b2b
                ?'<td>'+(l.company?'<b style="color:var(--t1)">'+esc(l.company)+'</b>':'<span style="color:var(--t3)">—</span>')+'</td>'
                :'<td>'+(l.country?'<span class="tg">'+esc(l.country)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td>')+
              '<td class="em"><a href="mailto:'+esc(l.email)+'">'+esc(l.email||'—')+'</a></td>'+
-             '<td>'+(l.interest?'<span class="tg">'+esc(l.interest)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td></tr>';
+             '<td>'+(l.interest?'<span class="tg">'+esc(l.interest)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td>'+
+             '<td><button class="del" data-i="'+i+'" title="Borrar lead">&#128465;</button></td></tr>';
     }).join('');
+  }
+
+  async function delRow(i){
+    var l=shown[i]; if(!l||!l._raw) return;
+    if(!confirm('¿Borrar este lead?\n\n'+(l.name||'(sin nombre)')+' · '+(l.email||'')+'\n\nEsto lo elimina de Upstash de forma permanente.')) return;
+    try{
+      var res=await fetch('/api/leads',{method:'DELETE',
+        headers:{'Content-Type':'application/json','x-admin-token':tok},
+        body:JSON.stringify({type:type,raw:l._raw})});
+      var data=await res.json().catch(function(){return {}});
+      if(!data.ok){ alert('No se pudo borrar: '+(data.error||res.status)); return; }
+      all=all.filter(function(x){return x._raw!==l._raw;}); // LREM borra duplicados idénticos
+      render();
+    }catch(e){ alert('Error de conexión al borrar.'); }
   }
 
   function toCSV(){
@@ -185,6 +204,7 @@
   $('#logout').onclick=function(){ localStorage.removeItem(KEY); tok=''; all=[]; $('#tok').value=''; showApp(false); };
   $('#refresh').onclick=load;
   $('#search').addEventListener('input',render);
+  $('#rows').addEventListener('click',function(e){ var b=e.target.closest('.del'); if(b) delRow(+b.dataset.i); });
   document.querySelectorAll('.tab').forEach(function(t){ t.onclick=function(){
     document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
     t.classList.add('active'); type=t.dataset.type; $('#search').value=''; load();
