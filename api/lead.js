@@ -146,7 +146,6 @@ export default async function handler(req, res) {
   let welcomed = false;
   const resendKey = process.env.RESEND_API_KEY;
   const mailFrom = process.env.MAIL_FROM; // ej: "GameLobby <hola@gamelobby.gg>"
-  console.log("[lead] env check", { hasResendKey: !!resendKey, hasMailFrom: !!mailFrom });
   if (resendKey && mailFrom) {
     try {
       const msg = buildWelcome(lead);
