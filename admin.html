@@ -156,12 +156,17 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')+' '+(l.category||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')+' '+(l.category||'')).toLowerCase().indexOf(q)>=0; });
   }
 
   function tg(v){ return v?'<span class="tg">'+esc(v)+'</span>':'<span style="color:var(--t3)">—</span>'; }
   function strong(v){ return v?'<b style="color:var(--t1)">'+esc(v)+'</b>':'<span style="color:var(--t3)">—</span>'; }
   function mailto(v){ return '<a href="mailto:'+esc(v)+'">'+esc(v||'—')+'</a>'; }
+  function commCell(l){
+    if(!l.link) return strong(l.community);
+    var href = /^https?:\/\//i.test(l.link) ? l.link : '//'+l.link;
+    return '<a href="'+esc(href)+'" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">'+esc(l.community||l.link)+' &#8599;</a>';
+  }
 
   function render(){
     var b2b = type==='b2b', org = type==='organizer';
@@ -180,7 +185,7 @@
       if(b2b){
         cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       } else if(org){
-        cells += '<td>'+strong(l.community)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
+        cells += '<td>'+commCell(l)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
@@ -204,8 +209,8 @@
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','empresa','comunidad','pais','email','interes','categoria','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.country||'',l.email||'',l.interest||'',l.category||'',l.type||type];
+    var rows=[['fecha','nombre','empresa','comunidad','link','pais','email','interes','categoria','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.link||'',l.country||'',l.email||'',l.interest||'',l.category||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }

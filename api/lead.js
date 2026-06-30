@@ -36,15 +36,15 @@ function buildWelcome(lead) {
       text:
         `Hola ${firstName},\n\n` +
         `${comm} Eres de los primeros, y eso significa beneficios y condiciones que no se repiten.\n\n` +
-        `Desde GameLobby vas a poder organizar torneos con brackets automáticos, cobrar inscripciones al instante, premiar a tus jugadores en su Tarjeta Visa digital, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.\n\n` +
-        `Y no te dejamos solo: a partir de julio, un equipo de soporte directo te acompaña en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.\n\n` +
+        `Desde GameLobby vas a poder organizar torneos con formato automático, cobrar inscripciones al instante, premiar a tus jugadores en su Tarjeta Mastercard digital, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.\n\n` +
+        `Y no te dejamos solo: muy pronto te compartiremos más información, y un equipo de soporte directo te acompañará en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.\n\n` +
         `Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.\n\n` +
         `El equipo de GameLobby\n`,
       html:
         `<p>Hola ${esc(firstName)},</p>` +
         `<p>${commHtml} Eres de los primeros, y eso significa <strong>beneficios y condiciones que no se repiten</strong>.</p>` +
-        `<p>Desde GameLobby vas a poder organizar torneos con <strong>brackets automáticos</strong>, cobrar inscripciones al instante, premiar a tus jugadores en su <strong>Tarjeta Visa digital</strong>, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.</p>` +
-        `<p>Y no te dejamos solo: a partir de <strong>julio</strong>, un equipo de soporte directo te acompaña en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.</p>` +
+        `<p>Desde GameLobby vas a poder organizar torneos con <strong>formato automático</strong>, cobrar inscripciones al instante, premiar a tus jugadores en su <strong>Tarjeta Mastercard digital</strong>, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.</p>` +
+        `<p>Y no te dejamos solo: <strong>muy pronto</strong> te compartiremos más información, y un equipo de soporte directo te acompañará en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.</p>` +
         `<p>Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.</p>` +
         `<p>El equipo de GameLobby</p>`,
     };
@@ -121,6 +121,7 @@ export default async function handler(req, res) {
   const interest = String(body.interest || "").trim().slice(0, 200);
   const community = String(body.community || "").trim().slice(0, 200);
   const category = String(body.category || "").trim().slice(0, 100);
+  const link = String(body.link || "").trim().slice(0, 300);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || !emailOk) {
@@ -129,7 +130,7 @@ export default async function handler(req, res) {
 
   const lead = {
     type, name, company: company || null, email, country: country || null, interest: interest || null,
-    community: community || null, category: category || null,
+    community: community || null, category: category || null, link: link || null,
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,
