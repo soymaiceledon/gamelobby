@@ -564,12 +564,13 @@
     }
     function animate(el) {
       var target = parseFloat(el.dataset.count) || 0;
-      var dur = 1600, start = null;
+      // Conteo lento y constante (lineal): va sumando de a poco mientras se ve,
+      // hasta toparse en la cifra real. Sensación de "en vivo" sin inflar datos.
+      var dur = 9000, start = null; // ~9s de subida pausada
       function step(ts) {
         if (start === null) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-        paint(el, target * eased);
+        var p = Math.min((ts - start) / dur, 1); // lineal, sin arranque rápido
+        paint(el, target * p);
         if (p < 1) requestAnimationFrame(step); else paint(el, target);
       }
       requestAnimationFrame(step);
