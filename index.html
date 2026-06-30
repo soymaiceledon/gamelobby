@@ -223,9 +223,11 @@
       <span class="eyebrow eyebrow--lime">Marcas, socios y casos de éxito</span>
       <h2>Las marcas más grandes ya <em>juegan</em> con nosotros</h2>
     </div>
-    <!-- Logo wall · partners confirmados. Cuando lleguen los archivos, sustituye
-         cada <span> por <img src="assets/partners/<archivo>" alt="<marca>"> -->
-    <div class="logowall">
+    <!-- Partners estratégicos · bloque fijo y destacado (distinto de las marcas).
+         Cuando lleguen los archivos, sustituye cada <span> por
+         <img src="assets/partners/<archivo>" alt="<marca>"> -->
+    <p class="block-label block-label--partners">Partners estratégicos</p>
+    <div class="logowall logowall--partners">
       <div class="logowall__cell"><span>Mastercard</span></div>
       <div class="logowall__cell"><span>Versatec</span></div>
       <div class="logowall__cell"><span>GGTech</span></div>
@@ -233,22 +235,31 @@
       <div class="logowall__cell"><span>Gamergy CAT</span></div>
     </div>
 
-    <!-- Clientes que han trabajado con nosotros (distinto de partners/socios) -->
-    <p class="clients-label">Marcas que ya han trabajado con nosotros</p>
-    <div class="logowall logowall--clients">
-      <div class="logowall__cell">
-        <svg class="samsung-wm" viewBox="0 0 200 30" role="img" aria-label="Samsung">
-          <text x="100" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="0.5" fill="#1428A0">SAMSUNG</text>
-        </svg>
+    <!-- Marcas · cintillo que se desplaza de derecha a izquierda (sin fondo blanco).
+         El set de logos se duplica para lograr un loop continuo sin cortes. -->
+    <p class="block-label">Marcas que ya han trabajado con nosotros</p>
+    <div class="brandticker" role="group" aria-label="Marcas que ya han trabajado con nosotros">
+      <div class="brandticker__track">
+        <div class="brandticker__item"><svg viewBox="0 0 200 30" role="img" aria-label="Samsung"><text x="100" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="0.5" fill="#1428A0">SAMSUNG</text></svg></div>
+        <div class="brandticker__item"><img src="assets/clients/tigo.png" alt="Tigo"></div>
+        <div class="brandticker__item"><img src="assets/clients/hyperx.png" alt="HyperX"></div>
+        <div class="brandticker__item"><img src="assets/clients/msi.png" alt="MSI"></div>
+        <div class="brandticker__item"><img src="assets/clients/kfc.png" alt="KFC"></div>
+        <div class="brandticker__item"><img src="assets/clients/gollo.png" alt="Gollo"></div>
+        <div class="brandticker__item"><img src="assets/clients/lacuracao.png" alt="La Curacao"></div>
+        <div class="brandticker__item"><img src="assets/clients/loltec.png" alt="Loltec"></div>
+        <div class="brandticker__item"><img src="assets/clients/radioshack.png" alt="RadioShack"></div>
+        <!-- Duplicado para el loop continuo (oculto a lectores de pantalla) -->
+        <div class="brandticker__item" aria-hidden="true"><svg viewBox="0 0 200 30"><text x="100" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="0.5" fill="#1428A0">SAMSUNG</text></svg></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/tigo.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/hyperx.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/msi.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/kfc.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/gollo.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/lacuracao.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/loltec.png" alt=""></div>
+        <div class="brandticker__item" aria-hidden="true"><img src="assets/clients/radioshack.png" alt=""></div>
       </div>
-      <div class="logowall__cell"><img src="assets/clients/tigo.png" alt="Tigo"></div>
-      <div class="logowall__cell"><img src="assets/clients/hyperx.png" alt="HyperX" class="is-light is-big"></div>
-      <div class="logowall__cell"><img src="assets/clients/msi.png" alt="MSI" class="is-light is-big"></div>
-      <div class="logowall__cell"><img src="assets/clients/kfc.png" alt="KFC" class="is-light"></div>
-      <div class="logowall__cell"><img src="assets/clients/gollo.png" alt="Gollo"></div>
-      <div class="logowall__cell"><img src="assets/clients/lacuracao.png" alt="La Curacao"></div>
-      <div class="logowall__cell"><img src="assets/clients/loltec.png" alt="Loltec" class="is-light is-big"></div>
-      <div class="logowall__cell"><img src="assets/clients/radioshack.png" alt="RadioShack" class="is-big"></div>
     </div>
 
     <div class="tourmap">
