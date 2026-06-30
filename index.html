@@ -566,7 +566,7 @@
       var target = parseFloat(el.dataset.count) || 0;
       // Conteo lento y constante (lineal): va sumando de a poco mientras se ve,
       // hasta toparse en la cifra real. Sensación de "en vivo" sin inflar datos.
-      var dur = 9000, start = null; // ~9s de subida pausada
+      var dur = 20000, start = null; // ~20s de subida pausada
       function step(ts) {
         if (start === null) start = ts;
         var p = Math.min((ts - start) / dur, 1); // lineal, sin arranque rápido
