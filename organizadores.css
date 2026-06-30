@@ -1,0 +1,131 @@
+/* ============================================================
+   GameLobby · Pestaña Organizadores de Torneos
+   Tema púrpura/violeta. Reutiliza los tokens y componentes de
+   styles.css; aquí solo van overrides y el layout propio de
+   esta página. El home (index.html) no se ve afectado.
+   ============================================================ */
+
+[data-portal="organizadores"] {
+  --acc: var(--gl-purple-bright);
+  --acc-strong: #8f5bff;
+  --acc-soft: var(--gl-purple-soft);
+  --acc-glow: 0 0 26px rgba(123, 63, 242, .45);
+}
+
+/* Botón púrpura (no existe en la base) */
+[data-portal="organizadores"] .btn--purple {
+  background: var(--acc);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(123, 63, 242, .45);
+}
+[data-portal="organizadores"] .btn--purple:hover { background: var(--acc-strong); }
+
+/* Acentos de la pestaña */
+[data-portal="organizadores"] em { color: var(--acc-soft); }
+[data-portal="organizadores"] .field input:focus,
+[data-portal="organizadores"] .field select:focus {
+  border-color: var(--acc);
+  box-shadow: var(--acc-glow);
+}
+[data-portal="organizadores"] ::selection { background: var(--acc); color: #fff; }
+
+/* ---- Hero ---- */
+.org-hero {
+  position: relative;
+  padding: 132px 24px 88px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(900px 520px at 78% -8%, rgba(123, 63, 242, .30), transparent 60%),
+    radial-gradient(700px 480px at 6% 16%, rgba(123, 63, 242, .15), transparent 62%),
+    var(--bg-page);
+}
+.org-hero__inner {
+  max-width: 880px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.org-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(34px, 6vw, 60px);
+  line-height: 1.05;
+  letter-spacing: var(--ls-tight);
+}
+.org-hero h1 em { color: var(--acc-soft); }
+.org-hero__lead {
+  font-size: clamp(16px, 2.2vw, 20px);
+  line-height: 1.55;
+  color: var(--text-3);
+  max-width: 660px;
+}
+.org-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 6px; }
+.org-hero__proof {
+  display: flex; flex-wrap: wrap; gap: 28px; justify-content: center;
+  margin-top: 18px; color: var(--text-4); font-size: 13px;
+}
+.org-hero__proof b { color: var(--text-1); font-weight: 700; }
+
+/* ---- Bloques de beneficios ---- */
+.org-group { margin-top: 56px; }
+.org-group:first-of-type { margin-top: 0; }
+.org-group__head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.org-group__head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: var(--ls-tight);
+}
+
+.org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 18px; }
+
+.org-feature {
+  background: var(--gl-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+.org-feature:hover {
+  transform: translateY(-3px);
+  border-color: rgba(123, 63, 242, .5);
+  box-shadow: 0 0 26px rgba(123, 63, 242, .18);
+}
+.org-feature .ic { color: var(--acc); width: 24px; height: 24px; margin-bottom: 14px; }
+.org-feature h3 { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: #fff; margin-bottom: 8px; }
+.org-feature p { color: var(--text-3); font-size: 14.5px; line-height: 1.55; }
+
+/* ---- Banda Comunidades Fundadoras ---- */
+.org-founder {
+  margin-top: 28px;
+  border: 1px solid rgba(123, 63, 242, .5);
+  border-radius: 22px;
+  background:
+    radial-gradient(600px 320px at 82% 0, rgba(123, 63, 242, .22), transparent 60%),
+    var(--gl-surface-2);
+  padding: 44px;
+}
+.org-founder h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 4vw, 34px); letter-spacing: var(--ls-tight); margin-bottom: 12px; }
+.org-founder > p { color: var(--text-3); font-size: 16px; line-height: 1.6; max-width: 640px; }
+.org-founder ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin-top: 26px; }
+.org-founder li { display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); font-size: 15px; line-height: 1.45; }
+.org-founder li .ic { color: var(--acc-soft); width: 20px; height: 20px; flex: 0 0 auto; margin-top: 1px; }
+
+/* ---- Registro ---- */
+.org-register { display: grid; grid-template-columns: 1.05fr 1fr; gap: 52px; align-items: center; }
+.org-register__copy h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4.5vw, 42px); letter-spacing: var(--ls-tight); line-height: 1.1; }
+.org-register__copy p { color: var(--text-3); font-size: 17px; line-height: 1.6; margin-top: 16px; }
+.org-register__copy ul { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
+.org-register__copy li { display: flex; gap: 10px; align-items: center; color: var(--text-2); font-size: 15px; }
+.org-register__copy li .ic { color: var(--acc); width: 18px; height: 18px; flex: 0 0 auto; }
+
+@media (max-width: 860px) {
+  .org-register { grid-template-columns: 1fr; gap: 32px; }
+  .org-founder ul { grid-template-columns: 1fr; }
+  .org-founder { padding: 32px 24px; }
+}

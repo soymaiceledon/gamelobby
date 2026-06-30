@@ -24,6 +24,31 @@ function findEnv(suffix) {
 // español neutral-LATAM, tú informal, sin emoji, em-dashes cerrados.
 function buildWelcome(lead) {
   const firstName = (lead.name || "").split(/\s+/)[0] || "gamer";
+  if (lead.type === "organizer") {
+    const comm = lead.community
+      ? `Registramos a ${lead.community} como Comunidad Fundadora de GameLobby.`
+      : `Registramos tu comunidad como Comunidad Fundadora de GameLobby.`;
+    const commHtml = lead.community
+      ? `Registramos a <strong>${esc(lead.community)}</strong> como Comunidad Fundadora de GameLobby.`
+      : `Registramos tu comunidad como Comunidad Fundadora de GameLobby.`;
+    return {
+      subject: "Tu comunidad ya es fundadora—GameLobby",
+      text:
+        `Hola ${firstName},\n\n` +
+        `${comm} Eres de los primeros, y eso significa beneficios y condiciones que no se repiten.\n\n` +
+        `Desde GameLobby vas a poder organizar torneos con brackets automáticos, cobrar inscripciones al instante, premiar a tus jugadores en su Tarjeta Visa digital, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.\n\n` +
+        `Y no te dejamos solo: a partir de julio, un equipo de soporte directo te acompaña en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.\n\n` +
+        `Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.\n\n` +
+        `El equipo de GameLobby\n`,
+      html:
+        `<p>Hola ${esc(firstName)},</p>` +
+        `<p>${commHtml} Eres de los primeros, y eso significa <strong>beneficios y condiciones que no se repiten</strong>.</p>` +
+        `<p>Desde GameLobby vas a poder organizar torneos con <strong>brackets automáticos</strong>, cobrar inscripciones al instante, premiar a tus jugadores en su <strong>Tarjeta Visa digital</strong>, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.</p>` +
+        `<p>Y no te dejamos solo: a partir de <strong>julio</strong>, un equipo de soporte directo te acompaña en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.</p>` +
+        `<p>Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.</p>` +
+        `<p>El equipo de GameLobby</p>`,
+    };
+  }
   if (lead.type === "b2b") {
     const from = lead.company ? ` desde ${lead.company}` : "";
     const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
@@ -88,12 +113,14 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, stored: false });
   }
 
-  const type = body.type === "b2b" ? "b2b" : "waitlist";
+  const type = body.type === "b2b" ? "b2b" : body.type === "organizer" ? "organizer" : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
   const company = String(body.company || "").trim().slice(0, 200);
   const email = String(body.email || "").trim().slice(0, 200);
   const country = String(body.country || "").trim().slice(0, 100);
   const interest = String(body.interest || "").trim().slice(0, 200);
+  const community = String(body.community || "").trim().slice(0, 200);
+  const category = String(body.category || "").trim().slice(0, 100);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || !emailOk) {
@@ -102,6 +129,7 @@ export default async function handler(req, res) {
 
   const lead = {
     type, name, company: company || null, email, country: country || null, interest: interest || null,
+    community: community || null, category: category || null,
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,
