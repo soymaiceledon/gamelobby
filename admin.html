@@ -41,6 +41,7 @@
   .tab{padding:8px 16px;border-radius:9px;font-size:13px;font-weight:600;color:var(--t3);cursor:pointer;border:none;background:none;font-family:inherit}
   .tab.active{background:var(--surface-2);color:var(--t1)}
   .tab.active.b2b{color:var(--pink)}
+  .tab.active.org{color:#b794ff}
   .spacer{flex:1}
   .search{max-width:240px}
   .count{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--t3)}
@@ -90,7 +91,7 @@
     <header>
       <div>
         <div class="brand">Game<span>Lobby</span> · Leads</div>
-        <div class="sub">Captura desde la landing — waitlist Wallet y B2B marcas</div>
+        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas y organizadores</div>
       </div>
       <button class="btn btn--ghost" id="logout">Salir</button>
     </header>
@@ -99,6 +100,7 @@
       <div class="tabs">
         <button class="tab active" data-type="waitlist">Waitlist</button>
         <button class="tab b2b" data-type="b2b">B2B / Marcas</button>
+        <button class="tab org" data-type="organizer">Organizadores</button>
       </div>
       <input class="search" id="search" type="text" placeholder="Buscar nombre o email…">
       <div class="spacer"></div>
@@ -154,26 +156,36 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')+' '+(l.category||'')).toLowerCase().indexOf(q)>=0; });
   }
 
+  function tg(v){ return v?'<span class="tg">'+esc(v)+'</span>':'<span style="color:var(--t3)">—</span>'; }
+  function strong(v){ return v?'<b style="color:var(--t1)">'+esc(v)+'</b>':'<span style="color:var(--t3)">—</span>'; }
+  function mailto(v){ return '<a href="mailto:'+esc(v)+'">'+esc(v||'—')+'</a>'; }
+
   function render(){
-    var b2b = type==='b2b';
-    $('#thRow').innerHTML = '<th style="width:160px">Fecha</th><th>Nombre</th>'+
-      (b2b?'<th>Empresa</th>':'<th>País</th>')+'<th>Email</th><th>Interés</th><th style="width:56px"></th>';
+    var b2b = type==='b2b', org = type==='organizer';
+    var head = '<th style="width:160px">Fecha</th><th>Nombre</th>';
+    if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
+    else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
+    else head += '<th>País</th><th>Email</th><th>Interés</th>';
+    $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
-    if(!all.length){ setState('Aún no hay leads en <b>'+(b2b?'B2B':'Waitlist')+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
+    var label = b2b?'B2B':org?'Organizadores':'Waitlist';
+    if(!all.length){ setState('Aún no hay leads en <b>'+label+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
     $('#rows').innerHTML=items.map(function(l,i){
-      return '<tr><td class="when">'+esc(fmt(l.ts))+'</td>'+
-             '<td class="nm">'+esc(l.name||'—')+'</td>'+
-             (b2b
-               ?'<td>'+(l.company?'<b style="color:var(--t1)">'+esc(l.company)+'</b>':'<span style="color:var(--t3)">—</span>')+'</td>'
-               :'<td>'+(l.country?'<span class="tg">'+esc(l.country)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td>')+
-             '<td class="em"><a href="mailto:'+esc(l.email)+'">'+esc(l.email||'—')+'</a></td>'+
-             '<td>'+(l.interest?'<span class="tg">'+esc(l.interest)+'</span>':'<span style="color:var(--t3)">—</span>')+'</td>'+
-             '<td><button class="del" data-i="'+i+'" title="Borrar lead">&#128465;</button></td></tr>';
+      var cells = '<td class="when">'+esc(fmt(l.ts))+'</td><td class="nm">'+esc(l.name||'—')+'</td>';
+      if(b2b){
+        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
+      } else if(org){
+        cells += '<td>'+strong(l.community)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
+      } else {
+        cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
+      }
+      cells += '<td><button class="del" data-i="'+i+'" title="Borrar lead">&#128465;</button></td>';
+      return '<tr>'+cells+'</tr>';
     }).join('');
   }
 
@@ -192,8 +204,8 @@
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','empresa','pais','email','interes','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.company||'',l.country||'',l.email||'',l.interest||'',l.type||type];
+    var rows=[['fecha','nombre','empresa','comunidad','pais','email','interes','categoria','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.country||'',l.email||'',l.interest||'',l.category||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }
