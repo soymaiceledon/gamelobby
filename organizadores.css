@@ -226,6 +226,7 @@
 .flow__tag i { width: 14px; height: 14px; }
 .flow__tag--win { color: #ffd166; background: rgba(255, 209, 102, .12); border-color: rgba(255, 209, 102, .35); }
 .flow__tag--you { color: #22e06b; background: rgba(34, 224, 107, .12); border-color: rgba(34, 224, 107, .35); }
+.flow__tag--multi { color: #38d6ff; background: rgba(56, 214, 255, .12); border-color: rgba(56, 214, 255, .35); }
 
 /* Nodo pozo destacado */
 .flow__node--pot { border-color: rgba(123, 63, 242, .5); background:
@@ -268,7 +269,9 @@
   font-size: clamp(56px, 12vw, 88px); line-height: 1;
   color: #fff;
   text-shadow: 0 0 40px rgba(123, 63, 242, .6);
+  display: inline-flex; align-items: baseline; gap: 10px;
 }
+.org-counter__cap { font-size: clamp(24px, 5vw, 36px); font-weight: 700; color: var(--text-4); text-shadow: none; }
 .org-counter__lbl { font-size: 17px; color: var(--text-2); max-width: 380px; }
 .org-counter__lbl b { color: var(--acc-soft); }
 .org-counter__bar { width: 100%; max-width: 360px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .07); overflow: hidden; }

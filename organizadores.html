@@ -197,9 +197,10 @@
       <div class="flow__node flow__node--pot">
         <span class="flow__step">2</span>
         <span class="flow__ico"><i data-lucide="vault"></i></span>
-        <b>La plata se guarda</b>
+        <b>El dinero se guarda</b>
         <span class="flow__txt">Todo se junta en el pozo del torneo, seguro y a la vista dentro de GameLobby.</span>
-        <span class="flow__pot"><span>Pozo del torneo</span><b>$2,400</b></span>
+        <span class="flow__pot"><span>Pozo del torneo</span><b>Seguro y a la vista</b></span>
+        <span class="flow__tag flow__tag--multi"><i data-lucide="globe"></i>Multimoneda</span>
       </div>
 
       <span class="flow__arrow flow__arrow--split" aria-hidden="true"><i data-lucide="git-fork"></i></span>
@@ -209,8 +210,8 @@
         <div class="flow__node flow__node--out">
           <span class="flow__ico"><i data-lucide="trophy"></i></span>
           <b>Premios a los ganadores</b>
-          <span class="flow__txt">Se reparten automático por porcentaje, directo a la tarjeta de cada jugador.</span>
-          <span class="flow__tag flow__tag--win"><i data-lucide="percent"></i>80% al pozo de premios</span>
+          <span class="flow__txt">Se reparten automático, directo a la tarjeta de cada jugador—en la moneda de su país.</span>
+          <span class="flow__tag flow__tag--win"><i data-lucide="percent"></i>Porcentaje que tú defines</span>
         </div>
         <div class="flow__node flow__node--you">
           <span class="flow__ico"><i data-lucide="wallet"></i></span>
@@ -221,7 +222,7 @@
       </div>
     </div>
 
-    <p class="flow__foot"><i data-lucide="info"></i>Los porcentajes los defines tú al crear el torneo. GameLobby solo automatiza el reparto.</p>
+    <p class="flow__foot"><i data-lucide="info"></i>Tú defines los porcentajes al crear el torneo—GameLobby automatiza el reparto. Y como es <b>multimoneda</b>, cobras y premias en la moneda de cada país sin fricción.</p>
   </div>
 </section>
 
@@ -229,11 +230,11 @@
 <section class="org-counter">
   <div class="container">
     <div class="org-counter__inner reveal">
-      <span class="badge badge--purple"><span class="dot"></span>Cupos limitados</span>
-      <div class="org-counter__num"><span data-count="47" data-dur="2600">0</span></div>
-      <p class="org-counter__lbl">comunidades ya reservaron su lugar como <b>Fundadoras</b></p>
-      <div class="org-counter__bar"><span></span></div>
-      <p class="org-counter__hint"><i data-lucide="flame"></i>Los beneficios de fundador se cierran al llenarse los cupos. Entra antes de que suba la fila.</p>
+      <span class="badge badge--purple"><span class="dot"></span>Solo 200 cupos fundadores</span>
+      <div class="org-counter__num"><span id="org-reserved">0</span><span class="org-counter__cap">/ 200</span></div>
+      <p class="org-counter__lbl">comunidades ya reservaron su lugar como <b>Fundadoras</b>—de solo <b>200 cupos</b></p>
+      <div class="org-counter__bar"><span id="org-bar"></span></div>
+      <p class="org-counter__hint"><i data-lucide="flame"></i>Los beneficios de fundador se cierran al llenarse los 200 cupos. El contador sube en vivo con cada registro—entra antes de que suba la fila.</p>
       <a class="btn btn--purple btn--md" href="#registro">Reservar mi lugar ahora</a>
     </div>
   </div>
@@ -392,6 +393,7 @@
     await submitLead('organizer', e.target);
     document.getElementById('organizer-form').classList.add('hidden');
     document.getElementById('organizer-success').classList.remove('hidden');
+    if (window.__orgRefreshCount) window.__orgRefreshCount();
     renderIcons();
   });
 
@@ -411,33 +413,66 @@
     els.forEach(function (el) { io.observe(el); });
   })();
 
-  // ---- Count-up del contador de comunidades (FOMO) ----
+  // ---- Contador de comunidades en vivo (FOMO) ----
+  // Lee /api/organizer-count (reserved = base + registros reales, tope 200) y
+  // sube en tiempo real: anima al entrar en pantalla y sondea cada 20s.
   (function () {
+    var numEl = document.getElementById('org-reserved');
+    var barEl = document.getElementById('org-bar');
+    if (!numEl) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var nodes = document.querySelectorAll('[data-count]');
+    var FALLBACK = 47, CAP = 200;
+    var latest = FALLBACK;   // último valor conocido del servidor
+    var shown = 0;           // valor visible actual
+    var revealed = false;    // ya entró en pantalla al menos una vez
+    var rafId = null;
+
     function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
-    function animate(el) {
-      var target = parseFloat(el.dataset.count) || 0;
-      var dur = parseFloat(el.dataset.dur) || 2200, start = null;
+    function setBar(v) { if (barEl) barEl.style.width = Math.min(v / CAP * 100, 100) + '%'; }
+
+    function animateTo(target) {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (reduce) { shown = target; numEl.textContent = fmt(target); setBar(target); return; }
+      var from = shown, dur = 1400, start = null;
       function step(ts) {
         if (start === null) start = ts;
         var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3); // ease-out
-        el.textContent = fmt(target * eased);
-        if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(target);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = from + (target - from) * eased;
+        numEl.textContent = fmt(val);
+        setBar(val);
+        if (p < 1) rafId = requestAnimationFrame(step);
+        else { shown = target; numEl.textContent = fmt(target); setBar(target); }
       }
-      requestAnimationFrame(step);
+      rafId = requestAnimationFrame(step);
     }
+
+    function apply() { if (revealed && latest !== shown) animateTo(latest); }
+
+    function fetchCount() {
+      fetch('/api/organizer-count', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && typeof d.reserved === 'number') { latest = d.reserved; CAP = d.cap || CAP; apply(); }
+        })
+        .catch(function () { /* preview local / sin API: usa FALLBACK */ });
+    }
+
+    // Refresca al registrarse en esta misma página (optimista + confirmación real).
+    window.__orgRefreshCount = function () { latest = Math.min(latest + 1, CAP); apply(); setTimeout(fetchCount, 1500); };
+
+    function reveal() { if (revealed) return; revealed = true; animateTo(latest); }
     if (reduce || !('IntersectionObserver' in window)) {
-      nodes.forEach(function (el) { el.textContent = fmt(parseFloat(el.dataset.count) || 0); });
-      return;
+      reveal();
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { reveal(); io.unobserve(e.target); } });
+      }, { threshold: 0.5 });
+      io.observe(numEl);
     }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.5 });
-    nodes.forEach(function (el) { io.observe(el); });
+
+    fetchCount();
+    setInterval(fetchCount, 20000); // "tiempo real": sondea cada 20s
   })();
 </script>
 <!-- Vercel Web Analytics -->
