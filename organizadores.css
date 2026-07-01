@@ -175,6 +175,82 @@
 .org-list b { display: block; font-weight: 600; font-size: 14.5px; color: #fff; margin-bottom: 2px; }
 .org-list span { display: block; color: var(--text-3); font-size: 13.5px; line-height: 1.5; }
 
+/* ---- Cómo fluye la plata (mapa del dinero) ---- */
+.flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1.2fr;
+  align-items: stretch;
+  gap: 14px;
+}
+.flow__node {
+  position: relative;
+  background: var(--gl-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 26px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+.flow__node:hover {
+  transform: translateY(-3px);
+  border-color: rgba(123, 63, 242, .5);
+  box-shadow: 0 0 30px rgba(123, 63, 242, .18);
+}
+.flow__step {
+  position: absolute; top: -13px; left: 22px;
+  width: 26px; height: 26px; border-radius: 8px;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 13px; color: #fff;
+  background: linear-gradient(135deg, var(--acc), #4b2a8f);
+  box-shadow: 0 6px 18px rgba(123, 63, 242, .5);
+}
+.flow__ico {
+  width: 46px; height: 46px; border-radius: 13px;
+  display: grid; place-items: center;
+  background: rgba(123, 63, 242, .16);
+  border: 1px solid rgba(123, 63, 242, .4);
+}
+.flow__ico i { width: 22px; height: 22px; color: var(--acc-soft); }
+.flow__node b { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: #fff; letter-spacing: var(--ls-tight); }
+.flow__txt { color: var(--text-3); font-size: 13.5px; line-height: 1.5; }
+.flow__tag {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 4px;
+  font-size: 12px; font-weight: 600; color: var(--acc-soft);
+  background: rgba(123, 63, 242, .14); border: 1px solid rgba(123, 63, 242, .35);
+  padding: 5px 11px; border-radius: 999px;
+}
+.flow__tag i { width: 14px; height: 14px; }
+.flow__tag--win { color: #ffd166; background: rgba(255, 209, 102, .12); border-color: rgba(255, 209, 102, .35); }
+.flow__tag--you { color: #22e06b; background: rgba(34, 224, 107, .12); border-color: rgba(34, 224, 107, .35); }
+
+/* Nodo pozo destacado */
+.flow__node--pot { border-color: rgba(123, 63, 242, .5); background:
+  radial-gradient(420px 220px at 50% -20%, rgba(123, 63, 242, .22), transparent 65%), var(--gl-surface-2); }
+.flow__pot { display: flex; flex-direction: column; margin-top: 6px; padding-top: 12px; border-top: 1px dashed rgba(123, 63, 242, .4); width: 100%; }
+.flow__pot span { font-size: 12px; color: var(--text-4); }
+.flow__pot b { font-family: var(--font-display); font-weight: 800; font-size: 26px; color: #fff; }
+
+/* Salidas (premios + tu parte) */
+.flow__split { display: grid; gap: 14px; }
+.flow__node--out { border-color: rgba(255, 209, 102, .3); }
+.flow__node--you { border-color: rgba(34, 224, 107, .3); }
+
+/* Flechas */
+.flow__arrow { display: grid; place-items: center; color: var(--acc-soft); align-self: center; }
+.flow__arrow i { width: 26px; height: 26px; }
+
+.flow__foot { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 26px; font-size: 13px; color: var(--text-4); }
+.flow__foot i { width: 16px; height: 16px; color: var(--acc-soft); flex: 0 0 auto; }
+
+@media (max-width: 900px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow__arrow { transform: rotate(90deg); padding: 4px 0; }
+}
+
 /* ---- Contador de comunidades (FOMO) ---- */
 .org-counter { padding: 8px 24px 72px; }
 .org-counter__inner {
