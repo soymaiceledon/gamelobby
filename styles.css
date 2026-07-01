@@ -236,6 +236,8 @@ em { font-style: normal; color: var(--gl-pink); }
 .nav__links a:hover { color: var(--gl-cyan); }
 .nav__right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
 .nav__lang { font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--text-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); padding: 6px 12px; }
+.nav__burger { display: none; align-items: center; justify-content: center; background: none; border: 0; color: var(--text-1); cursor: pointer; padding: 4px; margin-left: 2px; }
+.nav__burger i { width: 26px; height: 26px; }
 .nav__burger { display: none; background: none; border: 1px solid var(--border-subtle); border-radius: 10px; width: 40px; height: 40px; color: var(--text-1); cursor: pointer; align-items: center; justify-content: center; }
 
 /* ---- Hero ---- */
@@ -526,7 +528,20 @@ em { font-style: normal; color: var(--gl-pink); }
   .tourmap__map { border-left: none; border-top: 1px solid var(--border-subtle); padding: 28px 20px 36px; }
   .contact__inner { grid-template-columns: 1fr; gap: 32px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
-  .nav__links { display: none; }
+  .nav__burger { display: inline-flex; }
+  .nav__links {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0; margin: 0;
+    padding: 4px 24px 12px;
+    background: rgba(10, 18, 30, .97);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
+    max-height: 0; overflow: hidden; opacity: 0; pointer-events: none;
+    transition: max-height .32s var(--ease-out), opacity .2s var(--ease-out);
+  }
+  .nav.nav--open .nav__links { max-height: 60vh; opacity: 1; pointer-events: auto; }
+  .nav__links a { padding: 14px 2px; font-size: 16px; border-bottom: 1px solid var(--border-subtle); }
+  .nav__links a:last-child { border-bottom: 0; }
   .heading h2 { font-size: 36px; }
 }
 @media (max-width: 560px) {

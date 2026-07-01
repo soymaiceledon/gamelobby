@@ -23,14 +23,16 @@
 <header class="nav">
   <div class="nav__inner">
     <a class="nav__logo" href="/"><img src="assets/logo-full-white.png" alt="Game Lobby"></a>
-    <nav class="nav__links">
+    <nav class="nav__links" id="org-navlinks">
       <a href="#beneficios">Beneficios</a>
+      <a href="#flujo">Cómo funciona</a>
       <a href="#fundadoras">Comunidades Fundadoras</a>
       <a href="/">Volver al inicio</a>
     </nav>
     <div class="nav__right">
       <span class="nav__lang">ES</span>
       <a class="btn btn--purple btn--sm" href="#registro">Registra tu comunidad</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="org-navlinks"><i data-lucide="menu"></i></button>
     </div>
   </div>
 </header>
@@ -369,6 +371,23 @@
 <script>
   function renderIcons() { if (window.lucide) window.lucide.createIcons(); }
   renderIcons();
+
+  // ---- Menú móvil (hamburguesa) ----
+  (function () {
+    var nav = document.querySelector('.nav');
+    var burger = nav && nav.querySelector('.nav__burger');
+    if (!nav || !burger) return;
+    function setState(open) {
+      nav.classList.toggle('nav--open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.innerHTML = '<i data-lucide="' + (open ? 'x' : 'menu') + '"></i>';
+      renderIcons();
+    }
+    burger.addEventListener('click', function () { setState(!nav.classList.contains('nav--open')); });
+    nav.querySelectorAll('.nav__links a').forEach(function (a) {
+      a.addEventListener('click', function () { setState(false); });
+    });
+  })();
 
   // ---- Captura de lead (Vercel serverless: /api/lead) ----
   // Degrada sin romper el form si el endpoint no existe (preview estático local).
