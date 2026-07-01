@@ -37,18 +37,62 @@
 
 <!-- ============ HERO ============ -->
 <section class="org-hero">
-  <div class="org-hero__inner">
-    <span class="badge badge--purple"><span class="dot"></span>Programa Comunidades Fundadoras · Cupos limitados</span>
-    <h1>Tu comunidad gamer ya es grande. Ahora hazla <em>sostenible</em>.</h1>
-    <p class="org-hero__lead">GameLobby te da las herramientas para organizar torneos, cobrar inscripciones, premiar a tus jugadores y monetizar tu pasión—todo automático, en un solo lugar. Tú lideras la comunidad; nosotros resolvemos la logística, los pagos y el dinero.</p>
-    <div class="org-hero__cta">
-      <a class="btn btn--purple btn--lg" href="#registro">Registra tu comunidad</a>
-      <a class="btn btn--outline btn--lg" href="#beneficios">Ver todo lo que incluye</a>
+  <div class="org-hero__inner org-hero__inner--split">
+    <div class="org-hero__copy">
+      <span class="badge badge--purple"><span class="dot"></span>Programa Comunidades Fundadoras · Cupos limitados</span>
+      <h1>Tu comunidad gamer ya es grande. Ahora hazla <em>sostenible</em>.</h1>
+      <p class="org-hero__lead">GameLobby te da las herramientas para organizar torneos, cobrar inscripciones, premiar a tus jugadores y monetizar tu pasión—todo automático, en un solo lugar. Tú lideras la comunidad; nosotros resolvemos la logística, los pagos y el dinero.</p>
+      <div class="org-hero__cta">
+        <a class="btn btn--purple btn--lg" href="#registro">Registra tu comunidad</a>
+        <a class="btn btn--outline btn--lg" href="#beneficios">Ver todo lo que incluye</a>
+      </div>
+      <div class="org-hero__proof">
+        <span><b>+25,000</b> gamers activos</span>
+        <span><b>+500</b> torneos al año</span>
+        <span><b>+$150,000 USD</b> repartidos en premios</span>
+      </div>
     </div>
-    <div class="org-hero__proof">
-      <span><b>+25,000</b> gamers activos</span>
-      <span><b>+500</b> torneos al año</span>
-      <span><b>+$150,000 USD</b> repartidos en premios</span>
+
+    <!-- Visual estilo plataforma: leaderboard de torneo en vivo -->
+    <div class="org-hero__visual" aria-hidden="true">
+      <div class="lb">
+        <div class="lb__head">
+          <span class="lb__title"><i data-lucide="trophy"></i>Torneo en vivo</span>
+          <span class="lb__pill"><span class="lb__dot"></span>Ronda final</span>
+        </div>
+        <div class="lb__row lb__row--1">
+          <span class="lb__rank">1</span>
+          <span class="lb__ava">AK</span>
+          <span class="lb__name">AkiraZ</span>
+          <i data-lucide="crown" class="lb__crown"></i>
+          <span class="lb__prize">$1,200</span>
+        </div>
+        <div class="lb__row">
+          <span class="lb__rank">2</span>
+          <span class="lb__ava">NX</span>
+          <span class="lb__name">Nyx_Pro</span>
+          <span class="lb__prize">$640</span>
+        </div>
+        <div class="lb__row">
+          <span class="lb__rank">3</span>
+          <span class="lb__ava">VL</span>
+          <span class="lb__name">Valko</span>
+          <span class="lb__prize">$320</span>
+        </div>
+        <div class="lb__row lb__row--dim">
+          <span class="lb__rank">4</span>
+          <span class="lb__ava">ZE</span>
+          <span class="lb__name">Zeta.gg</span>
+          <span class="lb__prize">$140</span>
+        </div>
+        <div class="lb__pot">
+          <span><i data-lucide="coins"></i>Pozo de premios</span>
+          <b>$2,400</b>
+        </div>
+      </div>
+      <span class="org-coin org-coin--a"><i data-lucide="gamepad-2"></i></span>
+      <span class="org-coin org-coin--b"><i data-lucide="gamepad-2"></i></span>
+      <span class="org-chip"><i data-lucide="credit-card"></i>Mastercard digital</span>
     </div>
   </div>
 </section>
@@ -56,120 +100,88 @@
 <!-- ============ BENEFICIOS ============ -->
 <section class="section" id="beneficios">
   <div class="container">
-    <div class="heading" style="margin-bottom:56px">
+    <div class="heading" style="margin-bottom:48px">
       <span class="eyebrow eyebrow--purple">Todo en una plataforma</span>
       <h2>Lo que puedes hacer como organizador</h2>
       <p>Deja atrás las hojas de cálculo, las capturas de pantalla y los pagos manuales. Esto es lo que GameLobby pone en tus manos.</p>
     </div>
 
-    <!-- Gestión de Torneos y Logística -->
-    <div class="org-group">
-      <div class="org-group__head">
-        <span class="icon-tile icon-tile--purple"><i data-lucide="trophy" style="width:26px;height:26px"></i></span>
-        <h2>Gestión de torneos y logística</h2>
+    <div class="org-checks">
+      <!-- Gestión de torneos y logística -->
+      <div class="org-card reveal">
+        <div class="org-card__head">
+          <span class="icon-tile icon-tile--purple"><i data-lucide="trophy" style="width:24px;height:24px"></i></span>
+          <h3>Gestión de torneos y logística</h3>
+        </div>
+        <ul class="org-list">
+          <li><i data-lucide="check" class="ck"></i><div><b>Formatos automatizados y masivos</b><span>Round Robin, Eliminación Directa y más—sin importar cuántos se inscriban.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Entrega de premios simplificada</b><span>Efectivo automático por porcentajes, o códigos digitales comprados en la plataforma.</span></div></li>
+        </ul>
       </div>
-      <div class="org-grid">
-        <div class="org-feature">
-          <i data-lucide="git-fork" class="ic"></i>
-          <h3>Formatos automatizados y masivos</h3>
-          <p>Creación y control automático del formato de tu torneo—Round Robin, Eliminación Directa y más—sin importar cuántos jugadores se inscriban.</p>
+
+      <!-- Finanzas y Tarjeta Mastercard digital -->
+      <div class="org-card reveal">
+        <div class="org-card__head">
+          <span class="icon-tile icon-tile--purple"><i data-lucide="credit-card" style="width:24px;height:24px"></i></span>
+          <h3>Finanzas y Tarjeta Mastercard digital</h3>
         </div>
-        <div class="org-feature">
-          <i data-lucide="gift" class="ic"></i>
-          <h3>Entrega de premios simplificada</h3>
-          <p>Envío automático de premios en efectivo según los porcentajes del torneo, o de códigos digitales (como tarjetas de PlayStation Network) comprados directo en la plataforma al terminar el evento.</p>
+        <ul class="org-list">
+          <li><i data-lucide="check" class="ck"></i><div><b>Inscripciones automatizadas</b><span>Cobro inmediato de entradas. Sin capturas ni comprobantes manuales.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Pagos al instante con Mastercard</b><span>Tus ganancias y los premios de los jugadores, listos para gastar.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Donaciones en vivo</b><span>Público y patrocinadores aportan al pozo durante el evento.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Cashback por compras</b><span>Recupera un porcentaje al comprar premios con tus fondos o tu tarjeta.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Seguridad y control -->
+      <div class="org-card reveal">
+        <div class="org-card__head">
+          <span class="icon-tile icon-tile--purple"><i data-lucide="shield-check" style="width:24px;height:24px"></i></span>
+          <h3>Seguridad y control</h3>
         </div>
+        <ul class="org-list">
+          <li><i data-lucide="check" class="ck"></i><div><b>Cuentas verificadas y juego limpio</b><span>La identidad real ligada a la tarjeta elimina smurfs, trampas y suplantaciones.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Monetización y comunidad -->
+      <div class="org-card reveal">
+        <div class="org-card__head">
+          <span class="icon-tile icon-tile--purple"><i data-lucide="gem" style="width:24px;height:24px"></i></span>
+          <h3>Monetización y comunidad</h3>
+        </div>
+        <ul class="org-list">
+          <li><i data-lucide="check" class="ck"></i><div><b>Suscripciones y pases VIP</b><span>Cobra membresías por torneos exclusivos y beneficios premium.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Fidelización por niveles</b><span>Premia automáticamente a tus jugadores más fieles según su participación.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Gamertags exclusivos</b><span>Etiquetas visuales únicas por nivel de suscripción—estatus y reconocimiento.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Espacios para patrocinadores</b><span>Banners y logos en el formato del torneo, listos para venderle a tus marcas.</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Datos y negocios -->
+      <div class="org-card reveal">
+        <div class="org-card__head">
+          <span class="icon-tile icon-tile--purple"><i data-lucide="bar-chart-3" style="width:24px;height:24px"></i></span>
+          <h3>Datos y negocios</h3>
+        </div>
+        <ul class="org-list">
+          <li><i data-lucide="check" class="ck"></i><div><b>Métricas y estadísticas reales</b><span>Reportes de asistencia y rendimiento—perfectos para atraer patrocinadores.</span></div></li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Finanzas y Tarjeta Mastercard Digital -->
-    <div class="org-group">
-      <div class="org-group__head">
-        <span class="icon-tile icon-tile--purple"><i data-lucide="credit-card" style="width:26px;height:26px"></i></span>
-        <h2>Finanzas y Tarjeta Mastercard digital</h2>
-      </div>
-      <div class="org-grid">
-        <div class="org-feature">
-          <i data-lucide="wallet" class="ic"></i>
-          <h3>Inscripciones automatizadas</h3>
-          <p>Cobro inmediato de las entradas de los jugadores. Olvídate de revisar capturas de pantalla o comprobantes manuales.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="zap" class="ic"></i>
-          <h3>Pagos rápidos con la Tarjeta Mastercard GameLobby</h3>
-          <p>Liquidación al instante de tus ganancias como organizador y de los premios de los jugadores. Los ganadores reciben el dinero en su tarjeta digital, listo para gastar.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="hand-coins" class="ic"></i>
-          <h3>Donaciones en vivo</h3>
-          <p>El público y los patrocinadores pueden aportar dinero directamente al pozo de premios durante el evento.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="rotate-ccw" class="ic"></i>
-          <h3>Reembolsos por compras (Cashback)</h3>
-          <p>Si usas tus fondos o tu Tarjeta Mastercard de la plataforma para comprar premios—audífonos, códigos de juego—se te devuelve un porcentaje de ese dinero.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Seguridad y Control -->
-    <div class="org-group">
-      <div class="org-group__head">
-        <span class="icon-tile icon-tile--purple"><i data-lucide="shield-check" style="width:26px;height:26px"></i></span>
-        <h2>Seguridad y control</h2>
-      </div>
-      <div class="org-grid">
-        <div class="org-feature">
-          <i data-lucide="user-check" class="ic"></i>
-          <h3>Cuentas verificadas y juego limpio</h3>
-          <p>Al conectar el perfil a la Tarjeta Mastercard digital de GameLobby se valida la identidad real del jugador. Esto elimina cuentas duplicadas (smurfs), trampas y suplantaciones.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Monetización y Comunidad -->
-    <div class="org-group">
-      <div class="org-group__head">
-        <span class="icon-tile icon-tile--purple"><i data-lucide="gem" style="width:26px;height:26px"></i></span>
-        <h2>Monetización y comunidad</h2>
-      </div>
-      <div class="org-grid">
-        <div class="org-feature">
-          <i data-lucide="star" class="ic"></i>
-          <h3>Suscripciones y pases VIP</h3>
-          <p>Herramientas para cobrar membresías mensuales a tu comunidad a cambio de torneos exclusivos o beneficios premium.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="medal" class="ic"></i>
-          <h3>Fidelización por niveles (Gamertag Tiers)</h3>
-          <p>Un sistema que premia automáticamente a tus jugadores más fieles según su nivel y participación en tus eventos.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="sparkles" class="ic"></i>
-          <h3>Gamertags exclusivos y personalizados</h3>
-          <p>Quienes se suscriben a tu lobby reciben etiquetas visuales únicas en su perfil, diseñadas por ti. El diseño varía según el nivel de suscripción, dando estatus y reconocimiento visible dentro de la comunidad.</p>
-        </div>
-        <div class="org-feature">
-          <i data-lucide="megaphone" class="ic"></i>
-          <h3>Espacios para patrocinadores</h3>
-          <p>Espacios listos en la web del torneo—banners y logos en el formato del torneo—para que se los vendas a tus propias marcas aliadas.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Datos y Negocios -->
-    <div class="org-group">
-      <div class="org-group__head">
-        <span class="icon-tile icon-tile--purple"><i data-lucide="bar-chart-3" style="width:26px;height:26px"></i></span>
-        <h2>Datos y negocios</h2>
-      </div>
-      <div class="org-grid">
-        <div class="org-feature">
-          <i data-lucide="line-chart" class="ic"></i>
-          <h3>Métricas y estadísticas reales</h3>
-          <p>Reportes automáticos de cuánta gente jugó, asistencia y rendimiento. Datos perfectos para demostrarle el éxito de tus torneos a futuros patrocinadores.</p>
-        </div>
-      </div>
+<!-- ============ CONTADOR DE COMUNIDADES (FOMO) ============ -->
+<section class="org-counter">
+  <div class="container">
+    <div class="org-counter__inner reveal">
+      <span class="badge badge--purple"><span class="dot"></span>Cupos limitados</span>
+      <div class="org-counter__num"><span data-count="47" data-dur="2600">0</span></div>
+      <p class="org-counter__lbl">comunidades ya reservaron su lugar como <b>Fundadoras</b></p>
+      <div class="org-counter__bar"><span></span></div>
+      <p class="org-counter__hint"><i data-lucide="flame"></i>Los beneficios de fundador se cierran al llenarse los cupos. Entra antes de que suba la fila.</p>
+      <a class="btn btn--purple btn--md" href="#registro">Reservar mi lugar ahora</a>
     </div>
   </div>
 </section>
@@ -329,6 +341,51 @@
     document.getElementById('organizer-success').classList.remove('hidden');
     renderIcons();
   });
+
+  // ---- Reveal on scroll (dinamismo tipo juego) ----
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.18 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // ---- Count-up del contador de comunidades (FOMO) ----
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var nodes = document.querySelectorAll('[data-count]');
+    function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
+    function animate(el) {
+      var target = parseFloat(el.dataset.count) || 0;
+      var dur = parseFloat(el.dataset.dur) || 2200, start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // ease-out
+        el.textContent = fmt(target * eased);
+        if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(target);
+      }
+      requestAnimationFrame(step);
+    }
+    if (reduce || !('IntersectionObserver' in window)) {
+      nodes.forEach(function (el) { el.textContent = fmt(parseFloat(el.dataset.count) || 0); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    nodes.forEach(function (el) { io.observe(el); });
+  })();
 </script>
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>

@@ -63,42 +63,152 @@
   color: var(--text-3);
   max-width: 660px;
 }
-.org-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 6px; }
+.org-hero__cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
 .org-hero__proof {
-  display: flex; flex-wrap: wrap; gap: 28px; justify-content: center;
+  display: flex; flex-wrap: wrap; gap: 28px;
   margin-top: 18px; color: var(--text-4); font-size: 13px;
 }
 .org-hero__proof b { color: var(--text-1); font-weight: 700; }
 
-/* ---- Bloques de beneficios ---- */
-.org-group { margin-top: 56px; }
-.org-group:first-of-type { margin-top: 0; }
-.org-group__head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-.org-group__head h2 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 26px;
-  letter-spacing: var(--ls-tight);
+/* Layout hero en dos columnas (copy + visual) */
+.org-hero__inner--split {
+  max-width: 1160px;
+  text-align: left;
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 56px;
 }
+.org-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.org-hero__inner--split .org-hero__lead { text-align: left; }
 
-.org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(248px, 1fr)); gap: 18px; }
+/* ---- Visual estilo plataforma: leaderboard ---- */
+.org-hero__visual { position: relative; display: flex; align-items: center; justify-content: center; }
+.lb {
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(180deg, rgba(24, 16, 44, .96), rgba(14, 10, 26, .96));
+  border: 1px solid rgba(123, 63, 242, .5);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 40px rgba(123, 63, 242, .28);
+  backdrop-filter: blur(6px);
+  animation: lb-float 6s var(--ease-out) infinite;
+}
+@keyframes lb-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.lb__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.lb__title { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; }
+.lb__title i { width: 18px; height: 18px; color: var(--acc-soft); }
+.lb__pill { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; color: var(--acc-soft); background: rgba(123, 63, 242, .16); border: 1px solid rgba(123, 63, 242, .4); padding: 4px 10px; border-radius: 999px; }
+.lb__dot { width: 7px; height: 7px; border-radius: 50%; background: #22e06b; box-shadow: 0 0 8px #22e06b; animation: lb-pulse 1.6s infinite; }
+@keyframes lb-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.lb__row {
+  display: flex; align-items: center; gap: 11px;
+  padding: 10px 12px; margin-bottom: 8px;
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+.lb__row--1 { background: rgba(123, 63, 242, .16); border-color: rgba(123, 63, 242, .55); }
+.lb__row--dim { opacity: .6; }
+.lb__rank { font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--text-4); width: 14px; text-align: center; }
+.lb__row--1 .lb__rank { color: #ffd166; }
+.lb__ava { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--acc), #4b2a8f); }
+.lb__name { flex: 1; font-weight: 600; font-size: 14px; color: #fff; }
+.lb__crown { width: 16px; height: 16px; color: #ffd166; }
+.lb__prize { font-family: var(--font-display); font-weight: 700; font-size: 13px; color: #22e06b; }
+.lb__pot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(123, 63, 242, .4); }
+.lb__pot span { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-3); }
+.lb__pot span i { width: 16px; height: 16px; color: #ffd166; }
+.lb__pot b { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: #fff; }
 
-.org-feature {
+/* Fichas y chip flotantes */
+.org-coin, .org-chip { position: absolute; z-index: 2; }
+.org-coin {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, #a06bff, #4b2a8f);
+  border: 2px solid rgba(255, 255, 255, .25);
+  box-shadow: 0 8px 24px rgba(123, 63, 242, .5);
+}
+.org-coin i { width: 22px; height: 22px; color: #fff; }
+.org-coin--a { top: -14px; left: -6px; animation: lb-float 5s var(--ease-out) infinite; }
+.org-coin--b { bottom: 20px; left: -22px; width: 36px; height: 36px; animation: lb-float 7s var(--ease-out) infinite .6s; }
+.org-coin--b i { width: 17px; height: 17px; }
+.org-chip {
+  bottom: -10px; right: -8px;
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 600; color: #fff;
+  background: linear-gradient(135deg, var(--acc), #4b2a8f);
+  border: 1px solid rgba(255, 255, 255, .22);
+  padding: 8px 12px; border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(123, 63, 242, .5);
+  animation: lb-float 6.5s var(--ease-out) infinite .3s;
+}
+.org-chip i { width: 15px; height: 15px; }
+
+/* ---- Beneficios: tarjetas de checklist simplificado ---- */
+.org-checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 18px; }
+.org-card {
   background: var(--gl-surface-2);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 24px;
   transition: transform var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
     box-shadow var(--dur) var(--ease-out);
 }
-.org-feature:hover {
+.org-card:hover {
   transform: translateY(-3px);
   border-color: rgba(123, 63, 242, .5);
-  box-shadow: 0 0 26px rgba(123, 63, 242, .18);
+  box-shadow: 0 0 30px rgba(123, 63, 242, .18);
 }
-.org-feature .ic { color: var(--acc); width: 24px; height: 24px; margin-bottom: 14px; }
-.org-feature h3 { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: #fff; margin-bottom: 8px; }
-.org-feature p { color: var(--text-3); font-size: 14.5px; line-height: 1.55; }
+.org-card__head { display: flex; align-items: center; gap: 13px; margin-bottom: 18px; }
+.org-card__head h3 { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: var(--ls-tight); }
+.org-list { list-style: none; display: grid; gap: 14px; }
+.org-list li { display: flex; gap: 11px; align-items: flex-start; }
+.org-list .ck {
+  width: 20px; height: 20px; flex: 0 0 auto; margin-top: 1px;
+  color: var(--acc-soft);
+  background: rgba(123, 63, 242, .16);
+  border-radius: 6px; padding: 2px;
+}
+.org-list b { display: block; font-weight: 600; font-size: 14.5px; color: #fff; margin-bottom: 2px; }
+.org-list span { display: block; color: var(--text-3); font-size: 13.5px; line-height: 1.5; }
+
+/* ---- Contador de comunidades (FOMO) ---- */
+.org-counter { padding: 8px 24px 72px; }
+.org-counter__inner {
+  max-width: 620px; margin-inline: auto; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  border: 1px solid rgba(123, 63, 242, .5);
+  border-radius: 24px;
+  padding: 44px 32px;
+  background:
+    radial-gradient(600px 300px at 50% -10%, rgba(123, 63, 242, .28), transparent 65%),
+    var(--gl-surface-2);
+}
+.org-counter__num {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(56px, 12vw, 88px); line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(123, 63, 242, .6);
+}
+.org-counter__lbl { font-size: 17px; color: var(--text-2); max-width: 380px; }
+.org-counter__lbl b { color: var(--acc-soft); }
+.org-counter__bar { width: 100%; max-width: 360px; height: 8px; border-radius: 999px; background: rgba(255, 255, 255, .07); overflow: hidden; }
+.org-counter__bar span { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--acc), var(--acc-soft)); box-shadow: 0 0 16px rgba(123, 63, 242, .6); transition: width 2.2s var(--ease-out); }
+.org-counter__inner.is-in .org-counter__bar span { width: 72%; }
+.org-counter__hint { display: flex; align-items: center; gap: 8px; justify-content: center; font-size: 13px; color: var(--text-4); max-width: 420px; }
+.org-counter__hint i { width: 16px; height: 16px; color: #ff7a3d; flex: 0 0 auto; }
+
+/* ---- Reveal on scroll ---- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+.reveal.is-in { opacity: 1; transform: none; }
+.org-checks .reveal:nth-child(2) { transition-delay: .06s; }
+.org-checks .reveal:nth-child(3) { transition-delay: .12s; }
+.org-checks .reveal:nth-child(4) { transition-delay: .18s; }
+.org-checks .reveal:nth-child(5) { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .lb, .org-coin, .org-chip { animation: none; } }
 
 /* ---- Banda Comunidades Fundadoras ---- */
 .org-founder {
@@ -123,6 +233,14 @@
 .org-register__copy ul { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
 .org-register__copy li { display: flex; gap: 10px; align-items: center; color: var(--text-2); font-size: 15px; }
 .org-register__copy li .ic { color: var(--acc); width: 18px; height: 18px; flex: 0 0 auto; }
+
+@media (max-width: 940px) {
+  .org-hero__inner--split { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+  .org-hero__copy { align-items: center; }
+  .org-hero__inner--split .org-hero__lead { text-align: center; }
+  .org-hero__cta, .org-hero__proof { justify-content: center; }
+  .org-hero__visual { margin-top: 8px; }
+}
 
 @media (max-width: 860px) {
   .org-register { grid-template-columns: 1fr; gap: 32px; }
