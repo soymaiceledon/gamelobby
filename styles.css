@@ -388,8 +388,8 @@ em { font-style: normal; color: var(--gl-pink); }
 .block-label--partners { margin-top: 44px; color: var(--gl-lime); font-weight: 700; font-size: 13px; }
 
 /* Partners estratégicos: grilla fija y destacada (distinta de las marcas) */
-.logowall--partners { grid-template-columns: repeat(5, 1fr); margin-top: 0; }
-.logowall--partners .logowall__cell { min-height: 100px; }
+.logowall--partners { display: flex; justify-content: center; grid-template-columns: none; margin-top: 0; }
+.logowall--partners .logowall__cell { flex: 0 1 240px; min-height: 100px; }
 .logowall--partners .logowall__cell span { font-size: 22px; color: var(--text-1); opacity: .92; }
 .logowall--partners .logowall__cell:hover span { opacity: 1; }
 
@@ -488,9 +488,9 @@ em { font-style: normal; color: var(--gl-pink); }
 .footer__col h4 { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-4); margin-bottom: 14px; }
 .footer__col a { display: block; font-family: var(--font-body); font-size: 14px; color: var(--text-2); margin-bottom: 10px; }
 .footer__col a:hover { color: var(--gl-cyan); }
-.footer__bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 16px; }
+.footer__bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 16px; }
 .footer__bottom span { font-family: var(--font-body); font-size: 13px; color: var(--text-4); }
-.footer__social { display: flex; gap: 14px; }
+.footer__social { display: flex; gap: 14px; margin-top: 40px; }
 .footer__social a { width: 38px; height: 38px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border-subtle); color: var(--text-2); }
 .footer__social a:hover { border-color: var(--gl-cyan); color: var(--gl-cyan); }
 
@@ -572,10 +572,6 @@ em { font-style: normal; color: var(--gl-pink); }
   .footer__grid { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
 }
-
-/* Partners: la grilla destacada se adapta en pantallas chicas */
-@media (max-width: 900px) { .logowall--partners { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 560px) { .logowall--partners { grid-template-columns: repeat(2, 1fr); } }
 
 /* Honeypot anti-spam: invisible para humanos, los bots lo rellenan */
 .hp {
