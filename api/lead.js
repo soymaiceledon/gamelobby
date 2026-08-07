@@ -49,6 +49,25 @@ function buildWelcome(lead) {
         `<p>El equipo de GameLobby</p>`,
     };
   }
+  if (lead.type === "glx_sponsor") {
+    const from = lead.company ? ` desde ${lead.company}` : "";
+    const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
+    return {
+      subject: "Recibimos tu interés en GameLobby Xperience",
+      text:
+        `Hola ${firstName},\n\n` +
+        `Gracias por escribirnos${from}.${interest}\n\n` +
+        `GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en Panamá y sigue con torneos digitales por toda Centroamérica a partir de noviembre.\n\n` +
+        `Un miembro de nuestro equipo te contactará con los próximos pasos.\n\n` +
+        `El equipo de GameLobby\n`,
+      html:
+        `<p>Hola ${esc(firstName)},</p>` +
+        `<p>Gracias por escribirnos${esc(from)}.${interest ? " " + esc("Anotamos tu interés en: " + lead.interest + ".") : ""}</p>` +
+        `<p>GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en <strong>Panamá</strong> y sigue con torneos digitales por toda Centroamérica a partir de <strong>noviembre</strong>.</p>` +
+        `<p>Un miembro de nuestro equipo te contactará con los próximos pasos.</p>` +
+        `<p>El equipo de GameLobby</p>`,
+    };
+  }
   if (lead.type === "b2b") {
     const from = lead.company ? ` desde ${lead.company}` : "";
     const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
@@ -113,15 +132,18 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, stored: false });
   }
 
-  const type = body.type === "b2b" ? "b2b" : body.type === "organizer" ? "organizer" : "waitlist";
+  const VALID_TYPES = ["b2b", "organizer", "glx_sponsor"];
+  const type = VALID_TYPES.includes(body.type) ? body.type : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
   const company = String(body.company || "").trim().slice(0, 200);
   const email = String(body.email || "").trim().slice(0, 200);
+  const phone = String(body.phone || "").trim().slice(0, 60);
   const country = String(body.country || "").trim().slice(0, 100);
   const interest = String(body.interest || "").trim().slice(0, 200);
   const community = String(body.community || "").trim().slice(0, 200);
   const category = String(body.category || "").trim().slice(0, 100);
   const link = String(body.link || "").trim().slice(0, 300);
+  const message = String(body.message || "").trim().slice(0, 2000);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || !emailOk) {
@@ -129,8 +151,8 @@ export default async function handler(req, res) {
   }
 
   const lead = {
-    type, name, company: company || null, email, country: country || null, interest: interest || null,
-    community: community || null, category: category || null, link: link || null,
+    type, name, company: company || null, email, phone: phone || null, country: country || null, interest: interest || null,
+    community: community || null, category: category || null, link: link || null, message: message || null,
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,

@@ -42,6 +42,7 @@
   .tab.active{background:var(--surface-2);color:var(--t1)}
   .tab.active.b2b{color:var(--pink)}
   .tab.active.org{color:#b794ff}
+  .tab.active.glx{color:var(--pink)}
   .spacer{flex:1}
   .search{max-width:240px}
   .count{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--t3)}
@@ -91,7 +92,7 @@
     <header>
       <div>
         <div class="brand">Game<span>Lobby</span> · Leads</div>
-        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas y organizadores</div>
+        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas, organizadores y sponsors GLX</div>
       </div>
       <button class="btn btn--ghost" id="logout">Salir</button>
     </header>
@@ -101,6 +102,7 @@
         <button class="tab active" data-type="waitlist">Waitlist</button>
         <button class="tab b2b" data-type="b2b">B2B / Marcas</button>
         <button class="tab org" data-type="organizer">Organizadores</button>
+        <button class="tab glx" data-type="glx_sponsor">GLX Sponsors</button>
       </div>
       <input class="search" id="search" type="text" placeholder="Buscar nombre o email…">
       <div class="spacer"></div>
@@ -156,7 +158,7 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.interest||'')+' '+(l.category||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.phone||'')+' '+(l.interest||'')+' '+(l.category||'')+' '+(l.message||'')).toLowerCase().indexOf(q)>=0; });
   }
 
   function tg(v){ return v?'<span class="tg">'+esc(v)+'</span>':'<span style="color:var(--t3)">—</span>'; }
@@ -169,15 +171,16 @@
   }
 
   function render(){
-    var b2b = type==='b2b', org = type==='organizer';
+    var b2b = type==='b2b', org = type==='organizer', glx = type==='glx_sponsor';
     var head = '<th style="width:160px">Fecha</th><th>Nombre</th>';
     if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
     else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
+    else if(glx) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Interés</th>';
     else head += '<th>País</th><th>Email</th><th>Interés</th>';
     $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
-    var label = b2b?'B2B':org?'Organizadores':'Waitlist';
+    var label = b2b?'B2B':org?'Organizadores':glx?'GLX Sponsors':'Waitlist';
     if(!all.length){ setState('Aún no hay leads en <b>'+label+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
     $('#rows').innerHTML=items.map(function(l,i){
@@ -186,6 +189,8 @@
         cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       } else if(org){
         cells += '<td>'+commCell(l)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
+      } else if(glx){
+        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+tg(l.interest)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
@@ -209,8 +214,8 @@
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','empresa','comunidad','link','pais','email','interes','categoria','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.link||'',l.country||'',l.email||'',l.interest||'',l.category||'',l.type||type];
+    var rows=[['fecha','nombre','empresa','comunidad','link','pais','email','telefono','interes','categoria','mensaje','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.link||'',l.country||'',l.email||'',l.phone||'',l.interest||'',l.category||'',l.message||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }

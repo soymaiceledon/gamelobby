@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     let body = req.body;
     if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
     body = body || {};
-    const type = ["b2b", "organizer"].includes(body.type) ? body.type : "waitlist";
+    const type = ["b2b", "organizer", "glx_sponsor"].includes(body.type) ? body.type : "waitlist";
     const raw = String(body.raw || "");
     if (!raw) return res.status(400).json({ ok: false, error: "missing_raw" });
     try {
@@ -65,7 +65,7 @@ export default async function handler(req, res) {
   }
 
   // --- Listar leads ---
-  const type = ["b2b", "organizer"].includes(req.query.type) ? req.query.type : "waitlist";
+  const type = ["b2b", "organizer", "glx_sponsor"].includes(req.query.type) ? req.query.type : "waitlist";
   try {
     const data = await kv(["LRANGE", `leads:${type}`, "0", "-1"]);
     const items = (data.result || []).map((s) => {
