@@ -51,20 +51,20 @@ function buildWelcome(lead) {
   }
   if (lead.type === "glx_sponsor") {
     const from = lead.company ? ` desde ${lead.company}` : "";
-    const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
+    const goals = lead.goals ? ` Anotamos que buscas: ${lead.goals}.` : "";
     return {
-      subject: "Recibimos tu interés en GameLobby Xperience",
+      subject: "Recibimos tu solicitud—GameLobby Xperience",
       text:
         `Hola ${firstName},\n\n` +
-        `Gracias por escribirnos${from}.${interest}\n\n` +
-        `GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en Panamá y sigue con torneos digitales por toda Centroamérica a partir de noviembre.\n\n` +
-        `Un miembro de nuestro equipo te contactará con los próximos pasos.\n\n` +
+        `Gracias por escribirnos${from}.${goals}\n\n` +
+        `GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en Panamá (30–31 de octubre, Soho Mall) y conecta con Centroamérica a través de GameLobby.gg.\n\n` +
+        `Nuestro equipo va a preparar las oportunidades más relevantes para tu marca y categoría, y te contactará con los próximos pasos.\n\n` +
         `El equipo de GameLobby\n`,
       html:
         `<p>Hola ${esc(firstName)},</p>` +
-        `<p>Gracias por escribirnos${esc(from)}.${interest ? " " + esc("Anotamos tu interés en: " + lead.interest + ".") : ""}</p>` +
-        `<p>GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en <strong>Panamá</strong> y sigue con torneos digitales por toda Centroamérica a partir de <strong>noviembre</strong>.</p>` +
-        `<p>Un miembro de nuestro equipo te contactará con los próximos pasos.</p>` +
+        `<p>Gracias por escribirnos${esc(from)}.${goals ? " " + esc("Anotamos que buscas: " + lead.goals + ".") : ""}</p>` +
+        `<p>GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en <strong>Panamá</strong> (30–31 de octubre, Soho Mall) y conecta con Centroamérica a través de GameLobby.gg.</p>` +
+        `<p>Nuestro equipo va a preparar las oportunidades más relevantes para tu marca y categoría, y te contactará con los próximos pasos.</p>` +
         `<p>El equipo de GameLobby</p>`,
     };
   }
@@ -144,6 +144,11 @@ export default async function handler(req, res) {
   const category = String(body.category || "").trim().slice(0, 100);
   const link = String(body.link || "").trim().slice(0, 300);
   const message = String(body.message || "").trim().slice(0, 2000);
+  const jobTitle = String(body.jobTitle || "").trim().slice(0, 150);
+  const companyCategory = String(body.companyCategory || "").trim().slice(0, 100);
+  const goals = String(body.goals || "").trim().slice(0, 400);
+  const scale = String(body.scale || "").trim().slice(0, 60);
+  const experiences = String(body.experiences || "").trim().slice(0, 400);
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || !emailOk) {
@@ -153,6 +158,8 @@ export default async function handler(req, res) {
   const lead = {
     type, name, company: company || null, email, phone: phone || null, country: country || null, interest: interest || null,
     community: community || null, category: category || null, link: link || null, message: message || null,
+    jobTitle: jobTitle || null, companyCategory: companyCategory || null, goals: goals || null,
+    scale: scale || null, experiences: experiences || null,
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,

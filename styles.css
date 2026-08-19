@@ -197,7 +197,6 @@ em { font-style: normal; color: var(--gl-pink); }
 .card--int:hover[data-neon="cyan"]   { box-shadow: 0 0 0 1px rgba(0,171,235,.7), 0 0 34px rgba(0,171,235,.6), var(--shadow-3); }
 .card--int:hover[data-neon="pink"]   { box-shadow: 0 0 0 1px rgba(255,45,176,.7), 0 0 34px rgba(255,45,176,.55), var(--shadow-3); }
 .card--int:hover[data-neon="purple"] { box-shadow: 0 0 0 1px rgba(123,63,242,.75), 0 0 36px rgba(123,63,242,.55), var(--shadow-3); }
-
 /* ---- Icon tile ---- */
 .icon-tile {
   width: 56px; height: 56px; border-radius: var(--radius-md);
@@ -582,4 +581,110 @@ em { font-style: normal; color: var(--gl-pink); }
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+/* ============================================================
+   GAMELOBBY XPERIENCE — sección B2B de sponsors
+   ============================================================ */
+
+/* ---- Hero Xperience ---- */
+.xp-hero__inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.xp-hero__title { font-family: var(--font-display); font-weight: 800; font-size: 42px; line-height: 1.12; color: var(--text-1); margin-top: 14px; }
+.xp-hero__lead { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--text-3); margin-top: 18px; max-width: 620px; margin-left: auto; margin-right: auto; }
+.xp-hero__meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-top: 26px; font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--text-2); }
+.xp-hero__meta span { display: inline-flex; align-items: center; gap: 7px; }
+.xp-hero__meta .ic { width: 16px; height: 16px; color: var(--gl-cyan); }
+.xp-hero__proof { margin-top: 10px; font-family: var(--font-body); font-size: 13px; letter-spacing: .04em; color: var(--text-4); text-transform: uppercase; }
+.xp-hero__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+
+/* ---- Journey ("no es una feria") ---- */
+.xp-journey__flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 48px; }
+.xp-step { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 999px; background: var(--gl-surface-3); border: 1px solid var(--border-subtle); font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--text-2); }
+.xp-step--wallet { background: linear-gradient(135deg, rgba(255,45,176,.22), rgba(0,171,235,.18)); border-color: rgba(255,45,176,.5); color: var(--text-1); font-size: 15px; padding: 12px 22px; }
+.xp-step--wallet i { width: 16px; height: 16px; color: var(--gl-pink-bright); }
+.xp-journey__arrow { width: 16px; height: 16px; color: var(--text-4); flex-shrink: 0; }
+
+/* ---- Ecosistema 360 ---- */
+.xp-ecosystem__flow { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 460px; margin: 48px auto 0; }
+.xp-eco-node { width: 100%; text-align: center; padding: 26px; }
+.xp-eco-node h3 { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-1); margin-top: 14px; }
+.xp-eco-node p { font-family: var(--font-body); font-size: 14.5px; color: var(--text-3); margin-top: 6px; }
+.xp-eco-node--lg { padding: 32px; }
+.xp-ecosystem__arrow { width: 20px; height: 20px; color: var(--text-4); }
+
+/* ---- ¿Qué quieres conseguir? ---- */
+.xp-goals__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 48px; }
+.xp-goal { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 10px; padding: 24px; background: var(--gl-surface-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); cursor: pointer; font-family: inherit; transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
+.xp-goal:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+.xp-goal h3 { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: var(--text-1); }
+.xp-goal p { font-family: var(--font-body); font-size: 13.5px; color: var(--text-3); line-height: 1.5; }
+.xp-goal--active { border-color: var(--gl-pink-bright); box-shadow: 0 0 0 1px rgba(255,45,176,.6), 0 0 28px rgba(255,45,176,.35); }
+.xp-goals__result { margin-top: 32px; padding: 26px; background: var(--gl-surface-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: center; }
+.xp-goals__result-label { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-4); }
+.xp-goals__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 14px 0 22px; }
+
+/* Chip genérico (recomendaciones, data, zonas) */
+.xp-chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; background: var(--gl-surface-4); border: 1px solid var(--border-subtle); font-family: var(--font-body); font-size: 13.5px; color: var(--text-2); }
+.xp-chip i { width: 14px; height: 14px; color: var(--gl-cyan); }
+
+/* ---- Dos días / dos experiencias ---- */
+.xp-days__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.xp-day { padding: 32px; }
+.xp-day__date { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--gl-pink-soft); margin-bottom: 12px; }
+.xp-day h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--text-1); line-height: 1.25; }
+.xp-day > p { font-family: var(--font-body); font-size: 14.5px; color: var(--text-3); margin-top: 12px; line-height: 1.6; }
+.xp-day__list { margin: 16px 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.xp-day__list li { font-family: var(--font-body); font-size: 14px; color: var(--text-2); padding-left: 18px; position: relative; }
+.xp-day__list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--gl-cyan); }
+.xp-day__note { font-family: var(--font-body); font-size: 13.5px; color: var(--text-4); margin: 14px 0 20px; }
+.xp-day .btn { margin-top: 4px; }
+
+/* ---- Zonas y experiencias ---- */
+.xp-zones__grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+.xp-zone-chip { padding: 10px 18px; border-radius: 999px; background: var(--gl-surface-3); border: 1px solid var(--border-subtle); color: var(--text-2); font-family: var(--font-body); font-size: 14px; cursor: pointer; transition: border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out); }
+.xp-zone-chip:hover { border-color: var(--gl-cyan); color: var(--text-1); }
+.xp-zone-chip--active { border-color: var(--gl-pink-bright); color: var(--text-1); background: rgba(255,45,176,.12); }
+.xp-zones__panel { margin-top: 28px; padding: 28px; background: var(--gl-surface-3); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); }
+.xp-zones__panel h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--text-1); }
+.xp-zones__panel p { font-family: var(--font-body); font-size: 14.5px; color: var(--text-3); margin-top: 8px; }
+.xp-zones__panel-label { font-family: var(--font-display); font-weight: 600; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-4); margin-top: 18px !important; }
+.xp-zones__panel .xp-goals__chips { justify-content: flex-start; margin: 12px 0 20px; }
+
+/* ---- Wallet + Data ---- */
+.xp-data__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 44px; }
+
+/* ---- Centroamérica (reutiliza .tourmap__map / .camap existentes) ---- */
+.xp-region__clarify { font-family: var(--font-body); font-size: 14px; color: var(--text-3); margin-top: 14px; }
+
+/* ---- Oportunidad para marcas ---- */
+.xp-opportunity { text-align: center; }
+.xp-opportunity .eyebrow { justify-content: center; }
+.xp-opportunity h2 { margin-top: 10px; }
+.xp-opportunity__lead { font-family: var(--font-body); font-size: 17px; color: var(--text-2); margin: 16px auto 0; max-width: 520px; }
+.xp-opportunity__note { font-family: var(--font-body); font-size: 13.5px; color: var(--text-4); margin: 10px 0 26px; }
+
+/* ---- Form ampliado de sponsors ---- */
+.xp-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.xp-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+.xp-check { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; color: var(--text-2); cursor: pointer; }
+.xp-check input { width: 16px; height: 16px; accent-color: var(--gl-pink-bright); flex-shrink: 0; }
+.xp-success__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+
+/* ---- CTA sticky (solo mobile) ---- */
+.xp-sticky-cta { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 40; }
+.xp-sticky-cta .btn { box-shadow: var(--shadow-3); }
+@media (min-width: 761px) { .xp-sticky-cta { display: none; } }
+
+@media (max-width: 900px) {
+  .xp-hero__title { font-size: 32px; }
+  .xp-days__grid { grid-template-columns: 1fr; }
+  .xp-form__row { grid-template-columns: 1fr; }
+  .xp-checks { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .xp-hero__title { font-size: 27px; }
+  .xp-hero__cta { flex-direction: column; }
+  .xp-hero__cta .btn { width: 100%; justify-content: center; }
+  .xp-journey__flow { gap: 6px; }
+  .xp-step { padding: 8px 14px; font-size: 13px; }
 }

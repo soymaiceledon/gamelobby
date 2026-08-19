@@ -158,7 +158,7 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.phone||'')+' '+(l.interest||'')+' '+(l.category||'')+' '+(l.message||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.phone||'')+' '+(l.interest||'')+' '+(l.category||'')+' '+(l.message||'')+' '+(l.jobTitle||'')+' '+(l.companyCategory||'')+' '+(l.goals||'')+' '+(l.scale||'')+' '+(l.experiences||'')).toLowerCase().indexOf(q)>=0; });
   }
 
   function tg(v){ return v?'<span class="tg">'+esc(v)+'</span>':'<span style="color:var(--t3)">—</span>'; }
@@ -175,7 +175,7 @@
     var head = '<th style="width:160px">Fecha</th><th>Nombre</th>';
     if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
     else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
-    else if(glx) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Interés</th>';
+    else if(glx) head += '<th>Empresa</th><th>Categoría</th><th>Email</th><th>País</th><th>Objetivo</th><th>Escala</th>';
     else head += '<th>País</th><th>Email</th><th>Interés</th>';
     $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
@@ -190,7 +190,7 @@
       } else if(org){
         cells += '<td>'+commCell(l)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
       } else if(glx){
-        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+tg(l.interest)+'</td>';
+        cells += '<td>'+strong(l.company)+'</td><td>'+tg(l.companyCategory)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.country)+'</td><td>'+tg(l.goals)+'</td><td>'+tg(l.scale)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
@@ -214,8 +214,8 @@
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','empresa','comunidad','link','pais','email','telefono','interes','categoria','mensaje','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.company||'',l.community||'',l.link||'',l.country||'',l.email||'',l.phone||'',l.interest||'',l.category||'',l.message||'',l.type||type];
+    var rows=[['fecha','nombre','cargo','empresa','categoria_empresa','comunidad','link','pais','email','telefono','interes','categoria','objetivo','escala','experiencias','mensaje','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.jobTitle||'',l.company||'',l.companyCategory||'',l.community||'',l.link||'',l.country||'',l.email||'',l.phone||'',l.interest||'',l.category||'',l.goals||'',l.scale||'',l.experiences||'',l.message||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }
