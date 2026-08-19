@@ -229,6 +229,7 @@ em { font-style: normal; color: var(--gl-pink); }
   border-bottom: 1px solid var(--border-subtle);
 }
 .nav__inner { max-width: var(--container-max); margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 28px; }
+.nav__logo { flex-shrink: 0; }
 .nav__logo img { height: 38px; width: auto; }
 .nav__links { display: flex; align-items: center; gap: 26px; margin-left: 12px; }
 .nav__links a { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--text-2); transition: color var(--dur) var(--ease-out); }
@@ -543,6 +544,13 @@ em { font-style: normal; color: var(--gl-pink); }
   .nav__links a { padding: 14px 2px; font-size: 16px; border-bottom: 1px solid var(--border-subtle); }
   .nav__links a:last-child { border-bottom: 0; }
   .heading h2 { font-size: 36px; }
+  .nav__inner { gap: 12px; }
+  .nav__right { gap: 10px; }
+  .nav__lang { display: none; }
+}
+@media (max-width: 420px) {
+  .nav__logo img { height: 30px; }
+  .nav__right .btn--sm { padding: 0 12px; font-size: 13px; }
 }
 @media (max-width: 560px) {
   /* Hero */
@@ -628,7 +636,7 @@ em { font-style: normal; color: var(--gl-pink); }
 .xp-chip i { width: 14px; height: 14px; color: var(--gl-cyan); }
 
 /* ---- Dos días / dos experiencias ---- */
-.xp-days__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.xp-days__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; margin-top: 48px; }
 .xp-day { padding: 32px; }
 .xp-day__date { display: inline-block; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--gl-pink-soft); margin-bottom: 12px; }
 .xp-day h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--text-1); line-height: 1.25; }
@@ -664,8 +672,8 @@ em { font-style: normal; color: var(--gl-pink); }
 .xp-opportunity__note { font-family: var(--font-body); font-size: 13.5px; color: var(--text-4); margin: 10px 0 26px; }
 
 /* ---- Form ampliado de sponsors ---- */
-.xp-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.xp-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+.xp-form__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.xp-checks { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 14px; }
 .xp-check { display: flex; align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; color: var(--text-2); cursor: pointer; }
 .xp-check input { width: 16px; height: 16px; accent-color: var(--gl-pink-bright); flex-shrink: 0; }
 .xp-success__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
@@ -677,9 +685,9 @@ em { font-style: normal; color: var(--gl-pink); }
 
 @media (max-width: 900px) {
   .xp-hero__title { font-size: 32px; }
-  .xp-days__grid { grid-template-columns: 1fr; }
-  .xp-form__row { grid-template-columns: 1fr; }
-  .xp-checks { grid-template-columns: 1fr; }
+  .xp-days__grid { grid-template-columns: minmax(0, 1fr); }
+  .xp-form__row { grid-template-columns: minmax(0, 1fr); }
+  .xp-checks { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 560px) {
   .xp-hero__title { font-size: 27px; }
