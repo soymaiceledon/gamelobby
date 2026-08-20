@@ -53,7 +53,7 @@
       <div class="xp-hero__cta">
         <a href="#glx-sponsors" class="btn btn--pink btn--md" data-xp-event="sponsor_hero_cta_click">Quiero ser sponsor</a>
         <a href="#xp-opportunity" class="btn btn--outline btn--md">Explorar oportunidades</a>
-        <button type="button" class="btn btn--ghost btn--md xp-mediakit-btn" data-xp-event="sponsor_media_kit_click">Solicitar Media Kit</button>
+        <button type="button" class="btn btn--ghost btn--md" data-open-mediakit data-xp-event="sponsor_media_kit_click">Solicitar Media Kit</button>
       </div>
     </div>
   </div>
@@ -522,6 +522,45 @@
   </div>
 </footer>
 
+<!-- ============ MODAL: SOLICITAR MEDIA KIT ============ -->
+<div class="modal" id="mediakit-modal" aria-hidden="true">
+  <div class="modal__box">
+    <div class="card" data-neon="pink">
+      <div class="modal__head">
+        <span class="badge badge--pink"><span class="dot"></span>GameLobby Xperience</span>
+        <button class="modal__close" data-close-mediakit aria-label="Cerrar"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+      </div>
+      <form class="form" id="mediakit-form" style="margin-top:18px">
+        <h3>Solicitar Media Kit</h3>
+        <p class="modal__lead" style="margin:-4px 0 4px">Te lo mandamos directo a tu correo.</p>
+        <div class="field">
+          <label for="mk-name">Nombre completo</label>
+          <input id="mk-name" name="name" placeholder="Alex Rivera" required>
+        </div>
+        <div class="field">
+          <label for="mk-email">Correo electrónico</label>
+          <input id="mk-email" name="email" type="email" placeholder="alex@empresa.com" required>
+        </div>
+        <div class="field">
+          <label for="mk-phone">Número de contacto</label>
+          <input id="mk-phone" name="phone" type="tel" placeholder="+507 6000 0000" required>
+        </div>
+        <div class="field">
+          <label for="mk-company">Empresa</label>
+          <input id="mk-company" name="company" placeholder="Tu marca" required>
+        </div>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn--pink btn--block btn--md" type="submit">Enviarme el Media Kit</button>
+      </form>
+      <div class="modal__success hidden" id="mediakit-success">
+        <i data-lucide="mail-check" style="width:46px;height:46px"></i>
+        <h3 style="margin:14px 0 8px">¡Va en camino!</h3>
+        <p class="modal__lead">Revisa tu correo—te acabamos de mandar el Media Kit de GameLobby Xperience.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA sticky de sponsors en mobile: aparece al hacer scroll, se oculta cerca del form real -->
 <div class="xp-sticky-cta hidden" id="xp-sticky-cta">
   <a href="#glx-sponsors" class="btn btn--pink btn--block btn--sm">Quiero ser sponsor</a>
@@ -772,13 +811,39 @@
     updateSticky();
   })();
 
-  // ---- Media Kit: nunca se descarga directo, siempre lleva al form ----
-  document.querySelectorAll('.xp-mediakit-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.getElementById('glx-sponsors').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-      document.getElementById('glx-name').focus();
+  // ---- Modal: Solicitar Media Kit (form corto, separado del form largo de sponsor) ----
+  (function () {
+    var modal = document.getElementById('mediakit-modal');
+    function openModal() {
+      document.getElementById('mediakit-form').classList.remove('hidden');
+      document.getElementById('mediakit-success').classList.add('hidden');
+      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
+    document.querySelectorAll('[data-open-mediakit]').forEach(function (b) { b.addEventListener('click', openModal); });
+    document.querySelectorAll('[data-close-mediakit]').forEach(function (b) { b.addEventListener('click', closeModal); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    document.getElementById('mediakit-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var data = Object.fromEntries(new FormData(form).entries());
+      try {
+        await fetch('/api/media-kit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+      } catch (err) {
+        console.warn('[GameLobby] /api/media-kit-lead no disponible', err);
+      }
+      document.getElementById('mediakit-form').classList.add('hidden');
+      document.getElementById('mediakit-success').classList.remove('hidden');
+      renderIcons();
+      xpTrack('sponsor_media_kit_click', { step: 'submitted' });
     });
-  });
+  })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

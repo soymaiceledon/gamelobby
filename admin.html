@@ -43,6 +43,7 @@
   .tab.active.b2b{color:var(--pink)}
   .tab.active.org{color:#b794ff}
   .tab.active.glx{color:var(--pink)}
+  .tab.active.mk{color:var(--cyan)}
   .spacer{flex:1}
   .search{max-width:240px}
   .count{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--t3)}
@@ -92,7 +93,7 @@
     <header>
       <div>
         <div class="brand">Game<span>Lobby</span> · Leads</div>
-        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas, organizadores y sponsors GLX</div>
+        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas, organizadores, sponsors GLX y solicitudes de Media Kit</div>
       </div>
       <button class="btn btn--ghost" id="logout">Salir</button>
     </header>
@@ -103,6 +104,7 @@
         <button class="tab b2b" data-type="b2b">B2B / Marcas</button>
         <button class="tab org" data-type="organizer">Organizadores</button>
         <button class="tab glx" data-type="glx_sponsor">GLX Sponsors</button>
+        <button class="tab mk" data-type="media_kit">Media Kit</button>
       </div>
       <input class="search" id="search" type="text" placeholder="Buscar nombre o email…">
       <div class="spacer"></div>
@@ -158,7 +160,7 @@
   function filtered(){
     var q=$('#search').value.trim().toLowerCase();
     if(!q) return all;
-    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.phone||'')+' '+(l.interest||'')+' '+(l.category||'')+' '+(l.message||'')+' '+(l.jobTitle||'')+' '+(l.companyCategory||'')+' '+(l.goals||'')+' '+(l.scale||'')+' '+(l.experiences||'')).toLowerCase().indexOf(q)>=0; });
+    return all.filter(function(l){ return ((l.name||'')+' '+(l.company||'')+' '+(l.community||'')+' '+(l.link||'')+' '+(l.country||'')+' '+(l.email||'')+' '+(l.phone||'')+' '+(l.interest||'')+' '+(l.category||'')+' '+(l.message||'')+' '+(l.jobTitle||'')+' '+(l.companyCategory||'')+' '+(l.goals||'')+' '+(l.scale||'')+' '+(l.experiences||'')+' '+(l.status||'')).toLowerCase().indexOf(q)>=0; });
   }
 
   function tg(v){ return v?'<span class="tg">'+esc(v)+'</span>':'<span style="color:var(--t3)">—</span>'; }
@@ -170,17 +172,31 @@
     return '<a href="'+esc(href)+'" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">'+esc(l.community||l.link)+' &#8599;</a>';
   }
 
+  var MK_STATUS_LABEL = {
+    new: 'Nuevo', explore_sent: 'Explorador enviado', kit_sent: 'Kit enviado',
+    followup_sent: 'Seguimiento enviado', reengage_sent: 'Re-enganche enviado',
+    paused: 'Pausado', booked: 'Agendó llamada',
+  };
+  function mkStatus(l){
+    var label = MK_STATUS_LABEL[l.status] || l.status || '—';
+    var marks = [];
+    if(l.kitClickedAt) marks.push('clic al kit');
+    if(l.calClickedAt) marks.push('clic a agendar');
+    return tg(label + (marks.length ? ' · '+marks.join(', ') : ''));
+  }
+
   function render(){
-    var b2b = type==='b2b', org = type==='organizer', glx = type==='glx_sponsor';
+    var b2b = type==='b2b', org = type==='organizer', glx = type==='glx_sponsor', mk = type==='media_kit';
     var head = '<th style="width:160px">Fecha</th><th>Nombre</th>';
     if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
     else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
     else if(glx) head += '<th>Empresa</th><th>Categoría</th><th>Email</th><th>País</th><th>Objetivo</th><th>Escala</th>';
+    else if(mk) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Estado</th>';
     else head += '<th>País</th><th>Email</th><th>Interés</th>';
     $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
-    var label = b2b?'B2B':org?'Organizadores':glx?'GLX Sponsors':'Waitlist';
+    var label = b2b?'B2B':org?'Organizadores':glx?'GLX Sponsors':mk?'Media Kit':'Waitlist';
     if(!all.length){ setState('Aún no hay leads en <b>'+label+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
     $('#rows').innerHTML=items.map(function(l,i){
@@ -191,6 +207,8 @@
         cells += '<td>'+commCell(l)+'</td><td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.category)+'</td>';
       } else if(glx){
         cells += '<td>'+strong(l.company)+'</td><td>'+tg(l.companyCategory)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.country)+'</td><td>'+tg(l.goals)+'</td><td>'+tg(l.scale)+'</td>';
+      } else if(mk){
+        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+mkStatus(l)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
@@ -214,8 +232,8 @@
   }
 
   function toCSV(){
-    var rows=[['fecha','nombre','cargo','empresa','categoria_empresa','comunidad','link','pais','email','telefono','interes','categoria','objetivo','escala','experiencias','mensaje','tipo']].concat(filtered().map(function(l){
-      return [l.ts||'',l.name||'',l.jobTitle||'',l.company||'',l.companyCategory||'',l.community||'',l.link||'',l.country||'',l.email||'',l.phone||'',l.interest||'',l.category||'',l.goals||'',l.scale||'',l.experiences||'',l.message||'',l.type||type];
+    var rows=[['fecha','nombre','cargo','empresa','categoria_empresa','comunidad','link','pais','email','telefono','interes','categoria','objetivo','escala','experiencias','mensaje','estado','tipo']].concat(filtered().map(function(l){
+      return [l.ts||'',l.name||'',l.jobTitle||'',l.company||'',l.companyCategory||'',l.community||'',l.link||'',l.country||'',l.email||'',l.phone||'',l.interest||'',l.category||'',l.goals||'',l.scale||'',l.experiences||'',l.message||'',l.status||'',l.type||type];
     }));
     return rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\n');
   }

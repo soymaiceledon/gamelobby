@@ -52,11 +52,21 @@ export default async function handler(req, res) {
     let body = req.body;
     if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
     body = body || {};
-    const type = ["b2b", "organizer", "glx_sponsor"].includes(body.type) ? body.type : "waitlist";
+    const type = ["b2b", "organizer", "glx_sponsor", "media_kit"].includes(body.type) ? body.type : "waitlist";
     const raw = String(body.raw || "");
     if (!raw) return res.status(400).json({ ok: false, error: "missing_raw" });
     try {
       const data = await kv(["LREM", `leads:${type}`, "0", raw]);
+      if (type === "media_kit") {
+        // Apaga el nurture de ese lead: sin esto, el cron seguiría mandándole correos.
+        try {
+          let parsed; try { parsed = JSON.parse(raw); } catch { parsed = null; }
+          if (parsed && parsed.id) {
+            await kv(["DEL", `mk:${parsed.id}`]);
+            await kv(["ZREM", "mk:queue", parsed.id]);
+          }
+        } catch (e) { console.error("[leads] mk cleanup error", e); }
+      }
       return res.status(200).json({ ok: true, removed: data.result || 0 });
     } catch (e) {
       console.error("[leads] delete error", e);
@@ -65,14 +75,28 @@ export default async function handler(req, res) {
   }
 
   // --- Listar leads ---
-  const type = ["b2b", "organizer", "glx_sponsor"].includes(req.query.type) ? req.query.type : "waitlist";
+  const type = ["b2b", "organizer", "glx_sponsor", "media_kit"].includes(req.query.type) ? req.query.type : "waitlist";
   try {
     const data = await kv(["LRANGE", `leads:${type}`, "0", "-1"]);
-    const items = (data.result || []).map((s) => {
+    let items = (data.result || []).map((s) => {
       let o; try { o = JSON.parse(s); } catch { o = {}; }
       o._raw = s; // string original, necesario para borrar con LREM
       return o;
     });
+    // media_kit: el estado del nurture (status, clics) vive aparte en mk:<id>, se mezcla acá.
+    if (type === "media_kit") {
+      items = await Promise.all(items.map(async (item) => {
+        if (!item.id) return item;
+        try {
+          const stateData = await kv(["GET", `mk:${item.id}`]);
+          if (stateData.result) {
+            const state = JSON.parse(stateData.result);
+            return { ...item, status: state.status, kitClickedAt: state.kitClickedAt || null, calClickedAt: state.calClickedAt || null };
+          }
+        } catch (e) { console.error("[leads] mk state read error", e); }
+        return item;
+      }));
+    }
     return res.status(200).json({ ok: true, type, count: items.length, items });
   } catch (e) {
     console.error("[leads] read error", e);
