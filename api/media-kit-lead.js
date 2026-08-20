@@ -13,8 +13,15 @@
 //
 // Requiere las mismas env vars que api/lead.js (KV, RESEND_API_KEY, MAIL_FROM)
 // más MEDIA_KIT_WEBHOOK_URL y SPONSOR_CALENDAR_URL (ver api/_email.js).
+//
+// Anti-abuso: honeypot (campo "website" oculto) + límite de 3 envíos por IP por
+// hora (mk:rl:<ip> en KV). A diferencia del form de leads normal, este dispara
+// correos reales y una secuencia de varios días, así que un bot aquí sale caro.
 
 import { kv, esc, sendEmail, forwardToSheet, researchCompany, isCorporateEmail, newLeadId, buildExploreEmail, buildKitEmail } from "./_email.js";
+
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_SEC = 3600;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -28,9 +35,21 @@ export default async function handler(req, res) {
   }
   body = body || {};
 
+  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || null;
+
   // Honeypot anti-spam.
   if (String(body.website || "").trim() !== "") {
     return res.status(200).json({ ok: true, stored: false });
+  }
+
+  // Límite por IP. Si KV no responde (result null), no bloqueamos: mejor dejar
+  // pasar un lead de más que perder uno real por una falla de infraestructura.
+  if (ip) {
+    const rl = await kv(["INCR", `mk:rl:${ip}`]);
+    if (rl.result === 1) await kv(["EXPIRE", `mk:rl:${ip}`, String(RATE_LIMIT_WINDOW_SEC)]);
+    if (rl.result != null && rl.result > RATE_LIMIT_MAX) {
+      return res.status(429).json({ ok: false, error: "rate_limited" });
+    }
   }
 
   const name = String(body.name || "").trim().slice(0, 200);
@@ -53,7 +72,7 @@ export default async function handler(req, res) {
     status: "new",
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
-    ip: req.headers["x-forwarded-for"] || null,
+    ip,
   };
 
   // 1) CRM: lista plana para /admin

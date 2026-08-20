@@ -557,6 +557,11 @@
         <h3 style="margin:14px 0 8px">¡Va en camino!</h3>
         <p class="modal__lead">Revisa tu correo—te acabamos de mandar el Media Kit de GameLobby Xperience.</p>
       </div>
+      <div class="modal__success hidden" id="mediakit-limited">
+        <i data-lucide="mail-check" style="width:46px;height:46px"></i>
+        <h3 style="margin:14px 0 8px">Ya tienes una solicitud en camino</h3>
+        <p class="modal__lead">Si no te llegó el correo, escríbenos directo a <a href="mailto:hola@gamelobby.live">hola@gamelobby.live</a> y te lo mandamos.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -817,6 +822,7 @@
     function openModal() {
       document.getElementById('mediakit-form').classList.remove('hidden');
       document.getElementById('mediakit-success').classList.add('hidden');
+      document.getElementById('mediakit-limited').classList.add('hidden');
       modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
     }
     function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
@@ -829,19 +835,21 @@
       e.preventDefault();
       var form = e.target;
       var data = Object.fromEntries(new FormData(form).entries());
+      var limited = false;
       try {
-        await fetch('/api/media-kit-lead', {
+        var res = await fetch('/api/media-kit-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
+        limited = res.status === 429;
       } catch (err) {
         console.warn('[GameLobby] /api/media-kit-lead no disponible', err);
       }
       document.getElementById('mediakit-form').classList.add('hidden');
-      document.getElementById('mediakit-success').classList.remove('hidden');
+      document.getElementById(limited ? 'mediakit-limited' : 'mediakit-success').classList.remove('hidden');
       renderIcons();
-      xpTrack('sponsor_media_kit_click', { step: 'submitted' });
+      xpTrack('sponsor_media_kit_click', { step: limited ? 'rate_limited' : 'submitted' });
     });
   })();
 </script>
