@@ -10,6 +10,7 @@
 //   reengage_sent + 5d sin más actividad      -> paused
 //   followup_sent + 4d sin más actividad      -> paused
 //   (clic al link de agendar -> booked, lo maneja cal-click.js directo, sale de la cola ahí)
+//   (marcado manual "respondió" en /admin -> sale de la cola, ver api/mark-replied.js)
 
 import { kv, sendEmail, buildKitEmail, buildFollowupEmail, buildReengageEmail } from "../_email.js";
 
@@ -52,7 +53,7 @@ async function processLead(id, now) {
   }
   const state = JSON.parse(result);
 
-  if (state.status === "paused" || state.status === "booked") {
+  if (state.status === "paused" || state.status === "booked" || state.repliedAt) {
     await kv(["ZREM", "mk:queue", id]);
     return "already_done";
   }

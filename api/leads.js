@@ -91,7 +91,13 @@ export default async function handler(req, res) {
           const stateData = await kv(["GET", `mk:${item.id}`]);
           if (stateData.result) {
             const state = JSON.parse(stateData.result);
-            return { ...item, status: state.status, kitClickedAt: state.kitClickedAt || null, calClickedAt: state.calClickedAt || null };
+            return {
+              ...item,
+              status: state.status,
+              kitClickedAt: state.kitClickedAt || null,
+              calClickedAt: state.calClickedAt || null,
+              repliedAt: state.repliedAt || null,
+            };
           }
         } catch (e) { console.error("[leads] mk state read error", e); }
         return item;

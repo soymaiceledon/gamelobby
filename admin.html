@@ -71,6 +71,18 @@
     background:rgba(255,45,176,.10);border:1px solid rgba(255,45,176,.28);border-radius:8px;
     color:var(--pink);cursor:pointer;font-size:15px;line-height:1}
   .del:hover{background:rgba(255,45,176,.22)}
+
+  .mk-temp{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .mk-temp--cold{background:rgba(138,152,173,.14);color:var(--t3)}
+  .mk-temp--warm{background:rgba(255,196,0,.14);color:#ffc400}
+  .mk-temp--hot{background:rgba(255,138,0,.16);color:#ff8a00}
+  .mk-temp--hot2{background:rgba(255,45,176,.16);color:var(--pink)}
+  .mk-activity{display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+  .mk-badge{font-size:11px;color:var(--t3)}
+  .mk-badge--ok{color:var(--cyan)}
+  .mk-reply-btn{font-size:11px;padding:3px 9px;border-radius:7px;border:1px solid var(--border);
+    background:var(--surface-2);color:var(--t2);cursor:pointer;font-family:inherit}
+  .mk-reply-btn:hover{border-color:var(--cyan);color:var(--t1)}
 </style>
 </head>
 <body>
@@ -177,12 +189,24 @@
     followup_sent: 'Seguimiento enviado', reengage_sent: 'Re-enganche enviado',
     paused: 'Pausado', booked: 'Agendó llamada',
   };
-  function mkStatus(l){
-    var label = MK_STATUS_LABEL[l.status] || l.status || '—';
-    var marks = [];
-    if(l.kitClickedAt) marks.push('clic al kit');
-    if(l.calClickedAt) marks.push('clic a agendar');
-    return tg(label + (marks.length ? ' · '+marks.join(', ') : ''));
+  function fmtTs(sec){ return sec ? fmt(new Date(sec*1000)) : '—'; }
+  function mkTemp(l){
+    if(l.repliedAt || l.status==='booked') return {label:'Muy caliente', cls:'hot2'};
+    if(l.kitClickedAt) return {label:'Caliente', cls:'hot'};
+    if(l.status==='kit_sent' || l.status==='reengage_sent' || l.status==='followup_sent') return {label:'Tibio', cls:'warm'};
+    return {label:'Frío', cls:'cold'};
+  }
+  function mkTempPill(l){
+    var t = mkTemp(l);
+    return '<span class="mk-temp mk-temp--'+t.cls+'">'+t.label+'</span>';
+  }
+  function mkActivity(l,i){
+    var parts = ['<span class="mk-badge">'+esc(MK_STATUS_LABEL[l.status]||l.status||'—')+'</span>'];
+    if(l.kitClickedAt) parts.push('<span class="mk-badge mk-badge--ok">Vio el kit · '+fmtTs(l.kitClickedAt)+'</span>');
+    if(l.calClickedAt) parts.push('<span class="mk-badge mk-badge--ok">Clic en agendar · '+fmtTs(l.calClickedAt)+'</span>');
+    if(l.repliedAt) parts.push('<span class="mk-badge mk-badge--ok">Respondió · '+fmtTs(l.repliedAt)+'</span>');
+    else if(l.id) parts.push('<button class="mk-reply-btn" type="button" data-mk-reply="'+i+'">Marcar que respondió</button>');
+    return '<div class="mk-activity">'+parts.join('')+'</div>';
   }
 
   function render(){
@@ -191,7 +215,7 @@
     if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
     else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
     else if(glx) head += '<th>Empresa</th><th>Categoría</th><th>Email</th><th>País</th><th>Objetivo</th><th>Escala</th>';
-    else if(mk) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Estado</th>';
+    else if(mk) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Temperatura</th><th>Actividad</th>';
     else head += '<th>País</th><th>Email</th><th>Interés</th>';
     $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
@@ -208,13 +232,26 @@
       } else if(glx){
         cells += '<td>'+strong(l.company)+'</td><td>'+tg(l.companyCategory)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.country)+'</td><td>'+tg(l.goals)+'</td><td>'+tg(l.scale)+'</td>';
       } else if(mk){
-        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+mkStatus(l)+'</td>';
+        cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+mkTempPill(l)+'</td><td>'+mkActivity(l,i)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
       cells += '<td><button class="del" data-i="'+i+'" title="Borrar lead">&#128465;</button></td>';
       return '<tr>'+cells+'</tr>';
     }).join('');
+  }
+
+  async function markReplied(i){
+    var l=shown[i]; if(!l||!l.id) return;
+    try{
+      var res=await fetch('/api/mark-replied',{method:'POST',
+        headers:{'Content-Type':'application/json','x-admin-token':tok},
+        body:JSON.stringify({id:l.id})});
+      var data=await res.json().catch(function(){return {}});
+      if(!data.ok){ alert('No se pudo marcar: '+(data.error||res.status)); return; }
+      l.repliedAt = data.repliedAt || Math.floor(Date.now()/1000);
+      render();
+    }catch(e){ alert('Error de conexión al marcar la respuesta.'); }
   }
 
   async function delRow(i){
@@ -244,7 +281,10 @@
   $('#logout').onclick=function(){ localStorage.removeItem(KEY); tok=''; all=[]; $('#tok').value=''; showApp(false); };
   $('#refresh').onclick=load;
   $('#search').addEventListener('input',render);
-  $('#rows').addEventListener('click',function(e){ var b=e.target.closest('.del'); if(b) delRow(+b.dataset.i); });
+  $('#rows').addEventListener('click',function(e){
+    var b=e.target.closest('.del'); if(b){ delRow(+b.dataset.i); return; }
+    var r=e.target.closest('[data-mk-reply]'); if(r){ markReplied(+r.dataset.mkReply); return; }
+  });
   document.querySelectorAll('.tab').forEach(function(t){ t.onclick=function(){
     document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
     t.classList.add('active'); type=t.dataset.type; $('#search').value=''; load();

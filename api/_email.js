@@ -227,17 +227,18 @@ export function buildReengageEmail(lead) {
 
 export function buildBookingThanksEmail(lead) {
   const name = firstName(lead.name);
+  const calUrl = `${siteUrl()}/api/cal-click?id=${encodeURIComponent(lead.id)}`;
   return {
-    subject: "Nos vemos pronto",
+    subject: "Nos vemos pronto—una pregunta antes de la llamada",
     text:
       `Hola ${name},\n\n` +
-      `Genial—vamos a hablar de GameLobby Xperience en vivo. Google Calendar ya te manda la invitación y los recordatorios.\n\n` +
-      `Para aprovechar la llamada, si ya tienes una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.\n\n` +
-      `El equipo de GameLobby\n`,
+      `Viste el link para agendar tu espacio con GameLobby Xperience. Si ya elegiste un horario, en unos minutos te llega la invitación de Google Calendar con los recordatorios. Si todavía no, aquí lo tienes de nuevo: ${calUrl}\n\n` +
+      `Para llegar a la llamada con algo concreto: si ya tienes en mente un rango de presupuesto disponible, cuéntanoslo respondiendo este correo—así te adelantamos qué experiencias y niveles de patrocinio calzan en ese rango, en vez de partir de cero.\n\n` +
+      `Nos vemos pronto,\nEl equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
-      `<p>Genial—vamos a hablar de GameLobby Xperience en vivo. Google Calendar ya te manda la invitación y los recordatorios.</p>` +
-      `<p>Para aprovechar la llamada, si ya tienes una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.</p>` +
-      `<p>El equipo de GameLobby</p>`,
+      `<p>Viste el link para agendar tu espacio con GameLobby Xperience. Si ya elegiste un horario, en unos minutos te llega la invitación de Google Calendar con los recordatorios. Si todavía no, <a href="${calUrl}">aquí lo tienes de nuevo</a>.</p>` +
+      `<p>Para llegar a la llamada con algo concreto: si ya tienes en mente un rango de presupuesto disponible, cuéntanoslo respondiendo este correo—así te adelantamos qué experiencias y niveles de patrocinio calzan en ese rango, en vez de partir de cero.</p>` +
+      `<p>Nos vemos pronto,<br>El equipo de GameLobby</p>`,
   };
 }
