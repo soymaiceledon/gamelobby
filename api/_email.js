@@ -64,6 +64,15 @@ const FREE_EMAIL_DOMAINS = new Set([
   "live.com", "aol.com", "protonmail.com", "hotmail.es", "yahoo.es", "msn.com",
 ]);
 
+// True si el dominio del correo NO es un proveedor de correo genérico/personal
+// (gmail, hotmail, etc.) — es decir, si "parece" un correo corporativo.
+// Esto es lo que decide kit inmediato vs. correo explorador; researchCompany()
+// solo se usa para personalizar el texto del correo, no para esa decisión.
+export function isCorporateEmail(email) {
+  const domain = String(email || "").split("@")[1]?.toLowerCase().trim() || null;
+  return !!domain && !FREE_EMAIL_DOMAINS.has(domain);
+}
+
 export async function researchCompany(email) {
   const domain = String(email || "").split("@")[1]?.toLowerCase().trim() || null;
   if (!domain || FREE_EMAIL_DOMAINS.has(domain)) {
@@ -139,14 +148,14 @@ export function buildExploreEmail(lead) {
     text:
       `Hola ${name},\n\n` +
       `Gracias por tu interés en GameLobby Xperience—Central America Tour (30–31 de octubre, Soho Mall, Panamá).\n\n` +
-      `Antes de mandarte el Media Kit completo, contanos en una línea qué hace ${lead.company || "tu marca"} y qué te gustaría lograr con una activación como esta—así te lo adaptamos en vez de mandarte algo genérico. Simplemente respondé este correo.\n\n` +
-      `De todas formas, en menos de un día te llega el kit completo—pero si nos contás antes, la conversación arranca más rápido.\n\n` +
+      `Antes de mandarte el Media Kit completo, cuéntanos en una línea qué hace ${lead.company || "tu marca"} y qué te gustaría lograr con una activación como esta—así te lo adaptamos en vez de mandarte algo genérico. Simplemente responde este correo.\n\n` +
+      `De todas formas, en menos de un día te llega el kit completo—pero si nos cuentas antes, la conversación arranca más rápido.\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
       `<p>Gracias por tu interés en <strong>GameLobby Xperience—Central America Tour</strong> (30–31 de octubre, Soho Mall, Panamá).</p>` +
-      `<p>Antes de mandarte el Media Kit completo, contanos en una línea qué hace <strong>${esc(lead.company || "tu marca")}</strong> y qué te gustaría lograr con una activación como esta—así te lo adaptamos en vez de mandarte algo genérico. Simplemente respondé este correo.</p>` +
-      `<p>De todas formas, en menos de un día te llega el kit completo—pero si nos contás antes, la conversación arranca más rápido.</p>` +
+      `<p>Antes de mandarte el Media Kit completo, cuéntanos en una línea qué hace <strong>${esc(lead.company || "tu marca")}</strong> y qué te gustaría lograr con una activación como esta—así te lo adaptamos en vez de mandarte algo genérico. Simplemente responde este correo.</p>` +
+      `<p>De todas formas, en menos de un día te llega el kit completo—pero si nos cuentas antes, la conversación arranca más rápido.</p>` +
       `<p>El equipo de GameLobby</p>`,
   };
 }
@@ -164,18 +173,18 @@ export function buildKitEmail(lead) {
       `Hola ${name},\n\n` +
       `Acá está el Media Kit completo de GameLobby Xperience—Central America Tour: ${kitUrl}\n\n` +
       `30–31 de octubre, Soho Mall, Panamá. +2,500 asistentes presenciales y +150,000 de alcance digital estimado, conectando con 6 países de Centroamérica.\n\n` +
-      `Pero el dato que más importa es este: tu marca no llega a poner un stand. Entra al juego. Cada interacción del visitante—jugar, votar, canjear—queda conectada a GameLobby Wallet, así que lo que activás no se queda en el venue: se mide.\n\n` +
+      `Pero el dato que más importa es este: tu marca no llega a poner un stand. Entra al juego. Cada interacción del visitante—jugar, votar, canjear—queda conectada a GameLobby Wallet, así que lo que activas no se queda en el venue: se mide.\n\n` +
       `Adentro vas a encontrar los niveles de patrocinio (desde activaciones compartidas hasta Presenting Partner), qué categorías todavía tienen exclusividad disponible, y cómo se arma una propuesta a la medida de tu marca.\n\n` +
-      `Si después de verlo querés hablarlo en vivo, agendá 15 minutos acá: ${calUrl}\n\n` +
+      `Si después de verlo quieres hablarlo en vivo, agenda 15 minutos aquí: ${calUrl}\n\n` +
       `Nos vemos en Panamá,\nEl equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
       `<p>Acá está el <a href="${kitUrl}"><strong>Media Kit completo de GameLobby Xperience—Central America Tour</strong></a>.</p>` +
       `<p><strong>30–31 de octubre, Soho Mall, Panamá.</strong> +2,500 asistentes presenciales y +150,000 de alcance digital estimado, conectando con 6 países de Centroamérica.</p>` +
-      `<p>Pero el dato que más importa es este: tu marca no llega a poner un stand. <strong>Entra al juego.</strong> Cada interacción del visitante—jugar, votar, canjear—queda conectada a GameLobby Wallet, así que lo que activás no se queda en el venue: se mide.${companyLine}</p>` +
+      `<p>Pero el dato que más importa es este: tu marca no llega a poner un stand. <strong>Entra al juego.</strong> Cada interacción del visitante—jugar, votar, canjear—queda conectada a GameLobby Wallet, así que lo que activas no se queda en el venue: se mide.${companyLine}</p>` +
       `<p>Adentro vas a encontrar los niveles de patrocinio (desde activaciones compartidas hasta Presenting Partner), qué categorías todavía tienen exclusividad disponible, y cómo se arma una propuesta a la medida de tu marca.</p>` +
       `<p><a href="${kitUrl}">Ver el Media Kit completo →</a></p>` +
-      `<p>Si después de verlo querés hablarlo en vivo, <a href="${calUrl}">agendá 15 minutos acá</a>.</p>` +
+      `<p>Si después de verlo quieres hablarlo en vivo, <a href="${calUrl}">agenda 15 minutos aquí</a>.</p>` +
       `<p>Nos vemos en Panamá,<br>El equipo de GameLobby</p>`,
   };
 }
@@ -188,12 +197,12 @@ export function buildFollowupEmail(lead) {
     text:
       `Hola ${name},\n\n` +
       `Viste el Media Kit de GameLobby Xperience hace unos días—quería saber qué te pareció.\n\n` +
-      `Si tenés dudas sobre niveles de patrocinio, exclusividad de categoría, o simplemente querés pensar en voz alta cómo se vería tu marca ahí dentro, agendemos 15 minutos: ${calUrl}\n\n` +
+      `Si tienes dudas sobre niveles de patrocinio, exclusividad de categoría, o simplemente quieres pensar en voz alta cómo se vería tu marca ahí dentro, agendemos 15 minutos: ${calUrl}\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
       `<p>Viste el Media Kit de GameLobby Xperience hace unos días—quería saber qué te pareció.</p>` +
-      `<p>Si tenés dudas sobre niveles de patrocinio, exclusividad de categoría, o simplemente querés pensar en voz alta cómo se vería tu marca ahí dentro, <a href="${calUrl}">agendemos 15 minutos</a>.</p>` +
+      `<p>Si tienes dudas sobre niveles de patrocinio, exclusividad de categoría, o simplemente quieres pensar en voz alta cómo se vería tu marca ahí dentro, <a href="${calUrl}">agendemos 15 minutos</a>.</p>` +
       `<p>El equipo de GameLobby</p>`,
   };
 }
@@ -223,12 +232,12 @@ export function buildBookingThanksEmail(lead) {
     text:
       `Hola ${name},\n\n` +
       `Genial—vamos a hablar de GameLobby Xperience en vivo. Google Calendar ya te manda la invitación y los recordatorios.\n\n` +
-      `Para aprovechar la llamada, si ya tenés una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.\n\n` +
+      `Para aprovechar la llamada, si ya tienes una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
       `<p>Genial—vamos a hablar de GameLobby Xperience en vivo. Google Calendar ya te manda la invitación y los recordatorios.</p>` +
-      `<p>Para aprovechar la llamada, si ya tenés una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.</p>` +
+      `<p>Para aprovechar la llamada, si ya tienes una idea de qué categoría, nivel de patrocinio o tipo de activación te interesa, tenlo a la mano—así vamos directo a armar la propuesta.</p>` +
       `<p>El equipo de GameLobby</p>`,
   };
 }

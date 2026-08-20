@@ -4,15 +4,17 @@
 // Flujo:
 //   1) valida + guarda el lead (CRM /admin, pestaña "Media Kit")
 //   2) reenvía al Sheet dedicado (MEDIA_KIT_WEBHOOK_URL), separado del de la home
-//   3) investiga la empresa por el dominio del correo (gratis, sin API key)
-//   4) si encontramos algo de la empresa: manda el Media Kit de una vez
-//      si NO encontramos nada: manda primero un correo explorador; el kit sale
-//      solo a las 24h (lo dispara el cron), haya respondido o no
+//   3) si el correo es de dominio corporativo (no gmail/hotmail/etc.): manda el
+//      Media Kit de una vez. Además investiga la empresa por el dominio (gratis,
+//      sin API key) solo para personalizar el texto del correo si encuentra algo
+//   4) si el correo es de dominio genérico/personal: manda primero un correo
+//      explorador; el kit sale solo a las 24h (lo dispara el cron), haya
+//      respondido o no
 //
 // Requiere las mismas env vars que api/lead.js (KV, RESEND_API_KEY, MAIL_FROM)
 // más MEDIA_KIT_WEBHOOK_URL y SPONSOR_CALENDAR_URL (ver api/_email.js).
 
-import { kv, esc, sendEmail, forwardToSheet, researchCompany, newLeadId, buildExploreEmail, buildKitEmail } from "./_email.js";
+import { kv, esc, sendEmail, forwardToSheet, researchCompany, isCorporateEmail, newLeadId, buildExploreEmail, buildKitEmail } from "./_email.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -42,11 +44,12 @@ export default async function handler(req, res) {
   }
 
   const id = newLeadId();
+  const corporate = isCorporateEmail(email);
   const { found: companyFound, domain, summary: companySummary } = await researchCompany(email);
 
   const lead = {
     id, type: "media_kit", name, email, phone, company,
-    domain: domain || null, companyFound, companySummary: companySummary || null,
+    domain: domain || null, corporate, companyFound, companySummary: companySummary || null,
     status: "new",
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
@@ -60,12 +63,12 @@ export default async function handler(req, res) {
   // 2) Sheet dedicado (separado del de la home)
   await forwardToSheet(lead);
 
-  // 3) Arranca el nurture: kit directo o explorador primero
+  // 3) Arranca el nurture: kit directo (dominio corporativo) o explorador primero (correo genérico)
   let welcomed = false;
   const now = Math.floor(Date.now() / 1000);
   const state = { ...lead };
 
-  if (companyFound) {
+  if (corporate) {
     const msg = buildKitEmail(lead);
     const sent = await sendEmail({ to: email, subject: msg.subject, text: msg.text, html: msg.html });
     welcomed = sent.ok;
@@ -85,5 +88,5 @@ export default async function handler(req, res) {
 
   console.log("[GameLobby media-kit lead]", JSON.stringify(lead));
 
-  return res.status(200).json({ ok: true, stored, welcomed, companyFound });
+  return res.status(200).json({ ok: true, stored, welcomed, corporate, companyFound });
 }
