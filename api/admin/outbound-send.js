@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       continue;
     }
 
-    const sent = await sendEmail({ to, subject: item.subject, text: item.text });
+    const sent = item.skipSend ? { ok: true } : await sendEmail({ to, subject: item.subject, text: item.text });
 
     const state = {
       id,
