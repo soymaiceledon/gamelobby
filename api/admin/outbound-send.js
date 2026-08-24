@@ -48,8 +48,11 @@ export default async function handler(req, res) {
   const results = [];
   for (const item of items) {
     const id = String(item.id || "").trim();
-    const to = String(item.to || "").trim();
-    if (!id || !to || !item.subject || !item.text) {
+    const to = Array.isArray(item.to)
+      ? item.to.map((x) => String(x).trim()).filter(Boolean)
+      : String(item.to || "").trim();
+    const hasTo = Array.isArray(to) ? to.length > 0 : !!to;
+    if (!id || !hasTo || !item.subject || !item.text) {
       results.push({ id, ok: false, error: "invalid_item" });
       continue;
     }
