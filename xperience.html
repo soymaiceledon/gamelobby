@@ -38,7 +38,8 @@
 </header>
 
 <!-- ============ GAMELOBBY XPERIENCE — HERO ============ -->
-<section class="section xp-hero" id="xperience" style="border-top:1px solid var(--border-subtle)">
+<section class="section xp-hero xp-hero--photo" id="xperience" style="border-top:1px solid var(--border-subtle)">
+  <div class="xp-hero__bg" style="background-image:url('assets/xperience/hero.jpg')" aria-hidden="true"></div>
   <div class="container">
     <div class="xp-hero__inner">
       <span class="eyebrow eyebrow--pink">GameLobby Xperience · Central America Tour</span>
@@ -94,6 +95,7 @@
       <span class="eyebrow eyebrow--purple">Ecosistema 360</span>
       <h2>Una activación.<br><em>Múltiples puntos de contacto.</em></h2>
     </div>
+    <img src="assets/xperience/ecosystem-360.jpg" alt="Ecosistema GameLobby: GameLobby.gg, GameLobby Wallet y GameLobby Xperience conectados" class="xp-photo xp-photo--wide" loading="lazy">
     <div class="xp-ecosystem__flow">
       <div class="xp-eco-node card" data-neon="cyan">
         <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="gamepad-2"></i></span>
@@ -174,6 +176,7 @@
     </div>
     <div class="xp-days__grid">
       <div class="xp-day card" data-neon="purple">
+        <img src="assets/xperience/campus-quest.jpg" alt="Campus Quest: estudiantes en talleres de tecnología y robótica" class="xp-photo xp-day__photo" loading="lazy">
         <span class="xp-day__date">30 OCT · Campus Quest</span>
         <h3>Talento + educación + tecnología + futuro</h3>
         <p>Estudiantes, colegios, universidades, carreras STEM, empleabilidad y becas—una plataforma de talento joven, con las marcas y empresas que quieren estar ahí.</p>
@@ -188,6 +191,7 @@
         <a href="#glx-sponsors" class="btn btn--outline btn--md">Quiero impulsar Campus Quest</a>
       </div>
       <div class="xp-day card" data-neon="pink">
+        <img src="assets/xperience/day2-social.jpg" alt="GameLobby Xperience: torneos, arcade y comunidad en vivo" class="xp-photo xp-day__photo" loading="lazy">
         <span class="xp-day__date">31 OCT · GameLobby Xperience</span>
         <h3>Un videojuego en tamaño real</h3>
         <p>El visitante no paga por caminar entre exhibidores—paga por jugar, competir, descubrir, votar, ganar y compartir.</p>
@@ -210,11 +214,13 @@
     <div class="heading">
       <span class="eyebrow eyebrow--cyan">Experiencias del venue</span>
       <h2>Cada zona es una oportunidad distinta.</h2>
-      <p>Explora las experiencias de GameLobby Xperience. El mapa interactivo del venue se publica más cerca de la fecha—por ahora, así se organiza el espacio.</p>
+      <p>Explora las experiencias de GameLobby Xperience y así se organiza el espacio. Fechas y venue definitivo sujetos a ajustes.</p>
       <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca una zona para ver el detalle</p>
     </div>
+    <img src="assets/xperience/venue-map.jpg" alt="Mapa del venue GameLobby Xperience con todas las zonas" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:44px">
     <div class="xp-zones__grid" id="xp-zones"></div>
     <div class="xp-zones__panel hidden" id="xp-zone-panel">
+      <img id="xp-zone-img" class="xp-photo xp-zones__panel-photo hidden" alt="">
       <h3 id="xp-zone-name"></h3>
       <p id="xp-zone-desc"></p>
       <p class="xp-zones__panel-label">Formatos de patrocinio posibles</p>
@@ -232,6 +238,7 @@
       <h2>No midas solo impresiones.<br><em>Mide acciones.</em></h2>
       <p>GameLobby Wallet conecta cada interacción de tu activación con una identidad—insights y métricas de participación agregados o consentidos, según la activación y los permisos aplicables.</p>
     </div>
+    <img src="assets/xperience/wallet-booth.jpg" alt="GameLobby Wallet: puntos, misiones y canje de recompensas en vivo" class="xp-photo xp-photo--wide" loading="lazy">
     <div class="xp-data__chips">
       <span class="xp-chip"><i data-lucide="user-plus"></i> Registros</span>
       <span class="xp-chip"><i data-lucide="qr-code"></i> QR scans</span>
@@ -274,6 +281,11 @@
         <p>UGC y conversación que extiende tu activación mucho más allá del venue.</p>
       </div>
     </div>
+    <div class="xp-creators__gallery">
+      <img src="assets/xperience/stage-ranking.jpg" alt="Show en vivo con ranking y premiación GameLobby Xperience" class="xp-photo" loading="lazy">
+      <img src="assets/xperience/stage-missions.jpg" alt="Pantalla de misiones y ranking en vivo GameLobby Xperience" class="xp-photo" loading="lazy">
+      <img src="assets/xperience/arcade-social.jpg" alt="Zona social y arcade GameLobby Xperience" class="xp-photo" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -287,7 +299,9 @@
       <p class="xp-region__clarify"><strong>Panamá:</strong> evento presencial confirmado (30–31 oct, Soho Mall). <strong>Resto de la región:</strong> competencia y contenido digital vía GameLobby.gg.</p>
     </div>
 
-    <div class="tourmap__map" style="margin:0 auto;max-width:720px">
+    <img src="assets/xperience/regional-map.jpg" alt="GameLobby Xperience Central America Tour: Panamá como hub de lanzamiento conectado a Guatemala, El Salvador, Honduras, Nicaragua y Costa Rica" class="xp-photo xp-photo--wide" loading="lazy">
+
+    <div class="tourmap__map" style="margin:44px auto 0;max-width:720px">
       <svg class="camap" viewBox="0 0 640 420" role="img" aria-label="Mapa de Centroamérica con el circuito de GameLobby Xperience por 6 países, arranca en Panamá">
         <defs>
           <linearGradient id="caLand" x1="0" y1="0" x2="1" y2="1">
@@ -387,6 +401,7 @@
     <h2>Oportunidades de patrocinio desde <span class="tourmap__hl">US$5,000</span>.</h2>
     <p class="xp-opportunity__lead">Diseñamos experiencias llave en mano según los objetivos, categoría y escala de cada marca.</p>
     <p class="xp-opportunity__note">Algunas categorías cuentan con exclusividad. Consulta disponibilidad para tu industria.</p>
+    <img src="assets/xperience/sponsor-mockup.jpg" alt="Zona patrocinada GameLobby Xperience: tu marca presente en pantallas, ranking y recompensas" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:36px">
     <a href="#glx-sponsors" class="btn btn--pink btn--lg">Explorar oportunidades de patrocinio</a>
   </div>
 </section>
@@ -733,20 +748,20 @@
 
   // ---- GameLobby Xperience: zonas del venue ----
   var XP_ZONES = [
-    { name: 'Sim Racing Garage', desc: 'Una experiencia competitiva de alto engagement.', formats: ['Naming', 'Challenge patrocinado', 'Premios', 'QR mission', 'Sampling', 'Leaderboard', 'Contenido social'] },
+    { name: 'Sim Racing Garage', img: 'assets/xperience/zone-sim-racing.jpg', desc: 'Una experiencia competitiva de alto engagement.', formats: ['Naming', 'Challenge patrocinado', 'Premios', 'QR mission', 'Sampling', 'Leaderboard', 'Contenido social'] },
     { name: 'Tarima principal', desc: 'El escenario central del evento—shows, anuncios y momentos masivos.', formats: ['Naming', 'Presencia en pantalla', 'Activaciones en vivo', 'Sampling'] },
     { name: 'Arena Monitores', desc: 'Setups de competición para torneos y exhibiciones.', formats: ['Naming', 'Leaderboard', 'Branding en puestos', 'Streaming'] },
     { name: 'Plaza Mall', desc: 'El punto de entrada y tránsito de todo Soho Mall.', formats: ['Naming', 'Sampling', 'Brand ambassadors'] },
     { name: 'Zona Creativa', desc: 'Talleres y contenido hands-on.', formats: ['Talleres patrocinados', 'Sampling', 'Contenido'] },
-    { name: 'Talleres', desc: 'Sesiones de aprendizaje y práctica en vivo.', formats: ['Naming', 'Instructores de marca', 'Sampling'] },
+    { name: 'Talleres', img: 'assets/xperience/zone-talleres.jpg', desc: 'Sesiones de aprendizaje y práctica en vivo.', formats: ['Naming', 'Instructores de marca', 'Sampling'] },
     { name: 'Artist Alley', desc: 'Creadores, ilustradores y artistas locales.', formats: ['Colaboraciones con creadores', 'Contenido', 'Merch'] },
-    { name: 'Market', desc: 'Zona de venta y descubrimiento de marcas.', formats: ['Espacio de venta', 'Sampling', 'Promociones'] },
+    { name: 'Market', img: 'assets/xperience/zone-market.jpg', desc: 'Zona de venta y descubrimiento de marcas.', formats: ['Espacio de venta', 'Sampling', 'Promociones'] },
     { name: 'Arcade / Games & Rock', desc: 'Arcade clásico con música en vivo.', formats: ['Naming', 'Challenges', 'Premios'] },
-    { name: 'Dance & Music', desc: 'Competencias y shows de baile y música.', formats: ['Naming', 'Premios', 'Contenido social'] },
-    { name: 'Arena Mobile', desc: 'Torneos de juegos móviles.', formats: ['Naming', 'QR mission', 'Leaderboard'] },
-    { name: 'Geek & Anime Zone', desc: 'Cultura geek, anime y cosplay.', formats: ['Naming', 'Votaciones', 'Contenido UGC'] },
-    { name: 'Recharge Lounge', desc: 'Zona de descanso y carga de dispositivos.', formats: ['Naming', 'Sampling', 'Brand lounge'] },
-    { name: 'Football Fan Arena', desc: 'Fútbol, simuladores y retos.', formats: ['Naming', 'Challenge patrocinado', 'Premios'] },
+    { name: 'Dance & Music', img: 'assets/xperience/zone-dance-music.jpg', desc: 'Competencias y shows de baile y música.', formats: ['Naming', 'Premios', 'Contenido social'] },
+    { name: 'Arena Mobile', img: 'assets/xperience/zone-arena-mobile.jpg', desc: 'Torneos de juegos móviles.', formats: ['Naming', 'QR mission', 'Leaderboard'] },
+    { name: 'Geek & Anime Zone', img: 'assets/xperience/zone-geek-anime.jpg', desc: 'Cultura geek, anime y cosplay.', formats: ['Naming', 'Votaciones', 'Contenido UGC'] },
+    { name: 'Recharge Lounge', img: 'assets/xperience/zone-recharge-lounge.jpg', desc: 'Zona de descanso y carga de dispositivos.', formats: ['Naming', 'Sampling', 'Brand lounge'] },
+    { name: 'Football Fan Arena', img: 'assets/xperience/zone-football.jpg', desc: 'Fútbol, simuladores y retos.', formats: ['Naming', 'Challenge patrocinado', 'Premios'] },
     { name: 'Casual Game Lab', desc: 'Juegos casuales para todo público.', formats: ['Naming', 'Sampling', 'Activaciones familiares'] },
   ];
   var xpZonesGrid = document.getElementById('xp-zones');
@@ -761,6 +776,9 @@
       if (!btn) return;
       var zone = XP_ZONES[+btn.dataset.zone];
       xpZonesGrid.querySelectorAll('.xp-zone-chip').forEach(function (b) { b.classList.toggle('xp-zone-chip--active', b === btn); });
+      var zoneImg = document.getElementById('xp-zone-img');
+      if (zone.img) { zoneImg.src = zone.img; zoneImg.alt = zone.name; zoneImg.classList.remove('hidden'); }
+      else { zoneImg.classList.add('hidden'); }
       document.getElementById('xp-zone-name').textContent = zone.name;
       document.getElementById('xp-zone-desc').textContent = zone.desc;
       document.getElementById('xp-zone-formats').innerHTML = zone.formats.map(function (f) { return '<span class="xp-chip">' + f + '</span>'; }).join('');
