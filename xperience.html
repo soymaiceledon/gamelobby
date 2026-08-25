@@ -123,32 +123,38 @@
       <span class="eyebrow eyebrow--cyan">Para tu marca</span>
       <h2>¿Qué quieres conseguir?</h2>
       <p>Elige tu objetivo principal y te mostramos las experiencias de GameLobby Xperience más compatibles.</p>
+      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca un objetivo para ver las experiencias recomendadas</p>
     </div>
     <div class="xp-goals__grid" id="xp-goals">
       <button type="button" class="xp-goal" data-goal="awareness">
         <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="megaphone"></i></span>
         <h3>Awareness</h3>
         <p>Quiero que mi marca sea protagonista.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
       </button>
       <button type="button" class="xp-goal" data-goal="adquisicion">
         <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="database"></i></span>
         <h3>Adquisición &amp; Data</h3>
         <p>Quiero generar registros, interacción y comportamiento medible.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
       </button>
       <button type="button" class="xp-goal" data-goal="producto">
         <span class="icon-tile sm-tile icon-tile--lime"><i data-lucide="gift"></i></span>
         <h3>Producto &amp; Conversión</h3>
         <p>Quiero pruebas, sampling, promociones y redenciones.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
       </button>
       <button type="button" class="xp-goal" data-goal="rse">
         <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="graduation-cap"></i></span>
         <h3>RSE &amp; Talento</h3>
         <p>Quiero impactar educación, STEM, juventud y empleabilidad.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
       </button>
       <button type="button" class="xp-goal" data-goal="contenido">
         <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
         <h3>Contenido &amp; Cultura</h3>
         <p>Quiero conectar con creadores, cosplay y comunidades.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
       </button>
     </div>
     <div class="xp-goals__result hidden" id="xp-goals-result">
@@ -205,6 +211,7 @@
       <span class="eyebrow eyebrow--cyan">Experiencias del venue</span>
       <h2>Cada zona es una oportunidad distinta.</h2>
       <p>Explora las experiencias de GameLobby Xperience. El mapa interactivo del venue se publica más cerca de la fecha—por ahora, así se organiza el espacio.</p>
+      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca una zona para ver el detalle</p>
     </div>
     <div class="xp-zones__grid" id="xp-zones"></div>
     <div class="xp-zones__panel hidden" id="xp-zone-panel">
@@ -746,8 +753,9 @@
   var xpZonePanel = document.getElementById('xp-zone-panel');
   if (xpZonesGrid) {
     xpZonesGrid.innerHTML = XP_ZONES.map(function (z, i) {
-      return '<button type="button" class="xp-zone-chip" data-zone="' + i + '">' + z.name + '</button>';
+      return '<button type="button" class="xp-zone-chip" data-zone="' + i + '">' + z.name + '<i data-lucide="chevron-down" class="xp-zone-chip__ic"></i></button>';
     }).join('');
+    renderIcons();
     xpZonesGrid.addEventListener('click', function (e) {
       var btn = e.target.closest('.xp-zone-chip');
       if (!btn) return;
