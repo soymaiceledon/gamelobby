@@ -40,11 +40,13 @@ export default async function handler(req, res) {
   const { result } = await kv(["GET", `ob:${id}`]);
   if (!result) return res.status(404).json({ ok: false, error: "not_found", id });
 
+  const status = String((body || {}).status || "respondio");
+
   const state = JSON.parse(result);
   state.respondedAt = Math.floor(Date.now() / 1000);
-  state.status = "respondio";
+  state.status = status;
   await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
   await kv(["ZREM", "ob:queue", id]);
 
-  return res.status(200).json({ ok: true, id, empresa: state.empresa });
+  return res.status(200).json({ ok: true, id, empresa: state.empresa, status });
 }
