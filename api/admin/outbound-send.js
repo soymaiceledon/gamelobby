@@ -67,6 +67,8 @@ export default async function handler(req, res) {
       sentAt: now,
       followup2SentAt: null,
       respondedAt: null,
+      followupSubject: item.followupSubject || null,
+      followupText: item.followupText || null,
     };
     await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
     await kv(["ZADD", "ob:queue", String(now + FOLLOWUP_DELAY_SEC), id]);

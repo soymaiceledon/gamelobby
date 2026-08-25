@@ -48,7 +48,9 @@ export default async function handler(req, res) {
         continue;
       }
 
-      const msg = buildFollowup2(state.empresa || id);
+      const msg = (state.followupSubject && state.followupText)
+        ? { subject: state.followupSubject, text: state.followupText }
+        : buildFollowup2(state.empresa || id);
       const sent = await sendEmail({ to: state.to, subject: msg.subject, text: msg.text });
       state.status = "followup2_enviado";
       state.followup2SentAt = now;
