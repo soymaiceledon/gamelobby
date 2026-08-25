@@ -31,6 +31,16 @@ export default async function handler(req, res) {
     const ids = (Array.isArray(result) ? result : [])
       .filter((k) => k !== "ob:queue")
       .map((k) => k.replace(/^ob:/, ""));
+
+    if (req.query && req.query.full) {
+      const states = [];
+      for (const id of ids) {
+        const { result: raw } = await kv(["GET", `ob:${id}`]);
+        if (raw) { try { states.push(JSON.parse(raw)); } catch {} }
+      }
+      return res.status(200).json({ ok: true, count: states.length, items: states });
+    }
+
     return res.status(200).json({ ok: true, count: ids.length, ids });
   }
 
