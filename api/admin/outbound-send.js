@@ -67,7 +67,10 @@ export default async function handler(req, res) {
       continue;
     }
 
-    const sent = item.skipSend ? { ok: true } : await sendEmail({ to, subject: item.subject, text: item.text });
+    const cc = Array.isArray(item.cc)
+      ? item.cc.map((x) => String(x).trim()).filter(Boolean)
+      : (item.cc ? String(item.cc).trim() : undefined);
+    const sent = item.skipSend ? { ok: true } : await sendEmail({ to, cc, subject: item.subject, text: item.text });
 
     const state = {
       id,

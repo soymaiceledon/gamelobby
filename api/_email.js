@@ -99,15 +99,17 @@ export async function researchCompany(email) {
 }
 
 // ---- Envío por Resend ----
-export async function sendEmail({ to, subject, text, html }) {
+export async function sendEmail({ to, cc, subject, text, html }) {
   const resendKey = process.env.RESEND_API_KEY;
   const mailFrom = process.env.MAIL_FROM;
   if (!resendKey || !mailFrom) return { ok: false, skipped: true };
   try {
+    const body = { from: mailFrom, to, subject, text, html };
+    if (cc) body.cc = cc;
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from: mailFrom, to, subject, text, html }),
+      body: JSON.stringify(body),
     });
     if (!r.ok) console.error("[nurture] resend non-ok", r.status, await r.text());
     return { ok: r.ok };
