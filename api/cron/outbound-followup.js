@@ -1,13 +1,17 @@
 // GameLobby Xperience — cron diario del seguimiento de TODAS las rondas de correo
 // frío de prospección (manual o de la rutina diaria vía api/admin/outbound-send.js).
-// Revisa ob:queue (sorted set, score = timestamp del próximo paso) y manda un
-// correo 2 genérico a quien no haya sido marcado como respondido (ver
-// api/admin/mark-outbound-replied.js) 2 días después del correo 1. Después del
-// correo 2, el contacto sale de la cola — no hay correo 3 todavía.
+// Revisa ob:queue (sorted set, score = timestamp del próximo paso) y avanza cada
+// contacto por la secuencia según su status actual:
+//   sent               -> manda correo 2 (2 días después del correo 1), reprograma correo 3
+//   followup2_enviado  -> manda correo 3 (6 días después del correo 2), último toque
+//   followup3_enviado  -> ya no hace nada más, sale de la cola
+// Un contacto marcado "respondio" (api/admin/mark-outbound-replied.js) sale de la
+// cola en cualquier punto de la secuencia.
 
 import { kv, sendEmail } from "../_email.js";
 
-const SENDER_SIGNATURE = "Mai Celedón\nMarketing Manager, GameLobby";
+const FOLLOWUP3_DELAY_SEC = 6 * 24 * 3600;
+const SENDER_SIGNATURE = "Mai Celedón\nMarketing Manager, GameLobby\n+507 6273-9738";
 
 function buildFollowup2(empresa) {
   return {
@@ -17,6 +21,19 @@ function buildFollowup2(empresa) {
 Les escribimos hace unos días sobre GameLobby Xperience, el evento presencial de gaming que armamos en el Soho Mall, Panamá, el 30–31 de octubre. No sabemos si les llegó.
 
 ¿Les interesa que les mandemos el media kit para que lo vean con calma?
+
+Saludos,\n${SENDER_SIGNATURE}`,
+  };
+}
+
+function buildFollowup3(empresa) {
+  return {
+    subject: `Última vez que te escribo — ${empresa} + GameLobby Xperience`,
+    text: `Hola equipo de ${empresa},
+
+Te escribimos dos veces sobre GameLobby Xperience sin respuesta, así que este es el último correo por ahora. Ya tenemos marcas confirmadas y el evento es el 30 y 31 de octubre — cada semana que pasa queda menos espacio para definir categoría.
+
+Si en algún momento tiene sentido para ${empresa}, escríbeme cuando quieras — la puerta sigue abierta.
 
 Saludos,\n${SENDER_SIGNATURE}`,
   };
@@ -48,6 +65,20 @@ export default async function handler(req, res) {
         continue;
       }
 
+      if (state.status === "followup2_enviado") {
+        const msg = (state.followup3Subject && state.followup3Text)
+          ? { subject: state.followup3Subject, text: state.followup3Text }
+          : buildFollowup3(state.empresa || id);
+        const sent = await sendEmail({ to: state.to, subject: msg.subject, text: msg.text });
+        state.status = "followup3_enviado";
+        state.followup3SentAt = now;
+        await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
+        await kv(["ZREM", "ob:queue", id]); // secuencia terminada, no hay correo 4
+        processed.push({ id, outcome: sent.ok ? "followup3_enviado" : "followup3_fallo" });
+        continue;
+      }
+
+      // status === "sent" (o cualquier otro caso base) -> correo 2
       const msg = (state.followupSubject && state.followupText)
         ? { subject: state.followupSubject, text: state.followupText }
         : buildFollowup2(state.empresa || id);
@@ -55,7 +86,7 @@ export default async function handler(req, res) {
       state.status = "followup2_enviado";
       state.followup2SentAt = now;
       await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
-      await kv(["ZREM", "ob:queue", id]); // no hay correo 3 todavía
+      await kv(["ZADD", "ob:queue", String(now + FOLLOWUP3_DELAY_SEC), id]); // reprograma correo 3
 
       processed.push({ id, outcome: sent.ok ? "followup2_enviado" : "followup2_fallo" });
     } catch (e) {
