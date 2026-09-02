@@ -28,12 +28,10 @@ Saludos,\n${SENDER_SIGNATURE}`,
 
 function buildFollowup3(empresa) {
   return {
-    subject: `Última vez que te escribo — ${empresa} + GameLobby Xperience`,
+    subject: `¿Seguimos en contacto? — ${empresa} + GameLobby Xperience`,
     text: `Hola equipo de ${empresa},
 
-Te escribimos dos veces sobre GameLobby Xperience sin respuesta, así que este es el último correo por ahora. Ya tenemos marcas confirmadas y el evento es el 30 y 31 de octubre — cada semana que pasa queda menos espacio para definir categoría.
-
-Si en algún momento tiene sentido para ${empresa}, escríbeme cuando quieras — la puerta sigue abierta.
+Te escribimos un par de veces sobre GameLobby Xperience — no sabemos si te llegaron. Sin ningún compromiso: si en algún momento tiene sentido para ${empresa}, aquí seguimos.
 
 Saludos,\n${SENDER_SIGNATURE}`,
   };
