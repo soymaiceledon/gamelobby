@@ -76,13 +76,13 @@ function buildWelcome(lead) {
       text:
         `Hola ${firstName},\n\n` +
         `Gracias por escribirnos${from}.${interest}\n\n` +
-        `GameLobby es la primera fintech gamer de Latinoamérica: conectamos a +25,000 gamers activos, +500 torneos al año y +$150,000 USD repartidos en premios.\n\n` +
+        `GameLobby es la primera fintech gamer de Latinoamérica: conectamos a +25,000 cuentas de gamers, +500 torneos al año y +$150,000 USD repartidos en premios.\n\n` +
         `Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.\n\n` +
         `El equipo de GameLobby\n`,
       html:
         `<p>Hola ${esc(firstName)},</p>` +
         `<p>Gracias por escribirnos${esc(from)}.${interest ? " " + esc("Anotamos tu interés en: " + lead.interest + ".") : ""}</p>` +
-        `<p>GameLobby es la primera fintech gamer de Latinoamérica: conectamos a <strong>+25,000 gamers activos</strong>, <strong>+500 torneos al año</strong> y <strong>+$150,000 USD</strong> repartidos en premios.</p>` +
+        `<p>GameLobby es la primera fintech gamer de Latinoamérica: conectamos a <strong>+25,000 cuentas de gamers</strong>, <strong>+500 torneos al año</strong> y <strong>+$150,000 USD</strong> repartidos en premios.</p>` +
         `<p>Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.</p>` +
         `<p>El equipo de GameLobby</p>`,
     };
