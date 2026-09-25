@@ -18,7 +18,7 @@ function buildFollowup2(empresa) {
     subject: `¿Alcanzaron a ver mi correo? — ${empresa} + GameLobby Xperience`,
     text: `Hola equipo de ${empresa},
 
-Les escribimos hace unos días sobre GameLobby Xperience, el evento presencial de gaming que armamos en el Soho Mall, Panamá, el 30–31 de octubre. No sabemos si les llegó.
+Les escribimos hace unos días sobre GameLobby Xperience, la experiencia presencial del ecosistema GameLobby, prevista para agosto de 2027. No sabemos si les llegó.
 
 ¿Les interesa que les mandemos el media kit para que lo vean con calma?
 

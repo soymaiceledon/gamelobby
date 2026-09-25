@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GameLobby para Organizadores — Convierte tu comunidad en un negocio</title>
-<meta name="description" content="Organiza torneos, cobra inscripciones, premia a tus jugadores y monetiza tu comunidad gamer con GameLobby. Formato de torneos automático, Tarjeta Mastercard digital, cashback y soporte directo. Regístrate como Comunidad Fundadora.">
+<title>GameLobby para Comunidades Fundadoras</title>
+<meta name="description" content="Registra tu comunidad fundadora y recibe acompañamiento para preparar tus torneos y desarrollar opciones de monetización, con estrategia, soporte técnico y marketing. Lanzamiento de la plataforma previsto para octubre de 2026.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GameLobby para Organizadores de Torneos">
-<meta property="og:description" content="Tu pasión, un negocio sostenible. Brackets automáticos, pagos al instante, cashback y un equipo que te ayuda a escalar. Únete como Comunidad Fundadora.">
+<meta property="og:title" content="GameLobby para Comunidades Fundadoras">
+<meta property="og:description" content="Haz crecer el proyecto que construiste con tu comunidad. Registra tu comunidad fundadora en GameLobby.">
 <meta property="og:image" content="assets/logo-full-color.png">
 <meta name="theme-color" content="#0a121e">
 <link rel="icon" href="assets/logo-symbol.png">
@@ -16,6 +16,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="organizadores.css">
+<style>
+  .soon{font-style:normal;font-weight:500;font-size:.8em;color:var(--gl-purple-soft,#b794ff)}
+  .preview-note{position:absolute;left:0;right:0;bottom:-30px;margin:0;text-align:center;font-size:12px;color:var(--text-3)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-3);margin:6px 0 2px}
+  .consent input{margin-top:3px;flex:none}
+  .form__note{font-size:12px;color:var(--text-4);margin:0 0 4px}
+  .form__error{font-size:13px;color:#ff8fd6;margin:0 0 8px}
+  .org-counter[hidden]{display:none}
+</style>
 </head>
 <body data-portal="organizadores">
 
@@ -31,7 +40,7 @@
     </nav>
     <div class="nav__right">
       <span class="nav__lang">ES</span>
-      <a class="btn btn--purple btn--sm" href="#registro">Registra tu comunidad</a>
+      <a class="btn btn--purple btn--sm" href="#registro">Registrar mi comunidad</a>
       <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="org-navlinks"><i data-lucide="menu"></i></button>
     </div>
   </div>
@@ -41,15 +50,15 @@
 <section class="org-hero">
   <div class="org-hero__inner org-hero__inner--split">
     <div class="org-hero__copy">
-      <span class="badge badge--purple"><span class="dot"></span>Programa Comunidades Fundadoras · Cupos limitados</span>
-      <h1>Tu comunidad gamer ya es grande. Ahora hazla <em>sostenible</em>.</h1>
-      <p class="org-hero__lead">GameLobby te da las herramientas para organizar torneos, cobrar inscripciones, premiar a tus jugadores y monetizar tu pasión—todo automático, en un solo lugar. Tú lideras la comunidad; nosotros resolvemos la logística, los pagos y el dinero.</p>
+      <span class="badge badge--purple"><span class="dot"></span>Programa Comunidades Fundadoras</span>
+      <h1>Haz crecer el proyecto que construiste con tu <em>comunidad</em>.</h1>
+      <p class="org-hero__lead">Registra tu comunidad fundadora y recibe acompañamiento para preparar tus torneos y desarrollar opciones de monetización. Trabajaremos contigo en estrategia, soporte técnico y marketing durante la incorporación.</p>
       <div class="org-hero__cta">
-        <a class="btn btn--purple btn--lg" href="#registro">Registra tu comunidad</a>
-        <a class="btn btn--outline btn--lg" href="#beneficios">Ver todo lo que incluye</a>
+        <a class="btn btn--purple btn--lg" href="#registro">Registrar mi comunidad</a>
+        <a class="btn btn--outline btn--lg" href="#beneficios">Ver lo que estamos preparando</a>
       </div>
       <div class="org-hero__proof">
-        <span><b>+25,000</b> cuentas de gamers</span>
+        <span><b>+25,000</b> cuentas de gamers registradas</span>
         <span><b>+500</b> torneos al año</span>
         <span><b>+$150,000 USD</b> repartidos en premios</span>
       </div>
@@ -59,8 +68,8 @@
     <div class="org-hero__visual" aria-hidden="true">
       <div class="lb">
         <div class="lb__head">
-          <span class="lb__title"><i data-lucide="trophy"></i>Torneo en vivo</span>
-          <span class="lb__pill"><span class="lb__dot"></span>Ronda final</span>
+          <span class="lb__title"><i data-lucide="trophy"></i>Torneo de ejemplo</span>
+          <span class="lb__pill"><span class="lb__dot"></span>Vista previa</span>
         </div>
         <div class="lb__row lb__row--1">
           <span class="lb__rank">1</span>
@@ -94,7 +103,8 @@
       </div>
       <span class="org-coin org-coin--a"><i data-lucide="gamepad-2"></i></span>
       <span class="org-coin org-coin--b"><i data-lucide="gamepad-2"></i></span>
-      <span class="org-chip"><i data-lucide="credit-card"></i>Mastercard digital</span>
+      <span class="org-chip"><i data-lucide="credit-card"></i>Mastercard digital (prevista)</span>
+      <p class="preview-note">Vista previa conceptual. Los nombres, premios y montos son ilustrativos.</p>
     </div>
   </div>
 </section>
@@ -103,9 +113,9 @@
 <section class="section" id="beneficios">
   <div class="container">
     <div class="heading" style="margin-bottom:48px">
-      <span class="eyebrow eyebrow--purple">Todo en una plataforma</span>
-      <h2>Lo que puedes hacer como organizador</h2>
-      <p>Deja atrás las hojas de cálculo, las capturas de pantalla y los pagos manuales. Esto es lo que GameLobby pone en tus manos.</p>
+      <span class="eyebrow eyebrow--purple">Capacidades previstas</span>
+      <h2>Lo que estamos preparando para organizadores</h2>
+      <p>Estas son las capacidades que planeamos ofrecer. El equipo validará cada una antes de activarla; su disponibilidad, países y condiciones se confirmarán durante la incorporación. No garantizamos ingresos.</p>
     </div>
 
     <div class="org-checks">
@@ -116,8 +126,8 @@
           <h3>Gestión de torneos y logística</h3>
         </div>
         <ul class="org-list">
-          <li><i data-lucide="check" class="ck"></i><div><b>Formatos automatizados y masivos</b><span>Round Robin, Eliminación Directa y más—sin importar cuántos se inscriban.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Entrega de premios simplificada</b><span>Efectivo automático por porcentajes, o códigos digitales comprados en la plataforma.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Formatos automatizados y masivos <em class="soon">· previsto</em></b><span>Round Robin, Eliminación Directa y más—sin importar cuántos se inscriban.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Entrega de premios simplificada <em class="soon">· previsto</em></b><span>Efectivo automático por porcentajes, o códigos digitales comprados en la plataforma.</span></div></li>
         </ul>
       </div>
 
@@ -128,10 +138,10 @@
           <h3>Finanzas y Tarjeta Mastercard digital</h3>
         </div>
         <ul class="org-list">
-          <li><i data-lucide="check" class="ck"></i><div><b>Inscripciones automatizadas</b><span>Cobro inmediato de entradas. Sin capturas ni comprobantes manuales.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Pagos al instante con Mastercard</b><span>Tus ganancias y los premios de los jugadores, listos para gastar.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Donaciones en vivo</b><span>Público y patrocinadores aportan al pozo durante el evento.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Cashback por compras</b><span>Recupera un porcentaje al comprar premios con tus fondos o tu tarjeta.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Inscripciones automatizadas <em class="soon">· previsto</em></b><span>Cobro de entradas dentro de la plataforma, sin comprobantes manuales.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Premios en Mastercard digital <em class="soon">· previsto</em></b><span>Premios y ganancias en la tarjeta digital, sujetos a disponibilidad y elegibilidad.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Donaciones en vivo <em class="soon">· previsto</em></b><span>Público y patrocinadores aportan al pozo durante el evento.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Cashback por compras <em class="soon">· previsto</em></b><span>Recompensa por compras de premios. Condiciones por definir.</span></div></li>
         </ul>
       </div>
 
@@ -142,7 +152,7 @@
           <h3>Seguridad y control</h3>
         </div>
         <ul class="org-list">
-          <li><i data-lucide="check" class="ck"></i><div><b>Cuentas verificadas y juego limpio</b><span>La identidad real ligada a la tarjeta elimina smurfs, trampas y suplantaciones.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Cuentas verificadas y juego limpio <em class="soon">· previsto</em></b><span>La identidad verificada ligada a la tarjeta ayudaría a reducir cuentas duplicadas y suplantaciones.</span></div></li>
         </ul>
       </div>
 
@@ -153,10 +163,10 @@
           <h3>Monetización y comunidad</h3>
         </div>
         <ul class="org-list">
-          <li><i data-lucide="check" class="ck"></i><div><b>Suscripciones y pases VIP</b><span>Cobra membresías por torneos exclusivos y beneficios premium.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Fidelización por niveles</b><span>Premia automáticamente a tus jugadores más fieles según su participación.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Gamertags exclusivos</b><span>Etiquetas visuales únicas por nivel de suscripción—estatus y reconocimiento.</span></div></li>
-          <li><i data-lucide="check" class="ck"></i><div><b>Espacios para patrocinadores</b><span>Banners y logos en el formato del torneo, listos para venderle a tus marcas.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Suscripciones y pases VIP <em class="soon">· previsto</em></b><span>Cobra membresías por torneos exclusivos y beneficios premium.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Fidelización por niveles <em class="soon">· previsto</em></b><span>Premia automáticamente a tus jugadores más fieles según su participación.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Gamertags exclusivos <em class="soon">· previsto</em></b><span>Etiquetas visuales únicas por nivel de suscripción—estatus y reconocimiento.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Espacios para patrocinadores <em class="soon">· previsto</em></b><span>Banners y logos en el formato del torneo para mostrar a tus marcas aliadas.</span></div></li>
         </ul>
       </div>
 
@@ -167,7 +177,7 @@
           <h3>Datos y negocios</h3>
         </div>
         <ul class="org-list">
-          <li><i data-lucide="check" class="ck"></i><div><b>Métricas y estadísticas reales</b><span>Reportes de asistencia y rendimiento—perfectos para atraer patrocinadores.</span></div></li>
+          <li><i data-lucide="check" class="ck"></i><div><b>Métricas y estadísticas reales <em class="soon">· previsto</em></b><span>Reportes de asistencia y rendimiento para presentar a tus patrocinadores.</span></div></li>
         </ul>
       </div>
     </div>
@@ -178,9 +188,9 @@
 <section class="section org-flow" id="flujo" style="padding-top:0">
   <div class="container">
     <div class="heading" style="margin-bottom:44px">
-      <span class="eyebrow eyebrow--purple">Transparente y automático</span>
-      <h2>Cómo se mueve la plata</h2>
-      <p>Sin cálculos a mano ni transferencias sueltas. Todo el dinero entra, se guarda a la vista y se reparte solo según los porcentajes que tú ajustes—los premios a los jugadores y tu comisión a ti.</p>
+      <span class="eyebrow eyebrow--purple">Modelo previsto</span>
+      <h2>Cómo prevemos que se muevan los pagos</h2>
+      <p>Este es el esquema que estamos desarrollando: los pagos entrarían al pozo del torneo y se repartirían según los porcentajes que definas. Su disponibilidad, monedas y condiciones se confirmarán antes de activarse.</p>
     </div>
 
     <div class="flow reveal">
@@ -189,7 +199,7 @@
         <span class="flow__step">1</span>
         <span class="flow__ico"><i data-lucide="users"></i></span>
         <b>Los jugadores pagan</b>
-        <span class="flow__txt">Cada inscripción se cobra al instante desde su Wallet o Tarjeta Mastercard.</span>
+        <span class="flow__txt">Cada inscripción se cobraría desde su Wallet o Tarjeta Mastercard digital.</span>
         <span class="flow__tag"><i data-lucide="credit-card"></i>Inscripciones</span>
       </div>
 
@@ -200,8 +210,8 @@
         <span class="flow__step">2</span>
         <span class="flow__ico"><i data-lucide="vault"></i></span>
         <b>El dinero se guarda</b>
-        <span class="flow__txt">Todo se junta en el pozo del torneo, seguro y a la vista dentro de GameLobby.</span>
-        <span class="flow__pot"><span>Pozo del torneo</span><b>Seguro y a la vista</b></span>
+        <span class="flow__txt">Todo se juntaría en el pozo del torneo dentro de GameLobby.</span>
+        <span class="flow__pot"><span>Pozo del torneo</span><b>Esquema previsto</b></span>
         <span class="flow__tag flow__tag--multi"><i data-lucide="globe"></i>Multimoneda</span>
       </div>
 
@@ -212,32 +222,30 @@
         <div class="flow__node flow__node--out">
           <span class="flow__ico"><i data-lucide="trophy"></i></span>
           <b>Premios a los ganadores</b>
-          <span class="flow__txt">Se reparten automático, directo a la tarjeta de cada jugador—en la moneda de su país.</span>
+          <span class="flow__txt">Se repartirían de forma automática a cada jugador, según monedas y países habilitados.</span>
           <span class="flow__tag flow__tag--win"><i data-lucide="percent"></i>Porcentaje que tú defines</span>
         </div>
         <div class="flow__node flow__node--you">
           <span class="flow__ico"><i data-lucide="wallet"></i></span>
           <b>Tu parte, como organizador</b>
-          <span class="flow__txt">Tu comisión queda lista en tu Wallet—para gastar con tu tarjeta o retirar.</span>
-          <span class="flow__tag flow__tag--you"><i data-lucide="hand-coins"></i>Tu comisión, automática</span>
+          <span class="flow__txt">Tu parte, según lo que definas, se acreditaría en tu Wallet. Condiciones por confirmar.</span>
+          <span class="flow__tag flow__tag--you"><i data-lucide="hand-coins"></i>Tu parte, prevista</span>
         </div>
       </div>
     </div>
 
-    <p class="flow__foot"><i data-lucide="info"></i>Tú defines los porcentajes al crear el torneo—GameLobby automatiza el reparto. Y como es <b>multimoneda</b>, cobras y premias en la moneda de cada país sin fricción.</p>
+    <p class="flow__foot"><i data-lucide="info"></i>Tú definirías los porcentajes al crear el torneo. Las monedas y países habilitados se anunciarán antes de activar esta función.</p>
   </div>
 </section>
 
-<!-- ============ CONTADOR DE COMUNIDADES (FOMO) ============ -->
-<section class="org-counter">
+<!-- ============ COMUNIDADES REGISTRADAS (solo si el conteo real está autorizado) ============ -->
+<section class="org-counter" id="org-counter" hidden>
   <div class="container">
-    <div class="org-counter__inner reveal">
-      <span class="badge badge--purple"><span class="dot"></span>Solo 200 cupos fundadores</span>
-      <div class="org-counter__num"><span id="org-reserved">0</span><span class="org-counter__cap">/ 200</span></div>
-      <p class="org-counter__lbl">comunidades ya reservaron su lugar como <b>Fundadoras</b>—de solo <b>200 cupos</b></p>
-      <div class="org-counter__bar"><span id="org-bar"></span></div>
-      <p class="org-counter__hint"><i data-lucide="flame"></i>Los beneficios de fundador se cierran al llenarse los 200 cupos. El contador sube en vivo con cada registro—entra antes de que suba la fila.</p>
-      <a class="btn btn--purple btn--md" href="#registro">Reservar mi lugar ahora</a>
+    <div class="org-counter__inner">
+      <span class="badge badge--purple"><span class="dot"></span>Comunidades registradas</span>
+      <div class="org-counter__num"><span id="org-reserved">0</span></div>
+      <p class="org-counter__lbl">comunidades ya registraron su interés en GameLobby</p>
+      <a class="btn btn--purple btn--md" href="#registro">Registrar mi comunidad</a>
     </div>
   </div>
 </section>
@@ -246,16 +254,14 @@
 <section class="section" id="fundadoras" style="padding-top:0">
   <div class="container">
     <div class="org-founder">
-      <span class="badge badge--purple" style="margin-bottom:16px"><span class="dot"></span>Acceso anticipado</span>
+      <span class="badge badge--purple" style="margin-bottom:16px"><span class="dot"></span>Incorporación progresiva</span>
       <h2>Sé una Comunidad Fundadora</h2>
-      <p>Las primeras comunidades en registrarse entran con beneficios que no se repiten. No solo te damos la plataforma—nos sentamos contigo a que tu pasión se convierta en algo sostenible.</p>
+      <p>Las primeras comunidades en registrarse serán las primeras en recibir información y acompañamiento durante la incorporación. La incorporación será progresiva y sus condiciones se compartirán a cada comunidad.</p>
       <ul>
-        <li><i data-lucide="badge-check" class="ic"></i><span>Beneficios y condiciones preferentes reservados solo para fundadores.</span></li>
-        <li><i data-lucide="headset" class="ic"></i><span>Muy pronto, un equipo de soporte directo para acompañarte.</span></li>
-        <li><i data-lucide="target" class="ic"></i><span>Asesoría en estrategia para crecer y retener tu comunidad.</span></li>
-        <li><i data-lucide="wrench" class="ic"></i><span>Soporte técnico dedicado para montar y correr tus torneos.</span></li>
-        <li><i data-lucide="megaphone" class="ic"></i><span>Apoyo en marketing para llenar tus eventos y atraer patrocinio.</span></li>
-        <li><i data-lucide="rocket" class="ic"></i><span>Prioridad en nuevas funciones y en el roadmap de la plataforma.</span></li>
+        <li><i data-lucide="target" class="ic"></i><span>Acompañamiento en estrategia de monetización para tu comunidad.</span></li>
+        <li><i data-lucide="wrench" class="ic"></i><span>Soporte técnico para preparar tus torneos.</span></li>
+        <li><i data-lucide="megaphone" class="ic"></i><span>Apoyo en marketing durante la incorporación.</span></li>
+        <li><i data-lucide="rocket" class="ic"></i><span>Información de las funciones disponibles y del siguiente paso para tu comunidad.</span></li>
       </ul>
     </div>
   </div>
@@ -266,21 +272,21 @@
   <div class="container">
     <div class="org-register">
       <div class="org-register__copy">
-        <span class="eyebrow eyebrow--purple">Registro rápido</span>
-        <h2>Reserva el lugar de tu comunidad</h2>
-        <p>Un formulario corto y listo. Te enviamos un correo de bienvenida con los próximos pasos y, muy pronto, recibirás más información y tu equipo de soporte para ayudarte a escalar.</p>
+        <span class="eyebrow eyebrow--purple">Registro</span>
+        <h2>Registra tu comunidad fundadora</h2>
+        <p>Un formulario corto. Te enviaremos un correo confirmando que recibimos tu registro. Registrarte no equivale a la activación: la incorporación será progresiva y te avisaremos los siguientes pasos.</p>
         <ul>
-          <li><i data-lucide="clock" class="ic"></i><span>Te toma menos de un minuto.</span></li>
-          <li><i data-lucide="mail" class="ic"></i><span>Recibes acceso e información directo a tu correo.</span></li>
-          <li><i data-lucide="lock" class="ic"></i><span>Sin compromiso. Tus datos no se comparten.</span></li>
+          <li><i data-lucide="clock" class="ic"></i><span>Te toma un par de minutos.</span></li>
+          <li><i data-lucide="mail" class="ic"></i><span>Recibes la confirmación de registro en tu correo.</span></li>
+          <li><i data-lucide="lock" class="ic"></i><span>Sin compromiso. Usamos tus datos solo para gestionar tu registro.</span></li>
         </ul>
       </div>
 
       <div class="card" data-neon="purple" style="padding:32px">
         <form class="form" id="organizer-form">
-          <h3>Registra tu comunidad</h3>
+          <h3>Registrar mi comunidad</h3>
           <div class="field">
-            <label for="org-name">Nombre</label>
+            <label for="org-name">Nombre de contacto</label>
             <input id="org-name" name="name" placeholder="Alex Rivera" required>
           </div>
           <div class="field">
@@ -303,31 +309,46 @@
             </select>
           </div>
           <div class="field">
-            <label for="org-community">Nombre de tu comunidad <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-            <input id="org-community" name="community" placeholder="Ej: Liga Centro Gamers">
+            <label for="org-community">Nombre de tu comunidad</label>
+            <input id="org-community" name="community" placeholder="Ej: Liga Centro Gamers" required>
           </div>
           <div class="field">
-            <label for="org-link">Link de tu comunidad</label>
+            <label for="org-game">Juego principal <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <input id="org-game" name="game" placeholder="Ej: Valorant, Free Fire, FIFA">
+          </div>
+          <div class="field">
+            <label for="org-link">Enlace de tu comunidad</label>
             <input id="org-link" name="link" placeholder="instagram.com/tucomunidad · wa.me/… · discord.gg/…" required>
           </div>
           <div class="field">
-            <label for="org-category">¿Qué tipo de organizador eres?</label>
-            <select id="org-category" name="category" required>
-              <option value="" disabled selected>Elige una categoría</option>
-              <option>Comunidad amateur</option>
-              <option>Liga semi-pro</option>
-              <option>Esports / Pro</option>
-              <option>Universitario / Escolar</option>
-              <option>Streamer / Creador</option>
+            <label for="org-scale">Tamaño aproximado de la comunidad <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <select id="org-scale" name="scale">
+              <option value="" selected>Elige un rango</option>
+              <option>Menos de 100 miembros</option>
+              <option>100 a 500 miembros</option>
+              <option>500 a 2,000 miembros</option>
+              <option>Más de 2,000 miembros</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="org-interest">¿Qué te gustaría monetizar primero? <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <select id="org-interest" name="interest">
+              <option value="" selected>Elige una opción</option>
+              <option>Inscripciones a torneos</option>
+              <option>Suscripciones o membresías</option>
+              <option>Patrocinios</option>
+              <option>Todavía no lo sé</option>
             </select>
           </div>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn--purple btn--block btn--md" type="submit">Quiero ser Comunidad Fundadora</button>
+          <label class="consent"><input type="checkbox" name="consentMarketing" value="1"> <span>Quiero recibir novedades de GameLobby por correo (opcional).</span></label>
+          <p class="form__note">Usamos tus datos solo para gestionar tu registro.</p>
+          <button class="btn btn--purple btn--block btn--md" type="submit">Registrar mi comunidad</button>
         </form>
         <div class="form__success hidden" id="organizer-success">
           <i data-lucide="circle-check-big" style="width:48px;height:48px"></i>
-          <h3>¡Tu comunidad quedó registrada!</h3>
-          <p>Revisa tu correo—te enviamos la bienvenida. Muy pronto recibirás más información y tu equipo de soporte para ayudarte a escalar.</p>
+          <h3>Recibimos el registro de tu comunidad</h3>
+          <p>Revisa tu correo: te enviamos la confirmación. La incorporación será progresiva y te avisaremos las funciones disponibles y el siguiente paso.</p>
         </div>
       </div>
     </div>
@@ -340,15 +361,15 @@
     <div class="footer__grid">
       <div class="footer__about">
         <img src="assets/logo-full-white.png" alt="Game Lobby">
-        <p>El ecosistema donde los gamers compiten, se conectan y monetizan su pasión en 6 países.</p>
+        <p>Competición, comunidades y recompensas para el gaming de Latinoamérica.</p>
       </div>
       <div class="footer__col">
         <h4>Producto</h4>
-        <a href="/#que-es">Gamer Wallet</a><a href="/#audiencias">Rooms &amp; Torneos</a><a href="/#que-es">Tienda de canje</a>
+        <a href="/#que-es">Gamer Wallet</a><a href="/#audiencias">Rooms &amp; Torneos</a>
       </div>
       <div class="footer__col">
         <h4>Organizadores</h4>
-        <a href="#beneficios">Beneficios</a><a href="#fundadoras">Comunidades Fundadoras</a><a href="#registro">Registra tu comunidad</a><a href="/xperience">GameLobby Xperience</a>
+        <a href="#beneficios">Beneficios</a><a href="#fundadoras">Comunidades Fundadoras</a><a href="#registro">Registrar mi comunidad</a><a href="/xperience">GameLobby Xperience</a>
       </div>
       <div class="footer__col">
         <h4>Empresa</h4>
@@ -391,28 +412,61 @@
 
   // ---- Captura de lead (Vercel serverless: /api/lead) ----
   // Degrada sin romper el form si el endpoint no existe (preview estático local).
-  async function submitLead(type, form) {
+  // Devuelve true solo si el servidor confirma que el registro quedó guardado.
+  function attribution() {
+    var q = new URLSearchParams(window.location.search), o = { page: window.location.pathname };
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+      var v = q.get(k); if (v) o[k] = v.slice(0, 100);
+    });
+    return o;
+  }
+  function trackEvent(name) {
+    try { if (typeof window.va === 'function') window.va('event', { name: name }); } catch (e) { /* analítica opcional */ }
+  }
+  function showFormError(form, msg) {
+    var el = form.querySelector('.form__error');
+    if (!el) {
+      el = document.createElement('p');
+      el.className = 'form__error';
+      el.setAttribute('role', 'alert');
+      form.querySelector('button[type="submit"]').insertAdjacentElement('beforebegin', el);
+    }
+    el.textContent = msg || '';
+  }
+  async function submitLead(type, form, eventName) {
+    var btn = form.querySelector('button[type="submit"]');
     var data = Object.fromEntries(new FormData(form).entries());
     data.type = type;
+    data.consentMarketing = !!form.querySelector('[name="consentMarketing"]:checked');
+    Object.assign(data, attribution());
+    showFormError(form, '');
+    if (btn) btn.disabled = true;
     try {
       var res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) console.warn('[GameLobby] /api/lead respondió', res.status);
+      var json = await res.json().catch(function () { return {}; });
+      if (res.ok && json.ok && json.stored) {
+        if (eventName) trackEvent(eventName);
+        return true;
+      }
+      showFormError(form, res.status === 400
+        ? 'Revisa tu nombre y correo e inténtalo de nuevo.'
+        : 'No pudimos guardar tu registro. Inténtalo de nuevo en unos minutos.');
     } catch (err) {
-      console.warn('[GameLobby] /api/lead no disponible (preview local)', data);
+      showFormError(form, 'No pudimos conectar. Revisa tu conexión e inténtalo de nuevo.');
     }
-    return true;
+    if (btn) btn.disabled = false;
+    return false;
   }
 
   document.getElementById('organizer-form').addEventListener('submit', async function (e) {
     e.preventDefault();
-    await submitLead('organizer', e.target);
+    if (!(await submitLead('organizer', e.target, 'community_submit_success'))) return;
     document.getElementById('organizer-form').classList.add('hidden');
     document.getElementById('organizer-success').classList.remove('hidden');
-    if (window.__orgRefreshCount) window.__orgRefreshCount();
     renderIcons();
   });
 
@@ -432,66 +486,22 @@
     els.forEach(function (el) { io.observe(el); });
   })();
 
-  // ---- Contador de comunidades en vivo (FOMO) ----
-  // Lee /api/organizer-count (reserved = base + registros reales, tope 200) y
-  // sube en tiempo real: anima al entrar en pantalla y sondea cada 20s.
+  // ---- Comunidades registradas ----
+  // Se muestra solo si /api/organizer-count devuelve un conteo real deduplicado
+  // y autorizado (visible: true). Si no, la sección permanece oculta.
   (function () {
+    var box = document.getElementById('org-counter');
     var numEl = document.getElementById('org-reserved');
-    var barEl = document.getElementById('org-bar');
-    if (!numEl) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var FALLBACK = 47, CAP = 200;
-    var latest = FALLBACK;   // último valor conocido del servidor
-    var shown = 0;           // valor visible actual
-    var revealed = false;    // ya entró en pantalla al menos una vez
-    var rafId = null;
-
-    function fmt(n) { return Math.round(n).toLocaleString('en-US'); }
-    function setBar(v) { if (barEl) barEl.style.width = Math.min(v / CAP * 100, 100) + '%'; }
-
-    function animateTo(target) {
-      if (rafId) cancelAnimationFrame(rafId);
-      if (reduce) { shown = target; numEl.textContent = fmt(target); setBar(target); return; }
-      var from = shown, dur = 1400, start = null;
-      function step(ts) {
-        if (start === null) start = ts;
-        var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        var val = from + (target - from) * eased;
-        numEl.textContent = fmt(val);
-        setBar(val);
-        if (p < 1) rafId = requestAnimationFrame(step);
-        else { shown = target; numEl.textContent = fmt(target); setBar(target); }
-      }
-      rafId = requestAnimationFrame(step);
-    }
-
-    function apply() { if (revealed && latest !== shown) animateTo(latest); }
-
-    function fetchCount() {
-      fetch('/api/organizer-count', { cache: 'no-store' })
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (d && typeof d.reserved === 'number') { latest = d.reserved; CAP = d.cap || CAP; apply(); }
-        })
-        .catch(function () { /* preview local / sin API: usa FALLBACK */ });
-    }
-
-    // Refresca al registrarse en esta misma página (optimista + confirmación real).
-    window.__orgRefreshCount = function () { latest = Math.min(latest + 1, CAP); apply(); setTimeout(fetchCount, 1500); };
-
-    function reveal() { if (revealed) return; revealed = true; animateTo(latest); }
-    if (reduce || !('IntersectionObserver' in window)) {
-      reveal();
-    } else {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { reveal(); io.unobserve(e.target); } });
-      }, { threshold: 0.5 });
-      io.observe(numEl);
-    }
-
-    fetchCount();
-    setInterval(fetchCount, 20000); // "tiempo real": sondea cada 20s
+    if (!box || !numEl) return;
+    fetch('/api/organizer-count', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && d.ok && d.visible === true && typeof d.count === 'number' && d.count > 0) {
+          numEl.textContent = d.count.toLocaleString('en-US');
+          box.hidden = false;
+        }
+      })
+      .catch(function () { /* sin API: el contador queda oculto */ });
   })();
 </script>
 <!-- Vercel Web Analytics -->

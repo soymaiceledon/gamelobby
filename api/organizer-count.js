@@ -1,10 +1,13 @@
-// GameLobby — conteo público de comunidades registradas (para el contador FOMO).
-// GET /api/organizer-count -> { ok, reserved, cap }
+// GameLobby — conteo público de comunidades registradas.
+// GET /api/organizer-count -> { ok, visible, count? }
+//
 // Solo devuelve un número agregado (sin datos personales). Público, sin token.
-// reserved = base fundadora + registros reales en Vercel KV (leads:organizer).
-
-const BASE = 47;  // base de comunidades fundadoras ya comprometidas
-const CAP = 200;  // cupos totales del programa
+// Reglas (sept 2026):
+//  - El conteo es SOLO de registros reales, deduplicados por correo (leads:organizer).
+//  - No hay base fundadora ni cupo: no se suma ninguna cifra de respaldo.
+//  - Se muestra únicamente si alguien lo autoriza explícitamente con la variable
+//    de entorno ORGANIZER_COUNT_VISIBLE=true. Si no, responde visible:false y el
+//    frontend oculta el contador.
 
 // Busca una variable de entorno por sufijo, ignorando el prefijo que añada la
 // integración (KV_, UPSTASH_REDIS_, REGISTROS_KV_, etc.).
@@ -21,27 +24,37 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: "method_not_allowed" });
   }
 
-  // Cache corto para permitir "tiempo real" sin martillar el KV.
-  res.setHeader("Cache-Control", "public, max-age=10, s-maxage=10");
+  // Cache corto para no martillar el KV.
+  res.setHeader("Cache-Control", "public, max-age=30, s-maxage=30");
+
+  if (String(process.env.ORGANIZER_COUNT_VISIBLE || "").toLowerCase() !== "true") {
+    return res.status(200).json({ ok: true, visible: false });
+  }
 
   const kvUrl = findEnv("KV_REST_API_URL") || findEnv("UPSTASH_REDIS_REST_URL");
   const kvToken = findEnv("KV_REST_API_TOKEN") || findEnv("UPSTASH_REDIS_REST_TOKEN");
-
-  let real = 0;
-  if (kvUrl && kvToken) {
-    try {
-      const r = await fetch(kvUrl, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${kvToken}`, "Content-Type": "application/json" },
-        body: JSON.stringify(["LLEN", "leads:organizer"]),
-      });
-      const data = await r.json();
-      real = Number(data.result) || 0;
-    } catch (e) {
-      console.error("[organizer-count] kv error", e);
-    }
+  if (!kvUrl || !kvToken) {
+    return res.status(200).json({ ok: true, visible: false });
   }
 
-  const reserved = Math.min(BASE + real, CAP);
-  return res.status(200).json({ ok: true, reserved, cap: CAP });
+  try {
+    const r = await fetch(kvUrl, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${kvToken}`, "Content-Type": "application/json" },
+      body: JSON.stringify(["LRANGE", "leads:organizer", "0", "-1"]),
+    });
+    if (!r.ok) return res.status(200).json({ ok: true, visible: false });
+    const data = await r.json();
+    const emails = new Set();
+    for (const raw of Array.isArray(data.result) ? data.result : []) {
+      try {
+        const e = String(JSON.parse(raw).email || "").trim().toLowerCase();
+        if (e) emails.add(e);
+      } catch { /* registro ilegible: se ignora */ }
+    }
+    return res.status(200).json({ ok: true, visible: emails.size > 0, count: emails.size });
+  } catch (e) {
+    console.error("[organizer-count] kv error", e);
+    return res.status(200).json({ ok: true, visible: false });
+  }
 }

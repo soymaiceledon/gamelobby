@@ -4,7 +4,9 @@
 
 import { kv } from "./_email.js";
 
-const KIT_URL = "/assets/media-kit/GameLobby-Xperience-Media-Kit-2026.pdf";
+// Versión vigente del Media Kit. La versión 2026 se conserva solo como histórico
+// y no se enlaza desde el recorrido público.
+const KIT_URL = "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf";
 
 export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();

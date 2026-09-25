@@ -22,88 +22,70 @@ function findEnv(suffix) {
 
 // Arma el email de bienvenida según el tipo de lead. Voz de marca:
 // español neutral-LATAM, tú informal, sin emoji, em-dashes cerrados.
+// Fuente de verdad (sept 2026): plataforma GameLobby.gg prevista para octubre de 2026;
+// Gamer Wallet con despliegue progresivo entre mediados de octubre y noviembre;
+// GameLobby Xperience en agosto de 2027. Nada de esto se presenta como ya disponible.
 function buildWelcome(lead) {
-  const firstName = (lead.name || "").split(/\s+/)[0] || "gamer";
+  const firstName = (lead.name || "").split(/\s+/)[0] || "";
+  const hola = firstName ? `Hola ${firstName},` : "Hola,";
+  const holaHtml = firstName ? `Hola ${esc(firstName)},` : "Hola,";
+  const from = lead.company ? ` desde ${lead.company}` : "";
+  const fromHtml = lead.company ? ` desde ${esc(lead.company)}` : "";
+
   if (lead.type === "organizer") {
     const comm = lead.community
-      ? `Registramos a ${lead.community} como Comunidad Fundadora de GameLobby.`
-      : `Registramos tu comunidad como Comunidad Fundadora de GameLobby.`;
+      ? `Recibimos el registro de ${lead.community} como Comunidad Fundadora de GameLobby.`
+      : `Recibimos el registro de tu comunidad como Comunidad Fundadora de GameLobby.`;
     const commHtml = lead.community
-      ? `Registramos a <strong>${esc(lead.community)}</strong> como Comunidad Fundadora de GameLobby.`
-      : `Registramos tu comunidad como Comunidad Fundadora de GameLobby.`;
+      ? `Recibimos el registro de <strong>${esc(lead.community)}</strong> como Comunidad Fundadora de GameLobby.`
+      : `Recibimos el registro de tu comunidad como Comunidad Fundadora de GameLobby.`;
+    const p2 = "Estamos preparando el lanzamiento de la plataforma para octubre de 2026. Queremos acompañarte en la organización de torneos y en el desarrollo de opciones para monetizar tu comunidad, con orientación en estrategia, soporte técnico y marketing.";
+    const p3 = "La incorporación será progresiva. Te compartiremos las funciones disponibles, las condiciones y el siguiente paso para tu comunidad. La Gamer Wallet tiene un despliegue previsto entre mediados de octubre y noviembre; sus funciones dependerán de disponibilidad y elegibilidad.";
+    const p4 = "Para preparar el acompañamiento, cuéntanos qué juego reúne a tu comunidad y qué te gustaría monetizar primero.";
     return {
-      subject: "Tu comunidad ya es fundadora—GameLobby",
-      text:
-        `Hola ${firstName},\n\n` +
-        `${comm} Eres de los primeros, y eso significa beneficios y condiciones que no se repiten.\n\n` +
-        `Desde GameLobby vas a poder organizar torneos con formato automático, cobrar inscripciones al instante, premiar a tus jugadores en su Tarjeta Mastercard digital, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.\n\n` +
-        `Y no te dejamos solo: muy pronto te compartiremos más información, y un equipo de soporte directo te acompañará en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.\n\n` +
-        `Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.\n\n` +
-        `El equipo de GameLobby\n`,
-      html:
-        `<p>Hola ${esc(firstName)},</p>` +
-        `<p>${commHtml} Eres de los primeros, y eso significa <strong>beneficios y condiciones que no se repiten</strong>.</p>` +
-        `<p>Desde GameLobby vas a poder organizar torneos con <strong>formato automático</strong>, cobrar inscripciones al instante, premiar a tus jugadores en su <strong>Tarjeta Mastercard digital</strong>, recibir cashback por tus compras y monetizar tu comunidad con suscripciones, pases VIP y espacios para patrocinadores—todo desde un solo lugar.</p>` +
-        `<p>Y no te dejamos solo: <strong>muy pronto</strong> te compartiremos más información, y un equipo de soporte directo te acompañará en estrategia, soporte técnico y marketing para que tu pasión se convierta en algo sostenible y escale.</p>` +
-        `<p>Pronto te contactamos con los próximos pasos. Bienvenido—esto apenas empieza.</p>` +
-        `<p>El equipo de GameLobby</p>`,
+      subject: "Tu comunidad ya está registrada en GameLobby",
+      text: `${hola}\n\n${comm}\n\n${p2}\n\n${p3}\n\n${p4}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${commHtml}</p><p>${esc(p2)}</p><p>${esc(p3)}</p><p>${esc(p4)}</p><p>El equipo de GameLobby</p>`,
     };
   }
   if (lead.type === "glx_sponsor") {
-    const from = lead.company ? ` desde ${lead.company}` : "";
     const goals = lead.goals ? ` Anotamos que buscas: ${lead.goals}.` : "";
+    const p1 = `Gracias por escribirnos${from}.${goals}`;
+    const p2 = "GameLobby Xperience es la experiencia presencial del ecosistema GameLobby, prevista para agosto de 2027. Formato, sede y condiciones comerciales se detallarán en la propuesta.";
+    const p3 = "Nuestro equipo revisará tu solicitud y te contactará con los próximos pasos.";
     return {
       subject: "Recibimos tu solicitud—GameLobby Xperience",
-      text:
-        `Hola ${firstName},\n\n` +
-        `Gracias por escribirnos${from}.${goals}\n\n` +
-        `GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en Panamá (30–31 de octubre, Soho Mall) y conecta con Centroamérica a través de GameLobby.gg.\n\n` +
-        `Nuestro equipo va a preparar las oportunidades más relevantes para tu marca y categoría, y te contactará con los próximos pasos.\n\n` +
-        `El equipo de GameLobby\n`,
-      html:
-        `<p>Hola ${esc(firstName)},</p>` +
-        `<p>Gracias por escribirnos${esc(from)}.${goals ? " " + esc("Anotamos que buscas: " + lead.goals + ".") : ""}</p>` +
-        `<p>GameLobby Xperience es la extensión física del ecosistema GameLobby—el mismo Wallet, la misma comunidad, ahora en el mundo real. Arranca con una experiencia presencial en <strong>Panamá</strong> (30–31 de octubre, Soho Mall) y conecta con Centroamérica a través de GameLobby.gg.</p>` +
-        `<p>Nuestro equipo va a preparar las oportunidades más relevantes para tu marca y categoría, y te contactará con los próximos pasos.</p>` +
-        `<p>El equipo de GameLobby</p>`,
+      text: `${hola}\n\n${p1}\n\n${p2}\n\n${p3}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>${esc(p3)}</p><p>El equipo de GameLobby</p>`,
+    };
+  }
+  if (lead.type === "investor") {
+    const p1 = `Gracias por tu interés en GameLobby${from}. Recibimos tu solicitud de conversación de inversión.`;
+    const p2 = "Nuestro equipo la revisará y te contactará para coordinar una primera conversación. El material ampliado y el data room son de acceso restringido y se comparten en conversaciones calificadas.";
+    return {
+      subject: "Recibimos tu solicitud—GameLobby",
+      text: `${hola}\n\n${p1}\n\n${p2}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>El equipo de GameLobby</p>`,
     };
   }
   if (lead.type === "b2b") {
-    const from = lead.company ? ` desde ${lead.company}` : "";
     const interest = lead.interest ? ` Anotamos tu interés en: ${lead.interest}.` : "";
+    const p1 = `Gracias por escribirnos${from}.${interest}`;
+    const p2 = "Nuestro equipo revisará tu mensaje y te contactará con los próximos pasos y una propuesta a la medida. Formato, alcance y condiciones comerciales se definen contigo.";
     return {
       subject: "Recibimos tu mensaje—GameLobby",
-      text:
-        `Hola ${firstName},\n\n` +
-        `Gracias por escribirnos${from}.${interest}\n\n` +
-        `GameLobby es la primera fintech gamer de Latinoamérica: conectamos a +25,000 cuentas de gamers, +500 torneos al año y +$150,000 USD repartidos en premios.\n\n` +
-        `Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.\n\n` +
-        `El equipo de GameLobby\n`,
-      html:
-        `<p>Hola ${esc(firstName)},</p>` +
-        `<p>Gracias por escribirnos${esc(from)}.${interest ? " " + esc("Anotamos tu interés en: " + lead.interest + ".") : ""}</p>` +
-        `<p>GameLobby es la primera fintech gamer de Latinoamérica: conectamos a <strong>+25,000 cuentas de gamers</strong>, <strong>+500 torneos al año</strong> y <strong>+$150,000 USD</strong> repartidos en premios.</p>` +
-        `<p>Un miembro de nuestro equipo te contactará con los próximos pasos y el deck del Centro America Tour.</p>` +
-        `<p>El equipo de GameLobby</p>`,
+      text: `${hola}\n\n${p1}\n\n${p2}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>El equipo de GameLobby</p>`,
     };
   }
+  // waitlist de la Gamer Wallet
   const place = lead.country ? ` desde ${lead.country}` : "";
+  const p1 = `Ya recibimos tu interés en la Gamer Wallet de GameLobby${place}. Te avisaremos sobre el lanzamiento y los pasos para activarla cuando esté disponible para ti.`;
+  const p2 = "Este registro no activa una cuenta ni garantiza disponibilidad inmediata. La primera etapa se concentra en Centroamérica y México, con despliegue progresivo entre octubre y noviembre de 2026; te informaremos los requisitos y próximos pasos.";
   return {
-    subject: "Estás dentro—bienvenido a GameLobby",
-    text:
-      `Hola ${firstName},\n\n` +
-      `Reservaste tu lugar${place} en la lista de espera del Wallet de GameLobby—la primera fintech gamer de Latinoamérica.\n\n` +
-      `Serás de los primeros en activar tu tarjeta Mastercard virtual, ganar puntos por cada consumo y canjearlos por torneos, productos y saldo real.\n\n` +
-      `Mientras tanto, ya puedes competir y ganar dinero real en gamelobby.gg.\n\n` +
-      `Te avisamos apenas tu Wallet esté listo.\n\n` +
-      `El equipo de GameLobby\n`,
-    html:
-      `<p>Hola ${esc(firstName)},</p>` +
-      `<p>Reservaste tu lugar${esc(place)} en la lista de espera del Wallet de GameLobby—la primera fintech gamer de Latinoamérica.</p>` +
-      `<p>Serás de los primeros en activar tu <strong>tarjeta Mastercard virtual</strong>, ganar puntos por cada consumo y canjearlos por torneos, productos y saldo real.</p>` +
-      `<p>Mientras tanto, ya puedes competir y ganar dinero real en <a href="https://gamelobby.gg">gamelobby.gg</a>.</p>` +
-      `<p>Te avisamos apenas tu Wallet esté listo.</p>` +
-      `<p>El equipo de GameLobby</p>`,
+    subject: "Ya recibimos tu interés—GameLobby",
+    text: `${hola}\n\n${p1}\n\n${p2}\n\nEl equipo de GameLobby\n`,
+    html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>El equipo de GameLobby</p>`,
   };
 }
 
@@ -132,7 +114,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, stored: false });
   }
 
-  const VALID_TYPES = ["b2b", "organizer", "glx_sponsor"];
+  const VALID_TYPES = ["b2b", "organizer", "glx_sponsor", "investor"];
   const type = VALID_TYPES.includes(body.type) ? body.type : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
   const company = String(body.company || "").trim().slice(0, 200);
@@ -149,6 +131,8 @@ export default async function handler(req, res) {
   const goals = String(body.goals || "").trim().slice(0, 400);
   const scale = String(body.scale || "").trim().slice(0, 60);
   const experiences = String(body.experiences || "").trim().slice(0, 400);
+  const consentMarketing = body.consentMarketing === true || body.consentMarketing === "true";
+  const attr = (v) => String(v || "").trim().slice(0, 100) || null;
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!name || !emailOk) {
@@ -160,27 +144,41 @@ export default async function handler(req, res) {
     community: community || null, category: category || null, link: link || null, message: message || null,
     jobTitle: jobTitle || null, companyCategory: companyCategory || null, goals: goals || null,
     scale: scale || null, experiences: experiences || null,
+    consentMarketing,
+    utm_source: attr(body.utm_source), utm_medium: attr(body.utm_medium),
+    utm_campaign: attr(body.utm_campaign), utm_content: attr(body.utm_content),
+    page: attr(body.page),
     ts: new Date().toISOString(),
     ua: req.headers["user-agent"] || null,
     ip: req.headers["x-forwarded-for"] || null,
   };
 
   let stored = false;
+  let duplicate = false;
 
   // 1) Persistir en Vercel KV (Upstash Redis REST) si está configurado
   const kvUrl = findEnv("KV_REST_API_URL") || findEnv("UPSTASH_REDIS_REST_URL");
   const kvToken = findEnv("KV_REST_API_TOKEN") || findEnv("UPSTASH_REDIS_REST_TOKEN");
   if (kvUrl && kvToken) {
     try {
-      const r = await fetch(kvUrl, {
+      const kvCall = (cmd) => fetch(kvUrl, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${kvToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(["RPUSH", `leads:${type}`, JSON.stringify(lead)]),
+        body: JSON.stringify(cmd),
       });
-      stored = r.ok;
+      // SADD devuelve 1 si el correo es nuevo para este tipo de registro y 0 si ya existía.
+      const idx = await kvCall(["SADD", `leads:idx:${type}`, email.toLowerCase()]);
+      const idxJson = idx.ok ? await idx.json() : null;
+      if (idxJson && idxJson.result === 0) {
+        duplicate = true;
+        stored = true; // ya estaba guardado: no se duplica
+      } else {
+        const r = await kvCall(["RPUSH", `leads:${type}`, JSON.stringify(lead)]);
+        stored = r.ok;
+      }
     } catch (e) {
       console.error("[lead] KV error", e);
     }
@@ -188,7 +186,7 @@ export default async function handler(req, res) {
 
   // 2) Reenviar a un webhook propio si está configurado (no bloquea el éxito)
   const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (webhook) {
+  if (webhook && !duplicate) {
     try {
       await fetch(webhook, {
         method: "POST",
@@ -204,7 +202,7 @@ export default async function handler(req, res) {
   let welcomed = false;
   const resendKey = process.env.RESEND_API_KEY;
   const mailFrom = process.env.MAIL_FROM; // ej: "GameLobby <hola@gamelobby.gg>"
-  if (resendKey && mailFrom) {
+  if (resendKey && mailFrom && !duplicate) {
     try {
       const msg = buildWelcome(lead);
       const r = await fetch("https://api.resend.com/emails", {
@@ -229,7 +227,7 @@ export default async function handler(req, res) {
   }
 
   // 4) Siempre dejar rastro en logs (visible en Vercel > Runtime Logs)
-  console.log("[GameLobby lead]", JSON.stringify(lead));
+  console.log("[GameLobby lead]", JSON.stringify({ type: lead.type, ts: lead.ts, stored, duplicate }));
 
-  return res.status(200).json({ ok: true, stored, welcomed });
+  return res.status(200).json({ ok: true, stored, duplicate, welcomed });
 }

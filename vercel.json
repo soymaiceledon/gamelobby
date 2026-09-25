@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "crons": []
+  "crons": [],
+  "redirects": [
+    {
+      "source": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2026.pdf",
+      "destination": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf",
+      "permanent": false
+    }
+  ]
 }
