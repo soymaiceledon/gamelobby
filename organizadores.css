@@ -384,13 +384,16 @@
   0%, 100% { box-shadow: 0 0 0 4px rgba(10, 18, 30, .9), 0 0 24px rgba(46, 200, 255, .75); }
   50% { box-shadow: 0 0 0 4px rgba(10, 18, 30, .9), 0 0 34px rgba(46, 200, 255, 1); }
 }
-.route__row--finish { grid-template-columns: 1fr; margin-top: 10px; }
+.route-finish-wrap { max-width: 900px; margin: 10px auto 0; padding: 0 24px; }
 .route__finish {
-  grid-column: 1; text-align: center; background: var(--gl-surface-3);
+  text-align: center; background: var(--gl-surface-3);
   border: 1px solid var(--gl-line); border-radius: 20px; padding: 36px 28px;
 }
 .route__finish h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 8px; }
 .route__finish p { color: var(--text-3); font-size: 15px; margin-bottom: 20px; }
+@media (max-width: 720px) {
+  .route-finish-wrap { padding: 0 16px; }
+}
 
 /* Tarjeta de Room ilustrada (ejemplo de torneo) */
 .room-mini { background: linear-gradient(135deg, #241158, var(--gl-navy)); border: 1px solid var(--gl-line); border-radius: 14px; padding: 0 0 14px; max-width: 280px; display: inline-block; text-align: left; overflow: hidden; }
