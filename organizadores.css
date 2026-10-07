@@ -391,6 +391,14 @@
 }
 .route__finish h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; margin-bottom: 8px; }
 .route__finish p { color: var(--text-3); font-size: 15px; margin-bottom: 20px; }
+.finish-lobi-jump { animation: finish-jump .7s cubic-bezier(.34, 1.56, .64, 1) infinite; }
+@keyframes finish-jump {
+  0%, 100% { transform: translateY(0); }
+  40%, 60% { transform: translateY(-20px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .finish-lobi-jump { animation: none; }
+}
 @media (max-width: 720px) {
   .route-finish-wrap { padding: 0 16px; }
 }
