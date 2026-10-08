@@ -433,6 +433,45 @@
 /* LOBI saludando junto al formulario de registro */
 .register-lobi { width: 110px; height: auto; display: block; margin-bottom: 8px; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .4)); }
 
+/* ============================================================
+   Beneficios: grid de claridad (qué resuelve GameLobby)
+   ============================================================ */
+.org-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.org-group { background: var(--gl-surface-3); border: 1px solid var(--gl-line); border-radius: 18px; padding: 26px; }
+.org-group h3 { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--text-1); margin-bottom: 16px; }
+.og-ic { width: 22px; height: 22px; color: var(--acc-soft); flex: none; }
+.org-blist { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+.org-blist li { display: flex; align-items: flex-start; gap: 10px; }
+.org-blist li i { width: 18px; height: 18px; color: var(--gl-cyan-bright); flex: none; margin-top: 2px; }
+.org-blist li span { font-size: 14px; line-height: 1.5; color: var(--text-2); }
+.org-group--highlight { background: linear-gradient(160deg, rgba(60, 206, 59, .1), var(--gl-surface-3) 55%); border-color: rgba(60, 206, 59, .4); }
+.org-group--highlight .og-ic { color: var(--gl-lime-bright); }
+.org-group--highlight .org-blist li i { color: var(--gl-lime-bright); }
+
+/* ============================================================
+   Wallet spotlight: la tarjeta real, con copy completo
+   ============================================================ */
+.wallet-spotlight { background: var(--gl-surface-1); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.wallet-spotlight__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.wallet-spotlight h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.6vw, 36px); letter-spacing: var(--ls-tight); line-height: 1.12; margin: 14px 0 16px; }
+.wallet-spotlight > .container > .wallet-spotlight__grid > .wallet-spotlight__copy > p { color: var(--text-3); font-size: 16px; line-height: 1.6; }
+.wallet-spotlight__visual { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.appcard--lg { width: 100%; max-width: 360px; padding: 26px 28px; border-radius: 22px; }
+.appcard--lg .appcard__brand { font-size: 19px; }
+.appcard--lg .appcard__virtual { font-size: 9px; padding: 4px 10px; }
+.appcard--lg .appcard__chip { width: 42px; height: 32px; margin: 18px 0 14px; }
+.appcard--lg .appcard__num { font-size: 19px; }
+.appcard--lg .appcard__holder { font-size: 12px; }
+.wallet-spotlight__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.wallet-spotlight__chips span { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: var(--text-2); background: var(--gl-surface-3); border: 1px solid var(--gl-line); padding: 6px 12px; border-radius: 999px; }
+.wallet-spotlight__chips i { width: 11px; height: 11px; color: var(--gl-lime-bright); }
+
+@media (max-width: 860px) {
+  .org-groups { grid-template-columns: 1fr; }
+  .wallet-spotlight__grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .wallet-spotlight .org-blist { text-align: left; }
+}
+
 @media (max-width: 720px) {
   .route { padding: 16px 16px 0; }
   .route__line { left: 20px; transform: none; }
