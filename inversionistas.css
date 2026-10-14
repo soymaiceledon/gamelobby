@@ -105,6 +105,7 @@
 
 /* ---- Stat cards (3-up) ---- */
 .inv-stats3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.inv-stats3 .card { padding: 28px; }
 .inv-stat__num { font-family: var(--font-display); font-weight: 800; font-size: 44px; color: #fff; line-height: 1; margin-bottom: 12px; }
 .inv-stats3 .card p { color: var(--text-3); font-size: 14px; line-height: 1.5; }
 
@@ -112,6 +113,7 @@
 .cards { display: grid; gap: 20px; }
 .cards--3 { grid-template-columns: repeat(3, 1fr); }
 .cards--4 { grid-template-columns: repeat(4, 1fr); }
+.cards .card { padding: 28px; }
 .cards .card h3 { font-family: var(--font-display); font-weight: 700; color: #fff; font-size: 19px; margin: 0 0 8px; }
 .cards .card p { color: var(--text-3); font-size: 14px; line-height: 1.5; }
 
@@ -135,6 +137,26 @@
   border-radius: 14px; padding: 18px 20px;
 }
 .inv-proof-strip b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 20px; color: #fff; margin-bottom: 4px; }
+.inv-proof-strip--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* ---- Países validados: infografía circular ---- */
+.inv-proof-grid { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: stretch; margin-top: 28px; }
+.inv-countries {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  justify-content: center; gap: 18px; padding: 32px 24px;
+}
+.inv-countries__ring { position: relative; width: 168px; height: 168px; flex: none; }
+.inv-countries__ring svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.inv-countries__track { fill: none; stroke: var(--border-subtle); stroke-width: 1.5; }
+.inv-countries__dot { fill: var(--gl-cyan-bright); filter: drop-shadow(0 0 5px rgba(46, 200, 255, .75)); }
+.inv-countries__num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 50px; color: #fff; line-height: 1;
+}
+.inv-countries__label { color: var(--text-3); font-size: 14.5px; line-height: 1.5; max-width: 240px; }
+.inv-countries__label b { display: block; color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+.inv-proof-side { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.inv-proof-side .inv-proof-strip { margin-top: 0; }
 .inv-proof-strip span { color: var(--text-3); font-size: 13px; }
 
 /* ---- Uso de fondos ---- */
@@ -170,7 +192,8 @@
 @media (max-width: 860px) {
   .inv-cycle { grid-template-columns: repeat(2, 1fr); }
   .cards--3, .cards--4 { grid-template-columns: 1fr 1fr; }
-  .inv-stats3, .inv-proof-strip { grid-template-columns: 1fr; }
+  .inv-stats3, .inv-proof-strip, .inv-proof-strip--2 { grid-template-columns: 1fr; }
+  .inv-proof-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 540px) {
   .inv-cycle { grid-template-columns: 1fr; }
