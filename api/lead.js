@@ -186,15 +186,20 @@ export default async function handler(req, res) {
 
   // 2) Reenviar a un webhook propio si está configurado (no bloquea el éxito)
   const webhook = process.env.LEAD_WEBHOOK_URL;
-  if (webhook && !duplicate) {
+  if (!webhook) {
+    console.log("[lead] webhook not configured (LEAD_WEBHOOK_URL unset) — no se reenvía al Sheet");
+  } else if (duplicate) {
+    console.log("[lead] webhook skipped (duplicate email, no se reenvía)");
+  } else {
     try {
-      await fetch(webhook, {
+      const wr = await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead),
       });
+      console.log("[lead] webhook response", { status: wr.status, ok: wr.ok });
     } catch (e) {
-      console.error("[lead] webhook error", e);
+      console.error("[lead] webhook error", String(e));
     }
   }
 
