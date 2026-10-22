@@ -44,6 +44,7 @@
   .tab.active.org{color:#b794ff}
   .tab.active.glx{color:var(--pink)}
   .tab.active.mk{color:var(--cyan)}
+  .tab.active.inv{color:#3cce3b}
   .spacer{flex:1}
   .search{max-width:240px}
   .count{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--t3)}
@@ -105,7 +106,7 @@
     <header>
       <div>
         <div class="brand">Game<span>Lobby</span> · Leads</div>
-        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas, organizadores, sponsors GLX y solicitudes de Media Kit</div>
+        <div class="sub">Captura desde la landing — waitlist Wallet, B2B marcas, organizadores, sponsors GLX, inversionistas y solicitudes de Media Kit</div>
       </div>
       <button class="btn btn--ghost" id="logout">Salir</button>
     </header>
@@ -116,6 +117,7 @@
         <button class="tab b2b" data-type="b2b">B2B / Marcas</button>
         <button class="tab org" data-type="organizer">Organizadores</button>
         <button class="tab glx" data-type="glx_sponsor">GLX Sponsors</button>
+        <button class="tab inv" data-type="investor">Inversionistas</button>
         <button class="tab mk" data-type="media_kit">Media Kit</button>
       </div>
       <input class="search" id="search" type="text" placeholder="Buscar nombre o email…">
@@ -210,17 +212,18 @@
   }
 
   function render(){
-    var b2b = type==='b2b', org = type==='organizer', glx = type==='glx_sponsor', mk = type==='media_kit';
+    var b2b = type==='b2b', org = type==='organizer', glx = type==='glx_sponsor', mk = type==='media_kit', inv = type==='investor';
     var head = '<th style="width:160px">Fecha</th><th>Nombre</th>';
     if(b2b) head += '<th>Empresa</th><th>Email</th><th>Interés</th>';
     else if(org) head += '<th>Comunidad</th><th>País</th><th>Email</th><th>Categoría</th>';
     else if(glx) head += '<th>Empresa</th><th>Categoría</th><th>Email</th><th>País</th><th>Objetivo</th><th>Escala</th>';
     else if(mk) head += '<th>Empresa</th><th>Email</th><th>Teléfono</th><th>Temperatura</th><th>Actividad</th>';
+    else if(inv) head += '<th>Fondo/Firma</th><th>Rol</th><th>Email</th><th>Tipo</th><th>Mensaje</th>';
     else head += '<th>País</th><th>Email</th><th>Interés</th>';
     $('#thRow').innerHTML = head + '<th style="width:56px"></th>';
     var items=filtered(); shown=items;
     $('#count').innerHTML='<b>'+items.length+'</b> '+(items.length===1?'lead':'leads');
-    var label = b2b?'B2B':org?'Organizadores':glx?'GLX Sponsors':mk?'Media Kit':'Waitlist';
+    var label = b2b?'B2B':org?'Organizadores':glx?'GLX Sponsors':mk?'Media Kit':inv?'Inversionistas':'Waitlist';
     if(!all.length){ setState('Aún no hay leads en <b>'+label+'</b>. Cuando alguien envíe el formulario aparecerá aquí.'); return; }
     setState('');
     $('#rows').innerHTML=items.map(function(l,i){
@@ -233,6 +236,8 @@
         cells += '<td>'+strong(l.company)+'</td><td>'+tg(l.companyCategory)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.country)+'</td><td>'+tg(l.goals)+'</td><td>'+tg(l.scale)+'</td>';
       } else if(mk){
         cells += '<td>'+strong(l.company)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.phone)+'</td><td>'+mkTempPill(l)+'</td><td>'+mkActivity(l,i)+'</td>';
+      } else if(inv){
+        cells += '<td>'+strong(l.company)+'</td><td>'+tg(l.jobTitle)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td><td>'+tg(l.message)+'</td>';
       } else {
         cells += '<td>'+tg(l.country)+'</td><td class="em">'+mailto(l.email)+'</td><td>'+tg(l.interest)+'</td>';
       }
