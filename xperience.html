@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GameLobby Xperience · Agosto de 2027</title>
-<meta name="description" content="GameLobby Xperience · Agosto de 2027. La experiencia presencial del ecosistema GameLobby. Estamos desarrollando oportunidades para que las marcas conecten con comunidades mediante competición, creación de contenido y activaciones participativas.">
+<title>GameLobby Xperience · Gran Final 28-29 ago 2027, Panamá</title>
+<meta name="description" content="GameLobby Xperience es el tour regional de GameLobby: competencias, creadores y experiencias de marca que recorren México y Centroamérica y culminan en una Gran Final presencial en Panamá.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GameLobby Xperience · Agosto de 2027">
-<meta property="og:description" content="La experiencia presencial del ecosistema GameLobby. Solicita una propuesta para tu marca.">
+<meta property="og:title" content="GameLobby Xperience · Tour regional 2027">
+<meta property="og:description" content="Tu marca no se exhibe: se juega, se vive y se mide. Agenda una reunión y te mostramos dónde encaja tu marca.">
 <meta property="og:image" content="assets/logo-full-color.png">
 <meta name="theme-color" content="#0a121e">
 <link rel="icon" href="assets/logo-symbol.png">
@@ -20,6 +20,25 @@
   .consent input{margin-top:3px;flex:none}
   .form__note{font-size:12px;color:var(--text-4);margin:0 0 4px}
   .form__error{font-size:13px;color:#ff8fd6;margin:0 0 8px}
+  /* ---- Subsecciones del bloque "Qué incluye" (h3 con el tamaño de un título de subsección, no de bloque) ---- */
+  .heading h3{font-family:var(--font-display);font-weight:700;font-size:32px;letter-spacing:var(--ls-tight);line-height:1.15}
+  /* ---- Microtexto bajo los botones del hero ---- */
+  .xp-hero__note{margin-top:16px;font-family:var(--font-body);font-size:13px;color:var(--text-4)}
+  /* ---- "Más detalles (opcional)" plegable del formulario de sponsors ---- */
+  .xp-form__more{margin:4px 0 2px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:4px 16px}
+  .xp-form__more summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--gl-cyan);padding:12px 0;list-style:none}
+  .xp-form__more summary::-webkit-details-marker{display:none}
+  .xp-form__more[open] summary{color:var(--text-2)}
+  .xp-form__more .xp-form__row,.xp-form__more .field{margin-top:12px}
+  .xp-form__more .field:first-child{margin-top:0}
+  /* ---- Preguntas frecuentes (acordeón con <details>, sin componente equivalente previo) ---- */
+  .xp-faq{display:flex;flex-direction:column;gap:12px;margin-top:40px}
+  .xp-faq details{background:var(--gl-surface-3);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px 24px}
+  .xp-faq summary{cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-1);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .xp-faq summary::-webkit-details-marker{display:none}
+  .xp-faq summary::after{content:'+';font-size:20px;line-height:1;color:var(--gl-cyan);flex:none}
+  .xp-faq details[open] summary::after{content:'–'}
+  .xp-faq p{margin-top:12px;font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--text-3)}
 </style>
 </head>
 <body>
@@ -43,34 +62,106 @@
   </div>
 </header>
 
-<!-- ============ GAMELOBBY XPERIENCE — HERO ============ -->
+<!-- ============ BLOQUE 1 · PORTADA ============ -->
 <section class="section xp-hero xp-hero--photo" id="xperience" style="border-top:1px solid var(--border-subtle)">
   <div class="xp-hero__bg" style="background-image:url('assets/xperience/arcade-social.jpg')" aria-hidden="true"></div>
   <div class="container">
     <div class="xp-hero__inner">
-      <span class="eyebrow eyebrow--pink">GameLobby Xperience</span>
-      <h2 class="xp-hero__title">GameLobby Xperience<br><span class="tourmap__hl">Agosto de 2027</span></h2>
-      <p class="xp-hero__lead">La experiencia presencial del ecosistema GameLobby. Estamos desarrollando oportunidades para que las marcas conecten con comunidades mediante competición, creación de contenido y activaciones participativas.</p>
+      <span class="eyebrow eyebrow--pink">Preventa comercial abierta · Gran Final 28 y 29 de agosto de 2027 · Panamá</span>
+      <h1 class="xp-hero__title">Tu marca dentro del juego<br><span class="tourmap__hl">de México a Centroamérica</span></h1>
+      <p class="xp-hero__lead">GameLobby Xperience es el tour regional de GameLobby: competencias, creadores y experiencias de marca que recorren México y Centroamérica y culminan en una Gran Final presencial en Panamá. Tu marca no se exhibe: se juega, se vive y se mide.</p>
       <div class="xp-hero__meta">
-        <span><i data-lucide="calendar" class="ic"></i> Agosto de 2027</span>
-        <span><i data-lucide="file-text" class="ic"></i> Formato, sede y condiciones en la propuesta</span>
+        <span><i data-lucide="route" class="ic"></i> Abre en México · Cierra en Panamá</span>
+        <span><i data-lucide="calendar" class="ic"></i> Gran Final, 28 y 29 de agosto de 2027</span>
+        <span><i data-lucide="map-pin" class="ic"></i> Panamá <!-- POR CONFIRMAR: autorización para nombrar Soho Mall Panamá como sede --></span>
+        <span><i data-lucide="wallet" class="ic"></i> Paquetes desde US$2,500 <!-- POR CONFIRMAR: opción comercial vigente y si se publican precios --></span>
       </div>
       <div class="xp-hero__cta">
-        <a href="#glx-sponsors" class="btn btn--pink btn--md" data-xp-event="sponsor_media_kit_click">Solicitar propuesta para mi marca</a>
-        <a href="#zonas" class="btn btn--outline btn--md">Ver formatos propuestos</a>
+        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
         <button type="button" class="btn btn--ghost btn--md" data-open-mediakit data-xp-event="sponsor_media_kit_download_click">Descargar Media Kit</button>
+      </div>
+      <p class="xp-hero__note">Reunión sin compromiso. Te mostramos los formatos que mejor encajan con tu objetivo y tu presupuesto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOQUE 2 · PROBLEMA Y BENEFICIO ============ -->
+<section class="section xp-journey" id="como-funciona" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--cyan">Problema y beneficio</span>
+      <h2>Tu marca no viene a poner un stand.<br><em>Viene a entrar al juego.</em></h2>
+      <p>La juventud gamer no responde a la publicidad que interrumpe. Responde a las marcas que participan.</p>
+    </div>
+    <p class="xp-opportunity__lead">Centroamérica vive un crecimiento acelerado del gaming y los esports, impulsado por millones de jóvenes conectados que consumen contenido digital, compiten y eligen marcas que hablan su idioma. Un stand o un logo en una valla no basta para ganarse a esta audiencia.</p>
+    <p class="xp-opportunity__lead">En GameLobby Xperience tu marca forma parte de la experiencia: misiones, retos, votaciones y recompensas que el asistente busca por voluntad propia. El resultado es contacto directo en su momento de mayor atención, contenido que la comunidad comparte y datos de participación que puedes medir.</p>
+    <div class="grid-3">
+      <div class="card card--int feat" data-neon="cyan">
+        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="zap"></i></span>
+        <h3>Contacto directo</h3>
+        <p>Con el consumidor gamer en su momento de máximo interés.</p>
+      </div>
+      <div class="card card--int feat" data-neon="pink">
+        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="calendar-days"></i></span>
+        <h3>Posicionamiento duradero</h3>
+        <p>Una narrativa que se vive durante meses, no un fin de semana.</p>
+      </div>
+      <div class="card card--int feat" data-neon="purple">
+        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="bar-chart-3"></i></span>
+        <h3>Datos y comunidad</h3>
+        <p>Participación medible y una comunidad que sigue conectada después del evento.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOQUE 3 · QUÉ INCLUYE ============ -->
+<section class="section xp-ecosystem" style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--purple">Qué incluye</span>
+      <h2>Una activación.<br><em>Múltiples puntos de contacto.</em></h2>
+      <p>Presencia física, digital y en transmisiones en vivo, conectada por la GameLobby Wallet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ---- 3.1 La ruta ---- -->
+<section class="section xp-days" style="background:var(--gl-surface-1);border-bottom:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--lime">La ruta</span>
+      <h3>Un tour regional, no un solo evento.</h3>
+    </div>
+    <div class="grid-3">
+      <div class="xp-day card" data-neon="lime">
+        <span class="xp-day__date">Abril 2027 · México</span>
+        <h3>Lanzamiento oficial y FrikiPlaza</h3>
+        <p>Retos Express patrocinados en centros comerciales con alto tráfico geek y gamer.</p>
+      </div>
+      <div class="xp-day card" data-neon="cyan">
+        <span class="xp-day__date">Junio 2027 · Centroamérica</span>
+        <h3>Circuito digital en 6 países</h3>
+        <p>Panamá, Costa Rica, Guatemala, El Salvador, Honduras y Nicaragua, con clasificatorias y paradas presenciales <!-- POR CONFIRMAR: formato de las paradas (cines o centros comerciales) -->.</p>
+      </div>
+      <div class="xp-day card" data-neon="pink">
+        <span class="xp-day__date">28 y 29 de agosto de 2027 · Panamá</span>
+        <h3>Gran Final presencial</h3>
+        <p>Transmitida a toda la región.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ NO ES UNA FERIA ============ -->
-<section class="section xp-journey" id="como-funciona" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle)">
+<!-- ---- 3.2 Cómo vive tu marca el asistente ---- -->
+<section class="section xp-journey">
   <div class="container">
     <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Cómo funciona</span>
-      <h2>Tu marca no viene a poner un stand.<br><em>Viene a entrar al juego.</em></h2>
-      <p>Diseñamos contigo un recorrido de participación posible. Es un concepto propuesto: el alcance técnico y los formatos se confirman en cada propuesta.</p>
+      <span class="eyebrow eyebrow--cyan">El recorrido</span>
+      <h3>Cómo vive tu marca el asistente.</h3>
     </div>
     <div class="xp-journey__flow" role="list" aria-label="Journey del asistente dentro de GameLobby Xperience">
       <span class="xp-step" role="listitem">Registro</span>
@@ -79,7 +170,8 @@
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
       <span class="xp-step" role="listitem">Interacción</span>
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step xp-step--wallet" role="listitem"><i data-lucide="credit-card"></i> Wallet (prevista)</span>
+      <span class="xp-step xp-step--wallet" role="listitem"><i data-lucide="credit-card"></i> Wallet</span>
+      <!-- POR CONFIRMAR: estado de la GameLobby Wallet para 2027; la página actual la presenta como "prevista" -->
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
       <span class="xp-step" role="listitem">Votación</span>
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
@@ -87,165 +179,78 @@
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
       <span class="xp-step" role="listitem">Canje</span>
       <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Data</span>
+      <span class="xp-step" role="listitem">Datos</span>
     </div>
+    <p class="xp-opportunity__lead" style="margin-top:36px">Cada asistente se registra, completa misiones de tu marca con QR o NFC, suma puntos, vota, gana recompensas y las canjea. Cada interacción queda registrada como historial de participación y afinidad con tu marca.</p>
   </div>
 </section>
 
-<!-- ============ ECOSISTEMA 360 ============ -->
-<section class="section xp-ecosystem" style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+<!-- ---- 3.3 Las piezas del ecosistema ---- -->
+<section class="section xp-ecosystem" style="background:var(--gl-surface-1);border-bottom:1px solid var(--border-subtle)">
   <div class="container">
     <div class="heading">
-      <span class="eyebrow eyebrow--purple">Ecosistema 360</span>
-      <h2>Una activación.<br><em>Múltiples puntos de contacto.</em></h2>
+      <span class="eyebrow eyebrow--purple">El ecosistema</span>
+      <h3>Las piezas del ecosistema.</h3>
     </div>
     <img src="assets/xperience/ecosystem-360.jpg" alt="Ecosistema GameLobby: GameLobby.gg, GameLobby Wallet y GameLobby Xperience conectados" class="xp-photo xp-photo--wide" loading="lazy">
     <div class="xp-ecosystem__flow">
       <div class="xp-eco-node card" data-neon="cyan">
         <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="gamepad-2"></i></span>
         <h3>GameLobby.gg</h3>
-        <p>Competición y comunidad.</p>
+        <p>Competencia y comunidad durante todo el año.</p>
       </div>
       <i data-lucide="arrow-down" class="xp-ecosystem__arrow" aria-hidden="true"></i>
       <div class="xp-eco-node card" data-neon="pink">
         <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="credit-card"></i></span>
         <h3>GameLobby Wallet</h3>
-        <p>Recompensas y participación (previstas).</p>
+        <p>Registro, misiones, puntos, ranking y canje.</p>
+        <!-- POR CONFIRMAR: estado de la Wallet para 2027; la página actual la presenta como "prevista" -->
       </div>
       <i data-lucide="arrow-down" class="xp-ecosystem__arrow" aria-hidden="true"></i>
       <div class="xp-eco-node xp-eco-node--lg card" data-neon="purple">
         <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="sparkles"></i></span>
         <h3>GameLobby Xperience</h3>
-        <p>El ecosistema llevado al mundo físico: comunidades, creadores, marcas, torneos y contenido, alrededor de una misma comunidad. Formatos por confirmar.</p>
+        <p>El ecosistema llevado al mundo físico, con torneos, creadores, comunidad y experiencias de marca.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ¿QUÉ QUIERES CONSEGUIR? ============ -->
-<section class="section xp-goals" id="objetivos">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Para tu marca</span>
-      <h2>¿Qué quieres conseguir?</h2>
-      <p>Elige tu objetivo principal y te mostramos los formatos propuestos más compatibles.</p>
-      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca un objetivo para ver las experiencias recomendadas</p>
-    </div>
-    <div class="xp-goals__grid" id="xp-goals">
-      <button type="button" class="xp-goal" data-goal="awareness">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="megaphone"></i></span>
-        <h3>Awareness</h3>
-        <p>Quiero que mi marca sea protagonista.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="adquisicion">
-        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="database"></i></span>
-        <h3>Adquisición &amp; Data</h3>
-        <p>Quiero generar registros, interacción y comportamiento medible.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="producto">
-        <span class="icon-tile sm-tile icon-tile--lime"><i data-lucide="gift"></i></span>
-        <h3>Producto &amp; Conversión</h3>
-        <p>Quiero pruebas, sampling, promociones y redenciones.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="rse">
-        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="graduation-cap"></i></span>
-        <h3>RSE &amp; Talento</h3>
-        <p>Quiero impactar educación, STEM, juventud y empleabilidad.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="contenido">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
-        <h3>Contenido &amp; Cultura</h3>
-        <p>Quiero conectar con creadores, cosplay y comunidades.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-    </div>
-    <div class="xp-goals__result hidden" id="xp-goals-result">
-      <p class="xp-goals__result-label">Experiencias recomendadas para tu objetivo</p>
-      <div class="xp-goals__chips" id="xp-goals-chips"></div>
-      <a href="#glx-sponsors" class="btn btn--pink btn--sm">Solicitar propuesta</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DOS DÍAS / DOS EXPERIENCIAS ============ -->
-<section class="section xp-days" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--lime">Formatos propuestos</span>
-      <h2>Dos experiencias propuestas.</h2>
-      <p>Son formatos propuestos, no una programación confirmada. Se ratificarán junto con la sede y las fechas.</p>
-    </div>
-    <div class="xp-days__grid">
-      <div class="xp-day card" data-neon="purple">
-        <img src="assets/xperience/campus-quest.jpg" alt="Campus Quest: estudiantes en talleres de tecnología y robótica" class="xp-photo xp-day__photo" loading="lazy">
-        <span class="xp-day__date">Propuesta · Campus Quest</span>
-        <h3>Talento, educación y tecnología</h3>
-        <p>Estudiantes, colegios, universidades, carreras STEM, empleabilidad y becas—una plataforma de talento joven, con las marcas y empresas que quieren estar ahí.</p>
-        <ul class="xp-day__list">
-          <li>Future Skills Forum</li>
-          <li>Hackathon &amp; Data Arena</li>
-          <li>Expo Vocacional &amp; Career Hub</li>
-          <li>STEM Tech Lab</li>
-          <li>Networking / B2B Talent Lounge</li>
-        </ul>
-                <a href="#glx-sponsors" class="btn btn--outline btn--md">Quiero impulsar Campus Quest</a>
-      </div>
-      <div class="xp-day card" data-neon="pink">
-        <img src="assets/xperience/day2-social.jpg" alt="GameLobby Xperience: torneos, arcade y comunidad en vivo" class="xp-photo xp-day__photo" loading="lazy">
-        <span class="xp-day__date">Propuesta · Experiencia gamer</span>
-        <h3>Un videojuego en tamaño real</h3>
-        <p>Pensada para que el visitante participe: jugar, competir, descubrir y compartir. Contenido y mecánicas por confirmar.</p>
-        <ul class="xp-day__list">
-          <li>Competición y arcade</li>
-          <li>Simuladores</li>
-          <li>Creadores y cosplay</li>
-          <li>Mobile, fútbol y música</li>
-          <li>Experiencias de marca</li>
-        </ul>
-        <a href="#glx-sponsors" class="btn btn--pink btn--md">Quiero activar mi marca</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ZONAS Y EXPERIENCIAS ============ -->
+<!-- ---- 3.4 Zonas de la Gran Final ---- -->
 <section class="section xp-zones" id="zonas">
   <div class="container">
     <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Experiencias del venue</span>
-      <h2>Cada zona es una oportunidad distinta.</h2>
-      <p>Distribución propuesta del espacio. Sede, fechas y formatos se confirmarán; no representan una configuración definitiva.</p>
+      <span class="eyebrow eyebrow--cyan">Zonas de la Gran Final</span>
+      <h3>Cada zona es una oportunidad distinta.</h3>
+      <p>Elige dónde quiere estar tu marca.</p>
       <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca una zona para ver el detalle</p>
     </div>
-    <img src="assets/xperience/venue-map.jpg" alt="Mapa conceptual de zonas de GameLobby Xperience; sede por confirmar" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:44px">
+    <img src="assets/xperience/venue-map.jpg" alt="Mapa de zonas de GameLobby Xperience" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:44px">
     <div class="xp-zones__grid" id="xp-zones"></div>
     <div class="xp-zones__panel hidden" id="xp-zone-panel">
       <img id="xp-zone-img" class="xp-photo xp-zones__panel-photo hidden" alt="">
       <h3 id="xp-zone-name"></h3>
       <p id="xp-zone-desc"></p>
-      <p class="xp-zones__panel-label">Formatos posibles (a confirmar en la propuesta)</p>
+      <p class="xp-zones__panel-label">Formatos posibles</p>
       <div class="xp-goals__chips" id="xp-zone-formats"></div>
-      <a href="#glx-sponsors" class="btn btn--pink btn--sm">Me interesa esta experiencia</a>
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
     </div>
+    <p class="xp-zones__hint" style="margin-top:28px"><strong>Visibilidad adicional:</strong> Town Takeover en la vía y dentro del recinto, fondo de entrevistas, uniformes de los finalistas y presencia en la transmisión regional.</p>
   </div>
 </section>
 
-<!-- ============ WALLET + DATA ============ -->
+<!-- ---- 3.5 Medición ---- -->
 <section class="section xp-data" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
   <div class="container">
     <div class="heading">
       <span class="eyebrow eyebrow--purple">Medición</span>
-      <h2>Definimos contigo<br><em>qué medir y cómo.</em></h2>
-      <p>Podemos acordar indicadores de participación agregados o con consentimiento, según la activación y los permisos aplicables. Es un potencial de medición: no garantizamos resultados y cualquier estimación se presenta con su metodología y escenario.</p>
+      <h3>Definimos contigo<br><em>qué medir y cómo.</em></h3>
+      <p>Acordamos los indicadores según tu activación y entregas un reporte al cierre. Los datos se recogen de forma agregada o con consentimiento del participante.</p>
     </div>
-    <img src="assets/xperience/wallet-booth.jpg" alt="Concepto de puntos, misiones y recompensas (vista previa conceptual)" class="xp-photo xp-photo--wide" loading="lazy">
+    <img src="assets/xperience/wallet-booth.jpg" alt="Concepto de puntos, misiones y recompensas" class="xp-photo xp-photo--wide" loading="lazy">
     <div class="xp-data__chips">
       <span class="xp-chip"><i data-lucide="user-plus"></i> Registros</span>
-      <span class="xp-chip"><i data-lucide="qr-code"></i> QR scans</span>
+      <span class="xp-chip"><i data-lucide="qr-code"></i> Escaneos QR</span>
       <span class="xp-chip"><i data-lucide="target"></i> Misiones iniciadas</span>
       <span class="xp-chip"><i data-lucide="circle-check-big"></i> Misiones completadas</span>
       <span class="xp-chip"><i data-lucide="thumbs-up"></i> Votos</span>
@@ -253,31 +258,120 @@
       <span class="xp-chip"><i data-lucide="coins"></i> Puntos</span>
       <span class="xp-chip"><i data-lucide="gift"></i> Redenciones</span>
       <span class="xp-chip"><i data-lucide="tag"></i> Promociones</span>
-      <span class="xp-chip"><i data-lucide="award"></i> Rewards</span>
+      <span class="xp-chip"><i data-lucide="award"></i> Recompensas</span>
       <span class="xp-chip"><i data-lucide="smartphone"></i> Interacción digital</span>
       <span class="xp-chip"><i data-lucide="globe"></i> País y preferencias</span>
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
     </div>
   </div>
 </section>
 
-<!-- ============ CREADORES + COSPLAY + COMUNIDAD ============ -->
+<!-- ============ BLOQUE 4 · FORMATOS SEGÚN TU OBJETIVO ============ -->
+<section class="section xp-goals" id="objetivos">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--cyan">Para tu marca</span>
+      <h2>¿Qué quieres conseguir?</h2>
+      <p>Elige tu objetivo y te mostramos los formatos que mejor encajan.</p>
+      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca un objetivo para ver las experiencias recomendadas</p>
+    </div>
+    <div class="xp-goals__grid" id="xp-goals">
+      <button type="button" class="xp-goal" data-goal="awareness">
+        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="megaphone"></i></span>
+        <h3>Visibilidad de marca</h3>
+        <p>Quiero que mi marca sea protagonista.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
+      </button>
+      <button type="button" class="xp-goal" data-goal="adquisicion">
+        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="database"></i></span>
+        <h3>Adquisición y datos</h3>
+        <p>Quiero registros, interacción y comportamiento medible.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
+      </button>
+      <button type="button" class="xp-goal" data-goal="producto">
+        <span class="icon-tile sm-tile icon-tile--lime"><i data-lucide="gift"></i></span>
+        <h3>Producto y conversión</h3>
+        <p>Quiero prueba de producto, muestras, promociones y canjes.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
+      </button>
+      <button type="button" class="xp-goal" data-goal="rse">
+        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="graduation-cap"></i></span>
+        <h3>RSE y talento</h3>
+        <p>Quiero impactar educación, STEM, juventud y empleabilidad.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
+      </button>
+      <button type="button" class="xp-goal" data-goal="contenido">
+        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
+        <h3>Contenido y cultura</h3>
+        <p>Quiero conectar con creadores, cosplay y comunidades.</p>
+        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
+      </button>
+    </div>
+    <div class="xp-goals__result hidden" id="xp-goals-result">
+      <p class="xp-goals__result-label">Experiencias recomendadas para tu objetivo</p>
+      <div class="xp-goals__chips" id="xp-goals-chips"></div>
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión sobre este objetivo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ---- Formatos: Campus Quest / Jornada gamer y familiar ---- -->
+<section class="section xp-days" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="xp-days__grid">
+      <div class="xp-day card" data-neon="purple">
+        <img src="assets/xperience/campus-quest.jpg" alt="Campus Quest: estudiantes en talleres de tecnología y robótica" class="xp-photo xp-day__photo" loading="lazy">
+        <span class="xp-day__date">Formato 1 · Jornada educativa</span>
+        <h3>Campus Quest: talento y futuro</h3>
+        <p>Feria universitaria y de carreras creativas y tecnológicas para estudiantes y jóvenes profesionales: diseño y creatividad, desarrollo y tecnología, esports y gaming, y marketing digital. Ideal para empleadores, universidades y programas de RSE.</p>
+        <ul class="xp-day__list">
+          <li>Future Skills Forum</li>
+          <li>Hackathon &amp; Data Arena</li>
+          <li>Expo Vocacional &amp; Career Hub</li>
+          <li>STEM Tech Lab</li>
+          <li>Networking / B2B Talent Lounge</li>
+        </ul>
+        <p style="font-family:var(--font-body);font-size:14.5px;color:var(--text-3);line-height:1.6;margin-top:4px"><strong style="color:var(--text-1)">Mecánica:</strong> completar los retos de los stands participantes da beneficios exclusivos y acceso VIP al día 2.</p>
+        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--outline btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Quiero impulsar Campus Quest</a>
+      </div>
+      <div class="xp-day card" data-neon="pink">
+        <img src="assets/xperience/day2-social.jpg" alt="GameLobby Xperience: torneos, arcade y comunidad en vivo" class="xp-photo xp-day__photo" loading="lazy">
+        <span class="xp-day__date">Formato 2 · Jornada gamer y familiar</span>
+        <h3>Un videojuego en tamaño real</h3>
+        <p>Estaciones de juego, misiones para ganar recompensas, espectáculos en tarima y alta participación del público: competencia y arcade, simuladores, creadores y cosplay, juegos móviles, fútbol y música.</p>
+        <ul class="xp-day__list">
+          <li>Votación del público</li>
+          <li>Transmisión en vivo de los torneos</li>
+          <li>Concurso de cosplay</li>
+          <li>Trivias con premios</li>
+          <li>Talleres para toda la familia</li>
+        </ul>
+        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Quiero activar mi marca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---- Antes, durante y después ---- -->
 <section class="section xp-creators">
   <div class="container">
     <div class="heading">
       <span class="eyebrow eyebrow--pink">Antes, durante y después</span>
-      <h2>La experiencia no termina en el venue.</h2>
-      <p>Estamos explorando que creadores y comunidades amplifiquen cada activación hacia lo digital: contenido, nominaciones y votaciones. Formatos por confirmar.</p>
+      <h2>La experiencia no termina en el recinto.</h2>
+      <p>Creadores, cosplay y comunidad llevan tu activación al mundo digital: cápsulas de video, nominaciones, votaciones en línea y publicaciones de colaboración en las redes oficiales.</p>
     </div>
     <div class="grid-3">
       <div class="card card--int feat" data-neon="pink">
         <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
         <h3>Creadores</h3>
-        <p>Contenido antes, durante y después del evento junto a creadores. Por confirmar.</p>
+        <p>Contenido antes, durante y después del evento junto a creadores.</p>
       </div>
       <div class="card card--int feat" data-neon="purple">
         <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="sparkles"></i></span>
         <h3>Cosplay</h3>
-        <p>Nominaciones y votaciones como posible formato de participación.</p>
+        <p>Nominaciones y votaciones del concurso de cosplay.</p>
       </div>
       <div class="card card--int feat" data-neon="cyan">
         <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="share-2"></i></span>
@@ -293,27 +387,146 @@
   </div>
 </section>
 
-
-<!-- ============ OPORTUNIDAD PARA MARCAS ============ -->
-<section class="section xp-opportunity" id="xp-opportunity">
+<!-- ============ BLOQUE 5 · PRUEBA SOCIAL ============ -->
+<section class="section" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
   <div class="container">
-    <span class="eyebrow eyebrow--pink">Oportunidad para marcas</span>
-    <h2>Propuesta <span class="tourmap__hl">según alcance</span>.</h2>
-    <p class="xp-opportunity__lead">Diseñamos la propuesta según los objetivos, la categoría y la escala de cada marca. Formato, sede y condiciones comerciales se detallarán en ella.</p>
-    <img src="assets/xperience/sponsor-mockup.jpg" alt="Concepto de zona de marca en GameLobby Xperience (vista previa conceptual)" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:36px">
-    <a href="#glx-sponsors" class="btn btn--pink btn--lg">Solicitar propuesta para mi marca</a>
+    <div class="heading">
+      <span class="eyebrow eyebrow--lime">Prueba social</span>
+      <h2>Un equipo que ya organiza ligas y eventos en la región</h2>
+      <p>Experiencia comprobada en ligas, eventos presenciales y tecnología financiera.</p>
+    </div>
+    <div class="stats-grid" style="margin-top:44px">
+      <div class="stat"><div class="stat__v stat__v--cyan">+13 países</div><div class="stat__l">Participan en nuestras ligas regionales</div></div>
+      <div class="stat"><div class="stat__v stat__v--pink">25 ciudades</div><div class="stat__l">De 15 países con eventos presenciales</div></div>
+      <div class="stat"><div class="stat__v stat__v--purple">+250K espectadores</div><div class="stat__l">En las transmisiones de la LAPGL 2023</div></div>
+      <div class="stat"><div class="stat__v stat__v--lime">5M</div><div class="stat__l">De impacto regional en canales</div></div>
+      <!-- POR CONFIRMAR: definición y fuente de la métrica "5M de impacto regional en canales" -->
+    </div>
+    <p class="xp-opportunity__lead" style="margin-top:36px">Organizamos ligas como la Latin American Pro Gamers League y la Odyssey Cup, tenemos experiencia en eventos presenciales en México y la región, como Gamergy, y contamos con el respaldo en tecnología financiera de nuestro aliado Versatec para la GameLobby Wallet.</p>
+    <!--
+      POR CONFIRMAR, bloque oculto hasta validar (no se inventan logos, testimonios ni fotos):
+      - Logos de marcas que patrocinaron ligas o eventos anteriores y autorización para mostrarlos.
+      - 1 o 2 testimonios de marcas o aliados con nombre, cargo y empresa.
+      - Fotos reales de eventos anteriores (las imágenes actuales de la presentación son conceptuales).
+    -->
   </div>
 </section>
 
-<!-- ============ SPONSOR GLX ============ -->
+<!-- ============ BLOQUE 6 · PROCESO + NOTA DE PREVENTA ============ -->
+<section class="section xp-goals">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--cyan">Proceso</span>
+      <h2>De la primera reunión a tu activación, en 4 pasos</h2>
+    </div>
+    <div class="xp-goals__grid" style="margin-top:48px">
+      <div class="card card--int feat" data-neon="cyan">
+        <span class="icon-tile sm-tile icon-tile--cyan"><strong>1</strong></span>
+        <h3>Agenda una reunión</h3>
+        <p>Nos cuentas tu objetivo, tu categoría y tus países prioritarios.</p>
+        <!-- POR CONFIRMAR: duración de la reunión -->
+      </div>
+      <div class="card card--int feat" data-neon="pink">
+        <span class="icon-tile sm-tile icon-tile--pink"><strong>2</strong></span>
+        <h3>Recibe tu propuesta</h3>
+        <p>Formato, ubicación, nivel de participación y condiciones comerciales a la medida.</p>
+        <!-- POR CONFIRMAR: plazo de entrega de la propuesta -->
+      </div>
+      <div class="card card--int feat" data-neon="purple">
+        <span class="icon-tile sm-tile icon-tile--purple"><strong>3</strong></span>
+        <h3>Diseñamos juntos la activación</h3>
+        <p>Misiones, recompensas, contenido e indicadores que se medirán.</p>
+      </div>
+      <div class="card card--int feat" data-neon="lime">
+        <span class="icon-tile sm-tile icon-tile--lime"><strong>4</strong></span>
+        <h3>Activa y mide</h3>
+        <p>Tu marca en el tour y la Gran Final, con reporte de resultados al cierre.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+    </div>
+    <div class="xp-goals__result" style="margin-top:52px;max-width:720px;margin-inline:auto;text-align:left">
+      <p class="xp-goals__result-label" style="text-align:left">Nota única de preventa</p>
+      <h3 style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--text-1);margin:10px 0 10px">Entra como patrocinador fundador</h3>
+      <p style="font-family:var(--font-body);font-size:15px;color:var(--text-3);line-height:1.6">GameLobby Xperience 2027 está en preventa. Las marcas que entran ahora eligen primero su zona y su categoría, y ayudan a definir los formatos de su activación. Los detalles de ubicación, programación y condiciones se confirman en tu propuesta.</p>
+      <!-- POR CONFIRMAR: beneficios concretos de patrocinador fundador (p. ej., precio de preventa, prioridad de zona, exclusividad de categoría) -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOQUE 7 · PREGUNTAS FRECUENTES ============ -->
+<section class="section" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--purple">Preguntas frecuentes</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="xp-faq">
+      <details>
+        <summary>¿Cuándo y dónde es?</summary>
+        <p>La Gran Final presencial es el 28 y 29 de agosto de 2027 en Panamá <!-- POR CONFIRMAR: autorización para nombrar Soho Mall Panamá -->. Antes, el tour pasa por México (abril) y por 6 países de Centroamérica (junio).</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta participar?</summary>
+        <p>Hay paquetes desde US$2,500 para marcas que entran por primera vez hasta paquetes de Presenting Partner para la Gran Final. Te recomendamos el nivel según tu objetivo en la primera reunión. <!-- POR CONFIRMAR: opción comercial vigente (cines o centros comerciales) y precio máximo a mostrar --></p>
+      </details>
+      <details>
+        <summary>¿Hasta cuándo puedo entrar?</summary>
+        <p>La preventa comercial está abierta. <!-- POR CONFIRMAR: fecha límite de la preventa y de confirmación de patrocinadores --></p>
+      </details>
+      <details>
+        <summary>¿A quién llego?</summary>
+        <p>A jóvenes gamers de Centroamérica y México que compiten, crean contenido y siguen esports, además de estudiantes y jóvenes profesionales en Campus Quest y familias en la jornada familiar. <!-- POR CONFIRMAR: asistencia esperada y perfil demográfico con cifras --></p>
+      </details>
+      <details>
+        <summary>¿Puedo participar solo en mi país?</summary>
+        <p>Sí. Hay paquetes locales por país (Presenting Partner Local, Zone Partners Locales y Experience Partners), además de los paquetes regionales y de la Gran Final.</p>
+      </details>
+      <details>
+        <summary>¿Tengo exclusividad de categoría?</summary>
+        <p>Los paquetes Presenting Partner incluyen exclusividad en tu categoría (regional o por país, según el paquete).</p>
+      </details>
+      <details>
+        <summary>¿Qué datos recibo?</summary>
+        <p>Los indicadores que acordemos (registros, misiones, votos, canjes, entre otros) en un reporte al cierre, con datos agregados o con consentimiento del participante.</p>
+      </details>
+      <details>
+        <summary>¿Sirve para RSE o atracción de talento?</summary>
+        <p>Sí. Campus Quest conecta a tu marca con estudiantes, universidades y carreras STEM, creativas y digitales.</p>
+      </details>
+      <details>
+        <summary>¿Puede participar una marca de consumo adulto?</summary>
+        <p>Sí, en la Cool Down Zone +18, un espacio de acceso restringido para mayores de edad. <!-- POR CONFIRMAR: condiciones y permisos para marcas de alcohol --></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOQUE 8 · CTA FINAL ============ -->
+<section class="section xp-opportunity" id="xp-opportunity">
+  <div class="container">
+    <span class="eyebrow eyebrow--pink">Oportunidad para marcas</span>
+    <h2>Construyamos <span class="tourmap__hl">2027 juntos</span>.</h2>
+    <p class="xp-opportunity__lead">México lo enciende. Panamá lo corona. Agenda una reunión y te mostramos dónde encaja tu marca.</p>
+    <img src="assets/xperience/sponsor-mockup.jpg" alt="Concepto de zona de marca en GameLobby Xperience" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:36px">
+    <div class="xp-hero__cta" style="justify-content:center">
+      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--lg" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+      <button type="button" class="btn btn--outline btn--lg" data-open-mediakit data-xp-event="sponsor_media_kit_download_click">Descargar Media Kit</button>
+    </div>
+    <p class="xp-hero__note"><a href="#glx-sponsors" class="form__link" style="font-size:13px">¿Prefieres escribirnos? Déjanos tus datos ↓</a></p>
+  </div>
+</section>
+
+<!-- ============ FORMULARIO ABREVIADO + MEDIA KIT ============ -->
 <section class="section contact xp-form" id="glx-sponsors" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle)">
   <div class="contact__inner">
     <div>
-      <span class="badge badge--pink" style="margin-bottom:18px"><span class="dot"></span>GameLobby Xperience · Agosto de 2027</span>
-      <h2>Solicitar propuesta para mi marca</h2>
+      <span class="badge badge--pink" style="margin-bottom:18px"><span class="dot"></span>GameLobby Xperience · Gran Final 28 y 29 de agosto de 2027</span>
+      <h2>Quiero ser patrocinador</h2>
       <p class="contact__lead">Te ayudamos a diseñar la participación correcta para tu marca. Formato, sede y condiciones comerciales se detallarán en la propuesta.</p>
       <div class="contact__list">
-        <div class="contact__list-item"><i data-lucide="calendar" class="ic"></i><span class="t">Agosto de 2027</span></div>
+        <div class="contact__list-item"><i data-lucide="calendar" class="ic"></i><span class="t">Gran Final, 28 y 29 de agosto de 2027</span></div>
         <div class="contact__list-item"><i data-lucide="trophy" class="ic"></i><span class="t">Competición, contenido y activaciones participativas</span></div>
         <div class="contact__list-item"><i data-lucide="file-text" class="ic"></i><span class="t">Formato, sede y condiciones en la propuesta</span></div>
       </div>
@@ -321,34 +534,10 @@
 
     <div class="card" data-neon="pink" style="padding:32px">
       <form class="form" id="glx-form">
-        <h3>Quiero ser sponsor</h3>
-        <div class="xp-form__row">
-          <div class="field"><label for="glx-name">Nombre</label><input id="glx-name" name="name" placeholder="Alex Rivera" required></div>
-          <div class="field"><label for="glx-title">Cargo</label><input id="glx-title" name="jobTitle" placeholder="Gerente de Marketing"></div>
-        </div>
-        <div class="xp-form__row">
-          <div class="field"><label for="glx-company">Empresa</label><input id="glx-company" name="company" placeholder="Tu marca" required></div>
-          <div class="field">
-            <label for="glx-category">Categoría de empresa</label>
-            <select id="glx-category" name="companyCategory">
-              <option value="" disabled selected>Elige una categoría</option>
-              <option>Bancos y fintech</option>
-              <option>Telecomunicaciones</option>
-              <option>Tecnología</option>
-              <option>Retail</option>
-              <option>Consumo masivo (FMCG)</option>
-              <option>Automotriz</option>
-              <option>Educación / Universidades</option>
-              <option>Gobierno / Institucional</option>
-              <option>Agencia</option>
-              <option>Otro</option>
-            </select>
-          </div>
-        </div>
-        <div class="xp-form__row">
-          <div class="field"><label for="glx-email">Correo corporativo</label><input id="glx-email" name="email" type="email" placeholder="alex@empresa.com" required></div>
-          <div class="field"><label for="glx-phone">WhatsApp / teléfono</label><input id="glx-phone" name="phone" type="tel" placeholder="+507 6000 0000"></div>
-        </div>
+        <h3>Quiero ser patrocinador</h3>
+        <div class="field"><label for="glx-name">Nombre</label><input id="glx-name" name="name" placeholder="Alex Rivera" required></div>
+        <div class="field"><label for="glx-company">Empresa</label><input id="glx-company" name="company" placeholder="Tu marca" required></div>
+        <div class="field"><label for="glx-email">Correo corporativo</label><input id="glx-email" name="email" type="email" placeholder="alex@empresa.com" required></div>
         <div class="field">
           <label for="glx-country">País</label>
           <select id="glx-country" name="country" required>
@@ -376,33 +565,56 @@
             <label class="xp-check"><input type="checkbox" name="goals" value="Otro"> Otro</label>
           </div>
         </div>
-        <div class="field">
-          <label for="glx-scale">Rango de inversión considerado <span style="color:var(--text-4);font-weight:400">(opcional, uso interno para preparar tu propuesta)</span></label>
-          <select id="glx-scale" name="scale">
-            <option value="" selected>Prefiero definirlo en la conversación</option>
-            <option>Aún por definir</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="glx-experiences">Experiencias de interés <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-          <input id="glx-experiences" name="experiences" placeholder="Se completa según lo que explores arriba, o escribe la tuya">
-        </div>
-        <div class="field">
-          <label for="glx-message">Mensaje <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-          <textarea id="glx-message" name="message" rows="3" placeholder="¿Qué buscas lograr con GameLobby Xperience?"></textarea>
-        </div>
+
+        <details class="xp-form__more">
+          <summary>Más detalles (opcional)</summary>
+          <div class="field"><label for="glx-title">Cargo</label><input id="glx-title" name="jobTitle" placeholder="Gerente de Marketing"></div>
+          <div class="field">
+            <label for="glx-category">Categoría de empresa</label>
+            <select id="glx-category" name="companyCategory">
+              <option value="" disabled selected>Elige una categoría</option>
+              <option>Bancos y fintech</option>
+              <option>Telecomunicaciones</option>
+              <option>Tecnología</option>
+              <option>Retail</option>
+              <option>Consumo masivo (FMCG)</option>
+              <option>Automotriz</option>
+              <option>Educación / Universidades</option>
+              <option>Gobierno / Institucional</option>
+              <option>Agencia</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field"><label for="glx-phone">WhatsApp / teléfono</label><input id="glx-phone" name="phone" type="tel" placeholder="+507 6000 0000"></div>
+          <div class="field">
+            <label for="glx-scale">Rango de inversión considerado <span style="color:var(--text-4);font-weight:400">(opcional, uso interno para preparar tu propuesta)</span></label>
+            <select id="glx-scale" name="scale">
+              <option value="" selected>Prefiero definirlo en la conversación</option>
+              <option>Aún por definir</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="glx-experiences">Experiencias de interés <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <input id="glx-experiences" name="experiences" placeholder="Se completa según lo que explores arriba, o escribe la tuya">
+          </div>
+          <div class="field">
+            <label for="glx-message">Mensaje <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <textarea id="glx-message" name="message" rows="3" placeholder="¿Qué buscas lograr con GameLobby Xperience?"></textarea>
+          </div>
+          <label class="consent"><input type="checkbox" name="consentMarketing" value="1"> <span>Quiero recibir novedades de GameLobby por correo (opcional).</span></label>
+        </details>
+
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent"><input type="checkbox" name="consentMarketing" value="1"> <span>Quiero recibir novedades de GameLobby por correo (opcional).</span></label>
         <p class="form__note">Usamos tus datos solo para responder esta solicitud.</p>
-        <button class="btn btn--pink btn--block btn--md" type="submit">Solicitar propuesta para mi marca</button>
+        <button class="btn btn--pink btn--block btn--md" type="submit">Solicitar propuesta</button>
       </form>
       <div class="form__success hidden" id="glx-success">
         <i data-lucide="circle-check-big" style="width:48px;height:48px"></i>
-        <h3>Solicitud recibida</h3>
-        <p>Nuestro equipo preparará las oportunidades más relevantes para tu marca y categoría.</p>
+        <h3>¡Recibido!</h3>
+        <p>Te escribimos pronto. Si quieres avanzar más rápido, agenda una reunión ahora.</p>
         <div class="xp-success__actions" id="glx-success-actions">
-          <a href="#" id="glx-whatsapp-btn" class="btn btn--outline btn--sm hidden" target="_blank" rel="noopener" data-xp-event="sponsor_whatsapp_click">Hablar por WhatsApp</a>
-          <a href="#" id="glx-meeting-btn" class="btn btn--outline btn--sm hidden" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+          <a href="" id="glx-whatsapp-btn" class="btn btn--outline btn--sm hidden" target="_blank" rel="noopener" data-xp-event="sponsor_whatsapp_click">Hablar por WhatsApp</a>
+          <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" id="glx-meeting-btn" class="btn btn--outline btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
         </div>
       </div>
     </div>
@@ -423,7 +635,7 @@
       </div>
       <div class="footer__col">
         <h4>GameLobby Xperience</h4>
-        <a href="#como-funciona">Cómo funciona</a><a href="#objetivos">Objetivos</a><a href="#zonas">Zonas</a><a href="#glx-sponsors">Sé sponsor</a>
+        <a href="#como-funciona">Cómo funciona</a><a href="#objetivos">Objetivos</a><a href="#zonas">Zonas</a><a href="#glx-sponsors">Sé patrocinador</a>
       </div>
       <div class="footer__col">
         <h4>Empresa</h4>
@@ -604,11 +816,11 @@
 
   // ---- GameLobby Xperience: recomendador de experiencias por objetivo ----
   var XP_RECOMMEND = {
-    awareness: ['Tarima principal', 'Naming de zona', 'Pantalla piso-techo', 'Experiencias de gran formato'],
-    adquisicion: ['Misiones del Wallet', 'Votaciones', 'Competencias', 'Rewards'],
-    producto: ['Sampling', 'Challenges de marca', 'Premios', 'Canjes', 'Experience zones'],
-    rse: ['Campus Quest', 'STEM Tech Lab', 'Becas', 'Accesos para estudiantes'],
-    contenido: ['Creadores', 'Cosplay', 'Streaming', 'Contenido UGC'],
+    awareness: ['Tarima principal', 'Nombre patrocinado de zona', 'Pantalla piso-techo', 'Experiencias de gran formato'],
+    adquisicion: ['Misiones de la Wallet', 'Votaciones', 'Competencias', 'Recompensas'],
+    producto: ['Muestras', 'Retos de marca', 'Premios', 'Canjes', 'Zonas de experiencia'],
+    rse: ['Campus Quest'],
+    contenido: ['Content & Streaming Zone', 'Concurso de cosplay', 'Contenido de la comunidad'],
   };
   var XP_GOAL_TO_CHECKBOX = {
     awareness: 'Brand Awareness',
@@ -648,21 +860,20 @@
 
   // ---- GameLobby Xperience: zonas del venue ----
   var XP_ZONES = [
-    { name: 'Sim Racing Garage', img: 'assets/xperience/zone-sim-racing.jpg', desc: 'Una experiencia competitiva de alto engagement.', formats: ['Naming', 'Challenge patrocinado', 'Premios', 'QR mission', 'Sampling', 'Leaderboard', 'Contenido social'] },
-    { name: 'Tarima principal', desc: 'El escenario central del evento—shows, anuncios y momentos masivos.', formats: ['Naming', 'Presencia en pantalla', 'Activaciones en vivo', 'Sampling'] },
-    { name: 'Arena Monitores', desc: 'Setups de competición para torneos y exhibiciones.', formats: ['Naming', 'Leaderboard', 'Branding en puestos', 'Streaming'] },
-    { name: 'Plaza Mall', desc: 'Propuesta: el punto de entrada y tránsito del evento.', formats: ['Naming', 'Sampling', 'Brand ambassadors'] },
-    { name: 'Zona Creativa', desc: 'Talleres y contenido hands-on.', formats: ['Talleres patrocinados', 'Sampling', 'Contenido'] },
-    { name: 'Talleres', img: 'assets/xperience/zone-talleres.jpg', desc: 'Sesiones de aprendizaje y práctica en vivo.', formats: ['Naming', 'Instructores de marca', 'Sampling'] },
-    { name: 'Artist Alley', desc: 'Creadores, ilustradores y artistas locales.', formats: ['Colaboraciones con creadores', 'Contenido', 'Merch'] },
-    { name: 'Market', img: 'assets/xperience/zone-market.jpg', desc: 'Zona de venta y descubrimiento de marcas.', formats: ['Espacio de venta', 'Sampling', 'Promociones'] },
-    { name: 'Arcade / Games & Rock', desc: 'Arcade clásico con música en vivo.', formats: ['Naming', 'Challenges', 'Premios'] },
-    { name: 'Dance & Music', img: 'assets/xperience/zone-dance-music.jpg', desc: 'Competencias y shows de baile y música.', formats: ['Naming', 'Premios', 'Contenido social'] },
+    { name: 'Tarima principal y zona de público', desc: 'El escenario central del evento y su zona de público—shows, anuncios y momentos masivos.', formats: ['Naming', 'Presencia en pantalla', 'Activaciones en vivo', 'Sampling'] },
     { name: 'Arena Mobile', desc: 'Torneos de juegos móviles.', formats: ['Naming', 'QR mission', 'Leaderboard'] },
-    { name: 'Geek & Anime Zone', img: 'assets/xperience/zone-geek-anime.jpg', desc: 'Cultura geek, anime y cosplay.', formats: ['Naming', 'Votaciones', 'Contenido UGC'] },
-    { name: 'Recharge Lounge', img: 'assets/xperience/zone-recharge-lounge.jpg', desc: 'Zona de descanso y carga de dispositivos.', formats: ['Naming', 'Sampling', 'Brand lounge'] },
+    { name: 'Sim Racing Garage', img: 'assets/xperience/zone-sim-racing.jpg', desc: 'Una experiencia competitiva de alto engagement.', formats: ['Naming', 'Challenge patrocinado', 'Premios', 'QR mission', 'Sampling', 'Leaderboard', 'Contenido social'] },
+    { name: 'Arena Monitores', desc: 'Setups de competición para torneos y exhibiciones.', formats: ['Naming', 'Leaderboard', 'Branding en puestos', 'Streaming'] },
     { name: 'Football Fan Arena', img: 'assets/xperience/zone-football.jpg', desc: 'Fútbol, simuladores y retos.', formats: ['Naming', 'Challenge patrocinado', 'Premios'] },
+    { name: 'Geek & Anime Zone', img: 'assets/xperience/zone-geek-anime.jpg', desc: 'Cultura geek, anime y cosplay.', formats: ['Naming', 'Votaciones', 'Contenido UGC'] },
+    { name: 'Arcade', desc: 'Arcade clásico con música en vivo.', formats: ['Naming', 'Challenges', 'Premios'] },
+    { name: 'Dance and Music', img: 'assets/xperience/zone-dance-music.jpg', desc: 'Competencias y shows de baile y música.', formats: ['Naming', 'Premios', 'Contenido social'] },
     { name: 'Casual Game Lab', desc: 'Juegos casuales para todo público.', formats: ['Naming', 'Sampling', 'Activaciones familiares'] },
+    { name: 'Content & Streaming Zone', desc: 'Creadores, cosplay y streaming en vivo de la activación.', formats: ['Creadores', 'Streaming', 'Contenido UGC'] },
+    { name: 'Lounge Zone', img: 'assets/xperience/zone-recharge-lounge.jpg', desc: 'Zona de descanso y carga de dispositivos.', formats: ['Naming', 'Sampling', 'Brand lounge'] },
+    { name: 'Cool Down Zone +18 (marcas de consumo adulto)', desc: 'Espacio de acceso restringido para mayores de edad, apto para marcas de consumo adulto.', formats: [] },
+    { name: 'Pantalla piso-techo con el ranking en vivo', desc: 'El ranking en vivo del torneo, visible en toda la Gran Final.', formats: ['Naming', 'Presencia en pantalla'] },
+    { name: 'Plaza creativa (talleres, Artist Alley y mercado)', img: 'assets/xperience/zone-market.jpg', desc: 'Talleres, Artist Alley y mercado: aprendizaje, creadores locales y descubrimiento de marcas.', formats: ['Talleres patrocinados', 'Colaboraciones con creadores', 'Sampling', 'Espacio de venta'] },
   ];
   var xpZonesGrid = document.getElementById('xp-zones');
   var xpZonePanel = document.getElementById('xp-zone-panel');
@@ -688,7 +899,9 @@
     });
   }
 
-  // ---- GameLobby Xperience: config de WhatsApp / reunión (no se inventan links) ----
+  // ---- GameLobby Xperience: config de WhatsApp (no se inventan links) ----
+  // El botón de "Agendar una reunión" ya apunta en el HTML a https://calendar.app.google/paVtHHDVLxzuwhFq8
+  // y no depende de /api/sponsor-config. WhatsApp sigue oculto hasta tener un número real.
   var xpSponsorConfig = { whatsappUrl: null, calendarUrl: null };
   fetch('/api/sponsor-config').then(function (r) { return r.json(); }).then(function (d) {
     if (d && d.ok) xpSponsorConfig = d;
@@ -707,9 +920,7 @@
     document.getElementById('glx-form').classList.add('hidden');
     document.getElementById('glx-success').classList.remove('hidden');
     var wa = document.getElementById('glx-whatsapp-btn');
-    var meet = document.getElementById('glx-meeting-btn');
     if (xpSponsorConfig.whatsappUrl) { wa.href = xpSponsorConfig.whatsappUrl; wa.classList.remove('hidden'); }
-    if (xpSponsorConfig.calendarUrl) { meet.href = xpSponsorConfig.calendarUrl; meet.classList.remove('hidden'); }
     xpTrack('sponsor_submit_success', {
       goal: (document.getElementById('glx-goals').querySelectorAll('input:checked').length ? 'yes' : 'no'),
       company_category: document.getElementById('glx-category').value || null,
