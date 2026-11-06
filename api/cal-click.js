@@ -3,9 +3,10 @@
 // (solo la primera vez), y redirige al calendario. Nunca bloquea el acceso.
 
 import { kv, sendEmail, buildBookingThanksEmail } from "./_email.js";
+import { sponsorCalendarUrl } from "./calendar-url.js";
 
 function calendarUrl() {
-  return process.env.SPONSOR_CALENDAR_URL || "/xperience#glx-sponsors";
+  return sponsorCalendarUrl();
 }
 
 export default async function handler(req, res) {

@@ -3,10 +3,14 @@
 //
 // Variables de entorno opcionales (Vercel > Project > Settings > Env):
 //   SPONSOR_WHATSAPP_URL -> ej: https://wa.me/50760000000
-//   SPONSOR_CALENDAR_URL -> ej: https://cal.com/gamelobby/sponsors
+//   SPONSOR_CALENDAR_URL -> se usa solo si no es el appointment retirado
+//     gxjJELrWfsip6PG69. Si falta o sigue siendo el viejo, calendarUrl es
+//     https://calendar.app.google/paVtHHDVLxzuwhFq8
 //
-// Si no están configuradas, el frontend oculta el botón correspondiente en vez
-// de mostrar un link inventado.
+// WhatsApp: si no está configurado, el frontend oculta el botón en vez de
+// mostrar un link inventado. El calendario siempre tiene un enlace real.
+
+import { sponsorCalendarUrl } from "./calendar-url.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -16,6 +20,6 @@ export default async function handler(req, res) {
   return res.status(200).json({
     ok: true,
     whatsappUrl: process.env.SPONSOR_WHATSAPP_URL || null,
-    calendarUrl: process.env.SPONSOR_CALENDAR_URL || null,
+    calendarUrl: sponsorCalendarUrl(),
   });
 }

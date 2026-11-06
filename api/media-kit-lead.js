@@ -12,7 +12,8 @@
 //      respondido o no
 //
 // Requiere las mismas env vars que api/lead.js (KV, RESEND_API_KEY, MAIL_FROM)
-// más MEDIA_KIT_WEBHOOK_URL y SPONSOR_CALENDAR_URL (ver api/_email.js).
+// más MEDIA_KIT_WEBHOOK_URL. El redirect de agenda usa api/calendar-url.js
+// (el appointment gxjJELrWfsip6PG69 ya no se publica).
 //
 // Anti-abuso: honeypot (campo "website" oculto) + límite de 3 envíos por IP por
 // hora (mk:rl:<ip> en KV). A diferencia del form de leads normal, este dispara
