@@ -1,7 +1,7 @@
 // El calendario público no puede volver a publicar el appointment retirado.
 import { test, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { sponsorCalendarUrl, SPONSOR_CALENDAR_URL } from "../api/calendar-url.js";
+import { sponsorCalendarUrl, SPONSOR_CALENDAR_URL } from "../lib/calendar-url.js";
 
 const NEW_URL = "https://calendar.app.google/paVtHHDVLxzuwhFq8";
 const OLD_URL = "https://calendar.app.google/gxjJELrWfsip6PG69";

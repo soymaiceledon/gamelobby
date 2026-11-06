@@ -9,7 +9,7 @@
 // Variables de entorno relevantes (además de las ya usadas por lead.js):
 //   MEDIA_KIT_WEBHOOK_URL -> Apps Script del Google Sheet dedicado a estos leads (separado del de la home)
 //   SPONSOR_CALENDAR_URL  -> link de Google Calendar para agendar llamada.
-//     El appointment gxjJELrWfsip6PG69 está retirado: api/calendar-url.js
+//     El appointment gxjJELrWfsip6PG69 está retirado: lib/calendar-url.js
 //     lo sustituye por https://calendar.app.google/paVtHHDVLxzuwhFq8
 //   SITE_URL              -> origen público del sitio, ej https://www.gamelobby.live (para armar links en emails)
 

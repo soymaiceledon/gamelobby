@@ -12,7 +12,7 @@
 //      respondido o no
 //
 // Requiere las mismas env vars que api/lead.js (KV, RESEND_API_KEY, MAIL_FROM)
-// más MEDIA_KIT_WEBHOOK_URL. El redirect de agenda usa api/calendar-url.js
+// más MEDIA_KIT_WEBHOOK_URL. El redirect de agenda usa lib/calendar-url.js
 // (el appointment gxjJELrWfsip6PG69 ya no se publica).
 //
 // Anti-abuso: honeypot (campo "website" oculto) + límite de 3 envíos por IP por

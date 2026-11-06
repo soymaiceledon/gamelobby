@@ -10,7 +10,7 @@
 // WhatsApp: si no está configurado, el frontend oculta el botón en vez de
 // mostrar un link inventado. El calendario siempre tiene un enlace real.
 
-import { sponsorCalendarUrl } from "./calendar-url.js";
+import { sponsorCalendarUrl } from "../lib/calendar-url.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {

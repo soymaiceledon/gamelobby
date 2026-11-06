@@ -3,7 +3,7 @@
 // (solo la primera vez), y redirige al calendario. Nunca bloquea el acceso.
 
 import { kv, sendEmail, buildBookingThanksEmail } from "./_email.js";
-import { sponsorCalendarUrl } from "./calendar-url.js";
+import { sponsorCalendarUrl } from "../lib/calendar-url.js";
 
 function calendarUrl() {
   return sponsorCalendarUrl();
