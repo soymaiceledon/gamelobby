@@ -762,7 +762,17 @@ em { font-style: normal; color: var(--gl-pink); }
   margin-top: 28px;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;
 }
-.lobby-card { padding: 22px; display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.lobby-card { padding: 22px; display: flex; flex-direction: column; gap: 10px; align-items: stretch; overflow: hidden; }
+.lobby-card__banner {
+  width: calc(100% + 44px);
+  max-width: none;
+  height: auto;
+  margin: -22px -22px 2px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  background: var(--gl-surface-4);
+}
 .lobby-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: #fff; }
 .lobby-card__when { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-1); line-height: 1.35; }
 .lobby-card__meta { font-size: 14px; line-height: 1.45; color: var(--text-3); }

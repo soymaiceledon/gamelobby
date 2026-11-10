@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { estadoTorneo } from "../lib/lobby-estado.js";
 
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
@@ -56,6 +56,23 @@ test("la home anuncia premios confirmados y Free Fire reprogramado, sin otra fec
   assert.match(html, /href="#EntraAlLobby"/);
   assert.match(html, /\+25,000/);
   assert.match(html, /\+500/);
+});
+
+test("cada tarjeta lleva el banner local del juego, sin enlazar gamelobby.gg", () => {
+  const banners = {
+    "lobby-fortnite": ["Fortnite", "/img/torneos/fortnite.webp"],
+    "lobby-tekken": ["Tekken 8", "/img/torneos/tekken-8.webp"],
+    "lobby-fc27": ["EA Sports FC 27", "/img/torneos/fc-27.webp"],
+    "lobby-clash": ["Clash Royale", "/img/torneos/clash-royale.webp"],
+    "lobby-freefire": ["Free Fire", "/img/torneos/free-fire.webp"],
+  };
+  for (const [id, [alt, src]] of Object.entries(banners)) {
+    const piece = card(id);
+    assert.match(piece, new RegExp(`<img class="lobby-card__banner" src="${src}" alt="${alt}"[^>]*loading="lazy"`));
+    assert.doesNotMatch(piece, /src="https:\/\/gamelobby\.gg\/uploads\/(?:games|gallery)/);
+    const size = statSync(new URL(`..${src}`, import.meta.url)).size;
+    assert.ok(size > 0 && size < 150 * 1024, `${src} pesa ${size}`);
+  }
 });
 
 test("las redirecciones nuevas son temporales y no pisan la del media kit", () => {
