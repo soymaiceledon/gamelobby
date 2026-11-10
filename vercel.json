@@ -6,6 +6,56 @@
       "source": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2026.pdf",
       "destination": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf",
       "permanent": false
+    },
+    {
+      "source": "/torneos",
+      "destination": "/#EntraAlLobby",
+      "permanent": false
+    },
+    {
+      "source": "/torneo",
+      "destination": "/#EntraAlLobby",
+      "permanent": false
+    },
+    {
+      "source": "/encuesta",
+      "destination": "/#EntraAlLobby",
+      "permanent": false
+    },
+    {
+      "source": "/freefire",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-free-fire?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=freefire",
+      "permanent": false
+    },
+    {
+      "source": "/ff",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-free-fire?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=freefire",
+      "permanent": false
+    },
+    {
+      "source": "/fortnite",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-fortnite?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=fortnite",
+      "permanent": false
+    },
+    {
+      "source": "/tekken",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-tekken-8?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=tekken",
+      "permanent": false
+    },
+    {
+      "source": "/fc27",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-ea-sports-fc-27?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=fc27",
+      "permanent": false
+    },
+    {
+      "source": "/fc",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-ea-sports-fc-27?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=fc27",
+      "permanent": false
+    },
+    {
+      "source": "/clash",
+      "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-clash-royale?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=clash",
+      "permanent": false
     }
   ]
 }
