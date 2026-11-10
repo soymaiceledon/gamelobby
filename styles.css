@@ -716,3 +716,108 @@ em { font-style: normal; color: var(--gl-pink); }
   .xp-journey__flow { gap: 6px; }
   .xp-step { padding: 8px 14px; font-size: 13px; }
 }
+
+/* ============================================================
+   Home — Entra al Lobby (torneos flash). Solo usa clases nuevas
+   o :has(#EntraAlLobby), para no cambiar /xperience ni el resto.
+   ============================================================ */
+#EntraAlLobby { scroll-margin-top: 88px; }
+.lobby { background: var(--gl-surface-1); border-bottom: 1px solid var(--border-subtle); }
+.hero__flash {
+  margin: 22px 0 0;
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--gl-cyan-soft);
+}
+.hero__secondary { margin: 14px 0 0; font-size: 14px; }
+.hero__secondary button {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: var(--text-3);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.hero__secondary button:hover { color: var(--gl-cyan-soft); }
+.nav__cta { white-space: normal; text-align: center; line-height: 1.15; height: auto; min-height: 38px; padding-top: 8px; padding-bottom: 8px; }
+.nav__menu-waitlist { display: none; }
+
+.lobby__steps {
+  list-style: none; margin: 36px auto 0; padding: 0; max-width: 920px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+}
+.lobby__steps li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 16px; background: var(--gl-surface-3);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+}
+.lobby__steps b {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  color: var(--gl-text-on-cyan); background: var(--gl-cyan);
+}
+.lobby__steps p { font-size: 14.5px; line-height: 1.45; color: var(--text-2); }
+.lobby__grid {
+  margin-top: 28px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;
+}
+.lobby-card { padding: 22px; display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.lobby-card h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: #fff; }
+.lobby-card__when { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--text-1); line-height: 1.35; }
+.lobby-card__meta { font-size: 14px; line-height: 1.45; color: var(--text-3); }
+.lobby-card__prize { font-family: var(--font-display); font-weight: 600; font-size: 14.5px; color: var(--text-1); }
+.lobby-card__soon { font-family: var(--font-display); font-weight: 700; font-size: 14px; line-height: 1.35; color: var(--gl-cyan-soft); }
+.lobby-card__status {
+  align-self: flex-start;
+  font-family: var(--font-display); font-weight: 700; font-size: 12px;
+  letter-spacing: .02em;
+  padding: 5px 10px; border-radius: var(--radius-pill); border: 1px solid var(--border-strong);
+}
+.lobby-card__status[hidden] { display: none; }
+.lobby-card__status--hoy { color: var(--gl-text-on-lime); background: var(--gl-lime); border-color: var(--gl-lime); }
+.lobby-card__status--closed { color: var(--gl-pink-soft); background: rgba(201,0,135,.14); border-color: rgba(201,0,135,.45); }
+.lobby-card__status--done { color: var(--text-3); background: transparent; }
+.lobby-card--done { opacity: .72; }
+.lobby-card .btn { margin-top: 4px; }
+.lobby-card__pdf {
+  text-align: center; font-size: 14px;
+  color: var(--gl-cyan-soft); text-decoration: underline; text-underline-offset: 3px;
+}
+.lobby-card details { border-top: 1px solid var(--border-subtle); margin-top: 4px; padding-top: 8px; }
+.lobby-card summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 14px; color: var(--text-2); }
+.lobby-card details ol { margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+.lobby-card details li { font-size: 13.5px; line-height: 1.45; color: var(--text-3); }
+
+.lobby-sticky {
+  display: none;
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 45;
+  box-shadow: var(--shadow-3);
+}
+@media (max-width: 980px) {
+  .lobby__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .lobby-sticky { display: inline-flex; }
+  .lobby-sticky.lobby-sticky--hidden { visibility: hidden; pointer-events: none; }
+  body:has(.lobby-sticky) { padding-bottom: 84px; }
+  .lobby__steps, .lobby__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  body:has(#EntraAlLobby) .nav__waitlist { display: none; }
+  body:has(#EntraAlLobby) .nav__menu-waitlist { display: block; }
+  body:has(#EntraAlLobby) .nav__cta { max-width: 168px; font-size: 12px; padding: 7px 10px; }
+}
+@media (min-width: 901px) {
+  body:has(#EntraAlLobby) .nav__links { gap: 16px; margin-left: 4px; }
+  body:has(#EntraAlLobby) .nav__links a { white-space: nowrap; font-size: 14px; }
+  body:has(#EntraAlLobby) .nav__inner { gap: 12px; padding-inline: 16px; }
+  body:has(#EntraAlLobby) .nav__right { gap: 8px; }
+  body:has(#EntraAlLobby) .nav__cta { font-size: 13px; padding: 8px 12px; }
+  body:has(#EntraAlLobby) .nav__waitlist { font-size: 13px; padding-inline: 8px; }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(#EntraAlLobby) .nav__waitlist { display: none; }
+  body:has(#EntraAlLobby) .nav__links { gap: 12px; }
+  body:has(#EntraAlLobby) .nav__links a { font-size: 13px; }
+}

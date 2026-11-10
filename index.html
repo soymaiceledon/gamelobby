@@ -40,10 +40,12 @@
       <a href="/xperience">GameLobby Xperience</a>
       <a href="#contacto">Para marcas</a>
       <a href="#inversionistas">Para inversionistas</a>
+      <a class="nav__menu-waitlist" href="#" data-open-waitlist>Lista de espera</a>
     </nav>
     <div class="nav__right">
       <span class="nav__lang">ES</span>
-      <button class="btn btn--cyan btn--sm" data-open-waitlist>Lista de espera</button>
+      <a class="btn btn--pink btn--sm nav__cta" href="#EntraAlLobby">Inscríbete gratis a los torneos</a>
+      <button class="btn btn--ghost btn--sm nav__waitlist" type="button" data-open-waitlist>Lista de espera</button>
       <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="home-navlinks"><i data-lucide="menu"></i></button>
     </div>
   </div>
@@ -58,10 +60,12 @@
       <p class="hero__lead">
         GameLobby conecta competición, comunidades y recompensas. Preparamos el lanzamiento de la plataforma para octubre de 2026 y la llegada progresiva de la Gamer Wallet entre octubre y noviembre.
       </p>
+      <p class="hero__flash">Torneo Flash · 11 y 12 de noviembre · 7:00 p. m. (Panamá) · Premios: $10 al 1.º lugar y $5 al 2.º</p>
       <div class="hero__ctas">
-        <button class="btn btn--pink btn--lg" data-open-waitlist>Unirme a la lista de espera</button>
+        <a class="btn btn--pink btn--lg" href="#EntraAlLobby">Inscríbete gratis a los torneos</a>
         <a class="btn btn--cyan btn--lg" href="/organizadores">Registrar mi comunidad</a>
       </div>
+      <p class="hero__secondary"><button type="button" data-open-waitlist>Unirme a la lista de espera</button></p>
       <p class="hero__access"><a href="#contacto">Para marcas</a> · <a href="#inversionistas">Para inversionistas</a></p>
       <div class="hero__ministats">
         <div><div class="ministat__v">+25,000</div><div class="ministat__l">Cuentas de gamers registradas</div></div>
@@ -153,6 +157,125 @@
   </div>
 </section>
 
+<!-- ============ ENTRA AL LOBBY ============ -->
+<section class="section lobby" id="EntraAlLobby">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow eyebrow--cyan">Torneo Flash</span>
+      <h2>Entra al Lobby: torneos gratis esta semana</h2>
+    </div>
+    <ol class="lobby__steps">
+      <li><b>1</b><p>Crea tu cuenta gratis en <a href="https://gamelobby.gg" target="_blank" rel="noopener">gamelobby.gg</a>.</p></li>
+      <li><b>2</b><p>Verifica tu correo.</p></li>
+      <li><b>3</b><p>Vuelve a este enlace e inscríbete en la sala.</p></li>
+    </ol>
+    <div class="lobby__grid" id="lobby-cards">
+      <article class="card card--int lobby-card" id="lobby-fortnite" data-neon="cyan" data-fecha="2026-11-11">
+        <p class="lobby-card__status" data-estado hidden></p>
+        <h3>Fortnite</h3>
+        <p class="lobby-card__when">Miércoles 11 de noviembre · 7:00 p. m. (Panamá)</p>
+        <p class="lobby-card__meta">Inscripciones hasta las 6:50 p. m.</p>
+        <p class="lobby-card__meta">Zone Wars 1 vs 1, una partida, primero a 3 rondas (FT3).</p>
+        <p class="lobby-card__prize">Premios: $10 al 1.º lugar y $5 al 2.º</p>
+        <a class="btn btn--cyan btn--block btn--lg" href="/fortnite">Inscríbete</a>
+        <a class="lobby-card__pdf" href="https://gamelobby.gg/uploads/rules/2/4/1/rule-e05f9271-52f9-4fb0-93c7-63ff26c60197.pdf" target="_blank" rel="noopener">Ver reglas (PDF)</a>
+        <details>
+          <summary>Reglas en 5 puntos</summary>
+          <ol>
+            <li>En línea, Zone Wars 1 vs 1, todos contra todos por puntos. Cupo: 150. Inscripción gratis. País incluido: Panamá.</li>
+            <li>El miércoles 11 de noviembre la sala está activa de 7:00 p. m. a 9:00 p. m. (hora de Panamá). Hay que estar en gamelobby.gg con la sesión iniciada.</li>
+            <li>A las 7:00 p. m. se pulsa «buscar», se valida la asistencia y se intercambia la Epic ID en el match center.</li>
+            <li>Durante esas 2 horas se suman puntos. Cada enfrentamiento es una partida privada de Zone Wars, primero a 3 rondas (FT3). Crossplay: PlayStation, Xbox, PC y Nintendo Switch.</li>
+            <li>Quien gana reporta el marcador con fotos y el otro jugador valida. 3 puntos por victoria, 0 por derrota y 1 punto extra por reportar y validar bien. Un reclamo con evidencia lo revisa un juez en un máximo de 24 horas.</li>
+          </ol>
+        </details>
+      </article>
+
+      <article class="card card--int lobby-card" id="lobby-tekken" data-neon="purple" data-fecha="2026-11-11">
+        <p class="lobby-card__status" data-estado hidden></p>
+        <h3>Tekken 8</h3>
+        <p class="lobby-card__when">Miércoles 11 de noviembre · 7:00 p. m. (Panamá)</p>
+        <p class="lobby-card__meta">Inscripciones hasta las 6:50 p. m.</p>
+        <p class="lobby-card__meta">1 vs 1, primero a 2 victorias (FT2), 3 rounds de 60 segundos.</p>
+        <p class="lobby-card__prize">Premios: $10 al 1.º lugar y $5 al 2.º</p>
+        <a class="btn btn--pink btn--block btn--lg" href="/tekken">Inscríbete</a>
+        <a class="lobby-card__pdf" href="https://gamelobby.gg/uploads/rules/2/3/1/rule-192c0bd1-f8e3-41a5-b96a-a4be7db2503f.pdf" target="_blank" rel="noopener">Ver reglas (PDF)</a>
+        <details>
+          <summary>Reglas en 5 puntos</summary>
+          <ol>
+            <li>En línea, 1 vs 1, todos contra todos por puntos. Cupo: 150. Inscripción gratis. País incluido: Panamá. Crossplay: PlayStation, Xbox y PC.</li>
+            <li>El miércoles 11 de noviembre la sala está activa de 7:00 p. m. a 9:00 p. m. (hora de Panamá). Hay que estar conectado dentro de la sala.</li>
+            <li>Se pulsa «buscar», se valida la asistencia y se intercambia la Tekken ID. Un jugador crea la sala de combate (Player Match) e invita al rival.</li>
+            <li>El set es primero a 2 victorias (FT2, mejor de 3). Cada pelea tiene 3 rounds de 60 segundos.</li>
+            <li>Quien gana reporta el marcador con fotos y el otro jugador valida. 3 puntos por victoria, 0 por derrota y 1 punto extra por reportar y validar bien. Un reclamo con evidencia lo revisa un juez en un máximo de 24 horas.</li>
+          </ol>
+        </details>
+      </article>
+
+      <article class="card card--int lobby-card" id="lobby-fc27" data-neon="lime" data-fecha="2026-11-12">
+        <p class="lobby-card__status" data-estado hidden></p>
+        <h3>EA Sports FC 27</h3>
+        <p class="lobby-card__when">Jueves 12 de noviembre · 7:00 p. m. (Panamá)</p>
+        <p class="lobby-card__meta">Inscripciones hasta las 6:50 p. m.</p>
+        <p class="lobby-card__meta">Amistoso en línea, media 95, 90 minutos, sin prórroga ni penales.</p>
+        <p class="lobby-card__prize">Premios: $10 al 1.º lugar y $5 al 2.º</p>
+        <a class="btn btn--lime btn--block btn--lg" href="/fc27">Inscríbete</a>
+        <a class="lobby-card__pdf" href="https://gamelobby.gg/uploads/rules/2/3/1/rule-89f0fa06-4360-4c3f-b63a-53b3592e748c.pdf" target="_blank" rel="noopener">Ver reglas (PDF)</a>
+        <details>
+          <summary>Reglas en 5 puntos</summary>
+          <ol>
+            <li>En línea, 1 vs 1, amistosos con media 95, todos contra todos por puntos. Cupo: 150. Inscripción gratis. País incluido: Panamá. Crossplay: PlayStation, Xbox y PC.</li>
+            <li>El jueves 12 de noviembre la sala está activa de 7:00 p. m. a 9:00 p. m. (hora de Panamá). Hay que estar conectado dentro de la sala.</li>
+            <li>Se pulsa «buscar», se valida la asistencia y se intercambia el EA ID, Gamertag o ID de usuario. La partida se crea en amistosos en línea con media 95.</li>
+            <li>Se juega un partido de 90 minutos, sin prórroga ni tanda de penales.</li>
+            <li>Quien gana, o cualquiera de los dos si empatan, reporta el marcador con fotos y el otro valida. 3 puntos por victoria, 1 por empate, 0 por derrota y 1 punto extra por reportar y validar bien. Un reclamo con evidencia lo revisa un juez en un máximo de 24 horas.</li>
+          </ol>
+        </details>
+      </article>
+
+      <article class="card card--int lobby-card" id="lobby-clash" data-neon="pink" data-fecha="2026-11-12">
+        <p class="lobby-card__status" data-estado hidden></p>
+        <h3>Clash Royale</h3>
+        <p class="lobby-card__when">Jueves 12 de noviembre · 7:00 p. m. (Panamá)</p>
+        <p class="lobby-card__meta">Inscripciones hasta las 6:50 p. m.</p>
+        <p class="lobby-card__meta">Batalla 1v1, primero en ganar 2 de 3 partidas (FT2).</p>
+        <p class="lobby-card__prize">Premios: $10 al 1.º lugar y $5 al 2.º</p>
+        <a class="btn btn--pink btn--block btn--lg" href="/clash">Inscríbete</a>
+        <a class="lobby-card__pdf" href="https://gamelobby.gg/uploads/rules/1/2/1/rule-82ca1897-5b18-41ec-a9b3-0b83f85783d7.pdf" target="_blank" rel="noopener">Ver reglas (PDF)</a>
+        <details>
+          <summary>Reglas en 5 puntos</summary>
+          <ol>
+            <li>En línea, batalla 1 vs 1, todos contra todos por puntos. Cupo: 150. Inscripción gratis. País incluido: Panamá. Plataforma: iOS y Android.</li>
+            <li>El jueves 12 de noviembre la sala está activa de 7:00 p. m. a 9:00 p. m. (hora de Panamá). Hay que estar conectado dentro de la sala.</li>
+            <li>Se pulsa «buscar», se valida la asistencia y se intercambia la etiqueta de jugador o el enlace de perfil.</li>
+            <li>El set es primero en ganar 2 de 3 partidas (FT2). Se añade al rival como amigo o se le invita a una partida amistosa o sala de torneo.</li>
+            <li>Quien gana reporta el marcador con fotos y el otro jugador valida. 3 puntos por victoria, 0 por derrota y 1 punto extra por reportar y validar bien. Un reclamo con evidencia lo revisa un juez en un máximo de 24 horas.</li>
+          </ol>
+        </details>
+      </article>
+
+      <article class="card card--int lobby-card" id="lobby-freefire" data-neon="cyan">
+        <p class="lobby-card__soon">Reprogramado · nueva fecha muy pronto</p>
+        <h3>Free Fire</h3>
+        <p class="lobby-card__meta">Dúos, kill race: gana quien más asesinatos haga.</p>
+        <p class="lobby-card__prize">Premios: $10 al 1.º lugar y $5 al 2.º</p>
+        <a class="btn btn--cyan btn--block btn--lg" href="/freefire">Inscríbete</a>
+        <a class="lobby-card__pdf" href="https://gamelobby.gg/uploads/rules/1/1/1/rule-e9d3875a-4da8-4b98-95d1-043a4b2bbc1d.pdf" target="_blank" rel="noopener">Ver reglas (PDF)</a>
+        <details>
+          <summary>Reglas en 5 puntos</summary>
+          <ol>
+            <li>En línea, en dúos y kill race (Battle Royale), todos contra todos por puntos. Cupo: 150. Inscripción gratis. País incluido: Panamá.</li>
+            <li>Gana quien más asesinatos tenga al terminar la partida. Si empatan en bajas, gana quien sobrevivió más; si sigue el empate, gana quien hizo más daño total.</li>
+            <li>No es obligatorio sanar o ayudar al compañero. No se permite obstruir ni dañarlo.</li>
+            <li>En la sala se pulsa «buscar», se valida la asistencia y, en el match center, se intercambian los ID para una partida pública en dúo.</li>
+            <li>Quien gana reporta el marcador con fotos y el otro jugador valida. 3 puntos por victoria, 0 por derrota y 1 punto extra por reportar y validar bien. Un reclamo con evidencia lo revisa un juez en un máximo de 24 horas.</li>
+          </ol>
+        </details>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ QUÉ ES GAME LOBBY ============ -->
 <section class="section" id="que-es">
   <div class="container">
@@ -194,7 +317,7 @@
         <span class="icon-tile icon-tile--lg icon-tile--cyan"><i data-lucide="gamepad-2" style="width:30px;height:30px"></i></span>
         <h3>Gamers &amp; Jugadores</h3>
         <p>Prepárate para competir en Rooms y torneos y descubrir las recompensas de la Gamer Wallet. Déjanos tu interés y te avisamos cuando abra tu país.</p>
-        <button class="btn btn--cyan btn--block btn--md" data-open-waitlist>Unirme a la lista de espera</button>
+        <a class="btn btn--cyan btn--block btn--md" href="#EntraAlLobby">Inscríbete gratis a los torneos</a>
       </div>
       <div class="card card--int aud" data-neon="purple">
         <span class="icon-tile icon-tile--lg icon-tile--purple"><i data-lucide="crown" style="width:30px;height:30px"></i></span>
@@ -433,7 +556,7 @@
       </div>
       <div class="footer__col">
         <h4>Producto</h4>
-        <a href="#que-es">Gamer Wallet</a><a href="#audiencias">Rooms &amp; Torneos</a>
+        <a href="#que-es">Gamer Wallet</a><a href="#EntraAlLobby">Rooms &amp; Torneos</a>
       </div>
       <div class="footer__col">
         <h4>Comunidad</h4>
@@ -522,7 +645,7 @@
       renderIcons();
     }
     burger.addEventListener('click', function () { setState(!nav.classList.contains('nav--open')); });
-    nav.querySelectorAll('.nav__links a').forEach(function (a) {
+    nav.querySelectorAll('.nav__links a, .nav__cta').forEach(function (a) {
       a.addEventListener('click', function () { setState(false); });
     });
   })();
@@ -652,6 +775,53 @@
     }, { threshold: 0.4 });
     nodes.forEach(function (el) { io.observe(el); });
   })();
+</script>
+<a class="lobby-sticky lobby-sticky--hidden btn btn--pink btn--lg" href="#EntraAlLobby">Inscríbete gratis a los torneos</a>
+
+<script type="module">
+  import { estadoTorneo } from "/lib/lobby-estado.js";
+  var list = document.getElementById("lobby-cards");
+  if (list) {
+    var ahora = new Date();
+    var finished = [];
+    list.querySelectorAll(".lobby-card").forEach(function (card) {
+      var fecha = card.getAttribute("data-fecha");
+      var status = card.querySelector("[data-estado]");
+      if (!fecha || !status) return;
+      var estado = estadoTorneo(fecha, ahora);
+      if (!estado) return;
+      status.textContent = estado;
+      status.hidden = false;
+      if (estado === "HOY") status.classList.add("lobby-card__status--hoy");
+      if (estado === "Inscripciones cerradas") status.classList.add("lobby-card__status--closed");
+      if (estado === "Finalizado") {
+        status.classList.add("lobby-card__status--done");
+        card.classList.add("lobby-card--done");
+        finished.push(card);
+      }
+    });
+    finished.forEach(function (card) { list.appendChild(card); });
+  }
+  var sticky = document.querySelector(".lobby-sticky");
+  var section = document.getElementById("EntraAlLobby");
+  var heroCta = document.querySelector(".hero__ctas a[href='#EntraAlLobby']");
+  if (sticky && section && heroCta && "IntersectionObserver" in window) {
+    var heroOn = true;
+    var sectionOn = false;
+    function paintSticky() {
+      sticky.classList.toggle("lobby-sticky--hidden", heroOn || sectionOn);
+    }
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.target === heroCta) heroOn = entry.isIntersecting;
+        if (entry.target === section) sectionOn = entry.isIntersecting;
+      });
+      paintSticky();
+    }, { rootMargin: "0px 0px -80px 0px", threshold: 0 });
+    watch.observe(heroCta);
+    watch.observe(section);
+    paintSticky();
+  }
 </script>
 <!-- Vercel Web Analytics (visitas y páginas vistas) -->
 <script defer src="/_vercel/insights/script.js"></script>
