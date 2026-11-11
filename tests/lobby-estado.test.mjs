@@ -50,9 +50,13 @@ test("la home anuncia premios confirmados y Free Fire reprogramado, sin otra fec
   assert.doesNotMatch(ff, /HOY|Inscripciones cerradas|Finalizado|18:50|7:00/);
   assert.match(ff, /href="\/freefire"/);
   assert.match(card("lobby-fortnite"), /data-fecha="2026-11-11"/);
-  assert.match(card("lobby-tekken"), /data-fecha="2026-11-11"/);
+  assert.match(card("lobby-tekken"), /data-fecha="2026-11-18"/);
+  assert.match(card("lobby-tekken"), /Miércoles 18 de noviembre · 7:00 p\. m\. \(Panamá\)/);
+  assert.match(card("lobby-tekken"), /Nueva fecha/);
   assert.match(card("lobby-fc27"), /data-fecha="2026-11-12"/);
   assert.match(card("lobby-clash"), /data-fecha="2026-11-12"/);
+  const order = [...html.matchAll(/<article[^>]*id="(lobby-[^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(order, ["lobby-fortnite", "lobby-fc27", "lobby-clash", "lobby-tekken", "lobby-freefire"]);
   assert.match(html, /href="#EntraAlLobby"/);
   assert.match(html, /\+25,000/);
   assert.match(html, /\+500/);
