@@ -52,6 +52,8 @@ test("la home anuncia premios confirmados y Free Fire reprogramado, sin otra fec
   assert.match(card("lobby-fortnite"), /data-fecha="2026-11-11"/);
   assert.match(card("lobby-tekken"), /data-fecha="2026-11-18"/);
   assert.match(card("lobby-tekken"), /Miércoles 18 de noviembre · 7:00 p\. m\. \(Panamá\)/);
+  assert.match(card("lobby-tekken"), /El miércoles 18 de noviembre la sala está activa/);
+  assert.doesNotMatch(card("lobby-tekken"), /11 de noviembre|2026-11-11|11\/11/);
   assert.match(card("lobby-tekken"), /Nueva fecha/);
   assert.match(card("lobby-fc27"), /data-fecha="2026-11-12"/);
   assert.match(card("lobby-clash"), /data-fecha="2026-11-12"/);
