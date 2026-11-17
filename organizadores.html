@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GameLobby para organizadores · Comunidades Fundadoras</title>
-<meta name="description" content="Tú traes a tu comunidad, nosotros armamos el torneo. Cobro automático de inscripciones, comisión de organizador, streaming y Wallet GameLobby. Primeras 10 Comunidades Fundadoras con torneo de lanzamiento y premios pagados por GameLobby.">
+<title>GameLobby para organizadores · Toda tu comunidad en un solo lobby</title>
+<meta name="description" content="Tu propio lobby con rooms multicategoría, brackets, chat, juez, streaming, cobros y Wallet en un solo lugar. No hay nada igual en el mercado. Comunidades Fundadoras: gratis y sin comisión.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tú traes a tu comunidad. Nosotros armamos el torneo.">
-<meta property="og:description" content="Organiza, transmite y gana con tu comunidad en GameLobby. Primeras 10 Comunidades Fundadoras.">
+<meta property="og:title" content="Toda tu comunidad, en un solo lobby">
+<meta property="og:description" content="No hay nada igual en el mercado. Comunidades Fundadoras: gratis y sin comisión.">
 <meta property="og:image" content="assets/logo-full-color.png">
 <meta name="theme-color" content="#0a121e">
 <link rel="icon" href="assets/logo-symbol.png">
@@ -128,6 +128,29 @@
   .mytour__stats .pz b{color:var(--gl-lime-bright)}
   .mytour__foot{display:block;font-size:12px;color:var(--text-4)}
   .qr__frame img.qr__logo{width:52px;height:52px}
+
+  /* Antes / ahora */
+  .vs{display:grid;grid-template-columns:1fr 56px 1fr;gap:18px;align-items:stretch}
+  .vs__col{padding:26px;border-radius:18px;border:1px solid var(--border-subtle)}
+  .vs__col h3{margin:0 0 14px;font-size:18px}
+  .vs__col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .vs__col li{position:relative;padding-left:28px;font-size:15px;line-height:1.45}
+  .vs__col--old{background:var(--gl-surface-1);color:var(--text-3)}
+  .vs__col--old h3{color:var(--text-3)}
+  .vs__col--old li::before{content:"✕";position:absolute;left:0;color:#ff6b8a;font-weight:700}
+  .vs__col--new{background:linear-gradient(150deg,rgba(123,63,242,.28),var(--gl-surface-1) 75%);border-color:rgba(183,148,255,.45);color:var(--text-1)}
+  .vs__col--new li::before{content:"✓";position:absolute;left:0;color:var(--gl-lime-bright);font-weight:700}
+  .vs__arrow{display:grid;place-items:center;font-size:30px;color:var(--gl-purple-soft)}
+  .invest{display:flex;gap:12px;align-items:center;justify-content:center;margin:28px auto 0;max-width:760px;text-align:left;font-size:14px;color:var(--text-3);padding:14px 18px;border-radius:14px;border:1px dashed rgba(183,148,255,.35)}
+  .invest b{color:var(--text-1)}
+  .invest i{width:22px;height:22px;color:var(--gl-purple-soft);flex:none}
+  /* Lobby del hero */
+  .lrooms{list-style:none;margin:12px 0;padding:0;display:grid;gap:6px}
+  .lrooms li{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:10px;padding:9px 12px;border-radius:10px;background:var(--gl-surface-2)}
+  .lrooms__game{font-size:13px;font-weight:700;color:var(--text-1)}
+  .lrooms__mode{grid-row:2;font-size:11px;color:var(--text-4)}
+  .lrooms__st{grid-row:1/3;grid-column:2;align-self:center;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--text-2)}
+  .lrooms__st.live{background:var(--gl-lime-bright);color:#0a3a16}
   .sticky-cta{display:none}
   @media (max-width:900px){
     .proof__inner{grid-template-columns:1fr;gap:12px}
@@ -137,6 +160,8 @@
     .wq{grid-template-columns:1fr;padding:26px}
     .qr{display:none}
     .founders{grid-template-columns:1fr}
+    .vs{grid-template-columns:1fr}
+    .vs__arrow{transform:rotate(90deg);height:30px}
     .sticky-cta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
     .sticky-cta .btn{width:100%;justify-content:center}
     body{padding-bottom:72px}
@@ -159,7 +184,7 @@
   <div class="nav__inner">
     <a class="nav__logo" href="/"><img src="assets/logo-full-white.png" alt="Game Lobby"></a>
     <nav class="nav__links" id="org-navlinks">
-      <a href="#beneficios">Qué ganas</a>
+      <a href="#lobby">Tu lobby</a>
       <a href="#ruta">Cómo funciona</a>
       <a href="#fundadores">Fundadores</a>
       <a href="#preguntas">Preguntas</a>
@@ -176,14 +201,14 @@
 <section class="org-hero">
   <div class="org-hero__inner org-hero__inner--split">
     <div class="org-hero__copy">
-      <span class="seats"><span class="seats__pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Comunidades Fundadoras · primeras 10 comunidades</span>
-      <h1>Tú traes a tu comunidad. Nosotros armamos el torneo.</h1>
-      <p class="org-hero__lead">Tu comunidad ya existe. Ahora organízala, transmítela y gana con ella en GameLobby. Te armamos la sala, cobras las inscripciones en automático, transmites y usas la Wallet para pagos y premios, sin efectivo.</p>
+      <span class="seats"><span class="seats__pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Comunidades Fundadoras · gratis y sin comisión</span>
+      <h1>Toda tu comunidad, en un solo lobby.</h1>
+      <p class="org-hero__lead">No hay nada igual en el mercado. Tu propio lobby con rooms de varios juegos y modos, inscripciones, brackets, chat, juez, streaming y cobros en un solo lugar. Lo que hoy te exige WhatsApp, Excel, Discord y 20 personas, ahora lo lleva una sola.</p>
       <div class="org-hero__cta">
-        <a class="btn btn--purple btn--lg" href="#registro">Registrar mi Comunidad Fundadora</a>
-        <a class="btn btn--outline btn--lg" href="https://gamelobby.gg/room/details/torneo-flash-gamelobby-tekken-8" target="_blank" rel="noopener">Ver un torneo en gamelobby.gg</a>
+        <a class="btn btn--purple btn--lg" href="#registro">Quiero ser de los primeros</a>
+        <a class="btn btn--outline btn--lg" href="https://gamelobby.gg/room/details/torneo-flash-gamelobby-tekken-8" target="_blank" rel="noopener">Ver un room en vivo</a>
       </div>
-      <p class="micro"><b>Regístrate gratis.</b> Sin tarjeta.</p>
+      <p class="micro"><b>Gratis para las Comunidades Fundadoras.</b> GameLobby no te cobra comisión.</p>
     </div>
     <div class="org-hero__visual">
       <div class="mytour">
@@ -192,18 +217,17 @@
         <div class="mytour__card" aria-live="polite">
           <div class="mytour__banner">
             <img src="assets/lobi/lobi-saludar.svg" alt="" width="92" height="110">
-            <span class="mytour__tag">Torneo de lanzamiento</span>
+            <span class="mytour__tag">Lobby oficial</span>
           </div>
           <div class="mytour__body">
-            <b class="mytour__title">Copa <span data-mt>Tu comunidad</span></b>
-            <span class="mytour__org">Organiza: <span data-mt>Tu comunidad</span> <em class="mytour__badge">Fundador</em></span>
-            <div class="mytour__stats">
-              <div><b>Gratis</b><span>Inscripción</span></div>
-              <div class="pz"><b>$10 + $5</b><span>Premios</span></div>
-              <div><b>1v1</b><span>Formato</span></div>
-              <div><b>En vivo</b><span>Streaming</span></div>
-            </div>
-            <span class="mytour__foot">gamelobby.gg · Inscripciones abiertas</span>
+            <b class="mytour__title">Lobby <span data-mt>Tu comunidad</span></b>
+            <span class="mytour__org"><span>1 lobby · 3 rooms activos</span> <em class="mytour__badge">Fundador</em></span>
+            <ul class="lrooms">
+              <li><span class="lrooms__game">Tekken 8</span><span class="lrooms__mode">Doble eliminación</span><span class="lrooms__st live">En vivo</span></li>
+              <li><span class="lrooms__game">EA FC 27</span><span class="lrooms__mode">Liga por jornadas</span><span class="lrooms__st">Inscripción</span></li>
+              <li><span class="lrooms__game">Fortnite</span><span class="lrooms__mode">Ranking por puntos</span><span class="lrooms__st">Sábado</span></li>
+            </ul>
+            <span class="mytour__foot">Inscripciones, chat, juez y cobros dentro del mismo lobby</span>
           </div>
         </div>
       </div>
@@ -224,21 +248,57 @@
   </div>
 </section>
 
-<!-- ============ BENEFICIOS ============ -->
+<!-- ============ ANTES / AHORA ============ -->
 <section class="section" id="beneficios">
   <div class="container">
     <div class="heading" style="margin-bottom:36px">
-      <h2>Lo que gana tu comunidad</h2>
-      <p>Tú pones la comunidad. GameLobby pone el torneo, la plataforma y la difusión.</p>
+      <h2>De diez herramientas a un solo lugar</h2>
+      <p>Esto es lo que cambia el día que tu comunidad entra a GameLobby.</p>
+    </div>
+    <div class="vs">
+      <div class="vs__col vs__col--old">
+        <h3>Hoy</h3>
+        <ul>
+          <li>Inscripciones por WhatsApp y capturas</li>
+          <li>El bracket en un Excel que nadie encuentra</li>
+          <li>Avisos repartidos entre Discord, Instagram y X</li>
+          <li>Cobrar a mano, uno por uno</li>
+          <li>Resultados discutidos en el grupo a medianoche</li>
+          <li>Veinte personas para sacar un torneo</li>
+        </ul>
+      </div>
+      <div class="vs__arrow" aria-hidden="true">→</div>
+      <div class="vs__col vs__col--new">
+        <h3>Con tu lobby en GameLobby</h3>
+        <ul>
+          <li>Inscripción en línea con enlace o código de invitación</li>
+          <li>Brackets, ligas y rankings que se arman solos</li>
+          <li>Chat del room, del equipo y de cada partida</li>
+          <li>Cobro automático de inscripciones y Wallet</li>
+          <li>Reporte con evidencia, disputas y juez</li>
+          <li>Una sola persona lleva el torneo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TU LOBBY ============ -->
+<section class="section" id="lobby" style="padding-top:0">
+  <div class="container">
+    <div class="heading" style="margin-bottom:36px">
+      <h2>Tu lobby: el espacio propio de tu comunidad</h2>
+      <p>Dentro de tu lobby abres los rooms que quieras, de distintos juegos y con distintos modos. Todo con tu nombre.</p>
     </div>
     <div class="perks">
-      <article class="perk perk--lead"><div class="perk__ic"><i data-lucide="hand-coins"></i></div><h3>Gana organizando</h3><p>Cobra las inscripciones en automático y recibe tu comisión de organizador. Nada de perseguir pagos por WhatsApp.</p></article>
-      <article class="perk"><div class="perk__ic"><i data-lucide="wallet"></i></div><h3>Wallet en App Store y Google Play</h3><p>Pagos y premios sin efectivo, desde el celular de cada jugador.</p></article>
-      <article class="perk"><div class="perk__ic"><i data-lucide="radio"></i></div><h3>Transmite tu torneo</h3><p>Streaming desde la plataforma, para que tu gente lo vea en vivo.</p></article>
-      <article class="perk"><div class="perk__ic"><i data-lucide="megaphone"></i></div><h3>Tu comunidad es la protagonista</h3><p>La presentamos en Instagram, Facebook y TikTok de GameLobby, con su nombre.</p></article>
-      <article class="perk"><div class="perk__ic"><i data-lucide="headset"></i></div><h3>Acompañamiento 1 a 1</h3><p>Estrategia, soporte técnico y marketing para que cada torneo salga mejor que el anterior.</p></article>
-      <article class="perk"><div class="perk__ic"><i data-lucide="badge-check"></i></div><h3>Comunidad Fundadora</h3><p>Torneo de lanzamiento, «Líder de la semana», insignia de fundador y acceso antes que nadie a crear salas.</p></article>
+      <article class="perk perk--lead"><div class="perk__ic"><i data-lucide="layout-grid"></i></div><h3>Multicategoría</h3><p>Tekken, EA FC, Fortnite, Clash Royale y más, cada juego en su room, todos dentro de tu lobby.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="list-tree"></i></div><h3>Todos los modos</h3><p>Eliminación simple o doble, fase de grupos, liga por jornadas o partidas rápidas con ranking por puntos.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="users-round"></i></div><h3>Comunidades masivas en un solo room</h3><p>Equipos, capitanes e invitaciones con código. Cientos de jugadores sin perder el control.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="shield-check"></i></div><h3>Staff y juego limpio</h3><p>Roles de administrador, moderador y juez. Reportes con evidencia y disputas que se resuelven ahí mismo.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="radio"></i></div><h3>Streaming</h3><p>Transmite tus torneos desde la plataforma, para que tu gente los vea en vivo.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="wallet"></i></div><h3>Cobros y Wallet</h3><p>Cobra inscripciones en automático y paga premios por la Wallet GameLobby, sin efectivo.</p></article>
     </div>
+    <p class="invest"><i data-lucide="cpu"></i><span>Detrás de cada lobby hay una plataforma en la que GameLobby ha invertido más de <b>US$1 millón</b> en tecnología. Las Comunidades Fundadoras la usan gratis.</span></p>
   </div>
 </section>
 
@@ -249,10 +309,10 @@
       <div>
         <span class="badge badge--purple"><span class="dot"></span>Ya disponible</span>
         <h2>La Wallet GameLobby ya está en tu celular</h2>
-        <p>Con ella cobras las inscripciones, pagas los premios y recibes tu comisión. Tus jugadores la descargan gratis y se inscriben sin efectivo.</p>
+        <p>Con ella cobras las inscripciones, pagas los premios y recibes lo que ganas. Tus jugadores la descargan gratis y se inscriben sin efectivo.</p>
         <ul>
           <li><i data-lucide="check"></i><span>Inscripciones cobradas en automático</span></li>
-          <li><i data-lucide="check"></i><span>Premios y comisión, sin transferencias a mano</span></li>
+          <li><i data-lucide="check"></i><span>Premios y ganancias, sin transferencias a mano</span></li>
           <li><i data-lucide="check"></i><span>En App Store y Google Play</span></li>
         </ul>
         <div class="stores">
@@ -301,7 +361,7 @@
       <div class="route__card"><b>2. Hablamos contigo</b><span class="route__sub">Una llamada corta para saber qué juego, qué día y cuánta gente mueves.</span></div>
     </div>
     <div class="route__row route__row--r" data-dot="purple">
-      <div class="route__card"><b>3. Armamos tu torneo con tu marca</b><span class="route__sub">Sala, brackets o ranking, reglas, chat, juez y streaming en gamelobby.gg.</span></div>
+      <div class="route__card"><b>3. Te damos tu lobby y tus rooms</b><span class="route__sub">Con tu nombre: rooms de tus juegos, reglas, brackets o ranking, chat, juez y streaming.</span></div>
       <div class="route__dot"><i data-lucide="list-tree"></i></div>
       <div></div>
     </div>
@@ -335,8 +395,8 @@
   <div class="route-finish-wrap">
     <div class="route__finish reveal">
       <img src="assets/lobi/lobi-saludar.svg" alt="" class="finish-lobi-jump" width="180" height="214" loading="lazy" style="display:block;margin:0 auto 14px">
-      <h3>No pedimos miles de miembros.</h3>
-      <p>Buscamos comunidades que sí se aparecen a jugar.</p>
+      <h3>Ya no necesitas veinte personas.</h3>
+      <p>Con tu lobby, una sola persona lleva el torneo.</p>
       <a class="btn btn--lime btn--lg" href="#registro">Registrar mi comunidad</a>
     </div>
   </div>
@@ -347,22 +407,21 @@
   <div class="container">
     <div class="founders">
       <div class="founders__prize">
-        <span class="badge badge--purple"><span class="dot"></span>Solo primeras 10 comunidades</span>
-        <h2 style="margin:12px 0 0">Tu torneo de lanzamiento, con premio real</h2>
+        <span class="badge badge--purple"><span class="dot"></span>Solo Comunidades Fundadoras</span>
+        <h2 style="margin:12px 0 0">Gratis y sin comisión</h2>
         <div class="amounts">
-          <div class="amt"><b>US$10</b><span>al 1.er lugar</span></div>
-          <div class="amt"><b>US$5</b><span>al 2.º lugar</span></div>
+          <div class="amt"><b>US$0</b><span>por usar la plataforma</span></div>
+          <div class="amt"><b>0%</b><span>de comisión para GameLobby</span></div>
         </div>
-        <p>Lo paga GameLobby y es gratis para tus jugadores. Después del torneo de lanzamiento, los premios se conversan caso por caso.</p>
+        <p>Hoy no hay ninguna comunidad adentro: las que entren ahora son las primeras y usan la plataforma gratis, sin que GameLobby se quede con un porcentaje.</p>
       </div>
       <div>
-        <h2 style="margin:0">El Bonus fundador</h2>
-        <p style="color:var(--text-3);margin:10px 0 0">Lo que recibe cada Comunidad Fundadora, además del torneo de lanzamiento.</p>
+        <h2 style="margin:0">Y además, el Bonus fundador</h2>
         <ul class="flist">
-          <li><span class="ic"><i data-lucide="rocket"></i></span><div><b>Torneo de lanzamiento</b><span>Montado por GameLobby, con el nombre y la marca de tu comunidad.</span></div></li>
-          <li><span class="ic"><i data-lucide="star"></i></span><div><b>«Líder de la semana»</b><span>Tu comunidad, presentada en las redes oficiales de GameLobby.</span></div></li>
+          <li><span class="ic"><i data-lucide="rocket"></i></span><div><b>Torneo de lanzamiento</b><span>Montado con tu comunidad y con premios de US$10 al 1.º y US$5 al 2.º, pagados por GameLobby (primeras 10 comunidades).</span></div></li>
+          <li><span class="ic"><i data-lucide="star"></i></span><div><b>«Líder de la semana»</b><span>Tu comunidad, presentada en Instagram, Facebook y TikTok de GameLobby.</span></div></li>
           <li><span class="ic"><i data-lucide="shield"></i></span><div><b>Insignia de fundador</b><span>Para que todos sepan que estuviste desde el principio.</span></div></li>
-          <li><span class="ic"><i data-lucide="key-round"></i></span><div><b>Acceso antes que nadie a crear salas</b><span>Cuando se abra la creación propia de torneos, entras primero.</span></div></li>
+          <li><span class="ic"><i data-lucide="headset"></i></span><div><b>Acompañamiento 1 a 1</b><span>Estrategia, soporte técnico y marketing para cada torneo.</span></div></li>
         </ul>
       </div>
     </div>
@@ -388,9 +447,9 @@
       <div class="org-register__copy">
         <img src="assets/lobi/lobi-saludar.svg" alt="" class="register-lobi" width="110" height="131" loading="lazy">
         <h2>Registra tu Comunidad Fundadora</h2>
-        <p>Te toma dos minutos. Te confirmamos por correo y te escribimos para armar tu primer torneo. La incorporación es acompañada: no es un botón mágico, es un equipo que te ayuda.</p>
+        <p>Te toma dos minutos. Te confirmamos por correo y te escribimos para darte tu lobby y armar tu primer torneo, con un equipo que te acompaña.</p>
         <ul>
-          <li><i data-lucide="clock" class="ic"></i><span>Dos minutos, gratis y sin tarjeta.</span></li>
+          <li><i data-lucide="clock" class="ic"></i><span>Dos minutos. Gratis y sin comisión para fundadoras.</span></li>
           <li><i data-lucide="mail" class="ic"></i><span>Confirmación inmediata en tu correo.</span></li>
           <li><i data-lucide="phone-call" class="ic"></i><span>Te contactamos para armar tu torneo de lanzamiento.</span></li>
         </ul>
@@ -464,7 +523,7 @@
         <div class="form__success hidden" id="organizer-success">
           <i data-lucide="circle-check-big" style="width:48px;height:48px"></i>
           <h3>¡Tu comunidad ya está en la lista!</h3>
-          <p>Revisa tu correo: te enviamos la confirmación. Te escribimos para armar tu torneo de lanzamiento.</p>
+          <p>Revisa tu correo: te enviamos la confirmación. Te escribimos para darte tu lobby y armar tu torneo de lanzamiento.</p>
           <p style="margin-top:12px">Mientras tanto, descarga la Wallet: <a href="/wallet?utm_source=organizadores_ok">App Store o Google Play</a>.</p>
         </div>
       </div>
@@ -477,26 +536,26 @@
   <div class="container">
     <div class="heading" style="margin-bottom:28px"><h2>Preguntas frecuentes</h2></div>
     <div class="faq">
-      <details><summary>¿Cuesta algo?</summary><p>Registrarte es gratis y sin tarjeta. El torneo de lanzamiento, para las primeras 10 comunidades, es gratis para tus jugadores. En los siguientes torneos puedes cobrar inscripciones en automático.</p></details>
-      <details><summary>¿Qué juegos?</summary><p>Empezamos con los que ya corren en Panamá, en formato 1v1: Fortnite, Tekken 8, EA Sports FC y Clash Royale, y los que se anuncien. Si tu comunidad juega otro, cuéntanoslo en el registro.</p></details>
-      <details><summary>¿Quién paga los premios?</summary><p>GameLobby. Si entras entre las primeras 10 comunidades, tu torneo de lanzamiento tiene US$10 al 1.º y US$5 al 2.º. Después, los premios se conversan caso por caso. En los torneos oficiales de GameLobby también son US$10 y US$5.</p></details>
-      <details><summary>¿Cómo cobro?</summary><p>Con el cobro automático de inscripciones y la Wallet GameLobby, que ya está en App Store y Google Play. Los pagos y los premios salen sin efectivo.</p></details>
-      <details><summary>¿Cuánto me queda?</summary><p>Recibes una comisión de organizador por cada torneo con inscripción. Te la explicamos en la llamada, con números claros.</p></details>
-      <details><summary>¿Tengo que crear yo la sala?</summary><p>No. Hoy la armamos nosotros y tú invitas a tu gente. Las Comunidades Fundadoras tendrán acceso antes que nadie cuando se abra la creación propia de salas.</p></details>
-      <details><summary>Mis jugadores ya están en WhatsApp o Discord. ¿Tengo que moverlos?</summary><p>No. El grupo sigue siendo tuyo. Lo que cambia es que el torneo se juega con reglas claras, bracket o ranking, juez y resultados a la vista.</p></details>
-      <details><summary>¿Qué gano al ser fundador?</summary><p>El torneo de lanzamiento (con premios de US$10 y US$5 si entras entre las primeras 10), «Líder de la semana», insignia de fundador, acceso antes que nadie a crear salas y acompañamiento 1 a 1.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Para las Comunidades Fundadoras, nada. Usas la plataforma gratis y GameLobby no te cobra comisión. Registrarte no pide tarjeta.</p></details>
+      <details><summary>¿Qué es un lobby y qué es un room?</summary><p>El lobby es el espacio propio de tu comunidad, con tu nombre. Dentro abres rooms: cada room es un torneo, una liga o un ranking de un juego, con su modo, sus reglas y su chat.</p></details>
+      <details><summary>¿Qué juegos y qué modos?</summary><p>Fortnite, Tekken 8, EA Sports FC y Clash Royale ya corren hoy, y se suman más. Modos: eliminación simple o doble, fase de grupos, liga por jornadas y partidas rápidas con ranking por puntos.</p></details>
+      <details><summary>¿Cuánta gente cabe en un room?</summary><p>Está pensado para comunidades grandes: equipos, capitanes, invitaciones con código y roles de staff para que cientos de jugadores compitan en el mismo room sin perder el control.</p></details>
+      <details><summary>¿Cómo cobro las inscripciones?</summary><p>Con el cobro automático de inscripciones y la Wallet GameLobby, que ya está en App Store y Google Play. Los pagos y los premios salen sin efectivo.</p></details>
+      <details><summary>¿Tengo que montarlo yo?</summary><p>No. A las primeras comunidades les damos el lobby y los rooms listos, y te acompañamos en el primer torneo. Tú invitas a tu gente.</p></details>
+      <details><summary>Mis jugadores ya están en WhatsApp o Discord. ¿Tengo que moverlos?</summary><p>No. Tu grupo sigue siendo tuyo. El torneo pasa a jugarse en tu lobby, con inscripción, bracket, chat, juez y resultados en un solo lugar.</p></details>
+      <details><summary>¿Por qué entrar ahora?</summary><p>Porque no hay nada parecido en el mercado y hoy todavía no hay ninguna comunidad adentro. Las fundadoras entran gratis, sin comisión, con su torneo de lanzamiento y la insignia de fundador.</p></details>
     </div>
   </div>
 </section>
 
 <!-- ============ CIERRE ============ -->
 <section class="closing">
-  <h2>¿Tienes una comunidad que sí se aparece a jugar?</h2>
-  <p>Regístrala como fundadora y te armamos el siguiente torneo.</p>
-  <a class="btn btn--purple btn--lg" href="#registro">Regístrate gratis</a>
+  <h2>No hay nada igual. Sé de los primeros.</h2>
+  <p>Registra tu comunidad como fundadora: lobby propio, gratis y sin comisión.</p>
+  <a class="btn btn--purple btn--lg" href="#registro">Registrar mi comunidad</a>
 </section>
 
-<div class="sticky-cta"><a class="btn btn--purple btn--md" href="#registro">Registrar mi Comunidad Fundadora</a></div>
+<div class="sticky-cta"><a class="btn btn--purple btn--md" href="#registro">Quiero ser de los primeros</a></div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">

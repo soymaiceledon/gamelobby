@@ -39,8 +39,8 @@ function buildWelcome(lead) {
     const commHtml = lead.community
       ? `Recibimos el registro de <strong>${esc(lead.community)}</strong> como Comunidad Fundadora de GameLobby.`
       : `Recibimos el registro de tu comunidad como Comunidad Fundadora de GameLobby.`;
-    const p2 = "Tú traes a tu comunidad y nosotros armamos el torneo: sala en gamelobby.gg, cobro automático de inscripciones, streaming y difusión en las redes de GameLobby, con tu comunidad de protagonista.";
-    const p3 = "En los próximos días te escribimos para una llamada corta y para armar tu torneo de lanzamiento. Mientras tanto, descarga la Wallet GameLobby (App Store y Google Play) en https://www.gamelobby.live/wallet: con ella se cobran las inscripciones y se pagan los premios, sin efectivo.";
+    const p2 = "Como Comunidad Fundadora tendrás tu propio lobby en gamelobby.gg, con rooms de tus juegos y modos, inscripciones, brackets, chat, juez, streaming y cobros en un solo lugar. Para las fundadoras es gratis y GameLobby no cobra comisión.";
+    const p3 = "En los próximos días te escribimos para una llamada corta, para darte tu lobby y armar tu torneo de lanzamiento. Mientras tanto, descarga la Wallet GameLobby (App Store y Google Play) en https://www.gamelobby.live/wallet: con ella se cobran las inscripciones y se pagan los premios, sin efectivo.";
     const p4 = "Si quieres adelantar, responde este correo con el juego, el día y la hora en que juega tu comunidad.";
     return {
       subject: "Tu comunidad ya está registrada en GameLobby",
