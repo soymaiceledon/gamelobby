@@ -476,6 +476,68 @@
   .wallet-spotlight .org-blist { text-align: left; }
 }
 
+/* Nota bajo los CTA del hero */
+.org-hero__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-4);
+  text-align: left;
+}
+.org-hero__note span { min-width: 0; }
+.org-hero__note i { width: 14px; height: 14px; color: var(--gl-lime-bright); flex: none; }
+.org-hero__note a { color: var(--acc-soft); }
+.org-group a { color: var(--acc-soft); }
+
+/* FAQ del cierre */
+.org-faq { max-width: 760px; margin-inline: auto; display: grid; gap: 12px; text-align: left; }
+.org-faq details {
+  background: var(--gl-surface-3);
+  border: 1px solid var(--gl-line);
+  border-radius: 16px;
+  padding: 0 22px;
+}
+.org-faq summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text-1);
+  padding: 18px 0;
+  list-style: none;
+}
+.org-faq summary::-webkit-details-marker { display: none; }
+.org-faq details p {
+  margin: 0;
+  padding: 0 0 18px;
+  color: var(--text-3);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.org-cierre { padding-top: 12px; }
+.org-cierre .route__finish h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 4vw, 36px);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+.org-cierre .finish-lobi-jump { display: block; margin: 0 auto 14px; }
+
+@media (max-width: 720px) {
+  .org-hero { padding: 112px 16px 56px; }
+  .org-hero h1 { font-size: clamp(30px, 8.2vw, 40px); }
+  .org-faq details { padding: 0 16px; }
+  .org-faq summary { font-size: 16px; }
+  .org-cierre { padding-inline: 0; }
+}
+
 @media (max-width: 720px) {
   .route { padding: 16px 16px 0; }
   .route__line { left: 20px; transform: none; }
