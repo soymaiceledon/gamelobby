@@ -51,7 +51,7 @@ test("registro válido: se guarda, se confirma y la bienvenida no imprime variab
   const sent = JSON.parse(mail.body ? JSON.stringify(mail.body) : "{}");
   assert.match(sent.subject, /Tu comunidad ya está registrada/);
   assert.doesNotMatch(sent.text + sent.html, /undefined|\{\{|null/);
-  assert.match(sent.text, /octubre de 2026/);
+  assert.match(sent.text, /torneo de lanzamiento/);
 });
 
 test("consentimiento comercial no se preselecciona: sin marcar queda en false", async () => {

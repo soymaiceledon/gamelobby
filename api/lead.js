@@ -39,9 +39,9 @@ function buildWelcome(lead) {
     const commHtml = lead.community
       ? `Recibimos el registro de <strong>${esc(lead.community)}</strong> como Comunidad Fundadora de GameLobby.`
       : `Recibimos el registro de tu comunidad como Comunidad Fundadora de GameLobby.`;
-    const p2 = "Estamos preparando el lanzamiento de la plataforma para octubre de 2026. Queremos acompañarte en la organización de torneos y en el desarrollo de opciones para monetizar tu comunidad, con orientación en estrategia, soporte técnico y marketing.";
-    const p3 = "La incorporación será progresiva. Te compartiremos las funciones disponibles, las condiciones y el siguiente paso para tu comunidad. La Gamer Wallet tiene un despliegue previsto entre mediados de octubre y noviembre; sus funciones dependerán de disponibilidad y elegibilidad.";
-    const p4 = "Para preparar el acompañamiento, cuéntanos qué juego reúne a tu comunidad y qué te gustaría monetizar primero.";
+    const p2 = "Tú traes a tu comunidad y nosotros armamos el torneo: sala en gamelobby.gg, cobro automático de inscripciones, streaming y difusión en las redes de GameLobby, con tu comunidad de protagonista.";
+    const p3 = "En los próximos días te escribimos para una llamada corta y para armar tu torneo de lanzamiento. Mientras tanto, descarga la Wallet GameLobby (App Store y Google Play) en https://www.gamelobby.live/wallet: con ella se cobran las inscripciones y se pagan los premios, sin efectivo.";
+    const p4 = "Si quieres adelantar, responde este correo con el juego, el día y la hora en que juega tu comunidad.";
     return {
       subject: "Tu comunidad ya está registrada en GameLobby",
       text: `${hola}\n\n${comm}\n\n${p2}\n\n${p3}\n\n${p4}\n\nEl equipo de GameLobby\n`,
@@ -248,6 +248,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: mailFrom,
           to: lead.email,
+          ...(lead.type === "organizer" ? { reply_to: process.env.LEADS_NOTIFY_EMAIL || "m.celedon@gamelobby.live" } : {}),
           subject: msg.subject,
           text: msg.text,
           html: msg.html,
@@ -262,11 +263,11 @@ export default async function handler(req, res) {
 
   // 3b) Aviso interno al equipo comercial para leads de marcas (b2b y sponsors de Xperience).
   // Llega a LEADS_NOTIFY_EMAIL (por defecto, el correo de Mai) con reply-to al lead.
-  if (resendKey && mailFrom && !duplicate && ["b2b", "glx_sponsor", "xp_press", "xp_creator"].includes(lead.type)) {
+  if (resendKey && mailFrom && !duplicate && ["b2b", "organizer", "glx_sponsor", "xp_press", "xp_creator"].includes(lead.type)) {
     try {
       const notifyTo = process.env.LEADS_NOTIFY_EMAIL || "m.celedon@gamelobby.live";
       const rows = [
-        ["Nombre", lead.name], ["Empresa o medio", lead.company], ["Canal o perfil", lead.link], ["Comunidad", lead.community], ["Cargo", lead.jobTitle], ["Correo", lead.email],
+        ["Nombre", lead.name], ["Empresa o medio", lead.company], ["Canal o perfil", lead.link], ["Comunidad", lead.community], ["Juego", lead.game], ["País", lead.country], ["Tamaño", lead.scale], ["Cargo", lead.jobTitle], ["Correo", lead.email],
         ["Teléfono", lead.phone], ["País", lead.country], ["Interés", lead.interest], ["Categoría", lead.companyCategory],
         ["Objetivos", lead.goals], ["Mensaje", lead.message], ["Página", lead.page],
         ["Origen", [lead.utm_source, lead.utm_medium, lead.utm_campaign].filter(Boolean).join(" / ") || null],
@@ -280,7 +281,7 @@ export default async function handler(req, res) {
           from: mailFrom,
           to: notifyTo,
           reply_to: lead.email,
-          subject: `${{ b2b: "Nuevo lead de marca", glx_sponsor: "Nuevo lead de marca", xp_press: "Acreditación de prensa", xp_creator: "Postulación de creador" }[lead.type]}: ${lead.company || lead.name}${lead.interest ? " · " + lead.interest : ""}`,
+          subject: `${{ b2b: "Nuevo lead de marca", glx_sponsor: "Nuevo lead de marca", xp_press: "Acreditación de prensa", xp_creator: "Postulación de creador", organizer: "Nueva Comunidad Fundadora" }[lead.type]}: ${lead.company || lead.community || lead.name}${lead.interest ? " · " + lead.interest : ""}`,
           text: `Nuevo contacto desde la web de GameLobby.\n\n${text}\n`,
           html: `<p>Nuevo contacto desde la web de GameLobby.</p>${html}`,
         }),

@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GameLobby para organizadores</title>
-<meta name="description" content="Un click y GameLobby hace el resto: Rooms, torneos automáticos, pagos multimoneda y validación inteligente. Crea tu cuenta gratis o regístrate como Comunidad Fundadora.">
+<title>GameLobby para organizadores · Comunidades Fundadoras</title>
+<meta name="description" content="Tú traes a tu comunidad, nosotros armamos el torneo. Cobro automático de inscripciones, comisión de organizador, streaming y Wallet GameLobby. Primeras 10 Comunidades Fundadoras con torneo de lanzamiento y premios pagados por GameLobby.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GameLobby para organizadores">
-<meta property="og:description" content="Un click y GameLobby hace el resto. Deja el WhatsApp, cobrar a mano y las hojas de cálculo.">
+<meta property="og:title" content="Tú traes a tu comunidad. Nosotros armamos el torneo.">
+<meta property="og:description" content="Organiza, transmite y gana con tu comunidad en GameLobby. Primeras 10 Comunidades Fundadoras.">
 <meta property="og:image" content="assets/logo-full-color.png">
 <meta name="theme-color" content="#0a121e">
 <link rel="icon" href="assets/logo-symbol.png">
@@ -17,13 +17,139 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="organizadores.css">
 <style>
-  .soon{font-style:normal;font-weight:500;font-size:.8em;color:var(--gl-purple-soft,#b794ff)}
-  .preview-note{position:absolute;left:0;right:0;bottom:-30px;margin:0;text-align:center;font-size:12px;color:var(--text-3)}
   .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-3);margin:6px 0 2px}
   .consent input{margin-top:3px;flex:none}
   .form__note{font-size:12px;color:var(--text-4);margin:0 0 4px}
   .form__error{font-size:13px;color:#ff8fd6;margin:0 0 8px}
   .org-counter[hidden]{display:none}
+  section[id]{scroll-margin-top:72px}
+
+  /* Hero: sello de cupos */
+  .seats{display:inline-flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(123,63,242,.14);border:1px solid rgba(183,148,255,.35);font-size:13px;font-weight:600;color:var(--text-1)}
+  .seats__pips{display:flex;gap:3px}
+  .seats__pips i{width:8px;height:16px;border-radius:2px;background:var(--gl-purple-bright);box-shadow:0 0 8px rgba(123,63,242,.7)}
+  .micro{font-size:13px;color:var(--text-4);margin:0}
+  .micro b{color:var(--gl-lime-bright);font-weight:600}
+
+  /* Prueba real: marcador de partidas */
+  .proof{border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);background:var(--gl-surface-1)}
+  .proof__inner{max-width:1180px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+  .proof__label{font-size:12px;font-weight:700;color:var(--text-3);max-width:12ch;line-height:1.35}
+  .proof__label b{display:block;color:var(--gl-lime-bright);font-size:13px}
+  .proof__list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .proof__item{padding:12px 14px;border-radius:12px;background:var(--gl-surface-2);border:1px solid var(--border-subtle)}
+  .proof__item b{display:block;font-size:22px;font-weight:800;color:var(--text-1);line-height:1.1}
+  .proof__item span{display:block;font-size:12px;color:var(--text-3);margin-top:4px;line-height:1.4}
+  .proof__item--live b{color:var(--gl-lime-bright)}
+
+  /* Beneficios */
+  .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .perk{position:relative;padding:24px;border-radius:16px;background:var(--gl-surface-1);border:1px solid var(--border-subtle)}
+  .perk__ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(123,63,242,.16);color:var(--gl-purple-soft);margin-bottom:14px}
+  .perk__ic i{width:20px;height:20px}
+  .perk h3{font-size:18px;margin:0 0 6px;color:var(--text-1)}
+  .perk p{font-size:14px;color:var(--text-3);margin:0;line-height:1.55}
+  .perk--lead{background:linear-gradient(150deg,rgba(123,63,242,.28),var(--gl-surface-1) 70%);border-color:rgba(183,148,255,.4)}
+
+  /* Wallet + QR */
+  .wq{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px;border-radius:22px;background:radial-gradient(120% 140% at 100% 0%,rgba(0,171,235,.18),transparent 55%),linear-gradient(160deg,#160c33,var(--gl-navy));border:1px solid rgba(0,171,235,.3)}
+  .wq h2{margin:10px 0 12px}
+  .wq p{color:var(--text-2);margin:0 0 18px;line-height:1.6}
+  .wq ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px}
+  .wq li{display:flex;gap:10px;align-items:flex-start;color:var(--text-2);font-size:15px}
+  .wq li i{width:18px;height:18px;color:var(--gl-cyan-bright);flex:none;margin-top:2px}
+  .stores{display:flex;flex-wrap:wrap;gap:10px}
+  .store{display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border-radius:12px;background:#000;border:1px solid rgba(255,255,255,.22);color:#fff;text-decoration:none;min-width:168px}
+  .store:hover{border-color:var(--gl-cyan-bright)}
+  .store svg{width:22px;height:22px;flex:none}
+  .store small{display:block;font-size:10px;opacity:.75;line-height:1.1}
+  .store b{display:block;font-size:16px;line-height:1.15;font-weight:600}
+  .qr{justify-self:center;text-align:center}
+  .qr__frame{position:relative;width:236px;padding:18px;border-radius:20px;background:#fff;box-shadow:0 0 0 6px rgba(0,171,235,.25),0 24px 60px rgba(0,0,0,.45)}
+  .qr__frame img{display:block;width:100%;height:auto}
+  .qr__logo{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:12px;background:#fff;padding:6px}
+  .qr__cap{margin:16px 0 0;font-size:14px;color:var(--text-2);font-weight:600}
+  .qr__cap span{display:block;font-size:12px;color:var(--text-4);font-weight:400;margin-top:4px}
+
+  /* Ruta: prueba real */
+  .room-banner--fn{background:linear-gradient(120deg,#1b0d4a,#4a1d8f 55%,#00abeb);border-bottom-color:rgba(0,171,235,.4)}
+  .room-banner--fn .room-banner__tag{background:rgba(0,0,0,.45)}
+  .room-stats .prize b{color:var(--gl-lime-bright)}
+
+  /* Fundadores */
+  .founders{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .founders__prize{padding:28px;border-radius:20px;background:linear-gradient(160deg,rgba(60,206,59,.16),var(--gl-surface-1) 65%);border:1px solid rgba(60,206,59,.35)}
+  .founders__prize .amounts{display:flex;gap:14px;margin:16px 0}
+  .founders__prize .amt{flex:1;padding:16px;border-radius:14px;background:var(--gl-surface-2);text-align:center}
+  .founders__prize .amt b{display:block;font-size:34px;font-weight:800;color:var(--text-1);line-height:1}
+  .founders__prize .amt span{display:block;font-size:12px;color:var(--text-3);margin-top:6px}
+  .founders__prize p{font-size:14px;color:var(--text-3);margin:0;line-height:1.55}
+  .flist{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px}
+  .flist li{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
+  .flist .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:rgba(123,63,242,.16);color:var(--gl-purple-soft)}
+  .flist .ic i{width:18px;height:18px}
+  .flist b{display:block;color:var(--text-1);font-size:16px}
+  .flist span{display:block;color:var(--text-3);font-size:14px;line-height:1.5;margin-top:2px}
+
+  /* FAQ */
+  .faq{max-width:820px;margin:0 auto;display:grid;gap:10px}
+  .faq details{border-radius:14px;background:var(--gl-surface-1);border:1px solid var(--border-subtle);padding:0 20px}
+  .faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:600;color:var(--text-1);display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--gl-purple-soft);font-size:20px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin:0 0 18px;color:var(--text-3);line-height:1.6}
+  .faq details:focus-within{border-color:rgba(183,148,255,.5)}
+
+  /* Cierre */
+  .closing{text-align:center;padding:72px 24px;background:radial-gradient(70% 120% at 50% 0%,rgba(123,63,242,.3),transparent 70%)}
+  .closing h2{max-width:22ch;margin:0 auto 14px}
+  .closing p{color:var(--text-3);margin:0 auto 26px;max-width:52ch}
+
+
+  /* Hero: tu torneo */
+  .org-hero h1{max-width:16ch}
+  .mytour{width:100%;max-width:400px;justify-self:center}
+  .mytour__label{display:block;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:8px}
+  .mytour__input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(183,148,255,.45);background:var(--gl-surface-2);color:var(--text-1);font:inherit;font-size:15px;margin-bottom:14px}
+  .mytour__input:focus{outline:none;border-color:var(--gl-purple-bright);box-shadow:0 0 0 4px rgba(123,63,242,.25)}
+  .mytour__card{border-radius:20px;overflow:hidden;background:var(--gl-navy);border:1px solid rgba(183,148,255,.35);box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 40px rgba(123,63,242,.25)}
+  .mytour__banner{position:relative;height:132px;background:radial-gradient(80% 120% at 85% 10%,rgba(255,45,176,.55),transparent 60%),linear-gradient(120deg,#1b0d4a,#4a1d8f 60%,#00abeb);display:flex;align-items:flex-end;justify-content:flex-end;padding:0 18px}
+  .mytour__banner img{display:block;margin-bottom:-6px}
+  .mytour__tag{position:absolute;left:16px;top:14px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.45);color:#fff}
+  .mytour__body{padding:18px 18px 16px}
+  .mytour__title{display:block;font-size:22px;font-weight:800;color:var(--text-1);line-height:1.2;word-break:break-word}
+  .mytour__org{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--text-3);margin-top:6px}
+  .mytour__badge{font-style:normal;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--gl-purple-bright);color:#fff}
+  .mytour__stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 12px}
+  .mytour__stats div{background:var(--gl-surface-2);border-radius:10px;padding:8px 4px;text-align:center}
+  .mytour__stats b{display:block;font-size:13px;color:var(--text-1)}
+  .mytour__stats span{display:block;font-size:10px;color:var(--text-4);margin-top:2px}
+  .mytour__stats .pz b{color:var(--gl-lime-bright)}
+  .mytour__foot{display:block;font-size:12px;color:var(--text-4)}
+  .qr__frame img.qr__logo{width:52px;height:52px}
+  .sticky-cta{display:none}
+  @media (max-width:900px){
+    .proof__inner{grid-template-columns:1fr;gap:12px}
+    .proof__label{max-width:none}
+    .proof__list{grid-template-columns:repeat(2,1fr)}
+    .perks{grid-template-columns:1fr 1fr}
+    .wq{grid-template-columns:1fr;padding:26px}
+    .qr{display:none}
+    .founders{grid-template-columns:1fr}
+    .sticky-cta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:60}
+    .sticky-cta .btn{width:100%;justify-content:center}
+    body{padding-bottom:72px}
+  }
+  .org-hero__copy,.org-hero__visual,.org-register>*{min-width:0}
+  .org-register .card{max-width:100%}
+  @media (max-width:560px){
+    .perks{grid-template-columns:1fr}
+    .seats{font-size:12px;max-width:100%;flex-wrap:wrap;border-radius:14px}
+    .org-hero__cta{width:100%}
+    .org-hero__cta .btn{width:100%;justify-content:center;white-space:normal;text-align:center}
+    .mytour__stats{grid-template-columns:repeat(2,1fr)}
+  }
 </style>
 </head>
 <body data-portal="organizadores">
@@ -33,9 +159,10 @@
   <div class="nav__inner">
     <a class="nav__logo" href="/"><img src="assets/logo-full-white.png" alt="Game Lobby"></a>
     <nav class="nav__links" id="org-navlinks">
+      <a href="#beneficios">Qué ganas</a>
       <a href="#ruta">Cómo funciona</a>
-      <a href="#registro">Comunidades Fundadoras</a>
-      <a href="/">Volver al inicio</a>
+      <a href="#fundadores">Fundadores</a>
+      <a href="#preguntas">Preguntas</a>
     </nav>
     <div class="nav__right">
       <span class="nav__lang">ES</span>
@@ -49,122 +176,113 @@
 <section class="org-hero">
   <div class="org-hero__inner org-hero__inner--split">
     <div class="org-hero__copy">
-      <span class="badge badge--purple"><span class="dot"></span>Comunidades Fundadoras · cupos limitados</span>
-      <h1>Un <em>click</em>. Nosotros hacemos el resto.</h1>
-      <p class="org-hero__lead">Crea tu torneo, cóbralo automático con tu Wallet y reparte los premios al instante. Se acabó el WhatsApp, las hojas de cálculo y cobrar a mano.</p>
+      <span class="seats"><span class="seats__pips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Comunidades Fundadoras · primeras 10 comunidades</span>
+      <h1>Tú traes a tu comunidad. Nosotros armamos el torneo.</h1>
+      <p class="org-hero__lead">Tu comunidad ya existe. Ahora organízala, transmítela y gana con ella en GameLobby. Te armamos la sala, cobras las inscripciones en automático, transmites y usas la Wallet para pagos y premios, sin efectivo.</p>
       <div class="org-hero__cta">
-        <a class="btn btn--cyan btn--lg" href="https://gamelobby.gg" target="_blank" rel="noopener">Crea tu Lobby aquí</a>
-        <a class="btn btn--outline btn--lg" href="#registro">Registrar mi comunidad</a>
+        <a class="btn btn--purple btn--lg" href="#registro">Registrar mi Comunidad Fundadora</a>
+        <a class="btn btn--outline btn--lg" href="https://gamelobby.gg/room/details/torneo-flash-gamelobby-tekken-8" target="_blank" rel="noopener">Ver un torneo en gamelobby.gg</a>
       </div>
-      <p style="font-size:13px;color:var(--text-4);margin-top:14px"><i data-lucide="check" style="width:13px;height:13px;vertical-align:-2px;color:var(--gl-lime-bright)"></i> Gratis, sin tarjeta de crédito para empezar</p>
+      <p class="micro"><b>Regístrate gratis.</b> Sin tarjeta.</p>
     </div>
-
-    <div class="org-hero__visual org-hero__visual--lobi" aria-hidden="true">
-      <div class="lobi-hero-wrap">
-        <video src="assets/lobi/ReelLobi.mp4" autoplay muted loop playsinline></video>
-        <span class="lobi-hero-bubble">¡Sígueme!</span>
+    <div class="org-hero__visual">
+      <div class="mytour">
+        <label class="mytour__label" for="mt-name">Pruébalo: escribe el nombre de tu comunidad</label>
+        <input id="mt-name" class="mytour__input" maxlength="22" placeholder="Ej: Tekken Panamá" autocomplete="off">
+        <div class="mytour__card" aria-live="polite">
+          <div class="mytour__banner">
+            <img src="assets/lobi/lobi-saludar.svg" alt="" width="92" height="110">
+            <span class="mytour__tag">Torneo de lanzamiento</span>
+          </div>
+          <div class="mytour__body">
+            <b class="mytour__title">Copa <span data-mt>Tu comunidad</span></b>
+            <span class="mytour__org">Organiza: <span data-mt>Tu comunidad</span> <em class="mytour__badge">Fundador</em></span>
+            <div class="mytour__stats">
+              <div><b>Gratis</b><span>Inscripción</span></div>
+              <div class="pz"><b>$10 + $5</b><span>Premios</span></div>
+              <div><b>1v1</b><span>Formato</span></div>
+              <div><b>En vivo</b><span>Streaming</span></div>
+            </div>
+            <span class="mytour__foot">gamelobby.gg · Inscripciones abiertas</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ BENEFICIOS: qué resuelve GameLobby, claro y completo ============ -->
+<!-- ============ PRUEBA REAL ============ -->
+<section class="proof" aria-label="Torneos recientes en GameLobby">
+  <div class="proof__inner">
+    <p class="proof__label"><b>Pasó esta semana</b>en gamelobby.gg</p>
+    <div class="proof__list">
+      <div class="proof__item"><b>53 partidas</b><span>Fortnite, 11 de noviembre: 20 inscritos y 9 en cancha, en dos horas</span></div>
+      <div class="proof__item"><b>2 Torneos Flash</b><span>EA Sports FC 27 y Clash Royale, 12 de noviembre</span></div>
+      <div class="proof__item proof__item--live"><b>Tekken 8</b><span>18 de noviembre, inscripciones abiertas</span></div>
+      <div class="proof__item"><b>US$10 + US$5</b><span>Premio real al 1.º y al 2.º, pagado por GameLobby</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFICIOS ============ -->
 <section class="section" id="beneficios">
   <div class="container">
-    <div class="heading" style="margin-bottom:40px">
-      <span class="eyebrow eyebrow--purple">Para organizadores</span>
-      <h2>Todo lo que necesitas para tu torneo, en un solo lugar</h2>
-      <p>Desde armar el cuadro hasta cobrar y pagar — sin usar cinco herramientas distintas.</p>
+    <div class="heading" style="margin-bottom:36px">
+      <h2>Lo que gana tu comunidad</h2>
+      <p>Tú pones la comunidad. GameLobby pone el torneo, la plataforma y la difusión.</p>
     </div>
-
-    <div class="org-groups">
-      <div class="org-group">
-        <h3><i data-lucide="trophy" class="og-ic"></i>Torneos a tu medida</h3>
-        <ul class="org-blist">
-          <li><i data-lucide="list-tree"></i><span>Cualquier formato: brackets, liga o ranking, armados automáticamente.</span></li>
-          <li><i data-lucide="layout-template"></i><span>Página propia de tu torneo, con tu marca y tus patrocinadores.</span></li>
-          <li><i data-lucide="gamepad-2"></i><span>Cualquier juego, cualquier plataforma: PC, consola o móvil.</span></li>
-        </ul>
-      </div>
-
-      <div class="org-group">
-        <h3><i data-lucide="radio" class="og-ic"></i>En vivo, siempre actualizado</h3>
-        <ul class="org-blist">
-          <li><i data-lucide="activity"></i><span>Resultados en tiempo real, visibles desde cualquier dispositivo.</span></li>
-          <li><i data-lucide="video"></i><span>Transmite tu torneo en vivo directo desde tu Room.</span></li>
-          <li><i data-lucide="share-2"></i><span>Comparte en redes y que nadie se lo pierda.</span></li>
-        </ul>
-      </div>
-
-      <div class="org-group">
-        <h3><i data-lucide="users-round" class="og-ic"></i>Comunidad conectada</h3>
-        <ul class="org-blist">
-          <li><i data-lucide="clipboard-check"></i><span>Inscripciones online, sin formularios sueltos ni capturas de pantalla.</span></li>
-          <li><i data-lucide="message-circle"></i><span>Chat y recordatorios automáticos para que nadie falte.</span></li>
-          <li><i data-lucide="shield-check"></i><span>Validación inteligente que cuida el juego limpio.</span></li>
-        </ul>
-      </div>
-
-      <div class="org-group org-group--highlight">
-        <h3><i data-lucide="wallet" class="og-ic"></i>Pagos y Wallet</h3>
-        <ul class="org-blist">
-          <li><i data-lucide="credit-card"></i><span>Cobra las inscripciones automático, en la moneda de cada jugador.</span></li>
-          <li><i data-lucide="hand-coins"></i><span>Reparte los premios solo, sin transferencias manuales.</span></li>
-          <li><i data-lucide="zap"></i><span>Usa ese dinero al instante con tu tarjeta GameLobby multimoneda — no esperas a que llegue a tu banco.</span></li>
-        </ul>
-      </div>
+    <div class="perks">
+      <article class="perk perk--lead"><div class="perk__ic"><i data-lucide="hand-coins"></i></div><h3>Gana organizando</h3><p>Cobra las inscripciones en automático y recibe tu comisión de organizador. Nada de perseguir pagos por WhatsApp.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="wallet"></i></div><h3>Wallet en App Store y Google Play</h3><p>Pagos y premios sin efectivo, desde el celular de cada jugador.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="radio"></i></div><h3>Transmite tu torneo</h3><p>Streaming desde la plataforma, para que tu gente lo vea en vivo.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="megaphone"></i></div><h3>Tu comunidad es la protagonista</h3><p>La presentamos en Instagram, Facebook y TikTok de GameLobby, con su nombre.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="headset"></i></div><h3>Acompañamiento 1 a 1</h3><p>Estrategia, soporte técnico y marketing para que cada torneo salga mejor que el anterior.</p></article>
+      <article class="perk"><div class="perk__ic"><i data-lucide="badge-check"></i></div><h3>Comunidad Fundadora</h3><p>Torneo de lanzamiento, «Líder de la semana», insignia de fundador y acceso antes que nadie a crear salas.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ============ WALLET: el diferenciador, con la tarjeta real ============ -->
-<section class="section wallet-spotlight">
+<!-- ============ WALLET + QR ============ -->
+<section class="section" id="wallet" style="padding-top:0">
   <div class="container">
-    <div class="wallet-spotlight__grid">
-      <div class="wallet-spotlight__copy">
-        <span class="eyebrow eyebrow--purple">Tu dinero, a tu alcance</span>
-        <h2>Cobra en cualquier moneda. Gástalo al instante.</h2>
-        <p>Todo lo que recaudas en tus torneos llega a tu Wallet GameLobby, convertido automáticamente a tu moneda. Con tu tarjeta Mastercard GameLobby lo usas enseguida: para pagar premios, reinvertir en tu comunidad o lo que necesites — sin esperar transferencias bancarias.</p>
-        <ul class="org-blist" style="margin-top:22px">
-          <li><i data-lucide="globe"></i><span>Multimoneda automática: cobra en USD, MXN, COP y más.</span></li>
-          <li><i data-lucide="credit-card"></i><span>Tarjeta virtual Mastercard, lista al instante, a tu nombre.</span></li>
-          <li><i data-lucide="clock"></i><span>Disponible al instante, sin esperar transferencias.</span></li>
+    <div class="wq">
+      <div>
+        <span class="badge badge--purple"><span class="dot"></span>Ya disponible</span>
+        <h2>La Wallet GameLobby ya está en tu celular</h2>
+        <p>Con ella cobras las inscripciones, pagas los premios y recibes tu comisión. Tus jugadores la descargan gratis y se inscriben sin efectivo.</p>
+        <ul>
+          <li><i data-lucide="check"></i><span>Inscripciones cobradas en automático</span></li>
+          <li><i data-lucide="check"></i><span>Premios y comisión, sin transferencias a mano</span></li>
+          <li><i data-lucide="check"></i><span>En App Store y Google Play</span></li>
         </ul>
+        <div class="stores">
+          <a class="store" id="store-ios" href="/wallet?os=ios&amp;utm_source=organizadores" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.59 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.3-3.51zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"/></svg>
+            <span><small>Descárgala en</small><b>App Store</b></span>
+          </a>
+          <a class="store" id="store-android" href="/wallet?os=android&amp;utm_source=organizadores" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.3 13.4 12l-9.8 9.7c-.35-.2-.6-.6-.6-1.1V3.4c0-.5.25-.9.6-1.1z"/><path fill="#00f076" d="m16.8 8.6-3.4 3.4-9.8-9.7c.3-.2.8-.2 1.2 0z"/><path fill="#ff3a44" d="m16.8 15.4-12 6.3c-.4.2-.9.2-1.2 0l9.8-9.7z"/><path fill="#ffd500" d="m20.4 10.5-3.6-1.9-3.4 3.4 3.4 3.4 3.6-1.9c.9-.5.9-1.5 0-2z"/></svg>
+            <span><small>Disponible en</small><b>Google Play</b></span>
+          </a>
+        </div>
       </div>
-      <div class="wallet-spotlight__visual">
-        <div class="appcard appcard--lg">
-          <div class="appcard__row">
-            <span class="appcard__brand">GameLobby</span>
-            <span class="appcard__virtual">VIRTUAL</span>
-          </div>
-          <div class="appcard__chip"></div>
-          <div class="appcard__num">5412&nbsp;87••&nbsp;••••&nbsp;2026</div>
-          <div class="appcard__row appcard__row--bottom">
-            <span class="appcard__holder">TU NOMBRE GAMER</span>
-            <svg class="mc mc--lg" viewBox="0 0 48 30" aria-label="Mastercard">
-              <circle cx="19" cy="15" r="13" fill="#EB001B"/>
-              <circle cx="29" cy="15" r="13" fill="#F79E1B"/>
-              <path d="M24 4.6a13 13 0 0 1 0 20.8 13 13 0 0 1 0-20.8z" fill="#FF5F00"/>
-            </svg>
-          </div>
+      <div class="qr">
+        <div class="qr__frame">
+          <img src="assets/wallet-qr.svg" alt="Código QR para descargar la Wallet GameLobby" width="200" height="200">
+          <img class="qr__logo" src="assets/logo-symbol.png" alt="" width="40" height="40">
         </div>
-        <div class="wallet-spotlight__chips">
-          <span><i data-lucide="arrow-right"></i>USD</span>
-          <span><i data-lucide="arrow-right"></i>MXN</span>
-          <span><i data-lucide="arrow-right"></i>COP</span>
-          <span><i data-lucide="arrow-right"></i>GTQ</span>
-        </div>
+        <p class="qr__cap">Escanéalo con tu celular<span>Te lleva a App Store o Google Play según tu teléfono</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ RUTA: cómo funciona, de un click en adelante ============ -->
+<!-- ============ RUTA ============ -->
 <section class="section" id="ruta" style="padding-bottom:8px">
   <div class="container">
     <div class="heading" style="margin-bottom:8px">
-      <span class="eyebrow eyebrow--purple">Cómo funciona</span>
-      <h2>La ruta, paso a paso</h2>
+      <h2>Así entra tu comunidad</h2>
+      <p>Cinco pasos. Los de en medio los hacemos nosotros.</p>
     </div>
   </div>
 
@@ -173,163 +291,80 @@
     <div class="route__lobi" id="routeLobi"><img src="assets/lobi/lobi-idle.svg" alt="" width="68" height="68" loading="lazy"></div>
 
     <div class="route__row route__row--r" data-dot="cyan">
-      <div class="route__card"><b class="route__big">Un click: creas tu Room</b><span class="route__sub">Todo lo demás pasa automático. Así se ve en la práctica:</span></div>
-      <div class="route__dot route__dot--big"><i data-lucide="mouse-pointer-click"></i></div>
+      <div class="route__card"><b class="route__big">1. Registras tu comunidad</b><span class="route__sub">Un formulario de dos minutos. Gratis y sin tarjeta.</span></div>
+      <div class="route__dot route__dot--big"><i data-lucide="clipboard-pen"></i></div>
       <div></div>
     </div>
-
     <div class="route__row route__row--l" data-dot="cyan">
       <div></div>
-      <div class="route__dot"><i data-lucide="earth"></i></div>
-      <div class="route__card"><b>Se arma local o internacional</b><span class="route__sub">Tú eliges si compite tu comunidad o jugadores de toda la región.</span></div>
+      <div class="route__dot"><i data-lucide="message-circle"></i></div>
+      <div class="route__card"><b>2. Hablamos contigo</b><span class="route__sub">Una llamada corta para saber qué juego, qué día y cuánta gente mueves.</span></div>
     </div>
-
     <div class="route__row route__row--r" data-dot="purple">
-      <div class="route__card"><b>Invitas a tus amigos o al mundo</b><span class="route__sub">Compartes un link de inscripción, nosotros gestionamos quién entra.</span></div>
-      <div class="route__dot"><i data-lucide="users-round"></i></div>
-      <div></div>
-    </div>
-
-    <div class="route__row route__row--l" data-dot="purple">
-      <div></div>
+      <div class="route__card"><b>3. Armamos tu torneo con tu marca</b><span class="route__sub">Sala, brackets o ranking, reglas, chat, juez y streaming en gamelobby.gg.</span></div>
       <div class="route__dot"><i data-lucide="list-tree"></i></div>
-      <div class="route__card"><b>El formato se arma solo</b><span class="route__sub">Brackets de eliminación o ranking por puntos, como prefieras.</span></div>
-    </div>
-
-    <div class="route__row route__row--r" data-dot="pink">
-      <div class="route__card"><b>Todo conectado en el Room</b><span class="route__sub">Chat, transmisión en vivo y recordatorios, sin apps sueltas.</span></div>
-      <div class="route__dot"><i data-lucide="radio"></i></div>
       <div></div>
     </div>
-
     <div class="route__row route__row--l" data-dot="pink">
       <div></div>
-      <div class="route__dot"><i data-lucide="shield-check"></i></div>
-      <div class="route__card"><b>Validación inteligente</b><span class="route__sub">Identidad verificada, para evitar cuentas duplicadas y tramposos.</span></div>
+      <div class="route__dot"><i data-lucide="megaphone"></i></div>
+      <div class="route__card"><b>4. Lo difundimos en nuestras redes</b><span class="route__sub">Instagram, Facebook y TikTok de GameLobby, con tu comunidad de protagonista.</span></div>
     </div>
-
     <div class="route__row route__row--r" data-dot="lime">
-      <div class="route__card room-mini">
-        <div class="room-banner" aria-hidden="true">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 108" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Escena ilustrada de un torneo shooter táctico">
-<defs>
-<linearGradient id="rbBg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="#1c0505"/>
-<stop offset="0.55" stop-color="#2b0808"/>
-<stop offset="1" stop-color="#0a0a0d"/>
-</linearGradient>
-<radialGradient id="rbVign" cx="0.82" cy="0.15" r="0.9">
-<stop offset="0" stop-color="#ff3b3b" stop-opacity=".32"/>
-<stop offset="0.6" stop-color="#ff3b3b" stop-opacity="0"/>
-</radialGradient>
-<linearGradient id="rbRim" x1="0" y1="0" x2="1" y2="0">
-<stop offset="0" stop-color="#ff5252"/>
-<stop offset="1" stop-color="#ff5252" stop-opacity="0"/>
-</linearGradient>
-</defs>
-<rect width="500" height="108" fill="url(#rbBg)"/>
-<g stroke="#ff6a6a" stroke-width="1" opacity=".16">
-<line x1="0" y1="18" x2="500" y2="18"/>
-<line x1="0" y1="54" x2="500" y2="54"/>
-<line x1="0" y1="90" x2="500" y2="90"/>
-<line x1="60" y1="0" x2="60" y2="108"/>
-<line x1="150" y1="0" x2="150" y2="108"/>
-<line x1="260" y1="0" x2="260" y2="108"/>
-<line x1="370" y1="0" x2="370" y2="108"/>
-</g>
-<g fill="none" stroke="#ff8f8f" stroke-width="1.3" opacity=".3">
-<rect x="18" y="62" width="46" height="30" rx="2"/>
-<rect x="90" y="20" width="34" height="24" rx="2"/>
-<polygon points="190,88 230,88 244,60 206,46 176,60"/>
-<rect x="300" y="68" width="40" height="26" rx="2"/>
-</g>
-<g opacity=".5">
-<circle cx="70" cy="80" r="2" fill="#ff5252"/>
-<circle cx="200" cy="30" r="2" fill="#ff5252"/>
-<circle cx="320" cy="50" r="2" fill="#ff5252"/>
-</g>
-<g transform="translate(372 2)">
-<ellipse cx="40" cy="96" rx="46" ry="9" fill="#000" opacity=".4"/>
-<rect x="4" y="46" width="14" height="46" rx="6" fill="#140405" stroke="url(#rbRim)" stroke-width="1.5"/>
-<path d="M18 50 L58 34 L66 44 L24 60 Z" fill="#140405" stroke="url(#rbRim)" stroke-width="1.5"/>
-<path d="M22 54 Q40 40 60 58 L58 90 Q40 102 22 90 Z" fill="#1c0608" stroke="url(#rbRim)" stroke-width="2"/>
-<rect x="26" y="66" width="30" height="7" rx="3" fill="#2a0a0c" stroke="#ff5252" stroke-width="1" opacity=".8"/>
-<circle cx="40" cy="30" r="16" fill="#120405" stroke="url(#rbRim)" stroke-width="2"/>
-<path d="M28 28 Q40 20 52 28 L50 33 Q40 27 30 33 Z" fill="#ff5252" opacity=".85"/>
-<rect x="14" y="88" width="13" height="18" rx="4" fill="#140405" stroke="url(#rbRim)" stroke-width="1.5"/>
-<rect x="50" y="88" width="13" height="18" rx="4" fill="#140405" stroke="url(#rbRim)" stroke-width="1.5"/>
-</g>
-<g opacity=".22" fill="#fff">
-<ellipse cx="120" cy="70" rx="40" ry="10"/>
-<ellipse cx="250" cy="20" rx="55" ry="12"/>
-</g>
-<rect width="500" height="108" fill="url(#rbVign)"/>
-<rect width="500" height="108" fill="none" stroke="#000" stroke-opacity=".5"/>
-</svg>
-          <div class="room-banner__cross"><i></i><i></i></div>
-          <span class="room-banner__tag">Shooter táctico</span>
-        </div>
-        <b class="room-mini__title">Torneo LATAM · Valorant</b>
-        <div class="room-pills"><span>Abiertas</span><span>En vivo</span></div>
-        <div class="room-stats">
-          <div><b>15/11</b><span>Insc.</span></div>
-          <div><b>Gratis</b><span>Costo</span></div>
-          <div class="prize"><b>$1,200</b><span>Premio</span></div>
-          <div><b>300</b><span>Jugadores</span></div>
-        </div>
-        <p class="room-mini__note">Ejemplo ilustrativo, los montos y jugadores son de muestra.</p>
-      </div>
+      <div class="route__card"><b>5. Tu gente juega y gana premios</b><span class="route__sub">Inscripción en línea, resultados en tiempo real y premios por la Wallet.</span></div>
       <div class="route__dot"><i data-lucide="trophy"></i></div>
       <div></div>
     </div>
-
-    <div class="route__row route__row--l" data-dot="purple">
+    <div class="route__row route__row--l" data-dot="lime">
       <div></div>
-      <div class="route__dot"><i data-lucide="wallet"></i></div>
-      <div class="route__card wallet-mini">
-        <b class="route__sub" style="display:block;margin-bottom:10px;color:var(--text-2);font-size:13px">Al terminar, tu Wallet reparte premios y tu comisión solos, convertidos en segundos:</b>
-        <div class="appcard">
-          <div class="appcard__row">
-            <span class="appcard__brand">GameLobby</span>
-            <span class="appcard__virtual">VIRTUAL</span>
-          </div>
-          <div class="appcard__chip"></div>
-          <div class="appcard__num">5412&nbsp;87••&nbsp;••••&nbsp;2026</div>
-          <div class="appcard__row appcard__row--bottom">
-            <span class="appcard__holder">TU NOMBRE GAMER</span>
-            <svg class="mc" viewBox="0 0 48 30" aria-label="Mastercard">
-              <circle cx="19" cy="15" r="13" fill="#EB001B"/>
-              <circle cx="29" cy="15" r="13" fill="#F79E1B"/>
-              <path d="M24 4.6a13 13 0 0 1 0 20.8 13 13 0 0 1 0-20.8z" fill="#FF5F00"/>
-            </svg>
-          </div>
+      <div class="route__dot"><i data-lucide="flame"></i></div>
+      <div class="route__card room-mini">
+        <div class="room-banner room-banner--fn" aria-hidden="true"><span class="room-banner__tag">Battle royale</span></div>
+        <b class="room-mini__title">Así se vio · Fortnite, 11 de noviembre</b>
+        <div class="room-pills"><span>Torneo real</span><span>7 a 9 p. m.</span></div>
+        <div class="room-stats">
+          <div><b>20</b><span>Inscritos</span></div>
+          <div><b>9</b><span>En cancha</span></div>
+          <div><b>53</b><span>Partidas</span></div>
+          <div class="prize"><b>$10 + $5</b><span>Premios</span></div>
         </div>
-        <div class="wallet-mini__convert">
-          <span>USD</span><i data-lucide="arrow-right"></i><span>MXN</span><i data-lucide="arrow-right"></i><span>COP</span>
-        </div>
-        <b class="wallet-mini__note">Se convierte sola — úsala al instante con tu tarjeta.</b>
       </div>
-    </div>
-
-    <div class="route__row route__row--r" data-dot="lime">
-      <div class="route__card"><b>Tus jugadores suman puntos</b><span class="route__sub">Ganan por competir y vuelven a tu próximo torneo.</span></div>
-      <div class="route__dot"><i data-lucide="sparkles"></i></div>
-      <div></div>
-    </div>
-
-    <div class="route__row route__row--l" data-dot="pink">
-      <div></div>
-      <div class="route__dot" style="border-color:var(--gl-pink-bright)"><i data-lucide="star"></i></div>
-      <div class="route__card"><b>Sé una Comunidad Fundadora</b><span class="route__sub">Bonus · cupos limitados · <a href="#registro">regístrate aquí</a></span></div>
     </div>
   </div>
 
   <div class="route-finish-wrap">
     <div class="route__finish reveal">
-      <img src="assets/lobi/lobi-saludar.svg" alt="LOBI celebrando" class="finish-lobi-jump" width="180" height="214" loading="lazy" style="display:block;margin:0 auto 14px">
-      <h3>Llegaste al final de la ruta.</h3>
-      <p>Ahora créala de verdad, gratis, en gamelobby.gg</p>
-      <a class="btn btn--lime btn--lg" href="https://gamelobby.gg" target="_blank" rel="noopener">Entrar a gamelobby.gg</a>
+      <img src="assets/lobi/lobi-saludar.svg" alt="" class="finish-lobi-jump" width="180" height="214" loading="lazy" style="display:block;margin:0 auto 14px">
+      <h3>No pedimos miles de miembros.</h3>
+      <p>Buscamos comunidades que sí se aparecen a jugar.</p>
+      <a class="btn btn--lime btn--lg" href="#registro">Registrar mi comunidad</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNDADORES ============ -->
+<section class="section" id="fundadores">
+  <div class="container">
+    <div class="founders">
+      <div class="founders__prize">
+        <span class="badge badge--purple"><span class="dot"></span>Solo primeras 10 comunidades</span>
+        <h2 style="margin:12px 0 0">Tu torneo de lanzamiento, con premio real</h2>
+        <div class="amounts">
+          <div class="amt"><b>US$10</b><span>al 1.er lugar</span></div>
+          <div class="amt"><b>US$5</b><span>al 2.º lugar</span></div>
+        </div>
+        <p>Lo paga GameLobby y es gratis para tus jugadores. Después del torneo de lanzamiento, los premios se conversan caso por caso.</p>
+      </div>
+      <div>
+        <h2 style="margin:0">El Bonus fundador</h2>
+        <p style="color:var(--text-3);margin:10px 0 0">Lo que recibe cada Comunidad Fundadora, además del torneo de lanzamiento.</p>
+        <ul class="flist">
+          <li><span class="ic"><i data-lucide="rocket"></i></span><div><b>Torneo de lanzamiento</b><span>Montado por GameLobby, con el nombre y la marca de tu comunidad.</span></div></li>
+          <li><span class="ic"><i data-lucide="star"></i></span><div><b>«Líder de la semana»</b><span>Tu comunidad, presentada en las redes oficiales de GameLobby.</span></div></li>
+          <li><span class="ic"><i data-lucide="shield"></i></span><div><b>Insignia de fundador</b><span>Para que todos sepan que estuviste desde el principio.</span></div></li>
+          <li><span class="ic"><i data-lucide="key-round"></i></span><div><b>Acceso antes que nadie a crear salas</b><span>Cuando se abra la creación propia de torneos, entras primero.</span></div></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -351,38 +386,38 @@
   <div class="container">
     <div class="org-register">
       <div class="org-register__copy">
-        <img src="assets/lobi/lobi-saludar.svg" alt="LOBI saludando" class="register-lobi" width="110" height="131" loading="lazy">
-        <span class="eyebrow eyebrow--purple">Registro</span>
-        <h2>Registra tu comunidad fundadora</h2>
-        <p>Un formulario corto. Te enviaremos un correo confirmando que recibimos tu registro. Registrarte no equivale a la activación: la incorporación será progresiva y te avisaremos los siguientes pasos.</p>
+        <img src="assets/lobi/lobi-saludar.svg" alt="" class="register-lobi" width="110" height="131" loading="lazy">
+        <h2>Registra tu Comunidad Fundadora</h2>
+        <p>Te toma dos minutos. Te confirmamos por correo y te escribimos para armar tu primer torneo. La incorporación es acompañada: no es un botón mágico, es un equipo que te ayuda.</p>
         <ul>
-          <li><i data-lucide="clock" class="ic"></i><span>Te toma un par de minutos.</span></li>
-          <li><i data-lucide="mail" class="ic"></i><span>Recibes la confirmación de registro en tu correo.</span></li>
-          <li><i data-lucide="lock" class="ic"></i><span>Sin compromiso. Usamos tus datos solo para gestionar tu registro.</span></li>
+          <li><i data-lucide="clock" class="ic"></i><span>Dos minutos, gratis y sin tarjeta.</span></li>
+          <li><i data-lucide="mail" class="ic"></i><span>Confirmación inmediata en tu correo.</span></li>
+          <li><i data-lucide="phone-call" class="ic"></i><span>Te contactamos para armar tu torneo de lanzamiento.</span></li>
         </ul>
       </div>
 
       <div class="card" data-neon="purple" style="padding:32px">
         <form class="form" id="organizer-form">
-          <h3>Registrar mi comunidad</h3>
+          <h3>Registrar mi Comunidad Fundadora</h3>
           <div class="field">
-            <label for="org-name">Nombre de contacto</label>
-            <input id="org-name" name="name" placeholder="Alex Rivera" required>
+            <label for="org-name">Tu nombre</label>
+            <input id="org-name" name="name" placeholder="Alex Rivera" autocomplete="name" required>
           </div>
           <div class="field">
             <label for="org-email">Correo</label>
-            <input id="org-email" name="email" type="email" placeholder="alex@correo.com" required>
+            <input id="org-email" name="email" type="email" placeholder="alex@correo.com" autocomplete="email" required>
           </div>
           <div class="field">
             <label for="org-country">País</label>
             <select id="org-country" name="country" required>
               <option value="" disabled selected>Elige tu país</option>
+              <option>Panamá</option>
+              <option>Costa Rica</option>
               <option>Guatemala</option>
               <option>El Salvador</option>
               <option>Honduras</option>
               <option>Nicaragua</option>
-              <option>Costa Rica</option>
-              <option>Panamá</option>
+              <option>República Dominicana</option>
               <option>México</option>
               <option>Colombia</option>
               <option>Otro</option>
@@ -390,18 +425,18 @@
           </div>
           <div class="field">
             <label for="org-community">Nombre de tu comunidad</label>
-            <input id="org-community" name="community" placeholder="Ej: Liga Centro Gamers" required>
+            <input id="org-community" name="community" placeholder="Ej: Tekken Panamá" required>
           </div>
           <div class="field">
-            <label for="org-game">Juego principal <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-            <input id="org-game" name="game" placeholder="Ej: Valorant, Free Fire, FIFA">
+            <label for="org-game">Juego principal</label>
+            <input id="org-game" name="game" placeholder="Ej: Tekken 8, EA FC, Fortnite, Clash Royale">
           </div>
           <div class="field">
             <label for="org-link">Enlace de tu comunidad</label>
-            <input id="org-link" name="link" placeholder="instagram.com/tucomunidad · wa.me/… · discord.gg/…" required>
+            <input id="org-link" name="link" placeholder="instagram.com/tucomunidad · discord.gg/… · chat.whatsapp.com/…" required>
           </div>
           <div class="field">
-            <label for="org-scale">Tamaño aproximado de la comunidad <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <label for="org-scale">¿Cuántos juegan contigo? <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
             <select id="org-scale" name="scale">
               <option value="" selected>Elige un rango</option>
               <option>Menos de 100 miembros</option>
@@ -411,29 +446,57 @@
             </select>
           </div>
           <div class="field">
-            <label for="org-interest">¿Qué te gustaría monetizar primero? <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
+            <label for="org-interest">¿Qué te gustaría lograr primero? <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
             <select id="org-interest" name="interest">
               <option value="" selected>Elige una opción</option>
-              <option>Inscripciones a torneos</option>
-              <option>Suscripciones o membresías</option>
-              <option>Patrocinios</option>
+              <option>Cobrar inscripciones</option>
+              <option>Transmitir mis torneos</option>
+              <option>Conseguir patrocinios</option>
+              <option>Que mi comunidad crezca</option>
               <option>Todavía no lo sé</option>
             </select>
           </div>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="consent"><input type="checkbox" name="consentMarketing" value="1"> <span>Quiero recibir novedades de GameLobby por correo (opcional).</span></label>
           <p class="form__note">Usamos tus datos solo para gestionar tu registro.</p>
-          <button class="btn btn--purple btn--block btn--md" type="submit">Registrar mi comunidad</button>
+          <button class="btn btn--purple btn--block btn--md" type="submit">Registrar mi Comunidad Fundadora</button>
         </form>
         <div class="form__success hidden" id="organizer-success">
           <i data-lucide="circle-check-big" style="width:48px;height:48px"></i>
-          <h3>Recibimos el registro de tu comunidad</h3>
-          <p>Revisa tu correo: te enviamos la confirmación. La incorporación será progresiva y te avisaremos las funciones disponibles y el siguiente paso.</p>
+          <h3>¡Tu comunidad ya está en la lista!</h3>
+          <p>Revisa tu correo: te enviamos la confirmación. Te escribimos para armar tu torneo de lanzamiento.</p>
+          <p style="margin-top:12px">Mientras tanto, descarga la Wallet: <a href="/wallet?utm_source=organizadores_ok">App Store o Google Play</a>.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="preguntas">
+  <div class="container">
+    <div class="heading" style="margin-bottom:28px"><h2>Preguntas frecuentes</h2></div>
+    <div class="faq">
+      <details><summary>¿Cuesta algo?</summary><p>Registrarte es gratis y sin tarjeta. El torneo de lanzamiento, para las primeras 10 comunidades, es gratis para tus jugadores. En los siguientes torneos puedes cobrar inscripciones en automático.</p></details>
+      <details><summary>¿Qué juegos?</summary><p>Empezamos con los que ya corren en Panamá, en formato 1v1: Fortnite, Tekken 8, EA Sports FC y Clash Royale, y los que se anuncien. Si tu comunidad juega otro, cuéntanoslo en el registro.</p></details>
+      <details><summary>¿Quién paga los premios?</summary><p>GameLobby. Si entras entre las primeras 10 comunidades, tu torneo de lanzamiento tiene US$10 al 1.º y US$5 al 2.º. Después, los premios se conversan caso por caso. En los torneos oficiales de GameLobby también son US$10 y US$5.</p></details>
+      <details><summary>¿Cómo cobro?</summary><p>Con el cobro automático de inscripciones y la Wallet GameLobby, que ya está en App Store y Google Play. Los pagos y los premios salen sin efectivo.</p></details>
+      <details><summary>¿Cuánto me queda?</summary><p>Recibes una comisión de organizador por cada torneo con inscripción. Te la explicamos en la llamada, con números claros.</p></details>
+      <details><summary>¿Tengo que crear yo la sala?</summary><p>No. Hoy la armamos nosotros y tú invitas a tu gente. Las Comunidades Fundadoras tendrán acceso antes que nadie cuando se abra la creación propia de salas.</p></details>
+      <details><summary>Mis jugadores ya están en WhatsApp o Discord. ¿Tengo que moverlos?</summary><p>No. El grupo sigue siendo tuyo. Lo que cambia es que el torneo se juega con reglas claras, bracket o ranking, juez y resultados a la vista.</p></details>
+      <details><summary>¿Qué gano al ser fundador?</summary><p>El torneo de lanzamiento (con premios de US$10 y US$5 si entras entre las primeras 10), «Líder de la semana», insignia de fundador, acceso antes que nadie a crear salas y acompañamiento 1 a 1.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="closing">
+  <h2>¿Tienes una comunidad que sí se aparece a jugar?</h2>
+  <p>Regístrala como fundadora y te armamos el siguiente torneo.</p>
+  <a class="btn btn--purple btn--lg" href="#registro">Regístrate gratis</a>
+</section>
+
+<div class="sticky-cta"><a class="btn btn--purple btn--md" href="#registro">Registrar mi Comunidad Fundadora</a></div>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -449,11 +512,11 @@
       </div>
       <div class="footer__col">
         <h4>Organizadores</h4>
-        <a href="#ruta">Cómo funciona</a><a href="#registro">Comunidades Fundadoras</a><a href="/xperience">GameLobby Xperience</a>
+        <a href="#ruta">Cómo funciona</a><a href="#fundadores">Comunidades Fundadoras</a><a href="#preguntas">Preguntas</a>
       </div>
       <div class="footer__col">
         <h4>Empresa</h4>
-        <a href="/#contacto">Para marcas</a><a href="/#contacto">Contacto</a>
+        <a href="/marcas">Para marcas</a><a href="/xperience">GameLobby Xperience</a>
       </div>
     </div>
     <div class="footer__social">
@@ -621,6 +684,21 @@
       var active = map.querySelector('.route__dot.is-in');
       if (active) { var row = active.closest('.route__row'); if (row) placeLobi(row); }
     });
+  })();
+
+
+  // ---- Hero: tu torneo con tu nombre ----
+  (function () {
+    var inp = document.getElementById('mt-name');
+    if (!inp) return;
+    var spots = document.querySelectorAll('[data-mt]');
+    var comm = document.getElementById('org-community');
+    inp.addEventListener('input', function () {
+      var v = inp.value.trim() || 'Tu comunidad';
+      spots.forEach(function (el) { el.textContent = v; });
+      if (comm && !comm.dataset.touched) comm.value = inp.value.trim();
+    });
+    if (comm) comm.addEventListener('input', function () { comm.dataset.touched = '1'; });
   })();
 
   // ---- Comunidades registradas ----
