@@ -51,12 +51,41 @@ function buildWelcome(lead) {
   if (lead.type === "glx_sponsor") {
     const goals = lead.goals ? ` Anotamos que buscas: ${lead.goals}.` : "";
     const p1 = `Gracias por escribirnos${from}.${goals}`;
-    const p2 = "GameLobby Xperience es la experiencia presencial del ecosistema GameLobby, prevista para agosto de 2027. Formato, sede y condiciones comerciales se detallarán en la propuesta.";
+    const p2 = "GameLobby Xperience es el tour gamer de México y Centroamérica, con Gran Final presencial en Panamá el 28 y 29 de agosto de 2027. Te preparamos una propuesta a la medida de tu marca.";
     const p3 = "Nuestro equipo revisará tu solicitud y te contactará con los próximos pasos.";
     return {
       subject: "Recibimos tu solicitud—GameLobby Xperience",
       text: `${hola}\n\n${p1}\n\n${p2}\n\n${p3}\n\nEl equipo de GameLobby\n`,
       html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>${esc(p3)}</p><p>El equipo de GameLobby</p>`,
+    };
+  }
+  if (lead.type === "xp_fan") {
+    const where = lead.country ? ` desde ${lead.country}` : "";
+    const p1 = `Ya estás en la lista de GameLobby Xperience 2027${where}.`;
+    const p2 = "Serás de los primeros en saber cuándo abre la venta de entradas para la Gran Final en Panamá (28 y 29 de agosto de 2027) y cuándo arrancan las clasificatorias de tu país, para que puedas competir.";
+    const p3 = "Mientras tanto, hay torneos gratis cada semana en GameLobby.gg.";
+    return {
+      subject: "Ya estás en la lista de GameLobby Xperience 2027",
+      text: `${hola}\n\n${p1}\n\n${p2}\n\n${p3}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>${esc(p3)} <a href="https://gamelobby.gg">Entrar a GameLobby.gg</a></p><p>El equipo de GameLobby</p>`,
+    };
+  }
+  if (lead.type === "xp_press") {
+    const p1 = `Recibimos tu solicitud de acreditación de prensa para GameLobby Xperience 2027${from}.`;
+    const p2 = "Te escribiremos con el kit de prensa, el calendario del tour y las condiciones de acreditación para la Gran Final en Panamá (28 y 29 de agosto de 2027). Las acreditaciones se confirman por medio y por fecha.";
+    return {
+      subject: "Recibimos tu solicitud de acreditación—GameLobby Xperience",
+      text: `${hola}\n\n${p1}\n\n${p2}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>El equipo de GameLobby</p>`,
+    };
+  }
+  if (lead.type === "xp_creator") {
+    const p1 = "Recibimos tu postulación al programa de creadores y embajadores de GameLobby Xperience 2027.";
+    const p2 = "Revisamos cada perfil y te contactamos si encaja con el tour: contenido antes, durante y después del evento, presencia en la Gran Final y colaboraciones con marcas.";
+    return {
+      subject: "Recibimos tu postulación—Creadores GameLobby Xperience",
+      text: `${hola}\n\n${p1}\n\n${p2}\n\nEl equipo de GameLobby\n`,
+      html: `<p>${holaHtml}</p><p>${esc(p1)}</p><p>${esc(p2)}</p><p>El equipo de GameLobby</p>`,
     };
   }
   if (lead.type === "investor") {
@@ -114,7 +143,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, stored: false });
   }
 
-  const VALID_TYPES = ["b2b", "organizer", "glx_sponsor", "investor"];
+  const VALID_TYPES = ["b2b", "organizer", "glx_sponsor", "investor", "xp_fan", "xp_press", "xp_creator"];
   const type = VALID_TYPES.includes(body.type) ? body.type : "waitlist";
   const name = String(body.name || "").trim().slice(0, 200);
   const company = String(body.company || "").trim().slice(0, 200);
@@ -233,11 +262,11 @@ export default async function handler(req, res) {
 
   // 3b) Aviso interno al equipo comercial para leads de marcas (b2b y sponsors de Xperience).
   // Llega a LEADS_NOTIFY_EMAIL (por defecto, el correo de Mai) con reply-to al lead.
-  if (resendKey && mailFrom && !duplicate && (lead.type === "b2b" || lead.type === "glx_sponsor")) {
+  if (resendKey && mailFrom && !duplicate && ["b2b", "glx_sponsor", "xp_press", "xp_creator"].includes(lead.type)) {
     try {
       const notifyTo = process.env.LEADS_NOTIFY_EMAIL || "m.celedon@gamelobby.live";
       const rows = [
-        ["Nombre", lead.name], ["Empresa", lead.company], ["Cargo", lead.jobTitle], ["Correo", lead.email],
+        ["Nombre", lead.name], ["Empresa o medio", lead.company], ["Canal o perfil", lead.link], ["Comunidad", lead.community], ["Cargo", lead.jobTitle], ["Correo", lead.email],
         ["Teléfono", lead.phone], ["País", lead.country], ["Interés", lead.interest], ["Categoría", lead.companyCategory],
         ["Objetivos", lead.goals], ["Mensaje", lead.message], ["Página", lead.page],
         ["Origen", [lead.utm_source, lead.utm_medium, lead.utm_campaign].filter(Boolean).join(" / ") || null],
@@ -251,7 +280,7 @@ export default async function handler(req, res) {
           from: mailFrom,
           to: notifyTo,
           reply_to: lead.email,
-          subject: `Nuevo lead de marca: ${lead.company || lead.name}${lead.interest ? " · " + lead.interest : ""}`,
+          subject: `${{ b2b: "Nuevo lead de marca", glx_sponsor: "Nuevo lead de marca", xp_press: "Acreditación de prensa", xp_creator: "Postulación de creador" }[lead.type]}: ${lead.company || lead.name}${lead.interest ? " · " + lead.interest : ""}`,
           text: `Nuevo contacto desde la web de GameLobby.\n\n${text}\n`,
           html: `<p>Nuevo contacto desde la web de GameLobby.</p>${html}`,
         }),

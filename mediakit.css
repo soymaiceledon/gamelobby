@@ -98,13 +98,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan-2);outline-off
 .result{margin-top:30px;padding:20px 24px;border-left:3px solid var(--pink-2);background:rgba(201,0,135,.08);border-radius:0 10px 10px 0;font-size:17px;color:var(--text);max-width:70ch;line-height:1.55}
 
 /* ---- Galería de zonas ---- */
-.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
-.zone{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--bg-3)}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.zone{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:var(--bg-3);margin:0}
 .zone img{width:100%;height:100%;object-fit:cover}
 .zone figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,transparent,rgba(10,18,30,.92));font-size:15px;font-weight:700;color:#fff}
 .zone figcaption small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px}
-.zone--wide{grid-column:span 2;aspect-ratio:auto}
-@media (max-width:900px){.zones{grid-template-columns:1fr 1fr}.zone--wide{grid-column:span 2;aspect-ratio:16/9}}
+.zone--wide{grid-column:span 2;grid-row:span 2}
+@media (max-width:900px){.zones{grid-template-columns:1fr 1fr}.zone--wide{grid-column:span 2;grid-row:auto}}
+@media (max-width:520px){.zones{grid-template-columns:1fr}.zone--wide{grid-column:auto}}
 
 /* ---- Dos columnas imagen + texto ---- */
 .split{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
@@ -228,3 +229,4 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan-2);outline-off
 .stand svg .bn,.stand svg .bn-sm,.stand svg .bn-title{letter-spacing:.02em}
 @media (max-width:900px){.stands{grid-template-columns:1fr}.stand--wide{grid-column:auto;flex-direction:column}.stand--wide figcaption{padding:18px 24px 24px}}
 @media print{.stands{gap:10px}.stand li{font-size:10.5px}.stand h3{font-size:15px}.stand__art svg{max-height:2.2in}.stand figcaption{padding:8px 14px}}
+section[id]{scroll-margin-top:64px}

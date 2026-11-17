@@ -71,6 +71,21 @@
       "source": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf",
       "destination": "/mediakit-xperience",
       "permanent": false
+    },
+    {
+      "source": "/entradas",
+      "destination": "/vive-xperience#entradas",
+      "permanent": false
+    },
+    {
+      "source": "/prensa",
+      "destination": "/vive-xperience#prensa",
+      "permanent": false
+    },
+    {
+      "source": "/creadores",
+      "destination": "/vive-xperience#creadores",
+      "permanent": false
     }
   ]
 }
