@@ -151,13 +151,13 @@ export function buildExploreEmail(lead) {
     subject: "Antes de enviarte el Media Kit de GameLobby Xperience",
     text:
       `Hola ${name},\n\n` +
-      `Gracias por tu interés en GameLobby Xperience, la experiencia presencial del ecosistema GameLobby, prevista para agosto de 2027.\n\n` +
+      `Gracias por tu interés en GameLobby Xperience, el tour gamer de México y Centroamérica con Gran Final en Panamá el 28 y 29 de agosto de 2027.\n\n` +
       `Antes de enviarte el Media Kit completo, cuéntanos en una línea qué hace ${lead.company || "tu marca"} y qué te gustaría lograr con una activación como esta; así lo adaptamos en vez de enviarte algo genérico. Simplemente responde este correo.\n\n` +
       `De todas formas, en menos de un día te llega el kit completo, pero si nos cuentas antes, la conversación arranca más rápido.\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
-      `<p>Gracias por tu interés en <strong>GameLobby Xperience</strong>, la experiencia presencial del ecosistema GameLobby, prevista para <strong>agosto de 2027</strong>.</p>` +
+      `<p>Gracias por tu interés en <strong>GameLobby Xperience</strong>, el tour gamer de México y Centroamérica con Gran Final en Panamá el <strong>28 y 29 de agosto de 2027</strong>.</p>` +
       `<p>Antes de enviarte el Media Kit completo, cuéntanos en una línea qué hace <strong>${esc(lead.company || "tu marca")}</strong> y qué te gustaría lograr con una activación como esta; así lo adaptamos en vez de enviarte algo genérico. Simplemente responde este correo.</p>` +
       `<p>De todas formas, en menos de un día te llega el kit completo, pero si nos cuentas antes, la conversación arranca más rápido.</p>` +
       `<p>El equipo de GameLobby</p>`,
@@ -176,15 +176,15 @@ export function buildKitEmail(lead) {
     text:
       `Hola ${name},\n\n` +
       `Aquí está el Media Kit de GameLobby Xperience: ${kitUrl}\n\n` +
-      `GameLobby Xperience es la experiencia presencial del ecosistema GameLobby, prevista para agosto de 2027. Estamos desarrollando oportunidades para que las marcas conecten con comunidades mediante competición, creación de contenido y activaciones participativas.\n\n` +
-      `Formato, sede y condiciones comerciales se detallarán en una propuesta a la medida de tu marca. Las cifras del kit son estimaciones de planificación, no resultados.\n\n` +
+      `GameLobby Xperience es el tour gamer de México y Centroamérica: torneos, creadores y experiencias de marca, con Gran Final presencial en Panamá el 28 y 29 de agosto de 2027. Tu marca puede tener una zona, un país, todo el tour o el nombre del evento.\n\n` +
+      `En el kit encuentras los niveles de patrocinio, las zonas y la inversión de cada paquete. Te preparamos una propuesta a la medida de tu marca.\n\n` +
       `Si después de verlo quieres hablarlo en vivo, agenda 15 minutos aquí: ${calUrl}\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
       `<p>Aquí está el <a href="${kitUrl}"><strong>Media Kit de GameLobby Xperience</strong></a>.</p>` +
-      `<p>GameLobby Xperience es la experiencia presencial del ecosistema GameLobby, prevista para <strong>agosto de 2027</strong>. Estamos desarrollando oportunidades para que las marcas conecten con comunidades mediante competición, creación de contenido y activaciones participativas.${companyLine}</p>` +
-      `<p>Formato, sede y condiciones comerciales se detallarán en una propuesta a la medida de tu marca. Las cifras del kit son estimaciones de planificación, no resultados.</p>` +
+      `<p>GameLobby Xperience es el tour gamer de México y Centroamérica: torneos, creadores y experiencias de marca, con Gran Final presencial en Panamá el <strong>28 y 29 de agosto de 2027</strong>. Tu marca puede tener una zona, un país, todo el tour o el nombre del evento.${companyLine}</p>` +
+      `<p>En el kit encuentras los niveles de patrocinio, las zonas y la inversión de cada paquete. Te preparamos una propuesta a la medida de tu marca.</p>` +
       `<p><a href="${kitUrl}">Ver el Media Kit →</a></p>` +
       `<p>Si después de verlo quieres hablarlo en vivo, <a href="${calUrl}">agenda 15 minutos aquí</a>.</p>` +
       `<p>El equipo de GameLobby</p>`,
@@ -216,12 +216,12 @@ export function buildReengageEmail(lead) {
     subject: "GameLobby Xperience, agosto de 2027: ¿revisamos una propuesta?",
     text:
       `Hola ${name},\n\n` +
-      `Te escribo por si aún te interesa GameLobby Xperience, prevista para agosto de 2027. Si quieres, preparamos una propuesta a la medida de tu marca; formato, sede y condiciones se detallan en ella.\n\n` +
+      `Te escribo por si aún te interesa GameLobby Xperience, con Gran Final el 28 y 29 de agosto de 2027. Si quieres, preparamos una propuesta a la medida de tu marca.\n\n` +
       `Si todavía no revisaste el Media Kit, aquí está de nuevo: ${kitUrl}\n\n` +
       `El equipo de GameLobby\n`,
     html:
       `<p>Hola ${esc(name)},</p>` +
-      `<p>Te escribo por si aún te interesa <strong>GameLobby Xperience</strong>, prevista para agosto de 2027. Si quieres, preparamos una propuesta a la medida de tu marca; formato, sede y condiciones se detallan en ella.</p>` +
+      `<p>Te escribo por si aún te interesa <strong>GameLobby Xperience</strong>, con Gran Final el 28 y 29 de agosto de 2027. Si quieres, preparamos una propuesta a la medida de tu marca.</p>` +
       `<p>Si todavía no revisaste el Media Kit, <a href="${kitUrl}">aquí está de nuevo</a>.</p>` +
       `<p>El equipo de GameLobby</p>`,
   };

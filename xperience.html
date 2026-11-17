@@ -3,1007 +3,656 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GameLobby Xperience · Gran Final 28-29 ago 2027, Panamá</title>
-<meta name="description" content="GameLobby Xperience es el tour regional de GameLobby: competencias, creadores y experiencias de marca que recorren México y Centroamérica y culminan en una Gran Final presencial en Panamá.">
+<title>GameLobby Xperience 2027 · Ponle tu nombre a la final gamer de la región</title>
+<meta name="description" content="GameLobby Xperience es el tour gamer de México y Centroamérica: torneos, creadores y experiencias de marca con Gran Final presencial en Panamá el 28 y 29 de agosto de 2027. Preventa abierta para marcas.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GameLobby Xperience · Tour regional 2027">
-<meta property="og:description" content="Tu marca no se exhibe: se juega, se vive y se mide. Agenda una reunión y te mostramos dónde encaja tu marca.">
-<meta property="og:image" content="assets/logo-full-color.png">
+<meta property="og:title" content="GameLobby Xperience 2027 · Ponle tu nombre a la final gamer de la región">
+<meta property="og:description" content="Tour gamer de México y Centroamérica con Gran Final en Panamá, 28 y 29 de agosto de 2027. Preventa abierta para marcas.">
+<meta property="og:image" content="https://www.gamelobby.live/assets/xperience/stage-ranking.jpg">
 <meta name="theme-color" content="#0a121e">
 <link rel="icon" href="assets/logo-symbol.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="mediakit.css">
 <style>
-  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-3);margin:6px 0 2px}
-  .consent input{margin-top:3px;flex:none}
-  .form__note{font-size:12px;color:var(--text-4);margin:0 0 4px}
-  .form__error{font-size:13px;color:#ff8fd6;margin:0 0 8px}
-  /* ---- Subsecciones del bloque "Qué incluye" (h3 con el tamaño de un título de subsección, no de bloque) ---- */
-  .heading h3{font-family:var(--font-display);font-weight:700;font-size:32px;letter-spacing:var(--ls-tight);line-height:1.15}
-  /* ---- Microtexto bajo los botones del hero ---- */
-  .xp-hero__note{margin-top:16px;font-family:var(--font-body);font-size:13px;color:var(--text-4)}
-  /* ---- "Más detalles (opcional)" plegable del formulario de sponsors ---- */
-  .xp-form__more{margin:4px 0 2px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:4px 16px}
-  .xp-form__more summary{cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--gl-cyan);padding:12px 0;list-style:none}
-  .xp-form__more summary::-webkit-details-marker{display:none}
-  .xp-form__more[open] summary{color:var(--text-2)}
-  .xp-form__more .xp-form__row,.xp-form__more .field{margin-top:12px}
-  .xp-form__more .field:first-child{margin-top:0}
-  /* ---- Preguntas frecuentes (acordeón con <details>, sin componente equivalente previo) ---- */
-  .xp-faq{display:flex;flex-direction:column;gap:12px;margin-top:40px}
-  .xp-faq details{background:var(--gl-surface-3);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:20px 24px}
-  .xp-faq summary{cursor:pointer;font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-1);list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .xp-faq summary::-webkit-details-marker{display:none}
-  .xp-faq summary::after{content:'+';font-size:20px;line-height:1;color:var(--gl-cyan);flex:none}
-  .xp-faq details[open] summary::after{content:'–'}
-  .xp-faq p{margin-top:12px;font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--text-3)}
-  /* Dos cifras validadas: en desktop ocupan la fila completa (el grid global es de 4). */
-  @media (min-width: 901px) {
-    .xp-proof-stats { grid-template-columns: repeat(4, 1fr); }
-  }
+  /* ---- Navegación ---- */
+  .mk-nav{display:flex;gap:22px;flex:1;justify-content:flex-end;margin-right:8px}
+  .mk-nav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+  .mk-nav a:hover{color:#fff}
+  @media (max-width:980px){.mk-nav{display:none}}
+  .slide{min-height:auto;padding-top:clamp(84px,11vh,130px);padding-bottom:clamp(84px,11vh,130px)}
+  .cover{min-height:100vh;padding:0}
+  .cover .cover__body{padding-top:110px}
+  .cover h1{font-size:clamp(42px,6.2vw,96px);max-width:15ch}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn--cyan{background:var(--cyan);color:#051019}
+  .btn--cyan:hover{background:var(--cyan-2)}
+  /* Cuenta regresiva: el reloj del marcador */
+  .clock{display:inline-flex;align-items:baseline;gap:10px;margin-top:22px;font-size:15px;color:var(--muted)}
+  .clock b{font-size:clamp(28px,3vw,40px);font-weight:800;color:#fff;letter-spacing:-.02em}
+  /* ---- Franja de confianza ---- */
+  .trust{padding:40px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);background:var(--bg)}
+  .trust__inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .trust p{font-size:14px;color:var(--subtle);margin-bottom:14px}
+  .trust .logos{margin-top:0}
+  .trust .logos span{height:60px;min-width:110px}
+  .trust__nums{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .trust__nums b{display:block;font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em}
+  .trust__nums span{font-size:13px;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
+  @media (max-width:1000px){.trust__inner{grid-template-columns:1fr}.trust__nums{grid-template-columns:repeat(2,1fr)}}
+  /* ---- Niveles de protagonismo ---- */
+  .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+  .level{position:relative;border-radius:16px;overflow:hidden;min-height:470px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;border:1px solid var(--line)}
+  .level img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .level::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,30,.2) 0%,rgba(10,18,30,.85) 45%,rgba(10,18,30,.98) 75%)}
+  .level>*:not(img){position:relative;z-index:1}
+  .level__step{font-size:13px;font-weight:600;color:var(--cyan-2)}
+  .level h3{font-size:24px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.1;margin:6px 0 8px}
+  .level p{font-size:14.5px;color:var(--text);line-height:1.5}
+  .level ul{list-style:none;margin-top:12px;display:grid;gap:6px}
+  .level li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;line-height:1.4}
+  .level li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--cyan)}
+  .level--top{border-color:var(--pink);grid-column:span 1}
+  .level--top .level__step{color:var(--pink-2)}
+  .level--top li::before{background:var(--pink-2)}
+  @media (max-width:1100px){.levels{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.levels{grid-template-columns:1fr}.level{min-height:400px}}
+  .cfg__go{margin-left:auto}
+  @media (max-width:760px){.cfg__go{margin-left:0}}
+  /* ---- Reporte de muestra ---- */
+  .report{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+  .report__card{background:var(--bg-3);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .report__head{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+  .report__head b{font-size:16px;color:#fff}
+  .report__head span{font-size:12px;color:var(--subtle)}
+  .report__kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .report__kpis div{background:var(--bg);border-radius:10px;padding:14px 16px;border:1px solid var(--line)}
+  .report__kpis b{display:block;font-size:26px;font-weight:800;color:#fff;letter-spacing:-.02em}
+  .report__kpis span{font-size:13px;color:var(--muted)}
+  .report__bars{margin-top:18px;display:grid;gap:10px}
+  .bar{display:grid;grid-template-columns:150px 1fr 48px;gap:10px;align-items:center;font-size:13px;color:var(--text)}
+  .bar i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--cyan),var(--pink-2))}
+  .bar em{font-style:normal;color:var(--muted);text-align:right}
+  .report__note{font-size:12px;color:var(--subtle);margin-top:14px}
+  @media (max-width:900px){.report{grid-template-columns:1fr}}
+  .flow--compact h3{font-size:16px}
+  .flow--compact p{font-size:13px}
+  /* ---- Tablero de categorías ---- */
+  .board{margin-top:40px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .board__row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:16px 22px;border-top:1px solid var(--line);background:var(--bg-2)}
+  .board__row:first-child{border-top:0}
+  .board__row b{font-size:17px;color:#fff;font-weight:700}
+  .board__row small{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:2px}
+  .board__state{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--lime);background:rgba(60,206,59,.1);border:1px solid rgba(60,206,59,.35);padding:6px 12px;border-radius:999px;white-space:nowrap}
+  .board__state::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime)}
+  .board-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+  @media (max-width:900px){.board-wrap{grid-template-columns:1fr}}
+  /* ---- Preguntas ---- */
+  .faq{margin-top:34px;display:grid;gap:10px;max-width:880px}
+  .faq details{background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+  .faq summary{cursor:pointer;font-size:16px;font-weight:700;color:#fff;list-style:none;display:flex;justify-content:space-between;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--cyan-2);font-size:20px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin-top:10px;font-size:15px;line-height:1.6;color:var(--muted)}
+  /* ---- Formulario ---- */
+  .mk-form{background:var(--bg-3);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;gap:14px}
+  .mk-form h3{font-size:22px;color:#fff}
+  .mk-form__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mk-form label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--text)}
+  .mk-form label span{font-weight:400;color:var(--subtle)}
+  .mk-form input,.mk-form select,.mk-form textarea{font:400 15px var(--font);color:#fff;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%}
+  .mk-form input:focus,.mk-form select:focus,.mk-form textarea:focus{outline:2px solid var(--cyan);outline-offset:1px}
+  .mk-form .mk-form__consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted);font-size:13px}
+  .mk-form__consent input{width:auto;margin-top:3px}
+  .mk-form__hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .mk-form__msg{font-size:14px;color:var(--pink-2)}
+  .mk-form button{border:0;cursor:pointer;justify-content:center}
+  .mk-form button[disabled]{opacity:.6;cursor:wait}
+  .done{background:var(--bg-3);border:1px solid var(--cyan);border-radius:16px;padding:32px}
+  .done h3{font-size:26px;color:#fff;margin-bottom:8px}
+  .done p{font-size:16px;color:var(--muted);line-height:1.55}
+  [hidden]{display:none!important}
+  @media (max-width:600px){.mk-form__row{grid-template-columns:1fr}}
+  /* ---- CTA fijo en móvil ---- */
+  .sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none}
+  .sticky a{display:flex;justify-content:center}
+  @media (max-width:760px){.sticky.is-on{display:block}}
+  .foot{padding:36px clamp(20px,6vw,96px);font-size:13px;color:var(--subtle);display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;border-top:1px solid var(--line)}
+  .foot a{color:var(--muted);text-decoration:none}
 </style>
 </head>
 <body>
 
-<!-- ============ NAVBAR ============ -->
-<header class="nav">
-  <div class="nav__inner">
-    <a class="nav__logo" href="/"><img src="assets/logo-full-white.png" alt="Game Lobby"></a>
-    <nav class="nav__links" id="xp-navlinks">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#objetivos">Objetivos</a>
-      <a href="#zonas">Zonas</a>
-      <a href="#xp-opportunity">Oportunidad</a>
-      <a href="/marcas">Para marcas</a>
-      <a href="/">Volver al inicio</a>
-    </nav>
-    <div class="nav__right">
-      <span class="nav__lang">ES</span>
-      <button type="button" class="btn btn--pink btn--sm" data-open-mediakit data-xp-event="sponsor_nav_media_kit_click">Descargar Media Kit</button>
-      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="xp-navlinks"><i data-lucide="menu"></i></button>
-    </div>
-  </div>
+<header class="mk-bar">
+  <a href="/"><img src="assets/logo-full-white.png" alt="GameLobby, ir al inicio"></a>
+  <span class="mk-bar__live">Preventa 2027</span>
+  <nav class="mk-nav" aria-label="Secciones">
+    <a href="#niveles">Niveles</a>
+    <a href="#tu-marca">Tu marca aquí</a>
+    <a href="#zonas">Zonas</a>
+    <a href="#categorias">Categorías</a>
+    <a href="/marcas">Para marcas</a>
+  </nav>
+  <a class="mk-bar__cta" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar reunión</a>
 </header>
 
-<!-- ============ BLOQUE 1 · PORTADA ============ -->
-<section class="section xp-hero xp-hero--photo" id="xperience" style="border-top:1px solid var(--border-subtle)">
-  <div class="xp-hero__bg" style="background-image:url('assets/xperience/arcade-social.jpg')" aria-hidden="true"></div>
-  <div class="container">
-    <div class="xp-hero__inner">
-      <span class="eyebrow eyebrow--pink">Preventa comercial abierta · Gran Final 28 y 29 de agosto de 2027 · Panamá</span>
-      <h1 class="xp-hero__title">Tu marca dentro del juego<br><span class="tourmap__hl">de México a Centroamérica</span></h1>
-      <p class="xp-hero__lead">GameLobby Xperience es el tour regional de GameLobby: competencias, creadores y experiencias de marca que recorren México y Centroamérica y culminan en una Gran Final presencial en Panamá. Tu marca no se exhibe: se juega, se vive y se mide.</p>
-      <div class="xp-hero__meta">
-        <span><i data-lucide="route" class="ic"></i> Abre en México · Cierra en Panamá</span>
-        <span><i data-lucide="calendar" class="ic"></i> Gran Final, 28 y 29 de agosto de 2027</span>
-        <span><i data-lucide="map-pin" class="ic"></i> Panamá <!-- POR CONFIRMAR: autorización para nombrar Soho Mall Panamá como sede --></span>
-      </div>
-      <div class="xp-hero__cta">
-        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-        <button type="button" class="btn btn--ghost btn--md" data-open-mediakit data-xp-event="sponsor_media_kit_download_click">Descargar Media Kit</button>
-      </div>
-      <p class="xp-hero__note">Reunión sin compromiso. Te mostramos los formatos que mejor encajan con tu objetivo y tu presupuesto.</p>
+<main>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="ledGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1665"/><stop offset=".55" stop-color="#0d3a66"/><stop offset="1" stop-color="var(--brand)"/></linearGradient>
+<linearGradient id="scrGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00abeb"/><stop offset="1" stop-color="#7b3ff2"/></linearGradient>
+<linearGradient id="stripGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="var(--brand)"/><stop offset="1" stop-color="var(--brand-dark)"/></linearGradient>
+</defs></svg>
+
+<!-- Portada -->
+<section class="slide cover" id="xperience">
+  <img class="cover__img" src="assets/xperience/stage-ranking.jpg" alt="Escenario de la Gran Final de GameLobby Xperience con equipos, trofeo y público">
+  <div class="cover__body">
+    <h1>Ponle tu nombre a la final gamer de la región<small>GameLobby Xperience · Tour 2027</small></h1>
+    <p class="cover__sub">Torneos, creadores y experiencias que recorren México y Centroamérica durante cinco meses y terminan en una Gran Final presencial. Tu marca puede tener una zona, un país, todo el tour o el nombre del evento.</p>
+    <div class="score" aria-label="Ruta del tour">
+      <div><b>Abril</b><span>México</span></div>
+      <div><b>Junio</b><span>Centroamérica · 6 países</span></div>
+      <div><b>28 y 29 de agosto de 2027</b><span>Gran Final · Panamá</span></div>
     </div>
+    <div class="hero-ctas">
+      <a class="btn btn--pink" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+      <a class="btn btn--ghost" href="#tu-marca" data-xp-event="sponsor_configurator_cta">Ver cómo se vería mi marca</a>
+    </div>
+    <p class="clock" aria-live="off"><b id="days">+280</b> días para la Gran Final. La preventa comercial está abierta.</p>
   </div>
 </section>
 
-<!-- ============ BLOQUE 2 · LA PROPUESTA ============ -->
-<section class="section xp-journey" id="como-funciona" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">La propuesta</span>
-      <h2>Tu marca no viene a poner un stand.<br><em>Viene a entrar al juego.</em></h2>
-      <p>La juventud gamer no responde a la publicidad que interrumpe. Responde a las marcas que juegan, conectan y ganan junto a ella.</p>
-    </div>
-    <p class="xp-opportunity__lead">Centroamérica vive un crecimiento acelerado del gaming y los esports, impulsado por millones de jóvenes conectados que consumen contenido digital, compiten y eligen marcas que hablan su idioma. GameLobby Xperience es la entrada a esa audiencia: tu marca participa en su juego, no solo lo patrocina.</p>
-    <p class="xp-opportunity__lead">En GameLobby Xperience tu marca forma parte de la experiencia: misiones, retos, votaciones y recompensas que el asistente busca por voluntad propia. El resultado es contacto directo en su momento de mayor atención, un lugar propio dentro de una comunidad que vuelve, y datos de participación que puedes medir.</p>
-    <div class="grid-3">
-      <div class="card card--int feat" data-neon="cyan">
-        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="zap"></i></span>
-        <h3>Participa</h3>
-        <p>Contacto directo con el consumidor gamer en su momento de máximo interés.</p>
-      </div>
-      <div class="card card--int feat" data-neon="pink">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="calendar-days"></i></span>
-        <h3>Pertenece</h3>
-        <p>Una narrativa que se vive durante meses, no un fin de semana, y una comunidad a la que tu marca queda conectada.</p>
-      </div>
-      <div class="card card--int feat" data-neon="purple">
-        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="bar-chart-3"></i></span>
-        <h3>Gana</h3>
-        <p>Participación medible y resultados que puedes convertir en decisiones de marca.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:40px">
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BLOQUE 3 · QUÉ INCLUYE ============ -->
-<section class="section xp-ecosystem" style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--purple">Qué incluye</span>
-      <h2>Una activación.<br><em>Múltiples puntos de contacto.</em></h2>
-      <p>Presencia física, digital y en transmisiones en vivo, conectada por la GameLobby Wallet.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ---- 3.1 La ruta ---- -->
-<section class="section xp-days" style="background:var(--gl-surface-1);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--lime">La ruta</span>
-      <h3>Un tour regional, no un solo evento.</h3>
-    </div>
-    <div class="grid-3">
-      <div class="xp-day card" data-neon="lime">
-        <span class="xp-day__date">Abril 2027 · México</span>
-        <h3>Lanzamiento oficial y FrikiPlaza</h3>
-        <p>Retos Express patrocinados en centros comerciales con alto tráfico geek y gamer.</p>
-      </div>
-      <div class="xp-day card" data-neon="cyan">
-        <span class="xp-day__date">Junio 2027 · Centroamérica</span>
-        <h3>Circuito digital en 6 países</h3>
-        <p>Panamá, Costa Rica, Guatemala, El Salvador, Honduras y Nicaragua, con clasificatorias y paradas presenciales en salas de cine o centros comerciales.</p>
-      </div>
-      <div class="xp-day card" data-neon="pink">
-        <span class="xp-day__date">28 y 29 de agosto de 2027 · Panamá</span>
-        <h3>Gran Final presencial</h3>
-        <p>Transmitida a toda la región.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ---- 3.2 Cómo vive tu marca el asistente ---- -->
-<section class="section xp-journey">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">El recorrido</span>
-      <h3>Cómo vive tu marca el asistente.</h3>
-    </div>
-    <div class="xp-journey__flow" role="list" aria-label="Journey del asistente dentro de GameLobby Xperience">
-      <span class="xp-step" role="listitem">Registro</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Misión</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Interacción</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step xp-step--wallet" role="listitem"><i data-lucide="credit-card"></i> Wallet</span>
-      <!-- POR CONFIRMAR: estado de la GameLobby Wallet para 2027; la página actual la presenta como "prevista" -->
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Votación</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Recompensa</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Canje</span>
-      <i data-lucide="chevron-right" class="xp-journey__arrow" aria-hidden="true"></i>
-      <span class="xp-step" role="listitem">Datos</span>
-    </div>
-    <p class="xp-opportunity__lead" style="margin-top:36px">Cada asistente se registra, completa misiones de tu marca con QR o NFC, suma puntos, vota, gana recompensas y las canjea. Cada interacción queda registrada como historial de participación y afinidad con tu marca.</p>
-  </div>
-</section>
-
-<!-- ---- 3.3 Las piezas del ecosistema ---- -->
-<section class="section xp-ecosystem" style="background:var(--gl-surface-1);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--purple">El ecosistema</span>
-      <h3>Las piezas del ecosistema.</h3>
-    </div>
-    <img src="assets/xperience/ecosystem-360.jpg" alt="Ecosistema GameLobby: GameLobby.gg, GameLobby Wallet y GameLobby Xperience conectados" class="xp-photo xp-photo--wide" loading="lazy">
-    <div class="xp-ecosystem__flow">
-      <div class="xp-eco-node card" data-neon="cyan">
-        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="gamepad-2"></i></span>
-        <h3>GameLobby.gg</h3>
-        <p>Competencia y comunidad durante todo el año.</p>
-      </div>
-      <i data-lucide="arrow-down" class="xp-ecosystem__arrow" aria-hidden="true"></i>
-      <div class="xp-eco-node card" data-neon="pink">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="credit-card"></i></span>
-        <h3>GameLobby Wallet</h3>
-        <p>Registro, misiones, puntos, ranking y canje.</p>
-        <!-- POR CONFIRMAR: estado de la Wallet para 2027; la página actual la presenta como "prevista" -->
-      </div>
-      <i data-lucide="arrow-down" class="xp-ecosystem__arrow" aria-hidden="true"></i>
-      <div class="xp-eco-node xp-eco-node--lg card" data-neon="purple">
-        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="sparkles"></i></span>
-        <h3>GameLobby Xperience</h3>
-        <p>El ecosistema llevado al mundo físico, con torneos, creadores, comunidad y experiencias de marca.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ---- 3.4 Zonas de la Gran Final ---- -->
-<section class="section xp-zones" id="zonas">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Zonas de la Gran Final</span>
-      <h3>Cada zona es una oportunidad distinta.</h3>
-      <p>Elige dónde quiere estar tu marca.</p>
-      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca una zona para ver el detalle</p>
-    </div>
-    <img src="assets/xperience/venue-map.jpg" alt="Mapa de zonas de GameLobby Xperience" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:44px">
-    <div class="xp-zones__grid" id="xp-zones"></div>
-    <div class="xp-zones__panel hidden" id="xp-zone-panel">
-      <img id="xp-zone-img" class="xp-photo xp-zones__panel-photo hidden" alt="">
-      <h3 id="xp-zone-name"></h3>
-      <p id="xp-zone-desc"></p>
-      <p class="xp-zones__panel-label">Formatos posibles</p>
-      <div class="xp-goals__chips" id="xp-zone-formats"></div>
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-    </div>
-    <p class="xp-zones__hint" style="margin-top:28px"><strong>Visibilidad adicional:</strong> Town Takeover en la vía y dentro del recinto, fondo de entrevistas, uniformes de los finalistas y presencia en la transmisión regional.</p>
-  </div>
-</section>
-
-<!-- ---- 3.5 Medición ---- -->
-<section class="section xp-data" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--purple">Medición</span>
-      <h3>Definimos contigo<br><em>qué medir y cómo.</em></h3>
-      <p>Acordamos los indicadores según tu activación y entregas un reporte al cierre. Los datos se recogen de forma agregada o con consentimiento del participante.</p>
-    </div>
-    <img src="assets/xperience/wallet-booth.jpg" alt="Concepto de puntos, misiones y recompensas" class="xp-photo xp-photo--wide" loading="lazy">
-    <div class="xp-data__chips">
-      <span class="xp-chip"><i data-lucide="user-plus"></i> Registros</span>
-      <span class="xp-chip"><i data-lucide="qr-code"></i> Escaneos QR</span>
-      <span class="xp-chip"><i data-lucide="target"></i> Misiones iniciadas</span>
-      <span class="xp-chip"><i data-lucide="circle-check-big"></i> Misiones completadas</span>
-      <span class="xp-chip"><i data-lucide="thumbs-up"></i> Votos</span>
-      <span class="xp-chip"><i data-lucide="users"></i> Participaciones</span>
-      <span class="xp-chip"><i data-lucide="coins"></i> Puntos</span>
-      <span class="xp-chip"><i data-lucide="gift"></i> Redenciones</span>
-      <span class="xp-chip"><i data-lucide="tag"></i> Promociones</span>
-      <span class="xp-chip"><i data-lucide="award"></i> Recompensas</span>
-      <span class="xp-chip"><i data-lucide="smartphone"></i> Interacción digital</span>
-      <span class="xp-chip"><i data-lucide="globe"></i> País y preferencias</span>
-    </div>
-    <div style="text-align:center;margin-top:36px">
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BLOQUE 4 · FORMATOS SEGÚN TU OBJETIVO ============ -->
-<section class="section xp-goals" id="objetivos">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Para tu marca</span>
-      <h2>¿Qué quieres conseguir?</h2>
-      <p>Elige tu objetivo y te mostramos los formatos que mejor encajan.</p>
-      <p class="xp-zones__hint"><i data-lucide="mouse-pointer-click" class="ic"></i> Toca un objetivo para ver las experiencias recomendadas</p>
-    </div>
-    <div class="xp-goals__grid" id="xp-goals">
-      <button type="button" class="xp-goal" data-goal="awareness">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="megaphone"></i></span>
-        <h3>Visibilidad de marca</h3>
-        <p>Quiero que mi marca sea protagonista.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="adquisicion">
-        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="database"></i></span>
-        <h3>Adquisición y datos</h3>
-        <p>Quiero registros, interacción y comportamiento medible.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="producto">
-        <span class="icon-tile sm-tile icon-tile--lime"><i data-lucide="gift"></i></span>
-        <h3>Producto y conversión</h3>
-        <p>Quiero prueba de producto, muestras, promociones y canjes.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="rse">
-        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="graduation-cap"></i></span>
-        <h3>RSE y talento</h3>
-        <p>Quiero impactar educación, STEM, juventud y empleabilidad.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-      <button type="button" class="xp-goal" data-goal="contenido">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
-        <h3>Contenido y cultura</h3>
-        <p>Quiero conectar con creadores, cosplay y comunidades.</p>
-        <span class="xp-goal__cta">Ver experiencias <i data-lucide="chevron-down" class="ic"></i></span>
-      </button>
-    </div>
-    <div class="xp-goals__result hidden" id="xp-goals-result">
-      <p class="xp-goals__result-label">Experiencias recomendadas para tu objetivo</p>
-      <div class="xp-goals__chips" id="xp-goals-chips"></div>
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión sobre este objetivo</a>
-    </div>
-  </div>
-</section>
-
-<!-- ---- Formatos: Campus Quest / Jornada gamer y familiar ---- -->
-<section class="section xp-days" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="xp-days__grid">
-      <div class="xp-day card" data-neon="purple">
-        <img src="assets/xperience/campus-quest.jpg" alt="Campus Quest: estudiantes en talleres de tecnología y robótica" class="xp-photo xp-day__photo" loading="lazy">
-        <span class="xp-day__date">Formato 1 · Jornada educativa</span>
-        <h3>Campus Quest: talento y futuro</h3>
-        <p>Feria universitaria y de carreras creativas y tecnológicas para estudiantes y jóvenes profesionales: diseño y creatividad, desarrollo y tecnología, esports y gaming, y marketing digital. Ideal para empleadores, universidades y programas de RSE.</p>
-        <ul class="xp-day__list">
-          <li>Future Skills Forum</li>
-          <li>Hackathon &amp; Data Arena</li>
-          <li>Expo Vocacional &amp; Career Hub</li>
-          <li>STEM Tech Lab</li>
-          <li>Networking / B2B Talent Lounge</li>
-        </ul>
-        <p style="font-family:var(--font-body);font-size:14.5px;color:var(--text-3);line-height:1.6;margin-top:4px"><strong style="color:var(--text-1)">Mecánica:</strong> completar los retos de los stands participantes da beneficios exclusivos y acceso VIP al día 2.</p>
-        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--outline btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Quiero impulsar Campus Quest</a>
-      </div>
-      <div class="xp-day card" data-neon="pink">
-        <img src="assets/xperience/day2-social.jpg" alt="GameLobby Xperience: torneos, arcade y comunidad en vivo" class="xp-photo xp-day__photo" loading="lazy">
-        <span class="xp-day__date">Formato 2 · Jornada gamer y familiar</span>
-        <h3>Un videojuego en tamaño real</h3>
-        <p>Estaciones de juego, misiones para ganar recompensas, espectáculos en tarima y alta participación del público: competencia y arcade, simuladores, creadores y cosplay, juegos móviles, fútbol y música.</p>
-        <ul class="xp-day__list">
-          <li>Votación del público</li>
-          <li>Transmisión en vivo de los torneos</li>
-          <li>Concurso de cosplay</li>
-          <li>Trivias con premios</li>
-          <li>Talleres para toda la familia</li>
-        </ul>
-        <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Quiero activar mi marca</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ---- Antes, durante y después ---- -->
-<section class="section xp-creators">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--pink">Antes, durante y después</span>
-      <h2>La experiencia no termina en el recinto.</h2>
-      <p>Creadores, cosplay y comunidad llevan tu activación al mundo digital: cápsulas de video, nominaciones, votaciones en línea y publicaciones de colaboración en las redes oficiales.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card card--int feat" data-neon="pink">
-        <span class="icon-tile sm-tile icon-tile--pink"><i data-lucide="video"></i></span>
-        <h3>Creadores</h3>
-        <p>Contenido antes, durante y después del evento junto a creadores.</p>
-      </div>
-      <div class="card card--int feat" data-neon="purple">
-        <span class="icon-tile sm-tile icon-tile--purple"><i data-lucide="sparkles"></i></span>
-        <h3>Cosplay</h3>
-        <p>Nominaciones y votaciones del concurso de cosplay.</p>
-      </div>
-      <div class="card card--int feat" data-neon="cyan">
-        <span class="icon-tile sm-tile icon-tile--cyan"><i data-lucide="share-2"></i></span>
-        <h3>Comunidad</h3>
-        <p>Contenido de la comunidad que extiende la activación más allá del evento.</p>
-      </div>
-    </div>
-    <div class="xp-creators__gallery">
-      <img src="assets/xperience/stage-ranking.jpg" alt="Show en vivo con ranking y premiación GameLobby Xperience" class="xp-photo" loading="lazy">
-      <img src="assets/xperience/stage-missions.jpg" alt="Pantalla de misiones y ranking en vivo GameLobby Xperience" class="xp-photo" loading="lazy">
-      <img src="assets/xperience/arcade-social.jpg" alt="Zona social y arcade GameLobby Xperience" class="xp-photo" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ============ BLOQUE 5 · PRUEBA SOCIAL ============ -->
-<section class="section" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--lime">Prueba social</span>
-      <h2>Un equipo que ya organiza ligas y eventos en la región</h2>
-      <p>Experiencia comprobada en ligas, eventos presenciales y tecnología financiera.</p>
-    </div>
-    <div class="stats-grid xp-proof-stats" style="margin-top:44px">
-      <div class="stat"><div class="stat__v stat__v--cyan">+13 países</div><div class="stat__l">Participan en nuestras ligas regionales</div></div>
-      <div class="stat"><div class="stat__v stat__v--pink">25 ciudades</div><div class="stat__l">De 15 países con eventos presenciales</div></div>
-      <div class="stat"><div class="stat__v stat__v--cyan">5M</div><div class="stat__l">De impacto regional en canales</div></div>
-      <div class="stat"><div class="stat__v stat__v--pink">+250K</div><div class="stat__l">Espectadores en los streams de la LAPGL 2023</div></div>
-    </div>
-    <div style="text-align:center;margin-top:40px">
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-    </div>
-    <p class="xp-opportunity__lead" style="margin-top:36px">Organizamos ligas como la Latin American Pro Gamers League y la Odyssey Cup, tenemos experiencia en eventos presenciales en México y la región, como Gamergy, y contamos con el respaldo en tecnología financiera de nuestro aliado Versatec para la GameLobby Wallet.</p>
-    <!--
-      POR CONFIRMAR, bloque oculto hasta validar (no se inventan logos, testimonios ni fotos):
-      - Logos de marcas que patrocinaron ligas o eventos anteriores y autorización para mostrarlos.
-      - 1 o 2 testimonios de marcas o aliados con nombre, cargo y empresa.
-      - Fotos reales de eventos anteriores (las imágenes actuales de la presentación son conceptuales).
-    -->
-  </div>
-</section>
-
-<!-- ============ BLOQUE 6 · PROCESO + NOTA DE PREVENTA ============ -->
-<section class="section xp-goals">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--cyan">Proceso</span>
-      <h2>De la primera reunión a tu activación, en 4 pasos</h2>
-    </div>
-    <div class="xp-goals__grid" style="margin-top:48px">
-      <div class="card card--int feat" data-neon="cyan">
-        <span class="icon-tile sm-tile icon-tile--cyan"><strong>1</strong></span>
-        <h3>Agenda una reunión</h3>
-        <p>Nos cuentas tu objetivo, tu categoría y tus países prioritarios.</p>
-        <!-- POR CONFIRMAR: duración de la reunión -->
-      </div>
-      <div class="card card--int feat" data-neon="pink">
-        <span class="icon-tile sm-tile icon-tile--pink"><strong>2</strong></span>
-        <h3>Recibe tu propuesta</h3>
-        <p>Formato, ubicación, nivel de participación y condiciones comerciales a la medida.</p>
-        <!-- POR CONFIRMAR: plazo de entrega de la propuesta -->
-      </div>
-      <div class="card card--int feat" data-neon="purple">
-        <span class="icon-tile sm-tile icon-tile--purple"><strong>3</strong></span>
-        <h3>Diseñamos juntos la activación</h3>
-        <p>Misiones, recompensas, contenido e indicadores que se medirán.</p>
-      </div>
-      <div class="card card--int feat" data-neon="lime">
-        <span class="icon-tile sm-tile icon-tile--lime"><strong>4</strong></span>
-        <h3>Activa y mide</h3>
-        <p>Tu marca en el tour y la Gran Final, con reporte de resultados al cierre.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:40px">
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--md" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-    </div>
-    <div class="xp-goals__result" style="margin-top:52px;max-width:720px;margin-inline:auto;text-align:left">
-      <p class="xp-goals__result-label" style="text-align:left">Nota única de preventa</p>
-      <h3 style="font-family:var(--font-display);font-weight:700;font-size:22px;color:var(--text-1);margin:10px 0 10px">Entra como patrocinador fundador</h3>
-      <p style="font-family:var(--font-body);font-size:15px;color:var(--text-3);line-height:1.6">GameLobby Xperience 2027 está en preventa. Las marcas que entran ahora eligen primero su zona y su categoría, y ayudan a definir los formatos de su activación. Los detalles de ubicación, programación y condiciones se confirman en tu propuesta.</p>
-      <!-- POR CONFIRMAR: beneficios concretos de patrocinador fundador (p. ej., precio de preventa, prioridad de zona, exclusividad de categoría) -->
-    </div>
-  </div>
-</section>
-
-<!-- ============ BLOQUE 7 · PREGUNTAS FRECUENTES ============ -->
-<section class="section" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
-  <div class="container">
-    <div class="heading">
-      <span class="eyebrow eyebrow--purple">Preguntas frecuentes</span>
-      <h2>Preguntas frecuentes</h2>
-    </div>
-    <div class="xp-faq">
-      <details>
-        <summary>¿Cuándo y dónde es?</summary>
-        <p>La Gran Final presencial es el 28 y 29 de agosto de 2027 en Panamá <!-- POR CONFIRMAR: autorización para nombrar Soho Mall Panamá -->. Antes, el tour pasa por México (abril) y por 6 países de Centroamérica (junio).</p>
-      </details>
-      <details>
-        <summary>¿Cuánto cuesta participar?</summary>
-        <p>Hay paquetes para marcas que entran por primera vez hasta paquetes de Presenting Partner para la Gran Final. Te recomendamos el nivel según tu objetivo en la primera reunión.</p>
-        <p><a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a></p>
-      </details>
-      <details>
-        <summary>¿Hasta cuándo puedo entrar?</summary>
-        <p>La preventa comercial está abierta. <!-- POR CONFIRMAR: fecha límite de la preventa y de confirmación de patrocinadores --></p>
-      </details>
-      <details>
-        <summary>¿A quién llego?</summary>
-        <p>A jóvenes gamers de Centroamérica y México que compiten, crean contenido y siguen esports, además de estudiantes y jóvenes profesionales en Campus Quest y familias en la jornada familiar. <!-- POR CONFIRMAR: asistencia esperada y perfil demográfico con cifras --></p>
-      </details>
-      <details>
-        <summary>¿Puedo participar solo en mi país?</summary>
-        <p>Sí. Hay paquetes locales por país (Presenting Partner Local, Zone Partners Locales y Experience Partners), además de los paquetes regionales y de la Gran Final.</p>
-      </details>
-      <details>
-        <summary>¿Tengo exclusividad de categoría?</summary>
-        <p>Los paquetes Presenting Partner incluyen exclusividad en tu categoría (regional o por país, según el paquete).</p>
-      </details>
-      <details>
-        <summary>¿Qué datos recibo?</summary>
-        <p>Los indicadores que acordemos (registros, misiones, votos, canjes, entre otros) en un reporte al cierre, con datos agregados o con consentimiento del participante.</p>
-      </details>
-      <details>
-        <summary>¿Sirve para RSE o atracción de talento?</summary>
-        <p>Sí. Campus Quest conecta a tu marca con estudiantes, universidades y carreras STEM, creativas y digitales.</p>
-      </details>
-      <details>
-        <summary>¿Puede participar una marca de consumo adulto?</summary>
-        <p>Sí, en la Cool Down Zone +18, un espacio de acceso restringido para mayores de edad. <!-- POR CONFIRMAR: condiciones y permisos para marcas de alcohol --></p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BLOQUE 8 · CTA FINAL ============ -->
-<section class="section xp-opportunity" id="xp-opportunity">
-  <div class="container">
-    <span class="eyebrow eyebrow--pink">Oportunidad para marcas</span>
-    <h2>Construyamos <span class="tourmap__hl">2027 juntos</span>.</h2>
-    <p class="xp-opportunity__lead">México lo enciende. Panamá lo corona. Agenda una reunión y te mostramos dónde encaja tu marca.</p>
-    <img src="assets/xperience/sponsor-mockup.jpg" alt="Concepto de zona de marca en GameLobby Xperience" class="xp-photo xp-photo--wide" loading="lazy" style="margin-bottom:36px">
-    <div class="xp-hero__cta" style="justify-content:center">
-      <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" class="btn btn--pink btn--lg" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
-      <button type="button" class="btn btn--outline btn--lg" data-open-mediakit data-xp-event="sponsor_media_kit_download_click">Descargar Media Kit</button>
-    </div>
-    <p class="xp-hero__note"><a href="#glx-sponsors" class="form__link" style="font-size:13px">¿Prefieres escribirnos? Déjanos tus datos ↓</a></p>
-  </div>
-</section>
-
-<!-- ============ FORMULARIO ABREVIADO + MEDIA KIT ============ -->
-<section class="section contact xp-form" id="glx-sponsors" style="background:var(--gl-surface-1);border-top:1px solid var(--border-subtle)">
-  <div class="contact__inner">
+<!-- Confianza -->
+<section class="trust" aria-label="Quiénes somos">
+  <div class="trust__inner">
     <div>
-      <span class="badge badge--pink" style="margin-bottom:18px"><span class="dot"></span>GameLobby Xperience · Gran Final 28 y 29 de agosto de 2027</span>
-      <h2>Quiero ser patrocinador</h2>
-      <p class="contact__lead">Te ayudamos a diseñar la participación correcta para tu marca. Formato, sede y condiciones comerciales se detallarán en la propuesta.</p>
-      <div class="contact__list">
-        <div class="contact__list-item"><i data-lucide="calendar" class="ic"></i><span class="t">Gran Final, 28 y 29 de agosto de 2027</span></div>
-        <div class="contact__list-item"><i data-lucide="trophy" class="ic"></i><span class="t">Competición, contenido y activaciones participativas</span></div>
-        <div class="contact__list-item"><i data-lucide="file-text" class="ic"></i><span class="t">Formato, sede y condiciones en la propuesta</span></div>
+      <p>Marcas que ya han trabajado con GameLobby</p>
+      <div class="logos">
+        <span><img src="assets/clients/hyperx.png" alt="HyperX"></span>
+        <span><img src="assets/clients/msi.png" alt="MSI"></span>
+        <span><img src="assets/clients/tigo.png" alt="Tigo"></span>
+        <span class="light"><img src="assets/clients/lacuracao.png" alt="La Curacao"></span>
+        <span><img src="assets/clients/gollo.png" alt="Gollo"></span>
+        <span><img src="assets/clients/radioshack.png" alt="RadioShack"></span>
+        <span><img src="assets/clients/kfc.png" alt="KFC"></span>
       </div>
     </div>
+    <div class="trust__nums">
+      <div><b>+13</b><span>países en nuestras ligas regionales</span></div>
+      <div><b>25</b><span>ciudades de 15 países con eventos</span></div>
+      <div><b>5 M</b><span>de impacto regional en canales</span></div>
+      <div><b>+250 K</b><span>espectadores en los streams de la LAPGL 2023</span></div>
+    </div>
+  </div>
+</section>
 
-    <div class="card" data-neon="pink" style="padding:32px">
-      <form class="form" id="glx-form">
-        <h3>Quiero ser patrocinador</h3>
-        <div class="field"><label for="glx-name">Nombre</label><input id="glx-name" name="name" placeholder="Alex Rivera" required></div>
-        <div class="field"><label for="glx-company">Empresa</label><input id="glx-company" name="company" placeholder="Tu marca" required></div>
-        <div class="field"><label for="glx-email">Correo corporativo</label><input id="glx-email" name="email" type="email" placeholder="alex@empresa.com" required></div>
-        <div class="field">
-          <label for="glx-country">País</label>
-          <select id="glx-country" name="country" required>
-            <option value="" disabled selected>Elige tu país</option>
-            <option>Panamá</option>
-            <option>Costa Rica</option>
-            <option>Guatemala</option>
-            <option>El Salvador</option>
-            <option>Honduras</option>
-            <option>Nicaragua</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>¿Qué quieres lograr? <span style="color:var(--text-4);font-weight:400">(elige una o más)</span></label>
-          <div class="xp-checks" id="glx-goals">
-            <label class="xp-check"><input type="checkbox" name="goals" value="Brand Awareness"> Brand Awareness</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Adquisición / registros"> Adquisición / registros</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Producto / sampling"> Producto / sampling</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Ventas / promociones"> Ventas / promociones</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="RSE / educación"> RSE / educación</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Employer Branding"> Employer Branding</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Contenido / creadores"> Contenido / creadores</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Regional / Centroamérica"> Regional / Centroamérica</label>
-            <label class="xp-check"><input type="checkbox" name="goals" value="Otro"> Otro</label>
-          </div>
-        </div>
+<!-- Niveles -->
+<section class="slide" id="niveles">
+  <div class="slide__inner">
+    <span class="slide__tag">Elige tu nivel de protagonismo</span>
+    <h2>De una zona a ponerle tu nombre al evento</h2>
+    <p class="lead">El formato se arma alrededor de tu patrocinio: circuito digital, paradas en cines o centros comerciales, o un evento completo con tu marca.</p>
+    <div class="levels">
+      <article class="level">
+        <img src="assets/xperience/zone-sim-racing.jpg" alt="">
+        <span class="level__step">Una zona</span>
+        <h3>Tu marca se juega</h3>
+        <p>Dominas una experiencia de la Gran Final o de México, como Sim Racing, Football Fan Arena o Geek &amp; Anime.</p>
+        <ul><li>Naming y branding de la zona</li><li>Misiones con QR y premios de tu marca</li><li>Datos de los participantes</li></ul>
+      </article>
+      <article class="level">
+        <img src="assets/xperience/zone-arena-mobile.jpg" alt="">
+        <span class="level__step">Un país</span>
+        <h3>Protagonista en tu mercado</h3>
+        <p>Eres la marca de la parada nacional y del circuito digital de tu país, con exclusividad de categoría.</p>
+        <ul><li>Activación principal en la parada</li><li>Patrocinio del circuito digital del país</li><li>Presencia en la premiación nacional</li></ul>
+      </article>
+      <article class="level">
+        <img src="assets/xperience/zone-football.jpg" alt="">
+        <span class="level__step">Todo el tour</span>
+        <h3>Dueño del circuito regional</h3>
+        <p>Tu marca está en las clasificatorias y paradas de Guatemala, El Salvador, Honduras, Nicaragua, Costa Rica y Panamá.</p>
+        <ul><li>Exclusividad regional de categoría</li><li>Logo en el jersey de los finalistas</li><li>Reporte de métricas por país</li></ul>
+      </article>
+      <article class="level level--top">
+        <img src="assets/xperience/day2-social.jpg" alt="">
+        <span class="level__step">El evento con tu nombre</span>
+        <h3>La final es tuya</h3>
+        <p>La Gran Final o una final nacional presentada por tu marca: nombre del evento, escenario, transmisión y comunicación.</p>
+        <ul><li>«Gran Final presentada por tu marca»</li><li>Tarima, jerseys y backing de entrevistas</li><li>Integración con la tarjeta GameLobby</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <details class="xp-form__more">
-          <summary>Más detalles (opcional)</summary>
-          <div class="field"><label for="glx-title">Cargo</label><input id="glx-title" name="jobTitle" placeholder="Gerente de Marketing"></div>
-          <div class="field">
-            <label for="glx-category">Categoría de empresa</label>
-            <select id="glx-category" name="companyCategory">
-              <option value="" disabled selected>Elige una categoría</option>
-              <option>Bancos y fintech</option>
-              <option>Telecomunicaciones</option>
-              <option>Tecnología</option>
-              <option>Retail</option>
-              <option>Consumo masivo (FMCG)</option>
-              <option>Automotriz</option>
-              <option>Educación / Universidades</option>
-              <option>Gobierno / Institucional</option>
-              <option>Agencia</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="field"><label for="glx-phone">WhatsApp / teléfono</label><input id="glx-phone" name="phone" type="tel" placeholder="+507 6000 0000"></div>
-          <div class="field">
-            <label for="glx-scale">Rango de inversión considerado <span style="color:var(--text-4);font-weight:400">(opcional, uso interno para preparar tu propuesta)</span></label>
-            <select id="glx-scale" name="scale">
-              <option value="" selected>Prefiero definirlo en la conversación</option>
-              <option>Aún por definir</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="glx-experiences">Experiencias de interés <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-            <input id="glx-experiences" name="experiences" placeholder="Se completa según lo que explores arriba, o escribe la tuya">
-          </div>
-          <div class="field">
-            <label for="glx-message">Mensaje <span style="color:var(--text-4);font-weight:400">(opcional)</span></label>
-            <textarea id="glx-message" name="message" rows="3" placeholder="¿Qué buscas lograr con GameLobby Xperience?"></textarea>
-          </div>
-          <label class="consent"><input type="checkbox" name="consentMarketing" value="1"> <span>Quiero recibir novedades de GameLobby por correo (opcional).</span></label>
-        </details>
+<!-- Tu marca aquí -->
+<section class="slide slide--alt" id="tu-marca">
+  <div class="slide__inner">
+    <span class="slide__tag">Tu marca aquí</span>
+    <h2>Mira tu marca dentro del evento</h2>
+    <p class="lead">Escribe el nombre de tu marca y elige su color. Los tres espacios se actualizan al instante.</p>
+    <div class="cfg">
+      <label>Nombre de tu marca<input id="cfg-name" maxlength="16" placeholder="Tu marca" autocomplete="organization"></label>
+      <label>Color principal<input id="cfg-color" type="color" value="#c90087"></label>
+      <div class="cfg__presets" aria-label="Colores de ejemplo">
+        <button type="button" data-c="#c90087" style="background:#c90087" aria-label="Rosado"></button>
+        <button type="button" data-c="#e30613" style="background:#e30613" aria-label="Rojo"></button>
+        <button type="button" data-c="#0057b8" style="background:#0057b8" aria-label="Azul"></button>
+        <button type="button" data-c="#00a651" style="background:#00a651" aria-label="Verde"></button>
+        <button type="button" data-c="#ff7a00" style="background:#ff7a00" aria-label="Naranja"></button>
+        <button type="button" data-c="#ffcc00" style="background:#ffcc00" aria-label="Amarillo"></button>
+      </div>
+      <a class="btn btn--pink cfg__go" href="#contacto" id="cfg-go" data-xp-event="sponsor_configurator_go">Quiero esto para mi marca</a>
+    </div>
+    <div class="stands">
+      <figure class="stand stand--wide">
+        <div class="stand__art"><svg viewBox="297 -154 667 580" role="img" aria-label="Diseño de tarima principal con branding de Presenting Partner" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="378.1,175.0 741.9,385.0 741.9,358.0 378.1,148.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="923.7,280.0 741.9,385.0 741.9,358.0 923.7,253.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="300" transform="matrix(0.8660,0.5000,-0.8660,0.5000,534.0,355.0)" font-size="50" font-weight="800" fill="rgba(255,255,255,.06)" text-anchor="middle">TU MARCA</text>
+<polygon points="560.0,43.0 923.7,253.0 741.9,358.0 378.1,148.0" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.0,49.0 913.3,253.0 741.9,352.0 388.5,148.0" fill="#1f3050" />
+<polygon points="378.1,167.5 741.8,377.5 741.8,365.5 378.1,155.5" fill="url(#stripGrad)" />
+<text class="bn-title" data-max="380" transform="matrix(0.8660,0.5000,0,1,559.9,270.1)" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">GRAN FINAL  ·  PRESENTADA POR TU MARCA</text>
+<polygon points="615.9,85.8 849.7,220.7 849.7,34.7 615.9,-100.3" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="858.8,215.5 849.7,220.7 849.7,34.7 858.8,29.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="625.0,-105.5 858.8,29.5 849.7,34.7 615.9,-100.3" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="623.6,78.3 841.9,204.3 841.9,39.3 623.6,-86.7" fill="#06101d" />
+<polygon points="627.5,76.0 837.9,197.5 837.9,41.5 627.5,-80.0" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,732.7,-4.2)" font-size="14" font-weight="700" fill="#8fe2ff" text-anchor="middle">GAMELOBBY XPERIENCE</text>
+<text class="bn" data-max="220" transform="matrix(0.8660,0.5000,0,1,732.7,51.3)" font-size="40" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,732.7,78.3)" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">GRAN FINAL REGIONAL</text>
+<polygon points="547.0,62.5 591.2,88.0 591.2,-80.0 547.0,-105.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="606.8,79.0 591.2,88.0 591.2,-80.0 606.8,-89.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="562.6,-114.5 606.8,-89.0 591.2,-80.0 547.0,-105.5" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="46" transform="matrix(0.8660,0.5000,0,1,569.1,-5.7)" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="845.8,235.0 890.0,260.5 890.0,92.5 845.8,67.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="905.5,251.5 890.0,260.5 890.0,92.5 905.5,83.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="861.4,58.0 905.5,83.5 890.0,92.5 845.8,67.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="60" transform="matrix(0.8660,-0.5000,0,1,897.8,175.0)" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="531.4,149.5 604.2,191.5 604.2,167.5 531.4,125.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="627.5,178.0 604.2,191.5 604.2,167.5 627.5,154.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="554.8,112.0 627.5,154.0 604.2,167.5 531.4,125.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="74" transform="matrix(0.8660,0.5000,0,1,567.8,160.0)" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="558.4,117.4 574.0,126.4 574.0,114.4 558.4,105.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="580.5,130.1 596.1,139.1 596.1,127.1 580.5,118.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="602.6,142.9 618.2,151.9 618.2,139.9 602.6,130.9" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="575.6,125.5 574.0,126.4 574.0,114.4 575.6,113.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="597.7,138.2 596.1,139.1 596.1,127.1 597.7,126.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="619.8,151.0 618.2,151.9 618.2,139.9 619.8,139.0" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.0,104.5 575.6,113.5 574.0,114.4 558.4,105.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="582.1,117.2 597.7,126.2 596.1,127.1 580.5,118.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="604.2,130.0 619.8,139.0 618.2,139.9 602.6,130.9" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="666.5,227.5 739.3,269.5 739.3,245.5 666.5,203.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="762.6,256.0 739.3,269.5 739.3,245.5 762.6,232.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="689.9,190.0 762.6,232.0 739.3,245.5 666.5,203.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="74" transform="matrix(0.8660,0.5000,0,1,702.9,238.0)" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="693.5,195.4 709.1,204.4 709.1,192.4 693.5,183.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="715.6,208.1 731.2,217.1 731.2,205.1 715.6,196.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="737.7,220.9 753.3,229.9 753.3,217.9 737.7,208.9" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="710.7,203.5 709.1,204.4 709.1,192.4 710.7,191.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="732.8,216.2 731.2,217.1 731.2,205.1 732.8,204.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="754.9,229.0 753.3,229.9 753.3,217.9 754.9,217.0" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="695.1,182.5 710.7,191.5 709.1,192.4 693.5,183.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="717.2,195.2 732.8,204.2 731.2,205.1 715.6,196.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="739.3,208.0 754.9,217.0 753.3,217.9 737.7,208.9" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="336.6,103.0 414.5,148.0 414.5,76.0 336.6,31.0" fill="#f2f5fa" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="419.7,145.0 414.5,148.0 414.5,76.0 419.7,73.0" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="341.8,28.0 419.7,73.0 414.5,76.0 336.6,31.0" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,94.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,109.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,124.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,73.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,88.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,103.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,52.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,67.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,82.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<g class="mk"><circle cx="819.8" cy="58.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="819.8" y="63.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="569.1" cy="-101.8" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="569.1" y="-96.8" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="565.2" cy="139.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="565.2" y="144.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="372.9" cy="37.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="372.9" y="42.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g>
+<g class="mk"><circle cx="560.0" cy="280.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="560.0" y="285.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text></g></svg></div>
+        <figcaption><h3>La tarima principal con tu nombre</h3><p>El evento con tu nombre · escenario de 14 × 7 m</p>
+          <ol><li>Muro LED con tu marca en cada final</li><li>Torres laterales con tus colores</li><li>Mesas de los equipos y jerseys de los finalistas</li><li>Backing de entrevistas transmitido a la región</li><li>Faldón del escenario: «Gran Final presentada por tu marca»</li></ol></figcaption>
+      </figure>
+      <figure class="stand">
+        <div class="stand__art"><svg viewBox="241 -124 558 530" role="img" aria-label="Diseño de stand de 6 por 6 metros para Zone Partner" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="281.0,228.0 520.0,366.0 520.0,357.7 281.0,219.7" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="759.0,228.0 520.0,366.0 520.0,357.7 759.0,219.7" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,81.7 759.0,219.7 520.0,357.7 281.0,219.7" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,88.6 747.1,219.7 520.0,350.8 292.9,219.7" fill="#1f3050" />
+<text class="bn" data-max="230" transform="matrix(0.8660,0.5000,-0.8660,0.5000,492.1,249.2)" font-size="34" font-weight="800" fill="rgba(255,255,255,.07)" text-anchor="middle">TU MARCA</text>
+<polygon points="510.0,87.5 749.1,225.5 749.1,78.3 510.0,-59.7" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="759.0,219.7 749.1,225.5 749.1,78.3 759.0,72.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,-65.5 759.0,72.5 749.1,78.3 510.0,-59.7" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="281.0,219.7 290.9,225.5 290.9,78.3 281.0,72.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,93.2 290.9,225.5 290.9,78.3 520.0,-54.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="510.0,-59.7 520.0,-54.0 290.9,78.3 281.0,72.5" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.8,77.4 693.3,160.2 693.3,68.2 549.8,-14.6" fill="#06101d" />
+<polygon points="554.6,75.6 688.4,152.8 688.4,70.0 554.6,-7.2" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,621.5,54.4)" font-size="14" font-weight="700" fill="#8fe2ff" text-anchor="middle">RANKING EN VIVO</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,41.8)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">1  NOVA</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,108.5)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">14,680</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,56.9)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">2  ZERO</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,123.6)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">12,940</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,72.1)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">3  APEX</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,138.8)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">11,205</text>
+<text class="bn" data-max="230" transform="matrix(0.8660,-0.5000,0,1,410.5,65.9)" font-size="34" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<text class="" transform="matrix(0.8660,-0.5000,0,1,410.5,86.6)" font-size="13" font-weight="600" fill="rgba(255,255,255,.85)" text-anchor="middle">Zona oficial</text>
+<polygon points="532.0,-44.8 723.2,65.6 723.2,33.4 532.0,-77.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="735.1,58.7 723.2,65.6 723.2,33.4 735.1,26.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="543.9,-83.9 735.1,26.5 723.2,33.4 532.0,-77.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="200" transform="matrix(0.8660,0.5000,0,1,627.5,2.6)" font-size="26" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="456.3,164.5 504.1,192.1 504.1,157.6 456.3,130.0" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="528.0,178.3 504.1,192.1 504.1,157.6 528.0,143.8" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="480.2,116.2 528.0,143.8 504.1,157.6 456.3,130.0" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="485.7,124.5 513.6,140.6 513.6,119.9 485.7,103.8" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="516.0,139.2 513.6,140.6 513.6,119.9 516.0,118.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="488.1,102.4 516.0,118.5 513.6,119.9 485.7,103.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="487.3,123.6 512.0,137.9 512.0,120.8 487.3,106.6" fill="url(#scrGrad)" />
+<polygon points="440.3,189.8 460.2,201.3 460.2,176.0 440.3,164.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="480.2,189.8 460.2,201.3 460.2,176.0 480.2,164.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="460.2,153.0 480.2,164.5 460.2,176.0 440.3,164.5" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="518.0,200.2 565.8,227.8 565.8,193.3 518.0,165.7" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="589.7,214.0 565.8,227.8 565.8,193.3 589.7,179.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="541.9,151.9 589.7,179.5 565.8,193.3 518.0,165.7" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="547.5,160.1 575.4,176.2 575.4,155.5 547.5,139.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="577.8,174.9 575.4,176.2 575.4,155.5 577.8,154.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.9,138.1 577.8,154.2 575.4,155.5 547.5,139.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.0,159.3 573.7,173.5 573.7,156.5 549.0,142.2" fill="url(#scrGrad)" />
+<polygon points="502.1,225.5 522.0,237.0 522.0,211.7 502.1,200.2" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="541.9,225.5 522.0,237.0 522.0,211.7 541.9,200.2" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="522.0,188.7 541.9,200.2 522.0,211.7 502.1,200.2" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="579.8,235.8 627.6,263.4 627.6,228.9 579.8,201.3" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="651.5,249.6 627.6,263.4 627.6,228.9 651.5,215.1" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="603.7,187.5 651.5,215.1 627.6,228.9 579.8,201.3" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="609.2,195.8 637.1,211.9 637.1,191.2 609.2,175.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="639.5,210.5 637.1,211.9 637.1,191.2 639.5,189.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="611.6,173.7 639.5,189.8 637.1,191.2 609.2,175.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="610.8,194.9 635.5,209.2 635.5,192.1 610.8,177.9" fill="url(#scrGrad)" />
+<polygon points="563.8,261.1 583.7,272.6 583.7,247.3 563.8,235.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="603.7,261.1 583.7,272.6 583.7,247.3 603.7,235.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="583.7,224.3 603.7,235.8 583.7,247.3 563.8,235.8" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="394.5,255.4 412.4,265.7 412.4,178.3 394.5,168.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="430.4,255.4 412.4,265.7 412.4,178.3 430.4,168.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="412.4,157.6 430.4,168.0 412.4,178.3 394.5,168.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="397.3,210.1 409.6,217.2 409.6,203.0 397.3,195.8" fill="#fff" />
+<polygon points="398.8,209.2 402.8,211.5 402.8,206.9 398.8,204.6" fill="#0a121e" />
+<polygon points="404.0,206.2 408.0,208.5 408.0,203.9 404.0,201.6" fill="#0a121e" />
+<polygon points="403.2,211.7 404.8,212.6 404.8,210.8 403.2,209.9" fill="#0a121e" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,403.4,229.7)" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">MISIÓN</text>
+<polygon points="460.2,295.6 532.0,337.0 532.0,291.0 460.2,249.6" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="563.8,318.6 532.0,337.0 532.0,291.0 563.8,272.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="492.1,231.2 563.8,272.6 532.0,291.0 460.2,249.6" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="" transform="matrix(0.8660,0.5000,0,1,496.1,299.3)" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">LOOT SHOP</text>
+<g class="mk"><circle cx="691.3" cy="69.3" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="691.3" y="74.3" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="324.8" cy="78.5" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="324.8" y="83.5" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="520.0" cy="117.6" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="520.0" y="122.6" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="412.4" cy="152.1" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="412.4" y="157.1" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g>
+<g class="mk"><circle cx="512.0" cy="241.8" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="512.0" y="246.8" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text></g>
+<g class="mk"><circle cx="731.1" cy="32.5" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="731.1" y="37.5" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">6</text></g></svg></div>
+        <figcaption><h3>Tu zona</h3><p>Una zona · stand de 6 × 6 m</p>
+          <ol><li>Pantalla LED con el ranking en vivo</li><li>Pared de marca para fotos y contenido</li><li>Estaciones de juego con tus retos</li><li>Tótem de misión con código QR</li><li>Loot Shop: canje de recompensas de tu marca</li><li>Cabezal de marca visible desde todo el recinto</li></ol></figcaption>
+      </figure>
+      <figure class="stand">
+        <div class="stand__art"><svg viewBox="250 -61 485 445" role="img" aria-label="Diseño de activación en lobby de cine o atrio de centro comercial" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="289.9,214.0 515.0,344.0 515.0,337.8 289.9,207.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="695.2,240.0 515.0,344.0 515.0,337.8 695.2,233.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,103.8 695.2,233.8 515.0,337.8 289.9,207.8" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,108.9 686.2,233.7 515.0,332.5 298.9,207.7" fill="#1f3050" />
+<polygon points="488.0,124.6 659.1,223.4 659.1,83.0 488.0,-15.8" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="668.1,218.2 659.1,223.4 659.1,83.0 668.1,77.8" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="497.0,-21.0 668.1,77.8 659.1,83.0 488.0,-15.8" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="494.7,103.5 652.3,194.5 652.3,90.5 494.7,-0.5" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,573.5,68.5)" font-size="13" font-weight="700" fill="#8fe2ff" text-anchor="middle">RETO EXPRESS · 5 MIN</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,573.5,104.9)" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">¿Superas 01:24?</text>
+<polygon points="436.2,159.7 494.8,193.5 494.8,151.9 436.2,118.1" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="519.5,179.2 494.8,193.5 494.8,151.9 519.5,137.6" fill="#22314d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="461.0,103.8 519.5,137.6 494.8,151.9 436.2,118.1" fill="#3d5580" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,114.2 501.5,132.4 501.5,109.0 470.0,90.8" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="503.8,131.1 501.5,132.4 501.5,109.0 503.8,107.7" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="472.3,89.5 503.8,107.7 501.5,109.0 470.0,90.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="471.8,113.1 499.7,129.3 499.7,110.0 471.8,93.9" fill="url(#scrGrad)" />
+<polygon points="425.0,187.0 445.2,198.7 445.2,172.7 425.0,161.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="465.5,187.0 445.2,198.7 445.2,172.7 465.5,161.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="445.2,149.3 465.5,161.0 445.2,172.7 425.0,161.0" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="499.3,196.1 557.8,229.9 557.8,188.3 499.3,154.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="582.6,215.6 557.8,229.9 557.8,188.3 582.6,174.0" fill="#22314d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="524.0,140.2 582.6,174.0 557.8,188.3 499.3,154.5" fill="#3d5580" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,150.6 564.6,168.8 564.6,145.4 533.0,127.2" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="566.8,167.5 564.6,168.8 564.6,145.4 566.8,144.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="535.3,125.9 566.8,144.1 564.6,145.4 533.0,127.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="534.8,149.5 562.7,165.7 562.7,146.4 534.8,130.3" fill="url(#scrGrad)" />
+<polygon points="488.0,223.4 508.3,235.1 508.3,209.1 488.0,197.4" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="528.5,223.4 508.3,235.1 508.3,209.1 528.5,197.4" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="508.3,185.7 528.5,197.4 508.3,209.1 488.0,197.4" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,249.4 587.1,280.6 587.1,231.2 533.0,200.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="614.1,265.0 587.1,280.6 587.1,231.2 614.1,215.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.1,184.4 614.1,215.6 587.1,231.2 533.0,200.0" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="" transform="matrix(0.8660,0.5000,0,1,560.0,245.2)" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">REGÍSTRATE</text>
+<polygon points="310.1,206.5 325.9,215.6 325.9,80.4 310.1,71.3" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="341.7,206.5 325.9,215.6 325.9,80.4 341.7,71.3" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="325.9,62.2 341.7,71.3 325.9,80.4 310.1,71.3" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="501.5,317.0 517.3,326.1 517.3,190.9 501.5,181.8" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,317.0 517.3,326.1 517.3,190.9 533.0,181.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="517.3,172.7 533.0,181.8 517.3,190.9 501.5,181.8" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="310.1,71.3 517.3,190.9 517.3,159.7 310.1,40.1" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,181.8 517.3,190.9 517.3,159.7 533.0,150.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="325.9,31.0 533.0,150.6 517.3,159.7 310.1,40.1" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="200" transform="matrix(0.8660,0.5000,0,1,413.7,124.3)" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<g class="mk"><circle cx="420.5" cy="81.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="420.5" y="86.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="650.1" cy="68.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="650.1" y="73.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="476.8" cy="72.3" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="476.8" y="77.3" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="573.6" cy="185.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="573.6" y="190.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g></svg></div>
+        <figcaption><h3>Tu parada en cine o centro comercial</h3><p>Un país o todo el tour · espacio de 5 × 4 m</p>
+          <ol><li>Arco de entrada con tu marca</li><li>Pantalla del reto express de 5 minutos</li><li>Estaciones de reto patrocinado</li><li>Registro en la GameLobby Wallet</li></ol></figcaption>
+      </figure>
+    </div>
+    <p class="sources" style="margin-top:18px">Ilustraciones de referencia. Medidas, materiales y ubicación se definen en la propuesta de cada marca.</p>
+  </div>
+</section>
 
-        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="form__note">Usamos tus datos solo para responder esta solicitud.</p>
-        <button class="btn btn--pink btn--block btn--md" type="submit">Solicitar propuesta</button>
-      </form>
-      <div class="form__success hidden" id="glx-success">
-        <i data-lucide="circle-check-big" style="width:48px;height:48px"></i>
-        <h3>¡Recibido!</h3>
-        <p>Te escribimos pronto. Si quieres avanzar más rápido, agenda una reunión ahora.</p>
-        <div class="xp-success__actions" id="glx-success-actions">
-          <a href="" id="glx-whatsapp-btn" class="btn btn--outline btn--sm hidden" target="_blank" rel="noopener" data-xp-event="sponsor_whatsapp_click">Hablar por WhatsApp</a>
-          <a href="https://calendar.app.google/paVtHHDVLxzuwhFq8" id="glx-meeting-btn" class="btn btn--outline btn--sm" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a>
+<!-- Ruta -->
+<section class="slide" id="ruta">
+  <div class="slide__inner">
+    <span class="slide__tag">La ruta</span>
+    <h2>México enciende el circuito. Panamá lo corona.</h2>
+    <div class="route">
+      <article class="leg"><img src="assets/xperience/arcade-social.jpg" alt=""><span class="leg__when">Abril 2027</span><h3>México</h3><p>Lanzamiento con prensa, creadores y marcas, y retos express en FrikiPlaza. El líder del ranking nacional viaja a la final.</p></article>
+      <article class="leg"><img src="assets/xperience/zone-football.jpg" alt=""><span class="leg__when">Junio 2027</span><h3>Centroamérica</h3><p>Clasificatorias en 6 países, con circuito digital y paradas presenciales en cines o centros comerciales.</p></article>
+      <article class="leg leg--final"><img src="assets/xperience/day2-social.jpg" alt=""><span class="leg__when">28 y 29 de agosto de 2027</span><h3>Gran Final · Panamá</h3><p>Dos días presenciales con Campus Quest, jornada familiar, finales en la tarima principal y transmisión a la región.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Zonas -->
+<section class="slide slide--alt" id="zonas">
+  <div class="slide__inner">
+    <span class="slide__tag">Zonas de la Gran Final</span>
+    <h2>Cada zona es un lugar para que tu marca se juegue</h2>
+    <div class="zones">
+      <figure class="zone zone--wide"><img src="assets/xperience/stage-missions.jpg" alt="" loading="lazy"><figcaption>Tarima principal<small>Finales de esports, shows y ranking en vivo</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/zone-football.jpg" alt="" loading="lazy"><figcaption>Football Fan Arena<small>Fútbol virtual, retos 1v1 y penales</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/zone-sim-racing.jpg" alt="" loading="lazy"><figcaption>Sim Racing Garage<small>Simuladores y récords de pista</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/zone-arena-mobile.jpg" alt="" loading="lazy"><figcaption>Arena Mobile<small>Torneos de títulos móviles</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/zone-geek-anime.jpg" alt="" loading="lazy"><figcaption>Geek &amp; Anime<small>Cosplay, cómics y cultura pop</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/zone-dance-music.jpg" alt="" loading="lazy"><figcaption>Dance &amp; Music<small>Retos de ritmo en grupo</small></figcaption></figure>
+      <figure class="zone"><img src="assets/xperience/campus-quest.jpg" alt="" loading="lazy"><figcaption>Campus Quest<small>Feria de carreras tech y creativas</small></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Reporte -->
+<section class="slide" id="reporte">
+  <div class="slide__inner report">
+    <div>
+      <span class="slide__tag">Lo que recibes al cierre</span>
+      <h2>Datos de quién participó, no impresiones estimadas</h2>
+      <p class="lead">Cada visitante se registra en la GameLobby Wallet. Las misiones, puntos y canjes con tu marca quedan registrados, y al cierre recibes el reporte de tu activación.</p>
+      <ol class="flow flow--compact">
+        <li><h3>Registro</h3><p>Usuario verificado.</p></li>
+        <li><h3>Misión</h3><p>QR o NFC de tu marca.</p></li>
+        <li><h3>Puntos</h3><p>Ranking en vivo.</p></li>
+        <li><h3>Canje</h3><p>Loot Shop.</p></li>
+        <li><h3>Seguimiento</h3><p>Retargeting regional.</p></li>
+      </ol>
+    </div>
+    <div class="report__card" role="img" aria-label="Ejemplo de reporte de activación con cifras ilustrativas">
+      <div class="report__head"><b>Reporte de activación · Tu marca</b><span>Ejemplo ilustrativo</span></div>
+      <div class="report__kpis">
+        <div><b>3,420</b><span>participantes registrados</span></div>
+        <div><b>8,960</b><span>misiones completadas</span></div>
+        <div><b>1,215</b><span>canjes en Loot Shop</span></div>
+        <div><b>6 min</b><span>tiempo promedio en tu zona</span></div>
+      </div>
+      <div class="report__bars">
+        <div class="bar"><span>Guatemala</span><i style="width:92%"></i><em>28%</em></div>
+        <div class="bar"><span>Costa Rica</span><i style="width:70%"></i><em>21%</em></div>
+        <div class="bar"><span>Panamá</span><i style="width:62%"></i><em>19%</em></div>
+        <div class="bar"><span>El Salvador</span><i style="width:44%"></i><em>13%</em></div>
+        <div class="bar"><span>Otros países</span><i style="width:60%"></i><em>19%</em></div>
+      </div>
+      <p class="report__note">Las cifras de este ejemplo son ilustrativas. Los indicadores reales se acuerdan contigo y se entregan de forma agregada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Categorías -->
+<section class="slide slide--alt" id="categorias">
+  <div class="slide__inner board-wrap">
+    <div>
+      <span class="slide__tag">Exclusividad</span>
+      <h2>Una marca por categoría</h2>
+      <p class="lead">Los paquetes Presenting incluyen exclusividad en tu categoría, regional o por país. Las categorías se asignan en orden de confirmación.</p>
+      <div class="ctas"><a class="btn btn--pink" href="#contacto" data-xp-event="sponsor_categories_cta">Reservar mi categoría</a></div>
+    </div>
+    <div class="board" aria-label="Estado de las categorías">
+      <div class="board__row"><b>Banca y tarjetas<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+      <div class="board__row"><b>Telecomunicaciones<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+      <div class="board__row"><b>Bebidas y snacks<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+      <div class="board__row"><b>Comida rápida<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+      <div class="board__row"><b>Tecnología y periféricos<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+      <div class="board__row"><b>Retail y tiendas<small>Presenting Gran Final y Tour regional</small></b><span class="board__state">Disponible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Preguntas -->
+<section class="slide" id="preguntas">
+  <div class="slide__inner">
+    <span class="slide__tag">Preguntas frecuentes</span>
+    <h2>Lo que nos preguntan las marcas</h2>
+    <div class="faq">
+      <details><summary>¿Cuánto cuesta participar?</summary><p>Hay opciones para marcas que entran por primera vez y paquetes para ser la marca principal de la Gran Final. Te recomendamos el nivel según tu objetivo y te enviamos el media kit con la inversión de cada paquete.</p></details>
+      <details><summary>¿Puedo participar solo en mi país?</summary><p>Sí. Cada país del tour tiene su parada, su circuito digital y su premiación nacional, con paquetes locales.</p></details>
+      <details><summary>¿El evento puede llevar el nombre de mi marca?</summary><p>Sí. Una final nacional o la Gran Final pueden ser presentadas por tu marca, con nombre del evento, escenario, transmisión y comunicación.</p></details>
+      <details><summary>¿Qué datos recibo?</summary><p>Participación, misiones, canjes y el desempeño de tu activación por país, de forma agregada y con consentimiento de los participantes.</p></details>
+      <details><summary>¿Puede participar una marca de consumo adulto?</summary><p>Sí, en la Cool Down Zone +18, un espacio de acceso restringido para mayores de edad.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="slide slide--alt" id="contacto">
+  <div class="slide__inner">
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="slide__tag">Preventa abierta</span>
+        <h2>Construyamos 2027 juntos</h2>
+        <p class="lead">Déjanos tus datos y abre el media kit de una vez, o agenda 30 minutos y te mostramos dónde encaja tu marca.</p>
+        <div class="ctas"><a class="btn btn--ghost" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a></div>
+      </div>
+      <div>
+        <form class="mk-form" id="glx-form" novalidate>
+          <h3>Recibe el media kit</h3>
+          <div class="mk-form__row">
+            <label>Nombre<input name="name" autocomplete="name" required></label>
+            <label>Empresa<input name="company" id="f-company" autocomplete="organization" required></label>
+          </div>
+          <div class="mk-form__row">
+            <label>Correo de trabajo<input name="email" type="email" autocomplete="email" required></label>
+            <label>País<select name="country"><option value="">Elige</option><option>México</option><option>Guatemala</option><option>El Salvador</option><option>Honduras</option><option>Nicaragua</option><option>Costa Rica</option><option>Panamá</option><option>República Dominicana</option><option>Otro</option></select></label>
+          </div>
+          <label>Nivel que te interesa<select name="interest"><option>Todavía no lo sé</option><option>Una zona</option><option>Un país</option><option>Todo el tour</option><option>El evento con mi nombre</option></select></label>
+          <label>Qué quieres lograr <span>(opcional)</span><textarea name="message" rows="3"></textarea></label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="mk-form__hp" aria-hidden="true">
+          <label class="mk-form__consent"><input type="checkbox" name="consentMarketing"> Acepto recibir información de GameLobby por correo.</label>
+          <p class="mk-form__msg" role="alert"></p>
+          <button type="submit" class="btn btn--pink">Abrir el media kit</button>
+        </form>
+        <div class="done" id="glx-done" hidden>
+          <h3>Listo, ya tenemos tus datos</h3>
+          <p>Abre el media kit con tu marca aplicada. Te escribimos en menos de un día hábil.</p>
+          <div class="ctas"><a class="btn btn--pink" id="glx-kit" href="/mediakit-xperience" target="_blank" rel="noopener" data-xp-event="sponsor_media_kit_open">Abrir el media kit</a><a class="btn btn--ghost" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener" data-xp-event="sponsor_meeting_click">Agendar una reunión</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__about">
-        <img src="assets/logo-full-white.png" alt="Game Lobby">
-        <p>Competición, comunidades y recompensas para el gaming de Latinoamérica.</p>
-      </div>
-      <div class="footer__col">
-        <h4>Producto</h4>
-        <a href="/#que-es">Gamer Wallet</a><a href="/#audiencias">Rooms &amp; Torneos</a><a href="/#que-es">Tienda de canje</a>
-      </div>
-      <div class="footer__col">
-        <h4>GameLobby Xperience</h4>
-        <a href="#como-funciona">Cómo funciona</a><a href="#objetivos">Objetivos</a><a href="#zonas">Zonas</a><a href="#glx-sponsors">Sé patrocinador</a>
-      </div>
-      <div class="footer__col">
-        <h4>Empresa</h4>
-        <a href="/#contacto">Para marcas</a><a href="/#contacto">Contacto</a>
-      </div>
-    </div>
-    <div class="footer__social">
-      <a href="https://www.instagram.com/gamelobby.gg/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a href="https://www.linkedin.com/company/gamelobby/home/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-      <a href="https://www.facebook.com/GameLobbyWallet" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      <a href="https://www.tiktok.com/@gamelobby.gg" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M16.6 5.82c-.9-.66-1.47-1.71-1.55-2.9h-3.02v13.1c0 1.55-1.26 2.81-2.81 2.81a2.81 2.81 0 0 1-2.81-2.81 2.81 2.81 0 0 1 2.81-2.81c.29 0 .57.05.83.13V10.2a5.94 5.94 0 0 0-.83-.06A5.93 5.93 0 0 0 3.28 16.06a5.93 5.93 0 0 0 5.93 5.93 5.93 5.93 0 0 0 5.93-5.93V9.03a7.9 7.9 0 0 0 4.6 1.48V7.48a4.85 4.85 0 0 1-3.14-1.66z"/></svg></a>
-    </div>
-    <div class="footer__bottom">
-      <span>© 2026 Game Lobby · gamelobby.gg · Todos los derechos reservados</span>
-    </div>
-  </div>
+</main>
+
+<footer class="foot">
+  <span>© 2026 GameLobby · <a href="/">gamelobby.live</a> · <a href="https://gamelobby.gg">gamelobby.gg</a></span>
+  <span><a href="/marcas">Para marcas</a> · <a href="/organizadores">Organizadores</a> · <a href="/inversionistas">Inversionistas</a></span>
 </footer>
 
-<!-- ============ MODAL: SOLICITAR MEDIA KIT ============ -->
-<div class="modal" id="mediakit-modal" aria-hidden="true">
-  <div class="modal__box">
-    <div class="card" data-neon="pink">
-      <div class="modal__head">
-        <span class="badge badge--pink"><span class="dot"></span>GameLobby Xperience</span>
-        <button class="modal__close" data-close-mediakit aria-label="Cerrar"><i data-lucide="x" style="width:20px;height:20px"></i></button>
-      </div>
-      <form class="form" id="mediakit-form" style="margin-top:18px">
-        <h3>Solicitar Media Kit</h3>
-        <p class="modal__lead" style="margin:-4px 0 4px">Te lo enviamos a tu correo. Las cifras del kit son estimaciones de planificación.</p>
-        <div class="field">
-          <label for="mk-name">Nombre completo</label>
-          <input id="mk-name" name="name" placeholder="Alex Rivera" required>
-        </div>
-        <div class="field">
-          <label for="mk-email">Correo electrónico</label>
-          <input id="mk-email" name="email" type="email" placeholder="alex@empresa.com" required>
-        </div>
-        <div class="field">
-          <label for="mk-phone">Número de contacto</label>
-          <input id="mk-phone" name="phone" type="tel" placeholder="+507 6000 0000" required>
-        </div>
-        <div class="field">
-          <label for="mk-company">Empresa</label>
-          <input id="mk-company" name="company" placeholder="Tu marca" required>
-        </div>
-        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn--pink btn--block btn--md" type="submit">Enviarme el Media Kit</button>
-      </form>
-      <div class="modal__success hidden" id="mediakit-success">
-        <i data-lucide="mail-check" style="width:46px;height:46px"></i>
-        <h3 style="margin:14px 0 8px">Recibimos tu solicitud</h3>
-        <p class="modal__lead">Revisa tu correo: te enviaremos el Media Kit de GameLobby Xperience.</p>
-      </div>
-      <div class="modal__success hidden" id="mediakit-limited">
-        <i data-lucide="mail-check" style="width:46px;height:46px"></i>
-        <h3 style="margin:14px 0 8px">Ya tienes una solicitud en camino</h3>
-        <p class="modal__lead">Si no te llegó el correo, escríbenos directo a <a href="mailto:hola@gamelobby.live">hola@gamelobby.live</a> y te lo enviamos.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="sticky" id="sticky"><a class="btn btn--pink" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener" data-xp-event="sponsor_sticky_meeting_click">Agendar una reunión</a></div>
 
-<!-- CTA sticky de sponsors en mobile: aparece al hacer scroll, se oculta cerca del form real -->
-<div class="xp-sticky-cta hidden" id="xp-sticky-cta">
-  <button type="button" class="btn btn--pink btn--block btn--sm" data-open-mediakit data-xp-event="sponsor_sticky_media_kit_click">Descargar Media Kit</button>
-</div>
-
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script>
-  function renderIcons() { if (window.lucide) window.lucide.createIcons(); }
-  renderIcons();
+(function(){
+  function track(n,m){try{if(typeof window.va==='function')window.va('event',{name:n,data:m||{}});}catch(e){}}
+  document.addEventListener('click',function(e){var t=e.target.closest('[data-xp-event]');if(t)track(t.getAttribute('data-xp-event'));});
 
-  // ---- Menú móvil (hamburguesa) ----
-  (function () {
-    var nav = document.querySelector('.nav');
-    var burger = nav && nav.querySelector('.nav__burger');
-    if (!nav || !burger) return;
-    function setState(open) {
-      nav.classList.toggle('nav--open', open);
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      burger.innerHTML = '<i data-lucide="' + (open ? 'x' : 'menu') + '"></i>';
-      renderIcons();
-    }
-    burger.addEventListener('click', function () { setState(!nav.classList.contains('nav--open')); });
-    nav.querySelectorAll('.nav__links a').forEach(function (a) {
-      a.addEventListener('click', function () { setState(false); });
-    });
-  })();
+  // Días para la Gran Final (28 de agosto de 2027, Panamá)
+  var d=Math.ceil((Date.parse('2027-08-28T00:00:00-05:00')-Date.now())/86400000);
+  var el=document.getElementById('days'); if(el&&d>0) el.textContent=d;
 
-  // ---- Captura de lead (Vercel serverless: /api/lead) ----
-  // Degrada sin romper el form si el endpoint no existe (preview estático local).
-  // Soporta campos multivalor (checkboxes con el mismo name) uniéndolos con ", ".
-  function attribution() {
-    var q = new URLSearchParams(window.location.search), o = { page: window.location.pathname };
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
-      var v = q.get(k); if (v) o[k] = v.slice(0, 100);
-    });
-    return o;
-  }
-  function showFormError(form, msg) {
-    var el = form.querySelector('.form__error');
-    if (!el) {
-      el = document.createElement('p');
-      el.className = 'form__error';
-      el.setAttribute('role', 'alert');
-      form.querySelector('button[type="submit"]').insertAdjacentElement('beforebegin', el);
-    }
-    el.textContent = msg || '';
-  }
-  // Soporta campos multivalor (checkboxes con el mismo name) uniéndolos con ", ".
-  // Devuelve true solo si el servidor confirma que el registro quedó guardado.
-  async function submitLead(type, form) {
-    var btn = form.querySelector('button[type="submit"]');
-    var data = {};
-    new FormData(form).forEach(function (value, key) {
-      if (data[key] === undefined) data[key] = value;
-      else if (Array.isArray(data[key])) data[key].push(value);
-      else data[key] = [data[key], value];
-    });
-    Object.keys(data).forEach(function (key) {
-      if (Array.isArray(data[key])) data[key] = data[key].join(', ');
-    });
-    data.type = type;
-    data.consentMarketing = !!form.querySelector('[name="consentMarketing"]:checked');
-    Object.assign(data, attribution());
-    showFormError(form, '');
-    if (btn) btn.disabled = true;
-    try {
-      var res = await fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      var json = await res.json().catch(function () { return {}; });
-      if (res.ok && json.ok && json.stored) return true;
-      showFormError(form, res.status === 400
-        ? 'Revisa tu nombre y correo e inténtalo de nuevo.'
-        : 'No pudimos guardar tu solicitud. Inténtalo de nuevo en unos minutos.');
-    } catch (err) {
-      showFormError(form, 'No pudimos conectar. Revisa tu conexión e inténtalo de nuevo.');
-    }
-    if (btn) btn.disabled = false;
-    return false;
-  }
+  // Configurador de los espacios
+  var root=document.documentElement, nameIn=document.getElementById('cfg-name'), colorIn=document.getElementById('cfg-color');
+  var state={name:'',color:'#c90087'};
+  function shade(hex,f){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;function c(v){return Math.max(0,Math.min(255,Math.round(f<0?v*(1+f):v+(255-v)*f)));}return 'rgb('+c(r)+','+c(g)+','+c(b)+')';}
+  function fit(){document.querySelectorAll('.stand text[data-max]').forEach(function(t){t.removeAttribute('textLength');t.removeAttribute('lengthAdjust');var m=+t.getAttribute('data-max');try{if(t.getComputedTextLength()>m){t.setAttribute('textLength',m);t.setAttribute('lengthAdjust','spacingAndGlyphs');}}catch(e){}});}
+  function setColor(hex){state.color=hex;root.style.setProperty('--brand',hex);root.style.setProperty('--brand-dark',shade(hex,-.35));root.style.setProperty('--brand-light',shade(hex,.2));colorIn.value=hex;}
+  function setName(v){state.name=(v||'').trim();var n=state.name.toUpperCase()||'TU MARCA';
+    document.querySelectorAll('.stand .bn').forEach(function(t){t.textContent=n;});
+    document.querySelectorAll('.stand .bn-sm').forEach(function(t){t.textContent=n.split(' ')[0].slice(0,8);});
+    document.querySelectorAll('.stand .bn-title').forEach(function(t){t.textContent='GRAN FINAL  ·  PRESENTADA POR '+n;});
+    fit();}
+  var touched=false;
+  nameIn.addEventListener('input',function(){setName(nameIn.value);if(!touched){touched=true;track('sponsor_configurator_used');}});
+  colorIn.addEventListener('input',function(){setColor(colorIn.value);});
+  document.querySelectorAll('.cfg__presets button').forEach(function(b){b.addEventListener('click',function(){setColor(b.getAttribute('data-c'));});});
+  document.getElementById('cfg-go').addEventListener('click',function(){var c=document.getElementById('f-company');if(state.name&&!c.value)c.value=state.name;});
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}else{fit();}
 
-  // ---- GameLobby Xperience: analytics ----
-  // Envía eventos a Vercel Web Analytics (ya integrado vía /_vercel/insights/script.js).
-  // No agrega otro proveedor. Sin PII: solo metadata de producto (goal, experiencia, país, etc).
-  function xpTrack(name, meta) {
-    try { if (typeof window.va === 'function') window.va('event', { name: name, data: meta || {} }); } catch (e) {}
-  }
-  var xpSectionSeen = {};
-  function xpTrackOnce(key, name, meta) {
-    if (xpSectionSeen[key]) return;
-    xpSectionSeen[key] = true;
-    xpTrack(name, meta);
-  }
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-xp-event]');
-    if (t) xpTrack(t.getAttribute('data-xp-event'));
-  });
-  if ('IntersectionObserver' in window) {
-    var xpViewObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        if (entry.target.id === 'xperience') xpTrackOnce('xp', 'xperience_section_view');
-        if (entry.target.id === 'zonas') xpTrackOnce('zones', 'sponsor_experience_view');
-        if (entry.target.classList.contains('xp-data')) xpTrackOnce('data', 'wallet_data_section_view');
-      });
-    }, { threshold: 0.25 });
-    ['xperience', 'zonas'].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) xpViewObserver.observe(el);
-    });
-    var xpDataSection = document.querySelector('.xp-data');
-    if (xpDataSection) xpViewObserver.observe(xpDataSection);
-  }
-
-  // ---- GameLobby Xperience: recomendador de experiencias por objetivo ----
-  var XP_RECOMMEND = {
-    awareness: ['Tarima principal', 'Nombre patrocinado de zona', 'Pantalla piso-techo', 'Experiencias de gran formato'],
-    adquisicion: ['Misiones de la Wallet', 'Votaciones', 'Competencias', 'Recompensas'],
-    producto: ['Muestras', 'Retos de marca', 'Premios', 'Canjes', 'Zonas de experiencia'],
-    rse: ['Campus Quest'],
-    contenido: ['Content & Streaming Zone', 'Concurso de cosplay', 'Contenido de la comunidad'],
-  };
-  var XP_GOAL_TO_CHECKBOX = {
-    awareness: 'Brand Awareness',
-    adquisicion: 'Adquisición / registros',
-    producto: 'Producto / sampling',
-    rse: 'RSE / educación',
-    contenido: 'Contenido / creadores',
-  };
-  var xpExperiencesField = document.getElementById('glx-experiences');
-  function xpAddExperiences(list) {
-    if (!xpExperiencesField) return;
-    var current = xpExperiencesField.value ? xpExperiencesField.value.split(',').map(function (s) { return s.trim(); }).filter(Boolean) : [];
-    list.forEach(function (item) { if (current.indexOf(item) === -1) current.push(item); });
-    xpExperiencesField.value = current.join(', ');
-  }
-  function xpCheckGoal(goalId) {
-    var value = XP_GOAL_TO_CHECKBOX[goalId];
-    if (!value) return;
-    var box = document.querySelector('#glx-goals input[value="' + value + '"]');
-    if (box) box.checked = true;
-  }
-  var xpGoalButtons = document.querySelectorAll('.xp-goal');
-  var xpGoalsResult = document.getElementById('xp-goals-result');
-  var xpGoalsChips = document.getElementById('xp-goals-chips');
-  xpGoalButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var goal = btn.dataset.goal;
-      xpGoalButtons.forEach(function (b) { b.classList.toggle('xp-goal--active', b === btn); b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-      var experiences = XP_RECOMMEND[goal] || [];
-      xpGoalsChips.innerHTML = experiences.map(function (e) { return '<span class="xp-chip">' + e + '</span>'; }).join('');
-      xpGoalsResult.classList.remove('hidden');
-      xpCheckGoal(goal);
-      xpAddExperiences(experiences);
-      xpTrack('sponsor_goal_selected', { goal: goal });
-    });
+  // Formulario: guarda el lead (llega al correo de Mai) y abre el media kit personalizado
+  var f=document.getElementById('glx-form'), msg=f.querySelector('.mk-form__msg'), btn=f.querySelector('button[type="submit"]'), started=false;
+  f.addEventListener('focusin',function(){if(!started){started=true;track('sponsor_form_start');}});
+  f.addEventListener('submit',async function(e){
+    e.preventDefault(); msg.textContent='';
+    var data=Object.fromEntries(new FormData(f).entries());
+    if(!data.name||!data.company||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email||'')){msg.textContent='Escribe tu nombre, tu empresa y un correo válido.';return;}
+    data.type='glx_sponsor'; data.consentMarketing=!!f.querySelector('[name="consentMarketing"]:checked'); data.page=location.pathname;
+    var q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){if(q.get(k))data[k]=q.get(k).slice(0,100);});
+    btn.disabled=true;
+    try{
+      var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      var j=await r.json().catch(function(){return {};});
+      if(!(r.ok&&j.ok&&(j.stored||j.duplicate))) throw new Error('no_guardado');
+      var kit='/mediakit-xperience?marca='+encodeURIComponent((state.name||data.company).slice(0,16))+'&color='+encodeURIComponent(state.color);
+      document.getElementById('glx-kit').href=kit;
+      f.hidden=true; document.getElementById('glx-done').hidden=false;
+      track('sponsor_submit_success',{interest:data.interest||null,country:data.country||null});
+    }catch(err){msg.textContent='No pudimos enviar tus datos. Inténtalo de nuevo o agenda la reunión.';}
+    btn.disabled=false;
   });
 
-  // ---- GameLobby Xperience: zonas del venue ----
-  var XP_ZONES = [
-    { name: 'Tarima principal y zona de público', desc: 'El escenario central del evento y su zona de público—shows, anuncios y momentos masivos.', formats: ['Naming', 'Presencia en pantalla', 'Activaciones en vivo', 'Sampling'] },
-    { name: 'Arena Mobile', desc: 'Torneos de juegos móviles.', formats: ['Naming', 'QR mission', 'Leaderboard'] },
-    { name: 'Sim Racing Garage', img: 'assets/xperience/zone-sim-racing.jpg', desc: 'Una experiencia competitiva de alto engagement.', formats: ['Naming', 'Challenge patrocinado', 'Premios', 'QR mission', 'Sampling', 'Leaderboard', 'Contenido social'] },
-    { name: 'Arena Monitores', desc: 'Setups de competición para torneos y exhibiciones.', formats: ['Naming', 'Leaderboard', 'Branding en puestos', 'Streaming'] },
-    { name: 'Football Fan Arena', img: 'assets/xperience/zone-football.jpg', desc: 'Fútbol, simuladores y retos.', formats: ['Naming', 'Challenge patrocinado', 'Premios'] },
-    { name: 'Geek & Anime Zone', img: 'assets/xperience/zone-geek-anime.jpg', desc: 'Cultura geek, anime y cosplay.', formats: ['Naming', 'Votaciones', 'Contenido UGC'] },
-    { name: 'Arcade', desc: 'Arcade clásico con música en vivo.', formats: ['Naming', 'Challenges', 'Premios'] },
-    { name: 'Dance and Music', img: 'assets/xperience/zone-dance-music.jpg', desc: 'Competencias y shows de baile y música.', formats: ['Naming', 'Premios', 'Contenido social'] },
-    { name: 'Casual Game Lab', desc: 'Juegos casuales para todo público.', formats: ['Naming', 'Sampling', 'Activaciones familiares'] },
-    { name: 'Content & Streaming Zone', desc: 'Creadores, cosplay y streaming en vivo de la activación.', formats: ['Creadores', 'Streaming', 'Contenido UGC'] },
-    { name: 'Lounge Zone', img: 'assets/xperience/zone-recharge-lounge.jpg', desc: 'Zona de descanso y carga de dispositivos.', formats: ['Naming', 'Sampling', 'Brand lounge'] },
-    { name: 'Cool Down Zone +18 (marcas de consumo adulto)', desc: 'Espacio de acceso restringido para mayores de edad, apto para marcas de consumo adulto.', formats: [] },
-    { name: 'Pantalla piso-techo con el ranking en vivo', desc: 'El ranking en vivo del torneo, visible en toda la Gran Final.', formats: ['Naming', 'Presencia en pantalla'] },
-    { name: 'Plaza creativa (talleres, Artist Alley y mercado)', img: 'assets/xperience/zone-market.jpg', desc: 'Talleres, Artist Alley y mercado: aprendizaje, creadores locales y descubrimiento de marcas.', formats: ['Talleres patrocinados', 'Colaboraciones con creadores', 'Sampling', 'Espacio de venta'] },
-  ];
-  var xpZonesGrid = document.getElementById('xp-zones');
-  var xpZonePanel = document.getElementById('xp-zone-panel');
-  if (xpZonesGrid) {
-    xpZonesGrid.innerHTML = XP_ZONES.map(function (z, i) {
-      return '<button type="button" class="xp-zone-chip" data-zone="' + i + '">' + z.name + '<i data-lucide="chevron-down" class="xp-zone-chip__ic"></i></button>';
-    }).join('');
-    renderIcons();
-    xpZonesGrid.addEventListener('click', function (e) {
-      var btn = e.target.closest('.xp-zone-chip');
-      if (!btn) return;
-      var zone = XP_ZONES[+btn.dataset.zone];
-      xpZonesGrid.querySelectorAll('.xp-zone-chip').forEach(function (b) { b.classList.toggle('xp-zone-chip--active', b === btn); });
-      var zoneImg = document.getElementById('xp-zone-img');
-      if (zone.img) { zoneImg.src = zone.img; zoneImg.alt = zone.name; zoneImg.classList.remove('hidden'); }
-      else { zoneImg.classList.add('hidden'); }
-      document.getElementById('xp-zone-name').textContent = zone.name;
-      document.getElementById('xp-zone-desc').textContent = zone.desc;
-      document.getElementById('xp-zone-formats').innerHTML = zone.formats.map(function (f) { return '<span class="xp-chip">' + f + '</span>'; }).join('');
-      xpZonePanel.classList.remove('hidden');
-      xpAddExperiences([zone.name]);
-      xpTrack('sponsor_experience_selected', { experience: zone.name });
-    });
-  }
-
-  // ---- GameLobby Xperience: config de WhatsApp (no se inventan links) ----
-  // El botón de "Agendar una reunión" ya apunta en el HTML a https://calendar.app.google/paVtHHDVLxzuwhFq8
-  // y no depende de /api/sponsor-config. WhatsApp sigue oculto hasta tener un número real.
-  var xpSponsorConfig = { whatsappUrl: null, calendarUrl: null };
-  fetch('/api/sponsor-config').then(function (r) { return r.json(); }).then(function (d) {
-    if (d && d.ok) xpSponsorConfig = d;
-  }).catch(function () {});
-
-  // ---- GameLobby Xperience: form de sponsors ----
-  var xpFormStarted = false;
-  document.getElementById('glx-form').addEventListener('focusin', function () {
-    if (xpFormStarted) return;
-    xpFormStarted = true;
-    xpTrack('sponsor_form_start');
-  });
-  document.getElementById('glx-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    if (!(await submitLead('glx_sponsor', e.target))) return;
-    document.getElementById('glx-form').classList.add('hidden');
-    document.getElementById('glx-success').classList.remove('hidden');
-    var wa = document.getElementById('glx-whatsapp-btn');
-    if (xpSponsorConfig.whatsappUrl) { wa.href = xpSponsorConfig.whatsappUrl; wa.classList.remove('hidden'); }
-    xpTrack('sponsor_submit_success', {
-      goal: (document.getElementById('glx-goals').querySelectorAll('input:checked').length ? 'yes' : 'no'),
-      company_category: document.getElementById('glx-category').value || null,
-      country: document.getElementById('glx-country').value || null,
-    });
-    renderIcons();
-  });
-
-  // ---- GameLobby Xperience: CTA sticky en mobile ----
-  (function () {
-    var stickyCta = document.getElementById('xp-sticky-cta');
-    var heroSection = document.getElementById('xperience');
-    var formSection = document.getElementById('glx-sponsors');
-    if (!stickyCta || !heroSection || !formSection) return;
-    var ticking = false;
-    function updateSticky() {
-      ticking = false;
-      if (window.innerWidth > 760) { stickyCta.classList.add('hidden'); return; }
-      var heroBottom = heroSection.getBoundingClientRect().bottom;
-      var formTop = formSection.getBoundingClientRect().top;
-      var pastHero = heroBottom < 0;
-      var nearForm = formTop < window.innerHeight;
-      stickyCta.classList.toggle('hidden', !pastHero || nearForm);
-    }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { window.requestAnimationFrame(updateSticky); ticking = true; }
-    }, { passive: true });
-    window.addEventListener('resize', updateSticky);
-    updateSticky();
-  })();
-
-  // ---- Modal: Solicitar Media Kit (form corto, separado del form largo de sponsor) ----
-  (function () {
-    var modal = document.getElementById('mediakit-modal');
-    function openModal() {
-      document.getElementById('mediakit-form').classList.remove('hidden');
-      document.getElementById('mediakit-success').classList.add('hidden');
-      document.getElementById('mediakit-limited').classList.add('hidden');
-      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
-    }
-    function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
-    document.querySelectorAll('[data-open-mediakit]').forEach(function (b) { b.addEventListener('click', openModal); });
-    document.querySelectorAll('[data-close-mediakit]').forEach(function (b) { b.addEventListener('click', closeModal); });
-    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
-
-    document.getElementById('mediakit-form').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      var form = e.target;
-      var data = Object.fromEntries(new FormData(form).entries());
-      Object.assign(data, attribution());
-      var btn = form.querySelector('button[type="submit"]');
-      var limited = false, saved = false;
-      showFormError(form, '');
-      if (btn) btn.disabled = true;
-      try {
-        var res = await fetch('/api/media-kit-lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        limited = res.status === 429;
-        var json = await res.json().catch(function () { return {}; });
-        saved = res.ok && json.ok && json.stored;
-      } catch (err) { /* se informa abajo */ }
-      if (!limited && !saved) {
-        showFormError(form, 'No pudimos registrar tu solicitud. Inténtalo de nuevo en unos minutos.');
-        if (btn) btn.disabled = false;
-        return;
-      }
-      document.getElementById('mediakit-form').classList.add('hidden');
-      document.getElementById(limited ? 'mediakit-limited' : 'mediakit-success').classList.remove('hidden');
-      renderIcons();
-      xpTrack(limited ? 'sponsor_media_kit_rate_limited' : 'sponsor_media_kit_submit_success');
-    });
-  })();
+  // CTA fijo en móvil: visible después de la portada y antes del formulario
+  var sticky=document.getElementById('sticky'), hero=document.getElementById('xperience'), form=document.getElementById('contacto');
+  function upd(){var on=hero.getBoundingClientRect().bottom<0&&form.getBoundingClientRect().top>window.innerHeight;sticky.classList.toggle('is-on',on);}
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+})();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
