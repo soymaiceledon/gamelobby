@@ -47,7 +47,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan-2);outline-off
 /* ---- Portada ---- */
 .cover{padding:0;justify-content:flex-end;min-height:100vh}
 .cover__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
-.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,30,.85) 0%,rgba(10,18,30,.35) 60%,rgba(10,18,30,.1) 100%),linear-gradient(180deg,rgba(10,18,30,0) 30%,rgba(10,18,30,.97) 92%)}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,30,.9) 0%,rgba(10,18,30,.6) 55%,rgba(10,18,30,.25) 100%),linear-gradient(180deg,rgba(10,18,30,.2) 0%,rgba(10,18,30,.97) 90%)}
 .cover__body{position:relative;z-index:2;padding:0 clamp(20px,6vw,96px) clamp(48px,9vh,96px);max-width:1320px;width:100%;margin:0 auto}
 .cover__logo{height:clamp(44px,5vw,64px);width:auto;margin-bottom:28px}
 .cover h1{font-size:clamp(48px,8.5vw,128px);font-weight:800;line-height:.92;letter-spacing:-.04em;color:#fff}
@@ -180,4 +180,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan-2);outline-off
   .cover{height:7.5in}
   .cover__body>*{animation:none!important}
   .tiers{gap:16px}.tier{padding:14px}.tier__price{font-size:24px}.tier li{font-size:11.5px}.tier__sum{font-size:12px;margin:4px 0 8px}
+}
+
+@media (max-width:640px){
+  .mk-bar__live{display:none}
+  .cover::after{background:linear-gradient(180deg,rgba(10,18,30,.55) 0%,rgba(10,18,30,.8) 40%,rgba(10,18,30,.98) 85%)}
+  .score{display:grid;grid-template-columns:1fr;width:100%}
+  .score div{border-right:0;border-bottom:1px solid var(--line)}
+  .score div:last-child{border-bottom:0}
 }

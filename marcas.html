@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GameLobby para marcas · Torneos de marca y Tour Xperience 2027</title>
+<meta name="description" content="Conecta tu marca con la comunidad gamer de México y Centroamérica: torneos de marca con un plan mensual o patrocinio del Tour GameLobby Xperience 2027.">
+<meta property="og:title" content="GameLobby para marcas">
+<meta property="og:description" content="Torneos de marca con un plan mensual, o patrocinio del Tour GameLobby Xperience 2027.">
+<meta property="og:image" content="https://www.gamelobby.live/assets/xperience/stage-missions.jpg">
+<meta name="theme-color" content="#0a121e">
+<link rel="icon" href="assets/logo-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mediakit.css">
+<style>
+  .mk-nav{display:flex;gap:22px;flex:1;justify-content:flex-end;margin-right:8px}
+  .mk-nav a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none}
+  .mk-nav a:hover{color:#fff}
+  @media (max-width:900px){.mk-nav{display:none}}
+  .doors{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+  .door{position:relative;border-radius:16px;overflow:hidden;min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;text-decoration:none;color:inherit;border:1px solid var(--line)}
+  .door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .door::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,30,.25) 0%,rgba(10,18,30,.82) 38%,rgba(10,18,30,.97) 70%)}
+  .door>*:not(img){position:relative;z-index:1}
+  .door:hover img{transform:scale(1.03)}
+  .door__who{font-size:14px;font-weight:600;color:var(--cyan-2)}
+  .door--xp .door__who{color:var(--pink-2)}
+  .door h3{font-size:clamp(28px,2.6vw,38px);font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.05;margin:6px 0 10px}
+  .door p{font-size:16px;line-height:1.55;color:var(--text);max-width:46ch}
+  .door ul{list-style:none;margin:16px 0 22px;display:grid;gap:6px}
+  .door li{font-size:15px;color:var(--muted);padding-left:18px;position:relative}
+  .door li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+  .door--xp li::before{background:var(--pink-2)}
+  .door__go{display:inline-flex;font:700 15px var(--font);border-radius:10px;padding:13px 20px;background:var(--cyan);color:#051019;width:fit-content}
+  .door--xp .door__go{background:var(--pink);color:#fff}
+  @media (max-width:900px){.doors{grid-template-columns:1fr}.door{min-height:400px}}
+  @media (prefers-reduced-motion:reduce){.door img{transition:none}}
+  .games{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:36px}
+  .games figure{border-radius:12px;overflow:hidden;background:var(--bg-3);aspect-ratio:16/10}
+  .games img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:900px){.games{grid-template-columns:repeat(3,1fr)}}
+  .acts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .act{border-radius:14px;overflow:hidden;background:var(--bg-3);border:1px solid var(--line)}
+  .act img{aspect-ratio:16/9;width:100%;object-fit:cover}
+  .act div{padding:22px}
+  .act h3{font-size:20px;color:#fff;margin-bottom:6px}
+  .act p{font-size:15px;line-height:1.5;color:var(--muted)}
+  @media (max-width:900px){.acts{grid-template-columns:1fr}}
+  .slide{min-height:auto;padding-top:clamp(80px,11vh,130px);padding-bottom:clamp(80px,11vh,130px)}
+  .cover{min-height:92vh;padding:0}
+  .cover h1{font-size:clamp(46px,7.5vw,112px)}
+</style>
+</head>
+<body>
+
+<header class="mk-bar">
+  <a href="/"><img src="assets/logo-full-white.png" alt="GameLobby, ir al inicio"></a>
+  <span class="mk-bar__live">Para marcas</span>
+  <nav class="mk-nav" aria-label="Secciones">
+    <a href="#caminos">Dos caminos</a>
+    <a href="#ecosistema">Torneos de marca</a>
+    <a href="/xperience">Tour Xperience 2027</a>
+    <a href="/">Inicio</a>
+  </nav>
+  <a class="mk-bar__cta" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar reunión</a>
+</header>
+
+<main>
+
+<section class="slide cover">
+  <img class="cover__img" src="assets/xperience/stage-missions.jpg" alt="Pantallas de misiones y ranking en vivo frente al público de GameLobby">
+  <div class="cover__body">
+    <h1>Tu marca no interrumpe el juego. Entra en él.<small>GameLobby para marcas</small></h1>
+    <p class="cover__sub">Llegamos a la comunidad gamer de México y Centroamérica con torneos, misiones y recompensas que se miden. Puedes empezar con un torneo este mes o ser parte del Tour 2027.</p>
+    <div class="score" aria-label="La comunidad GameLobby en cifras">
+      <div><b>Cuentas de gamers</b><span>+25,000</span></div>
+      <div><b>Torneos al año</b><span>+500</span></div>
+      <div><b>Países en nuestras ligas</b><span>+13</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="caminos">
+  <div class="slide__inner">
+    <span class="slide__tag">Dos caminos</span>
+    <h2>Elige cómo quiere jugar tu marca</h2>
+    <p class="lead">Un plan mensual para estar todo el año con la comunidad, o un patrocinio para ser protagonista del tour regional. Muchas marcas empiezan con el primero y suben al segundo.</p>
+    <div class="doors">
+      <a class="door" href="#ecosistema">
+        <img src="assets/xperience/arcade-social.jpg" alt="">
+        <span class="door__who">Para empezar o para estar todo el año</span>
+        <h3>Torneos de marca</h3>
+        <p>Torneos con tu nombre en GameLobby.gg, misiones y recompensas en la Gamer Wallet, con reporte de quién participó y quién canjeó.</p>
+        <ul><li>Plan mensual, sin evento de por medio</li><li>Tu primer torneo puede salir este mes</li><li>De uno a tres mercados</li></ul>
+        <span class="door__go">Conocer los torneos de marca</span>
+      </a>
+      <a class="door door--xp" href="/xperience">
+        <img src="assets/xperience/day2-social.jpg" alt="">
+        <span class="door__who">Para marcas que quieren protagonismo regional</span>
+        <h3>Tour GameLobby Xperience 2027</h3>
+        <p>México en abril, los 6 países de Centroamérica en junio y la Gran Final presencial en Panamá el 28 y 29 de agosto.</p>
+        <ul><li>Paquetes locales, regionales y de Gran Final</li><li>Exclusividad de categoría en los paquetes Presenting</li><li>Transmisión a toda la región</li></ul>
+        <span class="door__go">Ver el Tour 2027</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="slide slide--alt" id="ecosistema">
+  <div class="slide__inner">
+    <div class="split">
+      <div>
+        <span class="slide__tag">Torneos de marca</span>
+        <h2>Jugar, ganar y canjear en un mismo flujo</h2>
+        <p class="lead">La plataforma de torneos y la Gamer Wallet trabajan juntas: el gamer compite en tu torneo, gana recompensas de tu marca y las usa. Cada paso queda registrado.</p>
+      </div>
+      <div class="split__img"><img src="assets/xperience/ecosystem-360.jpg" alt="Plataforma de torneos y app de la Gamer Wallet"></div>
+    </div>
+    <ol class="flow">
+      <li><h3>Compite</h3><p>Entra a un torneo con tu marca desde casa.</p></li>
+      <li><h3>Gana</h3><p>Suma puntos y premios por jugar y cumplir misiones.</p></li>
+      <li><h3>Disfruta</h3><p>Canjea beneficios de tu marca en la Wallet.</p></li>
+      <li><h3>Descubre</h3><p>Conoce productos y promociones nuevas.</p></li>
+      <li><h3>Regresa</h3><p>Cada recompensa útil es un motivo para volver.</p></li>
+    </ol>
+    <div class="games" aria-label="Juegos con torneos en GameLobby">
+      <figure><img src="img/torneos/free-fire.webp" alt="Free Fire"></figure>
+      <figure><img src="img/torneos/fc-27.webp" alt="EA Sports FC 27"></figure>
+      <figure><img src="img/torneos/fortnite.webp" alt="Fortnite"></figure>
+      <figure><img src="img/torneos/clash-royale.webp" alt="Clash Royale"></figure>
+      <figure><img src="img/torneos/tekken-8.webp" alt="Tekken 8"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide__inner">
+    <span class="slide__tag">Qué puede hacer tu marca</span>
+    <h2>Tres formas de entrar al juego</h2>
+    <div class="acts">
+      <article class="act"><img src="assets/xperience/stage-ranking.jpg" alt=""><div><h3>Torneos de marca</h3><p>Retos con tu nombre en la plataforma, con premios y cupones digitales para los participantes.</p></div></article>
+      <article class="act"><img src="assets/xperience/wallet-booth.jpg" alt=""><div><h3>Misiones y beneficios</h3><p>Misiones, bonificaciones y experiencias ligadas a tu marca dentro de la Gamer Wallet.</p></div></article>
+      <article class="act"><img src="assets/xperience/zone-market.jpg" alt=""><div><h3>Cashback y canje en tienda</h3><p>Recompensas por compras verificadas que llevan al gamer de la partida a tu punto de venta.</p></div></article>
+    </div>
+    <div class="stats" style="margin-top:44px">
+      <div class="stat stat--hot"><div class="stat__v">372.3 M</div><div class="stat__l">jugadores en Latinoamérica en 2025</div><div class="stat__src">Fuente: <a href="https://gamesbeat.com/latin-america-defies-game-stagnation-with-372-3m-players-and-8-3b-in-2025-revenues/" target="_blank" rel="noopener">Newzoo, vía GamesBeat</a></div></div>
+      <div class="stat"><div class="stat__v">80%</div><div class="stat__l">de los jugadores de Latinoamérica y el Caribe gasta dinero en videojuegos</div><div class="stat__src">Fuente: <a href="https://www.konvoy.vc/content/latam-gaming-market" target="_blank" rel="noopener">Visa y Newzoo, vía Konvoy</a></div></div>
+      <div class="stat"><div class="stat__v">US$150K+</div><div class="stat__l">repartidos en premios en GameLobby</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide slide--alt close" id="contacto">
+  <div class="slide__inner">
+    <span class="slide__tag">Siguiente paso</span>
+    <h2>Te mostramos dónde encaja tu marca</h2>
+    <p class="lead">En 30 minutos vemos tu objetivo y te enviamos el media kit y la propuesta con los planes y paquetes que tienen sentido para ti.</p>
+    <div class="ctas">
+      <a class="btn btn--pink" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar una reunión</a>
+      <a class="btn btn--ghost" href="mailto:m.celedon@gamelobby.live?subject=Quiero%20el%20media%20kit%20de%20GameLobby">Pedir el media kit por correo</a>
+    </div>
+    <div class="contact">
+      <div><b>Contacto comercial</b><span>Mai Celedón, Marketing Manager</span></div>
+      <div><b>Correo</b><a href="mailto:m.celedon@gamelobby.live">m.celedon@gamelobby.live</a></div>
+      <div><b>Teléfono y WhatsApp</b><a href="https://wa.me/50762739738">+507 6273-9738</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
