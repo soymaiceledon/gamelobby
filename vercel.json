@@ -9,7 +9,7 @@
   "redirects": [
     {
       "source": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2026.pdf",
-      "destination": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf",
+      "destination": "/mediakit-xperience",
       "permanent": false
     },
     {
@@ -60,6 +60,16 @@
     {
       "source": "/clash",
       "destination": "https://gamelobby.gg/room/details/torneo-flash-gamelobby-clash-royale?utm_source=link&utm_medium=corto&utm_campaign=torneo-flash-nov26&utm_content=clash",
+      "permanent": false
+    },
+    {
+      "source": "/mediakit",
+      "destination": "/mediakit-xperience",
+      "permanent": false
+    },
+    {
+      "source": "/assets/media-kit/GameLobby-Xperience-Media-Kit-2027.pdf",
+      "destination": "/mediakit-xperience",
       "permanent": false
     }
   ]
