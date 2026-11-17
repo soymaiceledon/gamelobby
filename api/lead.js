@@ -231,6 +231,37 @@ export default async function handler(req, res) {
     }
   }
 
+  // 3b) Aviso interno al equipo comercial para leads de marcas (b2b y sponsors de Xperience).
+  // Llega a LEADS_NOTIFY_EMAIL (por defecto, el correo de Mai) con reply-to al lead.
+  if (resendKey && mailFrom && !duplicate && (lead.type === "b2b" || lead.type === "glx_sponsor")) {
+    try {
+      const notifyTo = process.env.LEADS_NOTIFY_EMAIL || "m.celedon@gamelobby.live";
+      const rows = [
+        ["Nombre", lead.name], ["Empresa", lead.company], ["Cargo", lead.jobTitle], ["Correo", lead.email],
+        ["Teléfono", lead.phone], ["País", lead.country], ["Interés", lead.interest], ["Categoría", lead.companyCategory],
+        ["Objetivos", lead.goals], ["Mensaje", lead.message], ["Página", lead.page],
+        ["Origen", [lead.utm_source, lead.utm_medium, lead.utm_campaign].filter(Boolean).join(" / ") || null],
+      ].filter((r) => r[1]);
+      const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
+      const html = "<table>" + rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#647489">${esc(k)}</td><td style="padding:4px 0">${esc(v)}</td></tr>`).join("") + "</table>";
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: mailFrom,
+          to: notifyTo,
+          reply_to: lead.email,
+          subject: `Nuevo lead de marca: ${lead.company || lead.name}${lead.interest ? " · " + lead.interest : ""}`,
+          text: `Nuevo contacto desde la web de GameLobby.\n\n${text}\n`,
+          html: `<p>Nuevo contacto desde la web de GameLobby.</p>${html}`,
+        }),
+      });
+      if (!r.ok) console.error("[lead] notify non-ok", r.status, await r.text());
+    } catch (e) {
+      console.error("[lead] notify error", e);
+    }
+  }
+
   // 4) Siempre dejar rastro en logs (visible en Vercel > Runtime Logs)
   console.log("[GameLobby lead]", JSON.stringify({ type: lead.type, ts: lead.ts, stored, duplicate }));
 

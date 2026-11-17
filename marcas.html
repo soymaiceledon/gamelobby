@@ -51,6 +51,21 @@
   .slide{min-height:auto;padding-top:clamp(80px,11vh,130px);padding-bottom:clamp(80px,11vh,130px)}
   .cover{min-height:92vh;padding:0}
   .cover h1{font-size:clamp(46px,7.5vw,112px)}
+  .mk-form{background:var(--bg-3);border:1px solid var(--line);border-radius:16px;padding:28px;display:grid;gap:14px}
+  .mk-form h3{font-size:22px;color:#fff}
+  .mk-form__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mk-form label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--text)}
+  .mk-form label span{font-weight:400;color:var(--subtle)}
+  .mk-form input,.mk-form select,.mk-form textarea{font:400 15px var(--font);color:#fff;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%}
+  .mk-form input:focus,.mk-form select:focus,.mk-form textarea:focus{outline:2px solid var(--cyan);outline-offset:1px}
+  .mk-form .mk-form__consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted);font-size:13px}
+  .mk-form__consent input{width:auto;margin-top:3px}
+  .mk-form__hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .mk-form__msg{font-size:14px;color:var(--cyan-2);min-height:0}
+  .mk-form__msg.is-error{color:var(--pink-2)}
+  .mk-form button{border:0;cursor:pointer;justify-content:center}
+  .mk-form button[disabled]{opacity:.6;cursor:wait}
+  @media (max-width:600px){.mk-form__row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -154,21 +169,58 @@
 
 <section class="slide slide--alt close" id="contacto">
   <div class="slide__inner">
-    <span class="slide__tag">Siguiente paso</span>
-    <h2>Te mostramos dónde encaja tu marca</h2>
-    <p class="lead">En 30 minutos vemos tu objetivo y te enviamos el media kit y la propuesta con los planes y paquetes que tienen sentido para ti.</p>
-    <div class="ctas">
-      <a class="btn btn--pink" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar una reunión</a>
-      <a class="btn btn--ghost" href="mailto:m.celedon@gamelobby.live?subject=Quiero%20el%20media%20kit%20de%20GameLobby">Pedir el media kit por correo</a>
-    </div>
-    <div class="contact">
-      <div><b>Contacto comercial</b><span>Mai Celedón, Marketing Manager</span></div>
-      <div><b>Correo</b><a href="mailto:m.celedon@gamelobby.live">m.celedon@gamelobby.live</a></div>
-      <div><b>Teléfono y WhatsApp</b><a href="https://wa.me/50762739738">+507 6273-9738</a></div>
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="slide__tag">Siguiente paso</span>
+        <h2>Te mostramos dónde encaja tu marca</h2>
+        <p class="lead">Agenda 30 minutos en el calendario o déjanos tus datos y te enviamos el media kit con los planes y paquetes que tienen sentido para ti.</p>
+        <div class="ctas">
+          <a class="btn btn--pink" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar una reunión</a>
+        </div>
+      </div>
+      <form class="mk-form" id="marcas-form" novalidate>
+        <h3>Pide el media kit</h3>
+        <div class="mk-form__row">
+          <label>Nombre<input name="name" autocomplete="name" required></label>
+          <label>Empresa<input name="company" autocomplete="organization" required></label>
+        </div>
+        <div class="mk-form__row">
+          <label>Correo de trabajo<input name="email" type="email" autocomplete="email" required></label>
+          <label>País<select name="country"><option value="">Elige</option><option>México</option><option>Guatemala</option><option>El Salvador</option><option>Honduras</option><option>Nicaragua</option><option>Costa Rica</option><option>Panamá</option><option>República Dominicana</option><option>Otro</option></select></label>
+        </div>
+        <label>Qué te interesa<select name="interest"><option>Torneos de marca (plan mensual)</option><option>Tour GameLobby Xperience 2027</option><option>Las dos opciones</option></select></label>
+        <label>Qué quieres lograr <span>(opcional)</span><textarea name="message" rows="3"></textarea></label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="mk-form__hp" aria-hidden="true">
+        <label class="mk-form__consent"><input type="checkbox" name="consentMarketing"> Acepto recibir información de GameLobby por correo.</label>
+        <p class="mk-form__msg" role="status" aria-live="polite"></p>
+        <button type="submit" class="btn btn--pink">Enviar</button>
+      </form>
     </div>
   </div>
 </section>
 
 </main>
+<script>
+(function(){
+  var f=document.getElementById('marcas-form'); if(!f) return;
+  var msg=f.querySelector('.mk-form__msg'), btn=f.querySelector('button[type="submit"]');
+  f.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var d=Object.fromEntries(new FormData(f).entries());
+    msg.className='mk-form__msg';
+    if(!d.name||!d.company||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email||'')){ msg.textContent='Escribe tu nombre, tu empresa y un correo válido.'; msg.classList.add('is-error'); return; }
+    d.type='b2b'; d.consentMarketing=!!f.querySelector('[name="consentMarketing"]:checked'); d.page='/marcas';
+    var q=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){ if(q.get(k)) d[k]=q.get(k).slice(0,100); });
+    btn.disabled=true; msg.textContent='Enviando…';
+    try{
+      var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      var j=await r.json().catch(function(){return {};});
+      if(r.ok&&j.ok&&(j.stored||j.duplicate)){ f.reset(); msg.textContent='Listo. Te escribimos a tu correo con el media kit en menos de un día hábil.'; try{ if(typeof window.va==='function') window.va('event',{name:'marcas_submit_success'}); }catch(_){} }
+      else { msg.textContent='No pudimos enviar tus datos. Inténtalo de nuevo o agenda la reunión.'; msg.classList.add('is-error'); }
+    }catch(_){ msg.textContent='No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo.'; msg.classList.add('is-error'); }
+    btn.disabled=false;
+  });
+})();
+</script>
 </body>
 </html>
