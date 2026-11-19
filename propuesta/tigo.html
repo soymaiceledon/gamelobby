@@ -192,6 +192,106 @@ figcaption.real::before{content:"";display:inline-block;width:7px;height:7px;bor
 footer{padding:36px 0 50px;color:var(--mute);font-size:.85rem;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
+/* historia */
+.history .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.history__pic{aspect-ratio:642/358}
+.history .lead + .lead{margin-top:1rem}
+.eco--pink{background:rgba(201,0,135,.08);border-color:rgba(201,0,135,.35)}
+
+/* piezas */
+.mock{background:linear-gradient(180deg,var(--ink),#0b1130 50%,var(--ink))}
+.mgrid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px;align-items:start}
+.m{min-width:0}
+.mcap{margin-top:10px;font-size:.85rem;color:var(--mute)}
+.m--bill,.m--stream,.m--tour{grid-column:span 2}
+
+.m--post{background:#fff;color:#111;border-radius:12px;overflow:hidden;padding-bottom:12px}
+.m--post .mcap{padding:0 12px}
+.ig__head{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:.8rem;line-height:1.25}
+.ig__head small{color:#777}
+.ig__av{width:32px;height:32px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
+.ig__av img{width:22px}
+.ig__img{aspect-ratio:4/5;background-size:cover;background-position:60% center;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px;color:#fff}
+.ig__img::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,26,.55),transparent 35%,rgba(7,10,26,.9))}
+.ig__img>*{position:relative}
+.ig__lock{display:flex;align-items:center;gap:10px}
+.ig__lock img{height:22px}.ig__lock .tg{height:28px;border-radius:5px}
+.ig__txt b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1}
+.ig__txt span{font-size:.8rem;color:#d9def5}
+
+.st{aspect-ratio:9/16;border-radius:16px;background-size:cover;background-position:center;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.st::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(22,54,118,.95))}
+.st>*{position:relative}
+.st__bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px}
+.st__bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.4)}.st__bars i:first-child{background:#fff}
+.st__tg{position:absolute;top:24px;right:14px;height:34px;border-radius:6px}
+.st__body small{color:var(--cyan);font-family:var(--display);font-size:.95rem}
+.st__body b{display:block;font-family:var(--display);font-size:1.6rem;line-height:1.05;margin:4px 0}
+.st__body span{font-size:.85rem;color:#d9def5}
+.st__body em{display:block;margin-top:14px;font-style:normal;text-align:center;background:#fff;color:var(--navy);font-weight:700;border-radius:999px;padding:10px;font-size:.85rem}
+
+.paper{background:#fbfbf8;color:#1b1f2e;border-radius:6px;padding:24px 22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);transform:rotate(1.2deg);font-size:.82rem;line-height:1.55;position:relative;overflow:hidden;max-height:520px}
+.paper__logos{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.paper__logos img{height:30px;width:auto}.paper__logos img:first-child{border-radius:5px}
+.paper small{color:#6b7085}
+.paper h4{font-family:var(--display);font-size:1.3rem;line-height:1.1;margin:8px 0 10px;color:var(--navy)}
+.paper p{margin-top:8px}
+.paper__fade{-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+
+.bill__board{display:grid;grid-template-columns:1fr 1fr;border:8px solid #1d2238;border-radius:6px;overflow:hidden;aspect-ratio:3/1;background:var(--navy)}
+.bill__img{background-size:cover;background-position:center 30%}
+.bill__txt{padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;position:relative}
+.bill__txt b{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.3rem);line-height:1}
+.bill__txt span{font-size:.85rem;color:#c9d6ff}
+.bill__txt img{position:absolute;right:16px;bottom:14px;height:40px;border-radius:6px;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.bill__legs{display:flex;justify-content:space-around;height:46px}
+.bill__legs i{width:12px;background:linear-gradient(#2a3150,#141829)}
+
+.ph{width:min(260px,100%);margin:0 auto;aspect-ratio:9/19;border-radius:36px;background:#0a0d1d;border:6px solid #2a2f45;position:relative;padding:34px 14px 16px;box-shadow:0 30px 60px -20px rgba(0,171,235,.35)}
+.ph__notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:20px;border-radius:12px;background:#000}
+.ph__scr{display:flex;flex-direction:column;gap:12px;height:100%}
+.ph__top{display:flex;justify-content:space-between;align-items:center;font:600 .78rem var(--display);color:var(--cyan)}
+.ph__top img{height:18px}
+.ph__card{display:flex;gap:10px;align-items:center;background:var(--navy);border-radius:14px;padding:12px}
+.ph__card img{width:42px;border-radius:6px}
+.ph__card small{font-size:.68rem;color:#c9d6ff}.ph__card b{display:block;font-size:.85rem;line-height:1.2}
+.ph__prog{height:8px;border-radius:4px;background:#1c2340}.ph__prog span{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--pink))}
+.ph__meta{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
+.ph__reward{border:1px dashed rgba(201,0,135,.6);border-radius:12px;padding:10px 12px}
+.ph__reward small{font-size:.68rem;color:var(--mute)}.ph__reward b{display:block;font-size:.85rem}
+.ph__btn{margin-top:auto;text-align:center;background:var(--cyan);color:var(--ink);font-weight:700;font-size:.85rem;border-radius:999px;padding:10px}
+
+.back{position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#0b1d4a,#1a0d33);padding-bottom:70px}
+.back__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 14px;padding:22px;align-items:center;justify-items:center}
+.back__grid img{width:72%;max-height:54px;object-fit:contain}
+.back__grid img[src*=tigo]{width:44px;border-radius:5px}
+.back__mic{position:absolute;bottom:-10px;left:50%;width:120px;height:90px;transform:translateX(-50%);background:radial-gradient(circle at 50% 20%,#30364f 0 18px,transparent 19px),linear-gradient(#22283d,#22283d) 50% 100%/6px 70px no-repeat}
+
+.strm{aspect-ratio:16/8;border-radius:10px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.strm__live{position:absolute;top:14px;left:14px;background:#e3163a;color:#fff;font:700 .75rem/1 var(--body);padding:6px 10px;border-radius:4px}
+.strm__wm{position:absolute;top:14px;right:14px;height:34px;border-radius:5px;opacity:.85}
+.strm__lt{position:absolute;left:0;bottom:20px;display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--navy) 70%,rgba(22,54,118,.0));padding:10px 60px 10px 18px;border-left:5px solid var(--cyan)}
+.strm__lt b{font-family:var(--display);font-size:1.2rem}
+.strm__lt span{font-size:.8rem;color:#c9d6ff}
+.strm__lt img{height:30px;border-radius:5px}
+
+.tour{border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:rgba(14,20,48,.7)}
+.tour h4{font-family:var(--display);font-size:1.4rem}
+.tour ol{list-style:none;margin-top:16px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:t}
+.tour li{counter-increment:t;border-top:2px solid var(--cyan);padding-top:12px;font-size:.85rem;color:var(--mute)}
+.tour li::before{content:counter(t);font:700 1.4rem/1 var(--display);color:var(--paper);display:block;margin-bottom:8px}
+.tour li b{display:block;color:var(--paper);margin-bottom:4px}
+.tour__note{margin-top:16px;font-size:.8rem;color:var(--mute)}
+
+.cred{display:flex;flex-direction:column;align-items:center}
+.cred__strap{width:34px;height:70px;background:repeating-linear-gradient(180deg,var(--navy) 0 14px,var(--cyan) 14px 18px);border-radius:3px 3px 0 0}
+.cred__card{width:min(220px,100%);aspect-ratio:2/3;border-radius:14px;background:linear-gradient(160deg,#0b1d4a,#2a0d3d);border:1px solid rgba(255,255,255,.15);padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;position:relative}
+.cred__card>img{height:26px;margin-bottom:12px}
+.cred__card b{font-family:var(--display);font-size:1.8rem}
+.cred__card span{font-size:.8rem;color:#c9d6ff}
+.cred__ft{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:0 0 14px 14px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;color:#556}
+.cred__ft small{font-size:.7rem}.cred__ft img{height:26px;border-radius:4px}
+
 @media (max-width:900px){
   .hero__grid,.idea .wrap,.soho__head,.copy-block,.wallet .wrap,.pkg__top{grid-template-columns:1fr}
   .pass-stage{justify-content:flex-start}
@@ -204,6 +304,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .route__pics{grid-template-columns:1fr 1fr;height:auto}.route__pics figure{aspect-ratio:4/3}.route__pics figure:first-child{grid-column:span 2}
   .zones{grid-template-columns:1fr 1fr}
   .split,.split--wide{grid-template-columns:1fr}
+  .history .wrap{grid-template-columns:1fr}
+  .mgrid{grid-template-columns:1fr 1fr}
+  .m--bill,.m--stream,.m--tour{grid-column:span 2}
+  .tour ol{grid-template-columns:1fr 1fr}
   .parts{grid-template-columns:1fr}
   .benefits{grid-template-columns:1fr 1fr}
   .commit .grid{grid-template-columns:1fr 1fr}
@@ -215,6 +319,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media (max-width:560px){
   .benefits,.commit .grid{grid-template-columns:1fr}
   .flow div{grid-template-columns:1fr;gap:4px}
+  .mgrid{grid-template-columns:1fr}
+  .m--bill,.m--stream,.m--tour{grid-column:auto}
+  .bill__board{grid-template-columns:1fr;aspect-ratio:auto}.bill__img{aspect-ratio:16/9}
+  .tour ol{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -242,7 +350,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div>
       <p class="for">Propuesta exclusiva para Tigo Panamá</p>
       <h1>Panamá juega en Tigo. <span>Agosto 2027.</span></h1>
-      <p class="lead">Así como la telco líder en México se volvió la marca del gaming, Tigo puede ser la marca que conecta a la generación gamer de Panamá: cinco meses de presencia, del primer torneo online a la Gran Final en Soho Mall.</p>
+      <p class="lead">En 2023 Tigo estuvo en el pecho de los jugadores de la LATAM Pro Gamers League. En 2027 Tigo es el evento: GameLobby Xperience presentado por Tigo, del primer torneo online a la Gran Final en Soho Mall.</p>
       <div class="ctas">
         <a class="btn btn--solid" href="#paquete">Ver el paquete completo</a>
         <a class="btn btn--ghost" href="#soho">Recorrer la Gran Final</a>
@@ -271,13 +379,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- HISTORIA -->
+<section class="history">
+  <div class="wrap">
+    <figure class="history__pic"><img src="/img/tigo/real-tigo-lapgl.webp" alt="Jugadores de la LATAM Pro Gamers League 2023 con el logo de Tigo en el jersey" loading="lazy"><figcaption class="real">Evento real · LATAM Pro Gamers League 2023</figcaption></figure>
+    <div>
+      <h2>Tigo ya jugó con nosotros</h2>
+      <p class="lead">En la liga regional 2023 el logo de Tigo fue en el pecho de los jugadores y en las escenas de un stream que superó los 250 mil espectadores.</p>
+      <p class="lead">2027 es el siguiente nivel: de patrocinar una liga a ser el nombre del evento gamer de Centroamérica, con la Gran Final en casa.</p>
+    </div>
+  </div>
+</section>
+
 <!-- LA IDEA -->
 <section class="idea">
   <div class="wrap">
     <div>
-      <h2>No es un patrocinio. Es quedarse con una categoría.</h2>
+      <h2>No es un patrocinio. Tigo es el evento.</h2>
       <blockquote style="margin-top:2rem">El gamer panameño juega conectado todos los días. Que asocie su mejor momento —ganar, clasificar, levantar la copa— con Tigo.</blockquote>
       <ul>
+        <li><span><strong>El nombre del evento.</strong> "GameLobby Xperience 2027 presentado por Tigo" en cada pieza, pantalla, post y nota de prensa.</span></li>
         <li><span><strong>Exclusividad en telecomunicaciones.</strong> Ninguna otra operadora dentro del Xperience, del stream ni de la Wallet.</span></li>
         <li><span><strong>Presencia continua, no de un día.</strong> De abril a agosto en Panamá, y el Ecosistema GameLobby hasta diciembre.</span></li>
         <li><span><strong>Data propia.</strong> Cada registro, misión y canje queda medido y se le reporta a Tigo.</span></li>
@@ -312,7 +433,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   <div class="wrap">
     <div class="soho__head">
       <h2>La Gran Final vive en Soho Mall</h2>
-      <p class="lead" style="margin:0">Aurora, The Venue y Plaza Mall se convierten en un recorrido de experiencias: tarima principal, arenas competitivas, zonas creativas y la pantalla piso-techo con el ranking en vivo de la Wallet.</p>
+      <p class="lead" style="margin:0">Aurora, The Venue y Plaza Mall se convierten en un recorrido de experiencias: tarima principal, arenas competitivas, zonas creativas y la pantalla piso-techo con el ranking en vivo de la Wallet. Todo el recorrido lleva la marca Tigo; la Arena Mobile y el Ranking además llevan su nombre.</p>
     </div>
     <figure class="map"><img src="/img/tigo/venue-map.webp" alt="Mapa conceptual de la distribución del Xperience en Soho Panamá" loading="lazy"><figcaption>Mapa conceptual, no plano a escala</figcaption></figure>
     <div class="zones">
@@ -360,6 +481,131 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <div><b>Seguimiento</b><span>Reporte de participación, consumo y afinidad para retargeting.</span></div>
       </div>
       <div class="eco"><strong>Después de agosto, el vínculo sigue.</strong> De septiembre a diciembre Tigo mantiene torneos de marca, misiones y recompensas dentro del Ecosistema GameLobby en gamelobby.gg, incluidos en este paquete.</div>
+      <div class="eco eco--pink"><strong>Oportunidad de alianza estratégica.</strong> GameLobby Wallet y su Tarjeta Prepago pueden conectarse con Tigo Money: recargas, pagos y recompensas para la comunidad gamer. Lo exploramos juntos como siguiente paso.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ASI SE VERIA -->
+<section class="mock" id="piezas">
+  <div class="wrap">
+    <h2>Así se vería Tigo en cada pieza</h2>
+    <p class="lead">Contenido en redes, backing, stream, prensa y medios: todo sale con la línea "presentado por Tigo". Estas son propuestas de diseño para aprobar con su equipo de marca.</p>
+
+    <div class="mgrid">
+      <!-- post feed -->
+      <div class="m m--post">
+        <div class="ig__head"><span class="ig__av"><img src="/assets/logo-symbol.png" alt=""></span><span><b>gamelobby</b> y <b>Tigo Panamá</b><br><small>Publicación en colaboración</small></span></div>
+        <div class="ig__img" style="background-image:url(/img/tigo/final-soho.webp)">
+          <div class="ig__lock"><img src="/assets/logo-full-white.png" alt="GameLobby"><img class="tg" src="/img/tigo/tigo-logo.png" alt="Tigo"></div>
+          <div class="ig__txt"><b>La Gran Final llega a Panamá</b><span>GameLobby Xperience 2027 presentado por Tigo · Soho Mall · Agosto</span></div>
+        </div>
+        <p class="mcap">Post de anuncio · feed</p>
+      </div>
+
+      <!-- story -->
+      <div class="m m--story">
+        <div class="st" style="background-image:url(/img/tigo/mobile-casa.webp)">
+          <div class="st__bars"><i></i><i></i><i></i></div>
+          <img class="st__tg" src="/img/tigo/tigo-logo.png" alt="Tigo">
+          <div class="st__body"><small>Clasificatorio Panamá</small><b>¿Eres el mejor de Panamá?</b><span>Presentado por Tigo</span><em>Inscríbete en la Wallet</em></div>
+        </div>
+        <p class="mcap">Story de inscripción</p>
+      </div>
+
+      <!-- press release -->
+      <div class="m m--press">
+        <div class="paper">
+          <div class="paper__logos"><img src="/img/tigo/tigo-logo.png" alt="Tigo"><img src="/assets/logo-full-color.png" alt="GameLobby"></div>
+          <small>Comunicado de prensa · Ciudad de Panamá, abril de 2027</small>
+          <h4>Tigo y GameLobby traen a Panamá la Gran Final del gaming centroamericano</h4>
+          <p>Tigo será Presenting Partner de GameLobby Xperience 2027, el circuito que reúne a jugadores de seis países y culmina en agosto con una Gran Final en Soho Mall.</p>
+          <p>"Cita del vocero de Tigo Panamá sobre conectividad y la nueva generación", destacó [vocero de Tigo].</p>
+          <p class="paper__fade">Los finalistas competirán con el jersey oficial de Tigo y la transmisión llegará a toda la región…</p>
+        </div>
+        <p class="mcap">Nota de prensa conjunta · borrador para aprobación</p>
+      </div>
+
+      <!-- billboard -->
+      <div class="m m--bill">
+        <div class="bill">
+          <div class="bill__board">
+            <div class="bill__img" style="background-image:url(/img/tigo/jerseys-finalistas.webp)"></div>
+            <div class="bill__txt"><b>Panamá juega en Tigo</b><span>Gran Final GameLobby Xperience · Soho Mall · Agosto 2027</span><img src="/img/tigo/tigo-logo.png" alt="Tigo"></div>
+          </div>
+          <div class="bill__legs"><i></i><i></i></div>
+        </div>
+        <p class="mcap">Valla del Town Takeover en la vía al venue</p>
+      </div>
+
+      <!-- wallet mission -->
+      <div class="m m--phone">
+        <div class="ph">
+          <div class="ph__notch"></div>
+          <div class="ph__scr">
+            <div class="ph__top"><img src="/assets/logo-full-white.png" alt=""><span>2,350 pts</span></div>
+            <div class="ph__card"><img src="/img/tigo/tigo-logo.png" alt=""><div><small>Misión de marca</small><b>Escanea el QR en la Arena Mobile by Tigo</b></div></div>
+            <div class="ph__prog"><span style="width:66%"></span></div>
+            <p class="ph__meta"><span>2 de 3 retos</span><span>+500 pts</span></p>
+            <div class="ph__reward"><small>Recompensa en la Loot Shop</small><b>Paquete de datos Tigo</b></div>
+            <div class="ph__btn">Abrir cámara</div>
+          </div>
+        </div>
+        <p class="mcap">Misión Tigo dentro de la Wallet</p>
+      </div>
+
+      <!-- backing -->
+      <div class="m m--backing">
+        <div class="back">
+          <div class="back__grid">
+            <img src="/img/tigo/tigo-logo.png" alt=""><img src="/assets/logo-full-white.png" alt=""><img src="/img/tigo/tigo-logo.png" alt=""><img src="/assets/logo-full-white.png" alt="">
+            <img src="/assets/logo-full-white.png" alt=""><img src="/img/tigo/tigo-logo.png" alt=""><img src="/assets/logo-full-white.png" alt=""><img src="/img/tigo/tigo-logo.png" alt="">
+            <img src="/img/tigo/tigo-logo.png" alt=""><img src="/assets/logo-full-white.png" alt=""><img src="/img/tigo/tigo-logo.png" alt=""><img src="/assets/logo-full-white.png" alt="">
+          </div>
+          <div class="back__mic"></div>
+        </div>
+        <p class="mcap">Backing de entrevistas</p>
+      </div>
+
+      <!-- stream -->
+      <div class="m m--stream">
+        <div class="strm" style="background-image:url(/img/tigo/arena-mobile-final.webp)">
+          <span class="strm__live">En vivo</span>
+          <img class="strm__wm" src="/img/tigo/tigo-logo.png" alt="Tigo">
+          <div class="strm__lt"><b>Gran Final Panamá</b><span>presentada por</span><img src="/img/tigo/tigo-logo.png" alt="Tigo"></div>
+        </div>
+        <p class="mcap">Stream regional · watermark y lower third</p>
+      </div>
+
+      <!-- media tour -->
+      <div class="m m--tour">
+        <div class="tour">
+          <h4>Gira de medios</h4>
+          <ol>
+            <li><b>Anuncio · abril</b><span>Rueda de prensa Tigo × GameLobby y nota conjunta a medios de Panamá.</span></li>
+            <li><b>TV matutina</b><span>Campeones con el jersey Tigo en vivo y demo de la Wallet.</span></li>
+            <li><b>Radio juvenil y podcasts</b><span>Clasificatorio Panamá y cómo inscribirse.</span></li>
+            <li><b>Creadores gamer</b><span>Streamers panameños cubren el camino a la final.</span></li>
+            <li><b>Prensa económica</b><span>La alianza: gaming, conectividad y la generación digital.</span></li>
+          </ol>
+          <p class="tour__note">Medios y fechas a definir con Tigo.</p>
+        </div>
+        <p class="mcap">Plan de medios</p>
+      </div>
+
+      <!-- credential -->
+      <div class="m m--cred">
+        <div class="cred">
+          <div class="cred__strap"></div>
+          <div class="cred__card">
+            <img src="/assets/logo-full-white.png" alt="">
+            <b>Finalista</b>
+            <span>Gran Final Panamá 2027</span>
+            <div class="cred__ft"><small>presentado por</small><img src="/img/tigo/tigo-logo.png" alt=""></div>
+          </div>
+        </div>
+        <p class="mcap">Credencial oficial</p>
+      </div>
     </div>
   </div>
 </section>
@@ -394,6 +640,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <li>Backing de entrevistas y laterales de la tarima</li>
         <li>Menciones en vivo en la tarima principal</li>
         <li>Town Takeover: vía de acceso y dentro del venue</li>
+        <li>Nota de prensa conjunta y gira de medios</li>
       </ul></div>
       <div><h3>Experiencia</h3><ul>
         <li>Espacio premium propio en la Gran Final</li>
@@ -407,7 +654,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <li>Exclusividad en telecomunicaciones</li>
         <li>Uso del sello "Presenting Partner" en su publicidad</li>
         <li>Reporting premium de data transaccional</li>
-        <li>Integración con la Tarjeta Prepago GameLobby, abierta a Tigo Money</li>
+        <li>Mesa de trabajo para una alianza Wallet × Tigo Money</li>
         <li>Reporte post-evento con métricas de participación</li>
       </ul></div>
       <div><h3>Contenido</h3><ul>
@@ -440,7 +687,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <div class="cell"><b>9 meses</b><p>de presencia de marca: abril a agosto en el Xperience, septiembre a diciembre en el Ecosistema.</p></div>
       <div class="cell"><b>6 países</b><p>reciben el stream regional con Tigo en escena, aunque la activación física sea en Panamá.</p></div>
       <div class="cell"><b>0</b><p>operadoras competidoras dentro del evento, el stream y la Wallet.</p></div>
-      <div class="cell"><b>2 zonas</b><p>con nombre Tigo en Soho Mall: Arena Mobile y Ranking en vivo.</p></div>
+      <div class="cell"><b>1 evento</b><p>con nombre Tigo: "GameLobby Xperience 2027 presentado por Tigo", más la Arena Mobile y el Ranking en vivo con su nombre.</p></div>
       <div class="cell"><b>100%</b><p>de los jerseys de los finalistas con Tigo en el pecho.</p></div>
       <div class="cell"><b>1 reporte</b><p>de data transaccional y participación, con los registros que aceptaron comunicaciones de marca.</p></div>
     </div>
