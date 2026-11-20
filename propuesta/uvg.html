@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>UVG × GameLobby Xperience 2027 · Guatemala</title>
+<link rel="icon" href="/assets/logo-symbol.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070A1A;       /* noche */
+  --ink2:#0E1430;      /* superficie */
+  --navy:#163676;      /* Tigo */
+  --cyan:#00ABEB;      /* GameLobby */
+  --pink:#C90087;      /* GameLobby */
+  --paper:#EEF3FF;
+  --mute:#9AA3C7;
+  --line:rgba(238,243,255,.14);
+  --display:"Chakra Petch",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --wrap:min(1180px,92vw);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.wrap{width:var(--wrap);margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,5vw,4rem);max-width:16ch}
+h3{font-size:1.35rem;line-height:1.15}
+p.lead{font-size:1.2rem;color:var(--mute);max-width:56ch;margin-top:1.2rem}
+section{padding:clamp(80px,12vw,150px) 0;position:relative}
+
+/* barra superior */
+.top{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px 4vw;background:linear-gradient(var(--ink),transparent)}
+.lockup{display:flex;align-items:center;gap:14px}
+.lockup img{height:34px;width:auto}
+.lockup .x{font-family:var(--display);color:var(--mute);font-size:1.1rem}
+.lockup .tg{height:38px;border-radius:7px}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 15px/1 var(--body);padding:14px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;transition:background .2s,border-color .2s}
+.btn--solid{background:var(--cyan);color:var(--ink)}
+.btn--solid:hover{background:#3fc4f5}
+.btn--ghost{border-color:var(--line);color:var(--paper)}
+.btn--ghost:hover{border-color:var(--paper)}
+
+/* hero */
+.hero{min-height:100svh;display:grid;align-items:end;padding:120px 0 70px;isolation:isolate}
+.hero__bg{position:absolute;inset:0;z-index:-1}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,26,.92) 0%,rgba(7,10,26,.55) 48%,rgba(7,10,26,.15) 100%),linear-gradient(0deg,var(--ink) 0%,transparent 40%)}
+.hero__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(3.2rem,9vw,7.6rem);max-width:9ch}
+.hero h1 span{display:block;color:transparent;-webkit-text-stroke:1.5px var(--paper)}
+.hero p.lead{color:#C9D0EC}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:2rem}
+.for{font-family:var(--display);font-size:1rem;color:var(--cyan);margin-bottom:1.2rem}
+
+/* pase 3D */
+.pass-stage{perspective:1100px;display:flex;justify-content:center}
+.pass{width:min(360px,80vw);aspect-ratio:1.586/1;border-radius:20px;position:relative;transform-style:preserve-3d;transform:rotateX(14deg) rotateY(-22deg);transition:transform .25s ease-out;
+  background:linear-gradient(135deg,var(--navy) 0%,#0b1d4a 45%,#2a0d3d 100%);box-shadow:0 40px 80px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.12) inset;padding:22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.pass::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 200deg,transparent 0 20%,rgba(0,171,235,.45),rgba(201,0,135,.45),transparent 45% 100%);mix-blend-mode:screen;opacity:.55;transform:translateZ(1px);animation:holo 9s linear infinite}
+@keyframes holo{to{transform:rotate(360deg)}}
+.pass>*{position:relative;transform:translateZ(30px)}
+.pass__row{display:flex;align-items:center;justify-content:space-between}
+.pass__row img{height:30px;width:auto}
+.pass__row .tg{height:40px;border-radius:6px}
+.pass__title{font-family:var(--display);font-size:1.45rem;line-height:1.05}
+.pass__meta{display:flex;justify-content:space-between;font-size:.82rem;color:#C9D0EC}
+.pass__chip{width:42px;height:32px;border-radius:7px;background:linear-gradient(135deg,#f4d58d,#b98d2f)}
+
+/* cifras */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:34px 20px 30px 0}
+.fact + .fact{border-left:1px solid var(--line);padding-left:24px}
+.fact b{display:block;font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1}
+.fact span{color:var(--mute);font-size:.95rem}
+
+/* idea */
+.idea .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.idea blockquote{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.2;border-left:3px solid var(--pink);padding-left:24px}
+.idea ul{list-style:none;margin-top:2rem;display:grid;gap:18px}
+.idea li{display:grid;grid-template-columns:28px 1fr;gap:12px;color:#C9D0EC}
+.idea li::before{content:"";width:12px;height:12px;margin-top:8px;border-radius:3px;background:var(--cyan);transform:rotate(45deg)}
+.idea li strong{color:var(--paper)}
+
+figure{position:relative;overflow:hidden;border-radius:14px;background:var(--ink2)}
+figure img{width:100%;height:100%;object-fit:cover}
+figcaption{position:absolute;left:12px;bottom:12px;font-size:.75rem;background:rgba(7,10,26,.78);backdrop-filter:blur(6px);padding:5px 10px;border-radius:6px;color:#C9D0EC}
+figcaption.real{color:var(--paper)}
+figcaption.real::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#2fe08a;margin-right:6px;vertical-align:1px}
+
+/* ruta */
+.route{background:linear-gradient(180deg,var(--ink),var(--ink2) 30%,var(--ink))}
+.timeline{margin-top:60px;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--pink))}
+.step{padding-right:22px;position:relative}
+.step i{display:block;width:32px;height:32px;border-radius:50%;background:var(--ink);border:2px solid var(--cyan);margin-bottom:20px;font:700 13px/28px var(--display);text-align:center;font-style:normal}
+.step:last-child i,.step.is-final i{border-color:var(--pink);background:var(--pink)}
+.step h3{font-size:1.15rem}
+.step small{display:block;font-family:var(--display);color:var(--cyan);font-size:.95rem;margin-bottom:6px}
+.step p{color:var(--mute);font-size:.95rem;margin-top:8px}
+.route__pics{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin-top:60px;height:340px}
+
+/* soho */
+.soho__head{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end}
+.map{margin-top:50px;aspect-ratio:1774/887}
+.zones{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.zone{aspect-ratio:4/3.4}
+.zone figcaption{left:0;right:0;bottom:0;border-radius:0;padding:40px 14px 12px;background:linear-gradient(transparent,rgba(7,10,26,.95));backdrop-filter:none}
+.zone figcaption b{display:block;font-family:var(--display);font-size:1.05rem;color:var(--paper)}
+.zone figcaption em{font-style:normal;font-size:.7rem;color:var(--mute)}
+.tag-tigo{position:absolute;top:12px;left:12px;z-index:2;display:flex;align-items:center;gap:8px;font:600 .75rem/1 var(--body);background:var(--navy);padding:6px 10px 6px 6px;border-radius:8px}
+.tag-tigo img{height:20px;border-radius:4px}
+
+/* jerseys */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.split--wide{grid-template-columns:1.4fr 1fr}
+.stack{display:grid;gap:16px}
+.copy-block{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:56px;align-items:end}
+.badge-logo{position:absolute;right:18px;top:18px;width:84px!important;height:auto!important;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.6);transform:rotate(-6deg)}
+
+/* wallet */
+.wallet{overflow:hidden}
+.wallet .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.phone3d{perspective:1200px;display:flex;justify-content:center;position:relative}
+.phone3d img{width:min(420px,80%);transform:rotateY(18deg) rotateX(6deg) rotateZ(-4deg);filter:drop-shadow(0 50px 60px rgba(0,171,235,.25));animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:rotateY(10deg) rotateX(3deg) rotateZ(-2deg) translateY(-12px)}}
+.phone3d::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(201,0,135,.35),transparent 65%);top:10%;z-index:-1}
+.flow{margin-top:36px;display:grid;gap:0;counter-reset:f}
+.flow div{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.flow div:last-child{border-bottom:1px solid var(--line)}
+.flow b{font-family:var(--display);color:var(--cyan);font-weight:600}
+.flow span{color:#C9D0EC}
+.eco{margin-top:28px;padding:22px 24px;border-radius:14px;background:rgba(0,171,235,.08);border:1px solid rgba(0,171,235,.3);color:#C9D0EC}
+.eco strong{color:var(--paper)}
+
+/* paquete */
+.pkg{background:radial-gradient(1200px 600px at 80% 0%,rgba(22,54,118,.55),transparent 60%),var(--ink)}
+.pkg__top{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:end}
+.price{border:1px solid var(--line);border-radius:18px;padding:30px;background:rgba(14,20,48,.7)}
+.price small{color:var(--mute);font-size:.9rem}
+.price .amt{font-family:var(--display);font-size:clamp(3rem,6vw,4.6rem);line-height:1;margin:6px 0 4px}
+.price .was{color:var(--mute)}
+.price .was s{color:var(--mute)}
+.price .save{display:inline-block;margin-top:14px;background:var(--pink);color:#fff;font-weight:600;font-size:.85rem;padding:6px 12px;border-radius:999px}
+.parts{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.part{border:1px solid var(--line);border-radius:14px;padding:22px}
+.part .val{font-family:var(--display);color:var(--cyan);font-size:1.05rem}
+.part.inc .val{color:#2fe08a}
+.part p{color:var(--mute);font-size:.93rem;margin-top:8px}
+.benefits{margin-top:60px;display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+.benefits h3{font-size:1.1rem;padding-bottom:12px;border-bottom:2px solid var(--cyan);margin-bottom:14px}
+.benefits ul{list-style:none;display:grid;gap:10px;font-size:.95rem;color:#C9D0EC}
+.benefits li{padding-left:18px;position:relative}
+.benefits li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--pink)}
+.benefits li em{font-style:normal;color:var(--paper)}
+.pay{margin-top:60px}
+.pay__bar{display:grid;grid-template-columns:15fr 15fr 20fr 15fr 35fr;gap:4px;margin-top:18px}
+.pay__bar div{background:var(--ink2);border-top:3px solid var(--cyan);padding:14px 12px;font-size:.88rem;color:var(--mute)}
+.pay__bar div:last-child{border-top-color:var(--pink)}
+.pay__bar b{display:block;font-family:var(--display);font-size:1.25rem;color:var(--paper)}
+
+/* compromisos */
+.commit .grid{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.commit .cell{background:var(--ink);padding:30px}
+.commit .cell b{font-family:var(--display);font-size:2.6rem;line-height:1;display:block}
+.commit .cell p{color:var(--mute);margin-top:10px;font-size:.95rem}
+
+/* equipo */
+.proof__pics{margin-top:50px;display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.proof__pics figure:first-child{grid-row:span 2}
+.logos{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;gap:20px 46px;opacity:.85}
+.logos img{height:40px;max-width:130px;width:auto;object-fit:contain;filter:grayscale(1) brightness(1.6)}
+.logos .sam{font:800 22px/1 Arial,sans-serif;letter-spacing:.5px;color:#cfd6f3}
+
+/* cierre */
+.close{text-align:left;min-height:80svh;display:grid;align-items:center;isolation:isolate}
+.close .bg{position:absolute;inset:0;z-index:-1}
+.close .bg img{width:100%;height:100%;object-fit:cover}
+.close .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 15%,rgba(7,10,26,.6))}
+.close h2{font-size:clamp(2.6rem,7vw,5.6rem);max-width:12ch}
+.close .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:2.2rem}
+footer{padding:36px 0 50px;color:var(--mute);font-size:.85rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* historia */
+.history .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.history__pic{aspect-ratio:642/358}
+.history .lead + .lead{margin-top:1rem}
+.eco--pink{background:rgba(201,0,135,.08);border-color:rgba(201,0,135,.35)}
+
+/* piezas */
+.mock{background:linear-gradient(180deg,var(--ink),#0b1130 50%,var(--ink))}
+.mgrid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px;align-items:start}
+.m{min-width:0}
+.mcap{margin-top:10px;font-size:.85rem;color:var(--mute)}
+.m--bill,.m--stream,.m--tour{grid-column:span 2}
+
+.m--post{background:#fff;color:#111;border-radius:12px;overflow:hidden;padding-bottom:12px}
+.m--post .mcap{padding:0 12px}
+.ig__head{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:.8rem;line-height:1.25}
+.ig__head small{color:#777}
+.ig__av{width:32px;height:32px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
+.ig__av img{width:22px}
+.ig__img{aspect-ratio:4/5;background-size:cover;background-position:60% center;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px;color:#fff}
+.ig__img::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,26,.55),transparent 35%,rgba(7,10,26,.9))}
+.ig__img>*{position:relative}
+.ig__lock{display:flex;align-items:center;gap:10px}
+.ig__lock img{height:22px}.ig__lock .tg{height:28px;border-radius:5px}
+.ig__txt b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1}
+.ig__txt span{font-size:.8rem;color:#d9def5}
+
+.st{aspect-ratio:9/16;border-radius:16px;background-size:cover;background-position:center;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.st::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(22,54,118,.95))}
+.st>*{position:relative}
+.st__bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px}
+.st__bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.4)}.st__bars i:first-child{background:#fff}
+.st__tg{position:absolute;top:24px;right:14px;height:34px;border-radius:6px}
+.st__body small{color:var(--cyan);font-family:var(--display);font-size:.95rem}
+.st__body b{display:block;font-family:var(--display);font-size:1.6rem;line-height:1.05;margin:4px 0}
+.st__body span{font-size:.85rem;color:#d9def5}
+.st__body em{display:block;margin-top:14px;font-style:normal;text-align:center;background:#fff;color:var(--navy);font-weight:700;border-radius:999px;padding:10px;font-size:.85rem}
+
+.paper{background:#fbfbf8;color:#1b1f2e;border-radius:6px;padding:24px 22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);transform:rotate(1.2deg);font-size:.82rem;line-height:1.55;position:relative;overflow:hidden;max-height:520px}
+.paper__logos{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.paper__logos img{height:30px;width:auto}.paper__logos img:first-child{border-radius:5px}
+.paper small{color:#6b7085}
+.paper h4{font-family:var(--display);font-size:1.3rem;line-height:1.1;margin:8px 0 10px;color:var(--navy)}
+.paper p{margin-top:8px}
+.paper__fade{-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+
+.bill__board{display:grid;grid-template-columns:1fr 1fr;border:8px solid #1d2238;border-radius:6px;overflow:hidden;aspect-ratio:3/1;background:var(--navy)}
+.bill__img{background-size:cover;background-position:center 30%}
+.bill__txt{padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;position:relative}
+.bill__txt b{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.3rem);line-height:1}
+.bill__txt span{font-size:.85rem;color:#c9d6ff}
+.bill__txt img{position:absolute;right:16px;bottom:14px;height:40px;border-radius:6px;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.bill__legs{display:flex;justify-content:space-around;height:46px}
+.bill__legs i{width:12px;background:linear-gradient(#2a3150,#141829)}
+
+.ph{width:min(260px,100%);margin:0 auto;aspect-ratio:9/19;border-radius:36px;background:#0a0d1d;border:6px solid #2a2f45;position:relative;padding:34px 14px 16px;box-shadow:0 30px 60px -20px rgba(0,171,235,.35)}
+.ph__notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:20px;border-radius:12px;background:#000}
+.ph__scr{display:flex;flex-direction:column;gap:12px;height:100%}
+.ph__top{display:flex;justify-content:space-between;align-items:center;font:600 .78rem var(--display);color:var(--cyan)}
+.ph__top img{height:18px}
+.ph__card{display:flex;gap:10px;align-items:center;background:var(--navy);border-radius:14px;padding:12px}
+.ph__card img{width:42px;border-radius:6px}
+.ph__card small{font-size:.68rem;color:#c9d6ff}.ph__card b{display:block;font-size:.85rem;line-height:1.2}
+.ph__prog{height:8px;border-radius:4px;background:#1c2340}.ph__prog span{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--pink))}
+.ph__meta{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
+.ph__reward{border:1px dashed rgba(201,0,135,.6);border-radius:12px;padding:10px 12px}
+.ph__reward small{font-size:.68rem;color:var(--mute)}.ph__reward b{display:block;font-size:.85rem}
+.ph__btn{margin-top:auto;text-align:center;background:var(--cyan);color:var(--ink);font-weight:700;font-size:.85rem;border-radius:999px;padding:10px}
+
+.back{position:relative;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#0b1d4a,#1a0d33);padding-bottom:70px}
+.back__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 14px;padding:22px;align-items:center;justify-items:center}
+.back__grid img{width:72%;max-height:54px;object-fit:contain}
+.back__grid img[src*=tigo]{width:44px;border-radius:5px}
+.back__mic{position:absolute;bottom:-10px;left:50%;width:120px;height:90px;transform:translateX(-50%);background:radial-gradient(circle at 50% 20%,#30364f 0 18px,transparent 19px),linear-gradient(#22283d,#22283d) 50% 100%/6px 70px no-repeat}
+
+.strm{aspect-ratio:16/8;border-radius:10px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.strm__live{position:absolute;top:14px;left:14px;background:#e3163a;color:#fff;font:700 .75rem/1 var(--body);padding:6px 10px;border-radius:4px}
+.strm__wm{position:absolute;top:14px;right:14px;height:34px;border-radius:5px;opacity:.85}
+.strm__lt{position:absolute;left:0;bottom:20px;display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--navy) 70%,rgba(22,54,118,.0));padding:10px 60px 10px 18px;border-left:5px solid var(--cyan)}
+.strm__lt b{font-family:var(--display);font-size:1.2rem}
+.strm__lt span{font-size:.8rem;color:#c9d6ff}
+.strm__lt img{height:30px;border-radius:5px}
+
+.tour{border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:rgba(14,20,48,.7)}
+.tour h4{font-family:var(--display);font-size:1.4rem}
+.tour ol{list-style:none;margin-top:16px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:t}
+.tour li{counter-increment:t;border-top:2px solid var(--cyan);padding-top:12px;font-size:.85rem;color:var(--mute)}
+.tour li::before{content:counter(t);font:700 1.4rem/1 var(--display);color:var(--paper);display:block;margin-bottom:8px}
+.tour li b{display:block;color:var(--paper);margin-bottom:4px}
+.tour__note{margin-top:16px;font-size:.8rem;color:var(--mute)}
+
+.cred{display:flex;flex-direction:column;align-items:center}
+.cred__strap{width:34px;height:70px;background:repeating-linear-gradient(180deg,var(--navy) 0 14px,var(--cyan) 14px 18px);border-radius:3px 3px 0 0}
+.cred__card{width:min(220px,100%);aspect-ratio:2/3;border-radius:14px;background:linear-gradient(160deg,#0b1d4a,#2a0d3d);border:1px solid rgba(255,255,255,.15);padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;position:relative}
+.cred__card>img{height:26px;margin-bottom:12px}
+.cred__card b{font-family:var(--display);font-size:1.8rem}
+.cred__card span{font-size:.8rem;color:#c9d6ff}
+.cred__ft{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:0 0 14px 14px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;color:#556}
+.cred__ft small{font-size:.7rem}.cred__ft img{height:26px;border-radius:4px}
+
+.excl{margin-top:50px}
+.excl__grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.excl__grid>div{border:1px dashed rgba(0,171,235,.45);border-radius:14px;padding:22px}
+.excl__grid b{font-family:var(--display);font-size:1.15rem;display:block}
+.excl__amt{display:block;font-family:var(--display);color:var(--cyan);font-size:1.4rem;margin:6px 0}
+.excl__grid p{color:var(--mute);font-size:.93rem}
+@media (max-width:900px){
+  .hero__grid,.idea .wrap,.soho__head,.copy-block,.wallet .wrap,.pkg__top{grid-template-columns:1fr}
+  .pass-stage{justify-content:flex-start}
+  .hero__bg::after{background:linear-gradient(0deg,var(--ink) 25%,rgba(7,10,26,.72) 70%,rgba(7,10,26,.45))}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .timeline{grid-template-columns:1fr;gap:28px}
+  .timeline::before{left:15px;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .step{padding-left:52px}.step i{position:absolute;left:0;top:0}
+  .route__pics{grid-template-columns:1fr 1fr;height:auto}.route__pics figure{aspect-ratio:4/3}.route__pics figure:first-child{grid-column:span 2}
+  .zones{grid-template-columns:1fr 1fr}
+  .split,.split--wide{grid-template-columns:1fr}
+  .history .wrap{grid-template-columns:1fr}
+  .mgrid{grid-template-columns:1fr 1fr}
+  .m--bill,.m--stream,.m--tour{grid-column:span 2}
+  .tour ol{grid-template-columns:1fr 1fr}
+  .parts,.excl__grid{grid-template-columns:1fr}
+  .benefits{grid-template-columns:1fr 1fr}
+  .commit .grid{grid-template-columns:1fr 1fr}
+  .proof__pics{grid-template-columns:1fr 1fr;grid-template-rows:auto}.proof__pics figure{aspect-ratio:4/3}.proof__pics figure:first-child{grid-row:auto;grid-column:span 2}
+  .pay__bar{grid-template-columns:1fr 1fr}.pay__bar div:last-child{grid-column:span 2}
+  .lockup .gl{height:26px}
+  .top .btn{display:none}
+}
+@media (max-width:560px){
+  .benefits,.commit .grid{grid-template-columns:1fr}
+  .flow div{grid-template-columns:1fr;gap:4px}
+  .mgrid{grid-template-columns:1fr}
+  .m--bill,.m--stream,.m--tour{grid-column:auto}
+  .bill__board{grid-template-columns:1fr;aspect-ratio:auto}.bill__img{aspect-ratio:16/9}
+  .tour ol{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<style>
+.uvg{font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:.04em;background:#fff;color:#0a3d2e;padding:6px 12px;border-radius:7px}
+.opts{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.opt{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(14,20,48,.6);display:flex;flex-direction:column}
+.opt figure{border-radius:0;aspect-ratio:16/10}
+.opt div.b{padding:22px}
+.opt h3{font-size:1.25rem;margin:4px 0 10px}
+.opt small{font-family:var(--display);color:var(--cyan)}
+.opt ul{list-style:none;display:grid;gap:8px;color:#C9D0EC;font-size:.93rem}
+.opt li{padding-left:16px;position:relative}.opt li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--pink)}
+.next{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.next div{border-top:3px solid var(--cyan);background:var(--ink2);padding:20px;color:var(--mute)}
+.next b{display:block;color:var(--paper);font-family:var(--display);font-size:1.1rem;margin-bottom:6px}
+@media (max-width:900px){.opts,.next{grid-template-columns:1fr}}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="lockup" aria-label="GameLobby y UVG"><img class="gl" src="/assets/logo-full-white.png" alt="GameLobby"><span class="x" aria-hidden="true">×</span><span class="uvg">UVG</span></div>
+  <a class="btn btn--solid" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar seguimiento</a>
+</header>
+<main>
+<section class="hero">
+  <div class="hero__bg"><img src="/img/tigo/real-competencia.webp" alt="Jugadores compitiendo en un torneo presencial de GameLobby"></div>
+  <div class="wrap hero__grid">
+    <div>
+      <p class="for">Propuesta para la Universidad del Valle de Guatemala</p>
+      <h1>Guatemala compite en la UVG. <span>Temporada 2027.</span></h1>
+      <p class="lead">GameLobby Xperience recorre seis países y cierra con una Gran Final en Panamá. Proponemos que la etapa Guatemala tenga casa en la UVG, que UVGaming lidere la liga universitaria y que la UVG llegue a Campus Quest frente al talento joven de toda la región.</p>
+      <div class="ctas"><a class="btn btn--solid" href="#opciones">Ver las opciones</a><a class="btn btn--ghost" href="#campus">Qué es Campus Quest</a></div>
+    </div>
+    <div class="pass-stage" aria-hidden="true">
+      <div class="pass" id="pass">
+        <div class="pass__row"><img src="/assets/logo-full-white.png" alt=""><span class="uvg" style="font-size:1rem">UVG</span></div>
+        <div><div class="pass__chip"></div><p class="pass__title" style="margin-top:14px">Sede oficial<br>Etapa Guatemala</p></div>
+        <div class="pass__meta"><span>GameLobby Xperience 2027</span><span>UVGaming</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="GameLobby en cifras">
+  <div class="wrap">
+    <div class="fact"><b>+13</b><span>países con comunidad GameLobby</span></div>
+    <div class="fact"><b>25</b><span>ciudades activadas en 15 países</span></div>
+    <div class="fact"><b>5M</b><span>personas de impacto acumulado</span></div>
+    <div class="fact"><b>+250K</b><span>espectadores en streams de la LAPGL 2023</span></div>
+  </div>
+</section>
+
+<section class="route" id="ruta">
+  <div class="wrap">
+    <h2>El camino de un gamer guatemalteco a la Gran Final</h2>
+    <p class="lead">Cada etapa suma registros en la GameLobby Wallet. La UVG puede estar presente en todas.</p>
+    <div class="timeline">
+      <div class="step"><i>1</i><small>Abril</small><h3>Lanzamiento</h3><p>Arranca el circuito regional y abren las inscripciones en la Wallet.</p></div>
+      <div class="step"><i>2</i><small>Mayo – Junio</small><h3>Liga universitaria</h3><p>Torneos online en gamelobby.gg con UVGaming como anfitrión, abiertos a colegios y universidades.</p></div>
+      <div class="step"><i>3</i><small>Junio</small><h3>Clasificatoria Guatemala</h3><p>Final presencial de la etapa en el campus de la UVG, con público, stream y premiación.</p></div>
+      <div class="step"><i>4</i><small>Julio</small><h3>Rumbo a Panamá</h3><p>Los clasificados representan a Guatemala; contenido y cobertura con la marca UVG.</p></div>
+      <div class="step is-final"><i>5</i><small>28 y 29 de agosto</small><h3>Gran Final · Panamá</h3><p>Finales, Campus Quest y transmisión a toda la región.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="opciones">
+  <div class="wrap">
+    <h2>Tres formas de que la UVG juegue</h2>
+    <p class="lead">Se pueden tomar por separado o juntas. Las ajustamos a sus objetivos de admisiones, empleabilidad y vida estudiantil.</p>
+    <div class="opts">
+      <div class="opt"><figure><img src="/img/tigo/real-final.webp" alt="Final presencial en un escenario" loading="lazy"><figcaption class="real">Evento real</figcaption></figure><div class="b"><small>Presencial</small><h3>Sede de la etapa Guatemala</h3><ul>
+        <li>Clasificatoria presencial en el Campus Central</li>
+        <li>"Etapa Guatemala en la UVG" en piezas, stream y prensa</li>
+        <li>Visitas de colegios al campus el día de la final</li>
+        <li>Registros de asistentes interesados en carreras UVG</li></ul></div></div>
+      <div class="opt"><figure><img src="/img/tigo/circuito-casa.webp" alt="Jugadores compitiendo en línea desde casa" loading="lazy"><figcaption>Visualización</figcaption></figure><div class="b"><small>Digital, todo el año</small><h3>Liga UVGaming en gamelobby.gg</h3><ul>
+        <li>Torneos mensuales con UVGaming como anfitrión</li>
+        <li>Abierta a colegios: llega a futuros estudiantes</li>
+        <li>Becas o beneficios académicos como premio</li>
+        <li>Reporte de participantes para admisiones</li></ul></div></div>
+      <div class="opt"><figure><img src="/img/tigo/qr-gamers.webp" alt="Jóvenes en una feria interactiva" loading="lazy"><figcaption>Visualización</figcaption></figure><div class="b"><small>Gran Final</small><h3>Universidad de Campus Quest</h3><ul>
+        <li>Stand de carreras tech y creativas en la Gran Final</li>
+        <li>Charlas y retos de la UVG en el escenario</li>
+        <li>Misiones UVG en la Wallet para visitantes de toda la región</li>
+        <li>Conexión con marcas que buscan talento</li></ul></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wallet" id="campus">
+  <div class="wrap">
+    <div class="stack"><figure style="aspect-ratio:3/2"><img src="/img/tigo/plaza-mall.webp" alt="Zona creativa con talleres" loading="lazy"><figcaption>Visualización · zona creativa</figcaption></figure><figure style="aspect-ratio:3/2"><img src="/img/tigo/ranking-wallet.webp" alt="Ranking de misiones en vivo" loading="lazy"><figcaption>Visualización · ranking de misiones</figcaption></figure></div>
+    <div>
+      <h2>Campus Quest: donde el talento gamer conoce su carrera</h2>
+      <p class="lead">Dentro de la Gran Final, Campus Quest es la feria de carreras tech y creativas: programación, ciencia de datos, diseño, animación, ingeniería. Los visitantes recorren stands con misiones en la Wallet y las marcas conocen talento.</p>
+      <div class="flow">
+        <div><b>Registro</b><span>Cada visitante entra con su perfil verificado en la GameLobby Wallet.</span></div>
+        <div><b>Misión UVG</b><span>Retos de la universidad en el stand, en el escenario y en la plataforma.</span></div>
+        <div><b>Recompensa</b><span>Beneficios UVG que definimos juntos: talleres, visitas guiadas, becas parciales.</span></div>
+        <div><b>Seguimiento</b><span>Interesados que aceptaron ser contactados, listos para el equipo de admisiones.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <h2>Ya lo hemos hecho</h2>
+    <p class="lead">Torneos, premiaciones y eventos presenciales con comunidad real en la región.</p>
+    <div class="proof__pics">
+      <figure><img src="/img/tigo/real-tigo-lapgl.webp" alt="Jugadores de la LATAM Pro Gamers League 2023" loading="lazy"><figcaption class="real">Evento real · LAPGL 2023</figcaption></figure>
+      <figure><img src="/img/tigo/real-equipos.webp" alt="Equipos participantes" loading="lazy"><figcaption class="real">Evento real</figcaption></figure>
+      <figure><img src="/img/tigo/real-premiacion.webp" alt="Premiación" loading="lazy"><figcaption class="real">Evento real</figcaption></figure>
+      <figure><img src="/img/tigo/real-publico.webp" alt="Público en un evento gamer" loading="lazy"><figcaption class="real">Evento real</figcaption></figure>
+      <figure><img src="/img/tigo/real-icon.webp" alt="Evento gamer" loading="lazy"><figcaption class="real">Evento real</figcaption></figure>
+    </div>
+    <div class="logos" aria-label="Marcas que han trabajado con GameLobby">
+      <span class="sam">SAMSUNG</span>
+      <img src="/img/tigo/tigo-logo.png" alt="Tigo" loading="lazy" style="filter:none;border-radius:6px">
+      <img src="/img/tigo/logo-hyperx.png" alt="HyperX" loading="lazy"><img src="/img/tigo/logo-msi.png" alt="MSI" loading="lazy"><img src="/img/tigo/logo-kfc.png" alt="KFC" loading="lazy"><img src="/img/tigo/logo-gollo.png" alt="Gollo" loading="lazy"><img src="/img/tigo/logo-lacuracao.png" alt="La Curacao" loading="lazy"><img src="/img/tigo/logo-radioshack.png" alt="RadioShack" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="bg"><img src="/img/tigo/hero-final.webp" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <h2>Que Guatemala llegue a la final de la mano de la UVG</h2>
+    <div class="next">
+      <div><b>1. Elegir el rol</b>Sede, liga, Campus Quest o las tres.</div>
+      <div><b>2. Propuesta formal</b>Con entregables, fechas e inversión, en una semana.</div>
+      <div><b>3. Arranque</b>Liga UVGaming lista para abrir en el primer trimestre de 2027.</div>
+    </div>
+    <div class="ctas"><a class="btn btn--solid" href="https://calendar.app.google/paVtHHDVLxzuwhFq8" target="_blank" rel="noopener">Agendar seguimiento</a><a class="btn btn--ghost" href="mailto:m.celedon@gamelobby.live?subject=UVG%20%C3%97%20GameLobby%20Xperience%202027">Escribir a Mairelys</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>Propuesta confidencial preparada para la Universidad del Valle de Guatemala · GameLobby, 2027</span><span>Las imágenes marcadas "Visualización" son conceptuales; las marcadas "Evento real" son de eventos GameLobby.</span></div></footer>
+<script>
+(function(){var p=document.getElementById('pass');if(!p||matchMedia('(prefers-reduced-motion: reduce)').matches||matchMedia('(hover: none)').matches)return;var s=p.parentElement.parentElement;s.addEventListener('pointermove',function(e){var r=p.getBoundingClientRect();var x=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/r.width)),y=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/r.height));p.style.transform='rotateX('+(-y*18)+'deg) rotateY('+(x*24)+'deg)';});s.addEventListener('pointerleave',function(){p.style.transform='';});})();
+</script>
+</body></html>
