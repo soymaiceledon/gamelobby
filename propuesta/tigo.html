@@ -292,6 +292,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .cred__ft{position:absolute;bottom:0;left:0;right:0;background:#fff;border-radius:0 0 14px 14px;padding:10px;display:flex;align-items:center;justify-content:center;gap:8px;color:#556}
 .cred__ft small{font-size:.7rem}.cred__ft img{height:26px;border-radius:4px}
 
+.excl{margin-top:50px}
+.excl__grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.excl__grid>div{border:1px dashed rgba(0,171,235,.45);border-radius:14px;padding:22px}
+.excl__grid b{font-family:var(--display);font-size:1.15rem;display:block}
+.excl__amt{display:block;font-family:var(--display);color:var(--cyan);font-size:1.4rem;margin:6px 0}
+.excl__grid p{color:var(--mute);font-size:.93rem}
 @media (max-width:900px){
   .hero__grid,.idea .wrap,.soho__head,.copy-block,.wallet .wrap,.pkg__top{grid-template-columns:1fr}
   .pass-stage{justify-content:flex-start}
@@ -308,7 +314,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .mgrid{grid-template-columns:1fr 1fr}
   .m--bill,.m--stream,.m--tour{grid-column:span 2}
   .tour ol{grid-template-columns:1fr 1fr}
-  .parts{grid-template-columns:1fr}
+  .parts,.excl__grid{grid-template-columns:1fr}
   .benefits{grid-template-columns:1fr 1fr}
   .commit .grid{grid-template-columns:1fr 1fr}
   .proof__pics{grid-template-columns:1fr 1fr;grid-template-rows:auto}.proof__pics figure{aspect-ratio:4/3}.proof__pics figure:first-child{grid-row:auto;grid-column:span 2}
@@ -399,7 +405,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       <blockquote style="margin-top:2rem">El gamer panameño juega conectado todos los días. Que asocie su mejor momento —ganar, clasificar, levantar la copa— con Tigo.</blockquote>
       <ul>
         <li><span><strong>El nombre del evento.</strong> "GameLobby Xperience 2027 presentado por Tigo" en cada pieza, pantalla, post y nota de prensa.</span></li>
-        <li><span><strong>Exclusividad en telecomunicaciones.</strong> Ninguna otra operadora dentro del Xperience, del stream ni de la Wallet.</span></li>
+        <li><span><strong>Tigo premia a toda la comunidad.</strong> Misiones y recompensas Tigo para cada gamer que usa la plataforma y la Wallet, no solo para quien asiste a la final.</span></li>
+        <li><span><strong>Exclusividad en telecomunicaciones.</strong> Ninguna otra operadora en el evento de Panamá, ampliable a toda la región.</span></li>
         <li><span><strong>Presencia continua, no de un día.</strong> De abril a agosto en Panamá, y el Ecosistema GameLobby hasta diciembre.</span></li>
         <li><span><strong>Data propia.</strong> Cada registro, misión y canje queda medido y se le reporta a Tigo.</span></li>
       </ul>
@@ -469,19 +476,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <!-- WALLET -->
 <section class="wallet" id="wallet">
   <div class="wrap">
-    <div class="phone3d"><img src="/img/tigo/wallet-phone.webp" alt="App GameLobby Wallet en un teléfono" loading="lazy"></div>
+    <div class="stack"><figure style="aspect-ratio:3/2"><img src="/img/tigo/qr-gamers.webp" alt="Gamers completando una misión con su teléfono" loading="lazy"><figcaption>Visualización · misión en el venue</figcaption></figure><figure style="aspect-ratio:3/2"><img src="/img/tigo/ranking-wallet.webp" alt="Ranking de misiones en vivo" loading="lazy"><figcaption>Visualización · ranking de misiones</figcaption></figure></div>
     <div>
-      <h2>La Wallet convierte cada interacción en data para Tigo</h2>
-      <p class="lead">El asistente se registra una vez y desde ahí cada misión de marca, punto y canje queda trazado. Tigo no solo se ve: se juega.</p>
+      <h2>Tigo premia la participación de toda la comunidad gamer</h2>
+      <p class="lead">Las misiones y recompensas no se quedan en el Soho. Cada gamer que compite en gamelobby.gg o usa la GameLobby Wallet, en cualquiera de los seis países, puede completar misiones Tigo y ganar recompensas Tigo durante toda la temporada.</p>
       <div class="flow">
-        <div><b>Registro</b><span>Usuario verificado en la GameLobby Wallet, con consentimiento para comunicaciones de marca.</span></div>
-        <div><b>Misión Tigo</b><span>Retos QR/NFC en la Arena Mobile y el stand: probar la red, activar un plan, jugar un reto.</span></div>
-        <div><b>Puntos</b><span>Suman al ranking nacional que se ve en la pantalla piso-techo.</span></div>
-        <div><b>Canje</b><span>Recompensas Tigo en la Loot Shop física y digital.</span></div>
-        <div><b>Seguimiento</b><span>Reporte de participación, consumo y afinidad para retargeting.</span></div>
+        <div><b>Misiones Tigo</b><span>Retos dentro de los torneos online, en la Wallet y en el venue (QR/NFC en la Arena Mobile): jugar, clasificar, invitar, asistir.</span></div>
+        <div><b>Puntos</b><span>Cada misión suma al ranking nacional y regional, visible en la plataforma y en la pantalla piso-techo de la Gran Final.</span></div>
+        <div><b>Recompensas</b><span>Beneficios Tigo canjeables en la Loot Shop digital y física. Qué recompensa da Tigo por cada misión lo definimos juntos.</span></div>
+        <div><b>Medición</b><span>Participación, misiones completadas y canjes por país, reportados a Tigo con los usuarios que aceptaron comunicaciones de marca.</span></div>
       </div>
-      <div class="eco"><strong>Después de agosto, el vínculo sigue.</strong> De septiembre a diciembre Tigo mantiene torneos de marca, misiones y recompensas dentro del Ecosistema GameLobby en gamelobby.gg, incluidos en este paquete.</div>
-      <div class="eco eco--pink"><strong>Oportunidad de alianza estratégica.</strong> GameLobby Wallet y su Tarjeta Prepago pueden conectarse con Tigo Money: recargas, pagos y recompensas para la comunidad gamer. Lo exploramos juntos como siguiente paso.</div>
+      <div class="eco"><strong>Una tecnología, toda la temporada.</strong> El motor de misiones y recompensas de GameLobby funciona antes, durante y después del evento. De septiembre a diciembre Tigo sigue activo en el Ecosistema gamelobby.gg, incluido en este paquete.</div>
     </div>
   </div>
 </section>
@@ -544,14 +549,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
           <div class="ph__notch"></div>
           <div class="ph__scr">
             <div class="ph__top"><img src="/assets/logo-full-white.png" alt=""><span>2,350 pts</span></div>
-            <div class="ph__card"><img src="/img/tigo/tigo-logo.png" alt=""><div><small>Misión de marca</small><b>Escanea el QR en la Arena Mobile by Tigo</b></div></div>
+            <div class="ph__card"><img src="/img/tigo/tigo-logo.png" alt=""><div><small>Misión de marca</small><b>Clasifica en el torneo Tigo de esta semana</b></div></div>
             <div class="ph__prog"><span style="width:66%"></span></div>
             <p class="ph__meta"><span>2 de 3 retos</span><span>+500 pts</span></p>
-            <div class="ph__reward"><small>Recompensa en la Loot Shop</small><b>Paquete de datos Tigo</b></div>
+            <div class="ph__reward"><small>Recompensa Tigo</small><b>Beneficio a definir con Tigo</b></div>
             <div class="ph__btn">Abrir cámara</div>
           </div>
         </div>
-        <p class="mcap">Misión Tigo dentro de la Wallet</p>
+        <p class="mcap">Misión Tigo en la plataforma y la Wallet</p>
       </div>
 
       <!-- backing -->
@@ -616,20 +621,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <div class="pkg__top">
       <div>
         <h2>Tigo Presenting Partner 2027</h2>
-        <p class="lead">Todo lo que ofrece el paquete principal de la Gran Final, más Panamá durante el tour y la continuidad en el Ecosistema. Un solo acuerdo, una sola categoría: telecomunicaciones.</p>
+        <p class="lead">Todo lo que ofrece el paquete principal de la Gran Final, más Panamá durante el tour y la continuidad en el Ecosistema. Un solo acuerdo y el nombre del evento.</p>
       </div>
       <div class="price">
         <small>Inversión total</small>
         <div class="amt">US$100,000</div>
-        <div class="was">Valor de lista <s>US$131,000</s></div>
-        <span class="save">US$31,000 en valor incluido</span>
+        <div class="was">Valor de lista <s>US$137,000</s></div>
+        <span class="save">US$37,000 en valor incluido</span>
       </div>
     </div>
 
     <div class="parts">
-      <div class="part"><div class="val">US$100,000</div><h3>Presenting Partner Gran Final</h3><p>Soho Mall, agosto 2027. Máxima visibilidad, naming del evento y exclusividad de categoría.</p></div>
+      <div class="part"><div class="val">US$100,000</div><h3>Presenting Partner Gran Final</h3><p>Soho Mall, agosto 2027. Máxima visibilidad, naming del evento y exclusividad de categoría en Panamá.</p></div>
       <div class="part inc"><div class="val">Incluido · valor US$25,000</div><h3>Presenting Partner Panamá en el tour</h3><p>Circuito digital y parada en cine en Panamá, de mayo a julio.</p></div>
-      <div class="part inc"><div class="val">Incluido · valor US$6,000</div><h3>Ecosistema GameLobby sep–dic</h3><p>Cuatro meses de torneos de marca, misiones y recompensas en gamelobby.gg.</p></div>
+      <div class="part inc"><div class="val">Incluido · valor US$12,000</div><h3>Ecosistema GameLobby sep–dic</h3><p>Cuatro meses (US$3,000/mes) de torneos de marca, misiones y recompensas Tigo en gamelobby.gg.</p></div>
     </div>
 
     <div class="benefits">
@@ -646,16 +651,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <li>Espacio premium propio en la Gran Final</li>
         <li><em>Arena Mobile by Tigo</em> y <em>Ranking en vivo by Tigo</em></li>
         <li>Misión de marca en la GameLobby Wallet</li>
-        <li>Recompensas Tigo en la Loot Shop</li>
+        <li>Misiones y recompensas Tigo para todos los usuarios de la plataforma y la Wallet</li>
         <li>Activación en el lobby de la parada de cine en Panamá</li>
         <li>Clasificatorio Panamá presentado por Tigo</li>
       </ul></div>
       <div><h3>Data y derechos</h3><ul>
-        <li>Exclusividad en telecomunicaciones</li>
+        <li>Exclusividad en telecomunicaciones en Panamá</li>
         <li>Uso del sello "Presenting Partner" en su publicidad</li>
-        <li>Reporting premium de data transaccional</li>
-        <li>Mesa de trabajo para una alianza Wallet × Tigo Money</li>
-        <li>Reporte post-evento con métricas de participación</li>
+        <li>Reporte de participación, misiones y canjes por país</li>
+                <li>Reporte post-evento con métricas de participación</li>
       </ul></div>
       <div><h3>Contenido</h3><ul>
         <li>Rotación de escenas en el stream regional, 6 países</li>
@@ -676,6 +680,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <div><b>US$35,000</b>Agosto · Gran Final</div>
       </div>
     </div>
+    <div class="excl">
+      <h3>Exclusividad ampliada, opcional</h3>
+      <div class="excl__grid">
+        <div><b>Regional · 6 países</b><span class="excl__amt">+ US$80,000</span><p>Ninguna otra operadora en el circuito, los streams, la plataforma ni la Wallet en Panamá, Costa Rica, Guatemala, El Salvador, Honduras y Nicaragua.</p></div>
+        <div><b>Por país</b><span class="excl__amt">Costo adicional por mercado</span><p>Exclusividad solo en los países donde Tigo quiera reforzar su presencia. Lo cotizamos según los mercados que elijan.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -685,11 +696,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     <h2>Lo que Tigo se lleva, en concreto</h2>
     <div class="grid">
       <div class="cell"><b>9 meses</b><p>de presencia de marca: abril a agosto en el Xperience, septiembre a diciembre en el Ecosistema.</p></div>
-      <div class="cell"><b>6 países</b><p>reciben el stream regional con Tigo en escena, aunque la activación física sea en Panamá.</p></div>
-      <div class="cell"><b>0</b><p>operadoras competidoras dentro del evento, el stream y la Wallet.</p></div>
+      <div class="cell"><b>Stream regional</b><p>con Tigo en escena en los seis países, aunque la activación física sea en Panamá.</p></div>
+      <div class="cell"><b>6 países</b><p>de gamers que pueden ganar recompensas Tigo con misiones en la plataforma y la Wallet.</p></div>
       <div class="cell"><b>1 evento</b><p>con nombre Tigo: "GameLobby Xperience 2027 presentado por Tigo", más la Arena Mobile y el Ranking en vivo con su nombre.</p></div>
       <div class="cell"><b>100%</b><p>de los jerseys de los finalistas con Tigo en el pecho.</p></div>
-      <div class="cell"><b>1 reporte</b><p>de data transaccional y participación, con los registros que aceptaron comunicaciones de marca.</p></div>
+      <div class="cell"><b>1 reporte</b><p>de participación, misiones completadas y canjes por país, con los usuarios que aceptaron comunicaciones de marca.</p></div>
     </div>
   </div>
 </section>
