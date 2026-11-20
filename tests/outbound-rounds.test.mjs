@@ -11,8 +11,11 @@ import {
 const NOW = Math.floor(Date.parse("2026-11-17T17:00:00Z") / 1000);
 const base = { to: "a@b.com", subject: "s", text: "t" };
 
-test("ninguna ronda 2027 contacta Panamá", () => {
+const PANAMA_OK = new Set(["tigo-panama-xp", "bac-panama-xp"]);
+
+test("ninguna ronda 2027 contacta Panamá salvo autorizados", () => {
   for (const item of OUTBOUND_ROUNDS) {
+    if (item.panamaAutorizado) { assert.ok(PANAMA_OK.has(item.id), item.id); continue; }
     assert.notEqual(item.pais, "Panamá", item.id);
     assert.ok(!/\.pa$|\.com\.pa$/.test(item.to.split("@")[1]), item.id);
   }
@@ -41,6 +44,11 @@ test("respeta sendAfter, el tope diario y los países bloqueados", () => {
     { id: "x2", ...base },
   ];
   assert.deepEqual(pickDueSends(items, [], NOW, 1).map((i) => i.id), ["x1"]);
+});
+
+test("Panamá solo sale con autorización explícita", () => {
+  const items = [{ id: "pa", pais: "Panamá", ...base }, { id: "pa-ok", pais: "Panamá", panamaAutorizado: true, ...base }];
+  assert.deepEqual(pickDueSends(items, [], NOW).map((i) => i.id), ["pa-ok"]);
 });
 
 test("contactos de ago 2026 son legacy y no reciben seguimiento", () => {
