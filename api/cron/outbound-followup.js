@@ -13,7 +13,7 @@ import { kv, sendEmail } from "../_email.js";
 // La prospección sale siempre desde el correo de Mai, no desde info@ (MAIL_FROM es para correos de la plataforma).
 export const OUTBOUND_FROM = process.env.OUTBOUND_FROM || "Mai Celedón <m.celedon@gamelobby.live>";
 export const OUTBOUND_REPLY_TO = "m.celedon@gamelobby.live";
-import { OUTBOUND_ROUNDS, pickDueSends, isLegacyContact } from "../../lib/outbound-rounds.js";
+import { OUTBOUND_ROUNDS, pickDueSends, isLegacyContact, RESPONDIERON } from "../../lib/outbound-rounds.js";
 
 const FOLLOWUP2_DELAY_SEC = 2 * 24 * 3600;
 
@@ -109,6 +109,11 @@ export default async function handler(req, res) {
       // Rondas anteriores a la campaña 2027 (Panamá, ago 2026): no se tocan.
       if (isLegacyContact(state)) { processed.push({ id, outcome: "legacy_omitido" }); continue; }
 
+      if (RESPONDIERON.has(id) && state.status !== "respondio") {
+        state.status = "respondio";
+        state.respondedAt = now;
+        await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
+      }
       if (state.status === "respondio") {
         await kv(["ZREM", "ob:queue", id]);
         processed.push({ id, outcome: "ya_respondio" });
