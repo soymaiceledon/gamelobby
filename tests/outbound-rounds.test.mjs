@@ -60,3 +60,12 @@ test("el cron de seguimiento está activo en vercel.json", () => {
   const v = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));
   assert.ok(v.crons.some((c) => c.path === "/api/cron/outbound-followup"));
 });
+
+test("la prospección sale desde el correo de Mai, no desde info@", async () => {
+  const fs = await import("node:fs");
+  const src = fs.readFileSync(new URL("../api/cron/outbound-followup.js", import.meta.url), "utf8");
+  assert.match(src, /m\.celedon@gamelobby\.live/);
+  const calls = src.match(/sendEmail\(\{[^}]*\}/g) || [];
+  assert.ok(calls.length >= 3);
+  for (const c of calls) assert.match(c, /from: OUTBOUND_FROM/);
+});

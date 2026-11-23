@@ -9,6 +9,10 @@
 // cola en cualquier punto de la secuencia.
 
 import { kv, sendEmail } from "../_email.js";
+
+// La prospección sale siempre desde el correo de Mai, no desde info@ (MAIL_FROM es para correos de la plataforma).
+export const OUTBOUND_FROM = process.env.OUTBOUND_FROM || "Mai Celedón <m.celedon@gamelobby.live>";
+export const OUTBOUND_REPLY_TO = "m.celedon@gamelobby.live";
 import { OUTBOUND_ROUNDS, pickDueSends, isLegacyContact } from "../../lib/outbound-rounds.js";
 
 const FOLLOWUP2_DELAY_SEC = 2 * 24 * 3600;
@@ -63,7 +67,7 @@ export default async function handler(req, res) {
   }
   for (const item of pickDueSends(candidates, existing, now)) {
     try {
-      const sent = await sendEmail({ to: item.to, cc: item.cc, subject: item.subject, text: item.text });
+      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: item.to, cc: item.cc, subject: item.subject, text: item.text });
       if (!sent.ok) { firstSends.push({ id: item.id, outcome: sent.skipped ? "sin_resend" : "fallo" }); continue; }
       const state = {
         id: item.id,
@@ -115,7 +119,7 @@ export default async function handler(req, res) {
         const msg = (state.followup3Subject && state.followup3Text)
           ? { subject: state.followup3Subject, text: state.followup3Text }
           : buildFollowup3(state.empresa || id);
-        const sent = await sendEmail({ to: state.to, subject: msg.subject, text: msg.text });
+        const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: state.to, subject: msg.subject, text: msg.text });
         state.status = "followup3_enviado";
         state.followup3SentAt = now;
         await kv(["SET", `ob:${id}`, JSON.stringify(state)]);
@@ -128,7 +132,7 @@ export default async function handler(req, res) {
       const msg = (state.followupSubject && state.followupText)
         ? { subject: state.followupSubject, text: state.followupText }
         : buildFollowup2(state.empresa || id);
-      const sent = await sendEmail({ to: state.to, subject: msg.subject, text: msg.text });
+      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: state.to, subject: msg.subject, text: msg.text });
       state.status = "followup2_enviado";
       state.followup2SentAt = now;
       await kv(["SET", `ob:${id}`, JSON.stringify(state)]);

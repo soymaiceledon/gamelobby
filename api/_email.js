@@ -101,13 +101,14 @@ export async function researchCompany(email) {
 }
 
 // ---- Envío por Resend ----
-export async function sendEmail({ to, cc, subject, text, html }) {
+export async function sendEmail({ to, cc, subject, text, html, from, replyTo }) {
   const resendKey = process.env.RESEND_API_KEY;
-  const mailFrom = process.env.MAIL_FROM;
+  const mailFrom = from || process.env.MAIL_FROM;
   if (!resendKey || !mailFrom) return { ok: false, skipped: true };
   try {
     const body = { from: mailFrom, to, subject, text, html };
     if (cc) body.cc = cc;
+    if (replyTo) body.reply_to = replyTo;
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },
