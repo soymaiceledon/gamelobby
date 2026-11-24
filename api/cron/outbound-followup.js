@@ -65,9 +65,13 @@ export default async function handler(req, res) {
     if (!r.configured || r.ok === false) { existing.push(item.id); continue; }
     if (r.result) existing.push(item.id);
   }
+  let espaciados = 0; // correos que se programan separados por minutos para no caer en spam
   for (const item of pickDueSends(candidates, existing, now)) {
     try {
-      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: item.to, cc: item.cc, subject: item.subject, text: item.text });
+      const scheduledAt = item.espaciarMin
+        ? new Date((now + 60 + espaciados++ * item.espaciarMin * 60) * 1000).toISOString()
+        : undefined;
+      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: item.to, cc: item.cc, subject: item.subject, text: item.text, scheduledAt });
       if (!sent.ok) { firstSends.push({ id: item.id, outcome: sent.skipped ? "sin_resend" : "fallo" }); continue; }
       const state = {
         id: item.id,
