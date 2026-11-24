@@ -101,7 +101,7 @@ export async function researchCompany(email) {
 }
 
 // ---- Envío por Resend ----
-export async function sendEmail({ to, cc, subject, text, html, from, replyTo, scheduledAt }) {
+export async function sendEmail({ to, cc, subject, text, html, from, replyTo, scheduledAt, attachments }) {
   const resendKey = process.env.RESEND_API_KEY;
   const mailFrom = from || process.env.MAIL_FROM;
   if (!resendKey || !mailFrom) return { ok: false, skipped: true };
@@ -110,6 +110,7 @@ export async function sendEmail({ to, cc, subject, text, html, from, replyTo, sc
     if (cc) body.cc = cc;
     if (replyTo) body.reply_to = replyTo;
     if (scheduledAt) body.scheduled_at = scheduledAt; // Resend programa el envío
+    if (attachments && attachments.length) body.attachments = attachments; // [{ filename, path: URL }]
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${resendKey}`, "Content-Type": "application/json" },

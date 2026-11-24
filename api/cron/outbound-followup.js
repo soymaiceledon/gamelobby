@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       const scheduledAt = item.espaciarMin
         ? new Date((now + 60 + espaciados++ * item.espaciarMin * 60) * 1000).toISOString()
         : undefined;
-      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: item.to, cc: item.cc, subject: item.subject, text: item.text, scheduledAt });
+      const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: item.to, cc: item.cc, subject: item.subject, text: item.text, scheduledAt, attachments: item.adjuntos });
       if (!sent.ok) { firstSends.push({ id: item.id, outcome: sent.skipped ? "sin_resend" : "fallo" }); continue; }
       const state = {
         id: item.id,
