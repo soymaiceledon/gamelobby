@@ -334,6 +334,58 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
 }
+
+/* app 3D en portada */
+.app3d{width:min(280px,72vw);aspect-ratio:9/18.5;border-radius:38px;background:#0a0d1d;border:7px solid #2a2f45;position:relative;padding:36px 14px 16px;transform-style:preserve-3d;transform:rotateX(10deg) rotateY(-20deg);transition:transform .25s ease-out;box-shadow:0 40px 80px -20px rgba(0,171,235,.45),0 0 0 1px rgba(255,255,255,.06)}
+.app3d__notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:84px;height:20px;border-radius:12px;background:#000}
+.app3d__scr{display:flex;flex-direction:column;gap:10px;height:100%;transform:translateZ(24px)}
+.app3d__top{display:flex;justify-content:space-between;align-items:center;font:600 .78rem var(--display);color:var(--cyan)}
+.app3d__top img{height:26px;width:auto}
+.app3d__game{display:flex;gap:10px;align-items:center;background:#141a36;border-radius:14px;padding:8px}
+.app3d__game img{width:58px;height:58px;object-fit:cover;border-radius:10px}
+.app3d__game small,.app3d__mis small,.app3d__rank small{font-size:.64rem;color:#9fb0d8;display:block}
+.app3d__game b,.app3d__mis b{display:block;font-size:.8rem;line-height:1.2;color:#fff}
+.app3d__game span{font-size:.66rem;color:var(--cyan)}
+.app3d__mis{display:flex;gap:10px;align-items:center;background:var(--navy);border-radius:14px;padding:10px}
+.app3d__mis>img{width:46px;border-radius:6px}
+.app3d__mis>div{flex:1}
+.app3d__mis i{display:block;height:6px;border-radius:3px;background:#1c2340;margin-top:6px}
+.app3d__mis em{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--pink))}
+.app3d__rank{background:#101530;border-radius:14px;padding:8px 10px}
+.app3d__rank p{display:flex;align-items:center;gap:8px;font-size:.74rem;margin:5px 0 0}
+.app3d__rank p span{width:18px;height:18px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-size:.62rem;font-weight:700}
+.app3d__rank p b{flex:1;font-weight:600}
+.app3d__rank p em{font-style:normal;color:var(--cyan)}
+.app3d__rew{border:1px dashed rgba(201,0,135,.6);border-radius:12px;padding:8px 10px}
+.app3d__rew small{font-size:.64rem;color:#9fb0d8;display:block}
+.app3d__rew b{font-size:.8rem}
+.app3d__btn{margin-top:auto;text-align:center;background:var(--cyan);color:var(--ink);font-weight:700;font-size:.85rem;border-radius:999px;padding:10px}
+
+/* plataforma 3D: tu marca dentro del evento */
+.stage3d{--line:rgba(255,255,255,.12);--bg:#070b1a;--bg-2:#0E1430;--cyan-2:var(--cyan);--pink-2:var(--pink);--text:#dfe5f5;--muted:#a9b3cf;--font:inherit;--brand:#c90087;--brand-dark:#8a005c;--brand-light:#ff2db0;padding:clamp(64px,9vw,120px) 0}
+.cfg{display:flex;flex-wrap:wrap;align-items:flex-end;gap:18px;margin-top:28px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--bg-2);width:fit-content;max-width:100%}
+.cfg label{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--muted)}
+.cfg #cfg-name{font:600 16px var(--font);color:#fff;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:220px;max-width:100%}
+.cfg input[type=color]{width:56px;height:44px;border:1px solid var(--line);border-radius:8px;background:var(--bg);padding:3px;cursor:pointer}
+.cfg__presets{display:flex;gap:8px;padding-bottom:6px}
+.cfg__presets button{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer}
+.cfg__presets button:hover,.cfg__presets button:focus-visible{border-color:#fff}
+.stands{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.stand{margin:0;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#15284a,var(--bg-2) 70%);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.stand--wide{grid-column:span 2;flex-direction:row}
+.stand__art{padding:18px 18px 0;flex:1}
+.stand--wide .stand__art{flex:1.6;padding:24px}
+.stand__art svg{width:100%!important;height:auto!important;max-height:420px;display:block;margin:0 auto}
+.stand figcaption{position:static;background:none;backdrop-filter:none;border-radius:0;font-size:inherit;color:inherit;padding:18px 24px 24px}
+.stand--wide figcaption{flex:1;padding:32px 32px 32px 8px;align-self:center}
+.stand h3{font-size:1.3rem;color:#fff;margin:0 0 4px}
+.stand figcaption>p{font-size:.9rem;color:var(--cyan);font-weight:600;margin:0 0 12px}
+.stand ol{list-style:none;counter-reset:s;display:grid;gap:8px;padding:0;margin:0}
+.stand li{counter-increment:s;position:relative;padding-left:32px;font-size:.92rem;line-height:1.45;color:var(--text)}
+.stand li::before{content:counter(s);position:absolute;left:0;top:-1px;width:22px;height:22px;border-radius:50%;border:2px solid var(--pink);font-size:12px;font-weight:700;display:grid;place-items:center;color:#fff}
+.stand svg .bn,.stand svg .bn-sm,.stand svg .bn-title{letter-spacing:.02em}
+.stage3d .note{font-size:.85rem;color:var(--muted);margin-top:18px}
+@media (max-width:860px){.stands{grid-template-columns:1fr}.stand--wide{grid-column:auto;flex-direction:column}.stand--wide figcaption{padding:18px 24px 24px}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -362,16 +414,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
         <a class="btn btn--ghost" href="#soho">Recorrer la Gran Final</a>
       </div>
     </div>
-    <div class="pass-stage" aria-hidden="true">
-      <div class="pass" id="pass">
-        <div class="pass__row"><img src="/assets/logo-full-white.png" alt=""><img class="tg" src="/img/generic/tu-marca.svg" alt=""></div>
-        <div>
-          <div class="pass__chip"></div>
-          <p class="pass__title" style="margin-top:14px">Presenting Partner<br>Gran Final Panamá</p>
+    <div class="pass-stage" aria-label="La app de GameLobby con tu marca">
+      <div class="app3d" id="pass">
+        <div class="app3d__notch"></div>
+        <div class="app3d__scr">
+          <div class="app3d__top"><img src="/assets/logo-full-white.png" alt="GameLobby"><span>2,350 pts</span></div>
+          <div class="app3d__game"><img src="/img/torneos/free-fire.webp" alt=""><div><small>Torneo de esta semana</small><b>Copa Tu Marca · Free Fire</b><span>128 equipos · Panamá</span></div></div>
+          <div class="app3d__mis"><img src="/img/generic/tu-marca.svg" alt=""><div><small>Misión de marca</small><b>Clasifica y gana tu recompensa</b><i><em style="width:66%"></em></i></div></div>
+          <div class="app3d__rank"><small>Ranking en vivo</small>
+            <p><span>1</span><b>Los Chorrillos</b><em>4,820</em></p>
+            <p><span>2</span><b>Team Canal</b><em>4,410</em></p>
+            <p><span>3</span><b>Pacífico GG</b><em>3,975</em></p>
+          </div>
+          <div class="app3d__rew"><small>Tu recompensa</small><b>Beneficio de tu marca · Loot Shop</b></div>
+          <div class="app3d__btn">Inscribirme</div>
         </div>
-        <div class="pass__meta"><span>Soho Mall · Agosto 2027</span><span>Acceso total</span></div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -615,26 +675,243 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- PLATAFORMA 3D -->
+<section class="stage3d" id="espacios">
+  <div class="wrap">
+    <h2>Mira tu marca dentro del evento</h2>
+    <p class="lead">Escribe el nombre de tu marca y elige su color: la tarima, tu zona y la parada del tour se actualizan al instante.</p>
+    <div class="cfg">
+      <label>Nombre de tu marca<input id="cfg-name" maxlength="16" placeholder="Tu marca" autocomplete="organization"></label>
+      <label>Color principal<input id="cfg-color" type="color" value="#c90087"></label>
+      <div class="cfg__presets" aria-label="Colores de ejemplo">
+        <button type="button" data-c="#c90087" style="background:#c90087" aria-label="Rosado"></button>
+        <button type="button" data-c="#e30613" style="background:#e30613" aria-label="Rojo"></button>
+        <button type="button" data-c="#0057b8" style="background:#0057b8" aria-label="Azul"></button>
+        <button type="button" data-c="#00a651" style="background:#00a651" aria-label="Verde"></button>
+        <button type="button" data-c="#ff7a00" style="background:#ff7a00" aria-label="Naranja"></button>
+        <button type="button" data-c="#ffcc00" style="background:#ffcc00" aria-label="Amarillo"></button>
+      </div>
+    </div>
+    <div class="stands">
+      <figure class="stand stand--wide">
+        <div class="stand__art"><svg viewBox="297 -154 667 580" role="img" aria-label="Diseño de tarima principal con branding de Presenting Partner" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="378.1,175.0 741.9,385.0 741.9,358.0 378.1,148.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="923.7,280.0 741.9,385.0 741.9,358.0 923.7,253.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="300" transform="matrix(0.8660,0.5000,-0.8660,0.5000,534.0,355.0)" font-size="50" font-weight="800" fill="rgba(255,255,255,.06)" text-anchor="middle">TU MARCA</text>
+<polygon points="560.0,43.0 923.7,253.0 741.9,358.0 378.1,148.0" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.0,49.0 913.3,253.0 741.9,352.0 388.5,148.0" fill="#1f3050" />
+<polygon points="378.1,167.5 741.8,377.5 741.8,365.5 378.1,155.5" fill="url(#stripGrad)" />
+<text class="bn-title" data-max="380" transform="matrix(0.8660,0.5000,0,1,559.9,270.1)" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">GRAN FINAL  ·  PRESENTADA POR TU MARCA</text>
+<polygon points="615.9,85.8 849.7,220.7 849.7,34.7 615.9,-100.3" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="858.8,215.5 849.7,220.7 849.7,34.7 858.8,29.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="625.0,-105.5 858.8,29.5 849.7,34.7 615.9,-100.3" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="623.6,78.3 841.9,204.3 841.9,39.3 623.6,-86.7" fill="#06101d" />
+<polygon points="627.5,76.0 837.9,197.5 837.9,41.5 627.5,-80.0" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,732.7,-4.2)" font-size="14" font-weight="700" fill="#8fe2ff" text-anchor="middle">GAMELOBBY XPERIENCE</text>
+<text class="bn" data-max="220" transform="matrix(0.8660,0.5000,0,1,732.7,51.3)" font-size="40" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,732.7,78.3)" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">GRAN FINAL REGIONAL</text>
+<polygon points="547.0,62.5 591.2,88.0 591.2,-80.0 547.0,-105.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="606.8,79.0 591.2,88.0 591.2,-80.0 606.8,-89.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="562.6,-114.5 606.8,-89.0 591.2,-80.0 547.0,-105.5" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="46" transform="matrix(0.8660,0.5000,0,1,569.1,-5.7)" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="845.8,235.0 890.0,260.5 890.0,92.5 845.8,67.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="905.5,251.5 890.0,260.5 890.0,92.5 905.5,83.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="861.4,58.0 905.5,83.5 890.0,92.5 845.8,67.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="60" transform="matrix(0.8660,-0.5000,0,1,897.8,175.0)" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="531.4,149.5 604.2,191.5 604.2,167.5 531.4,125.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="627.5,178.0 604.2,191.5 604.2,167.5 627.5,154.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="554.8,112.0 627.5,154.0 604.2,167.5 531.4,125.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="74" transform="matrix(0.8660,0.5000,0,1,567.8,160.0)" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="558.4,117.4 574.0,126.4 574.0,114.4 558.4,105.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="580.5,130.1 596.1,139.1 596.1,127.1 580.5,118.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="602.6,142.9 618.2,151.9 618.2,139.9 602.6,130.9" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="575.6,125.5 574.0,126.4 574.0,114.4 575.6,113.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="597.7,138.2 596.1,139.1 596.1,127.1 597.7,126.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="619.8,151.0 618.2,151.9 618.2,139.9 619.8,139.0" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.0,104.5 575.6,113.5 574.0,114.4 558.4,105.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="582.1,117.2 597.7,126.2 596.1,127.1 580.5,118.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="604.2,130.0 619.8,139.0 618.2,139.9 602.6,130.9" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="666.5,227.5 739.3,269.5 739.3,245.5 666.5,203.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="762.6,256.0 739.3,269.5 739.3,245.5 762.6,232.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="689.9,190.0 762.6,232.0 739.3,245.5 666.5,203.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="74" transform="matrix(0.8660,0.5000,0,1,702.9,238.0)" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="693.5,195.4 709.1,204.4 709.1,192.4 693.5,183.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="715.6,208.1 731.2,217.1 731.2,205.1 715.6,196.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="737.7,220.9 753.3,229.9 753.3,217.9 737.7,208.9" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="710.7,203.5 709.1,204.4 709.1,192.4 710.7,191.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="732.8,216.2 731.2,217.1 731.2,205.1 732.8,204.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="754.9,229.0 753.3,229.9 753.3,217.9 754.9,217.0" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="695.1,182.5 710.7,191.5 709.1,192.4 693.5,183.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="717.2,195.2 732.8,204.2 731.2,205.1 715.6,196.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="739.3,208.0 754.9,217.0 753.3,217.9 737.7,208.9" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="336.6,103.0 414.5,148.0 414.5,76.0 336.6,31.0" fill="#f2f5fa" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="419.7,145.0 414.5,148.0 414.5,76.0 419.7,73.0" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="341.8,28.0 419.7,73.0 414.5,76.0 336.6,31.0" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,94.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,109.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,124.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,73.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,88.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,103.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,349.5,52.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,375.5,67.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<text class="bn-sm" data-max="27" transform="matrix(0.8660,0.5000,0,1,401.5,82.0)" font-size="9" font-weight="800" fill="var(--brand)" text-anchor="middle">MARCA</text>
+<g class="mk"><circle cx="819.8" cy="58.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="819.8" y="63.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="569.1" cy="-101.8" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="569.1" y="-96.8" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="565.2" cy="139.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="565.2" y="144.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="372.9" cy="37.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="372.9" y="42.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g>
+<g class="mk"><circle cx="560.0" cy="280.0" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="560.0" y="285.0" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text></g></svg></div>
+        <figcaption><h3>La tarima principal con tu nombre</h3><p>El evento con tu nombre · escenario de 14 × 7 m</p>
+          <ol><li>Muro LED con tu marca en cada final</li><li>Torres laterales con tus colores</li><li>Mesas de los equipos y jerseys de los finalistas</li><li>Backing de entrevistas transmitido a la región</li><li>Faldón del escenario: «Gran Final presentada por tu marca»</li></ol></figcaption>
+      </figure>
+      <figure class="stand">
+        <div class="stand__art"><svg viewBox="241 -124 558 530" role="img" aria-label="Diseño de stand de 6 por 6 metros para Zone Partner" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="281.0,228.0 520.0,366.0 520.0,357.7 281.0,219.7" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="759.0,228.0 520.0,366.0 520.0,357.7 759.0,219.7" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,81.7 759.0,219.7 520.0,357.7 281.0,219.7" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,88.6 747.1,219.7 520.0,350.8 292.9,219.7" fill="#1f3050" />
+<text class="bn" data-max="230" transform="matrix(0.8660,0.5000,-0.8660,0.5000,492.1,249.2)" font-size="34" font-weight="800" fill="rgba(255,255,255,.07)" text-anchor="middle">TU MARCA</text>
+<polygon points="510.0,87.5 749.1,225.5 749.1,78.3 510.0,-59.7" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="759.0,219.7 749.1,225.5 749.1,78.3 759.0,72.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,-65.5 759.0,72.5 749.1,78.3 510.0,-59.7" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="281.0,219.7 290.9,225.5 290.9,78.3 281.0,72.5" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="520.0,93.2 290.9,225.5 290.9,78.3 520.0,-54.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="510.0,-59.7 520.0,-54.0 290.9,78.3 281.0,72.5" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.8,77.4 693.3,160.2 693.3,68.2 549.8,-14.6" fill="#06101d" />
+<polygon points="554.6,75.6 688.4,152.8 688.4,70.0 554.6,-7.2" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,621.5,54.4)" font-size="14" font-weight="700" fill="#8fe2ff" text-anchor="middle">RANKING EN VIVO</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,41.8)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">1  NOVA</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,108.5)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">14,680</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,56.9)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">2  ZERO</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,123.6)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">12,940</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,563.7,72.1)" font-size="12" font-weight="600" fill="#fff" text-anchor="start">3  APEX</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,679.2,138.8)" font-size="12" font-weight="600" fill="#2ec8ff" text-anchor="end">11,205</text>
+<text class="bn" data-max="230" transform="matrix(0.8660,-0.5000,0,1,410.5,65.9)" font-size="34" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<text class="" transform="matrix(0.8660,-0.5000,0,1,410.5,86.6)" font-size="13" font-weight="600" fill="rgba(255,255,255,.85)" text-anchor="middle">Zona oficial</text>
+<polygon points="532.0,-44.8 723.2,65.6 723.2,33.4 532.0,-77.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="735.1,58.7 723.2,65.6 723.2,33.4 735.1,26.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="543.9,-83.9 735.1,26.5 723.2,33.4 532.0,-77.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="200" transform="matrix(0.8660,0.5000,0,1,627.5,2.6)" font-size="26" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<polygon points="456.3,164.5 504.1,192.1 504.1,157.6 456.3,130.0" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="528.0,178.3 504.1,192.1 504.1,157.6 528.0,143.8" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="480.2,116.2 528.0,143.8 504.1,157.6 456.3,130.0" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="485.7,124.5 513.6,140.6 513.6,119.9 485.7,103.8" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="516.0,139.2 513.6,140.6 513.6,119.9 516.0,118.5" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="488.1,102.4 516.0,118.5 513.6,119.9 485.7,103.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="487.3,123.6 512.0,137.9 512.0,120.8 487.3,106.6" fill="url(#scrGrad)" />
+<polygon points="440.3,189.8 460.2,201.3 460.2,176.0 440.3,164.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="480.2,189.8 460.2,201.3 460.2,176.0 480.2,164.5" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="460.2,153.0 480.2,164.5 460.2,176.0 440.3,164.5" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="518.0,200.2 565.8,227.8 565.8,193.3 518.0,165.7" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="589.7,214.0 565.8,227.8 565.8,193.3 589.7,179.5" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="541.9,151.9 589.7,179.5 565.8,193.3 518.0,165.7" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="547.5,160.1 575.4,176.2 575.4,155.5 547.5,139.4" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="577.8,174.9 575.4,176.2 575.4,155.5 577.8,154.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.9,138.1 577.8,154.2 575.4,155.5 547.5,139.4" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="549.0,159.3 573.7,173.5 573.7,156.5 549.0,142.2" fill="url(#scrGrad)" />
+<polygon points="502.1,225.5 522.0,237.0 522.0,211.7 502.1,200.2" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="541.9,225.5 522.0,237.0 522.0,211.7 541.9,200.2" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="522.0,188.7 541.9,200.2 522.0,211.7 502.1,200.2" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="579.8,235.8 627.6,263.4 627.6,228.9 579.8,201.3" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="651.5,249.6 627.6,263.4 627.6,228.9 651.5,215.1" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="603.7,187.5 651.5,215.1 627.6,228.9 579.8,201.3" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="609.2,195.8 637.1,211.9 637.1,191.2 609.2,175.1" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="639.5,210.5 637.1,211.9 637.1,191.2 639.5,189.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="611.6,173.7 639.5,189.8 637.1,191.2 609.2,175.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="610.8,194.9 635.5,209.2 635.5,192.1 610.8,177.9" fill="url(#scrGrad)" />
+<polygon points="563.8,261.1 583.7,272.6 583.7,247.3 563.8,235.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="603.7,261.1 583.7,272.6 583.7,247.3 603.7,235.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="583.7,224.3 603.7,235.8 583.7,247.3 563.8,235.8" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="394.5,255.4 412.4,265.7 412.4,178.3 394.5,168.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="430.4,255.4 412.4,265.7 412.4,178.3 430.4,168.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="412.4,157.6 430.4,168.0 412.4,178.3 394.5,168.0" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="397.3,210.1 409.6,217.2 409.6,203.0 397.3,195.8" fill="#fff" />
+<polygon points="398.8,209.2 402.8,211.5 402.8,206.9 398.8,204.6" fill="#0a121e" />
+<polygon points="404.0,206.2 408.0,208.5 408.0,203.9 404.0,201.6" fill="#0a121e" />
+<polygon points="403.2,211.7 404.8,212.6 404.8,210.8 403.2,209.9" fill="#0a121e" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,403.4,229.7)" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">MISIÓN</text>
+<polygon points="460.2,295.6 532.0,337.0 532.0,291.0 460.2,249.6" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="563.8,318.6 532.0,337.0 532.0,291.0 563.8,272.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="492.1,231.2 563.8,272.6 532.0,291.0 460.2,249.6" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="" transform="matrix(0.8660,0.5000,0,1,496.1,299.3)" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">LOOT SHOP</text>
+<g class="mk"><circle cx="691.3" cy="69.3" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="691.3" y="74.3" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="324.8" cy="78.5" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="324.8" y="83.5" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="520.0" cy="117.6" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="520.0" y="122.6" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="412.4" cy="152.1" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="412.4" y="157.1" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g>
+<g class="mk"><circle cx="512.0" cy="241.8" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="512.0" y="246.8" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">5</text></g>
+<g class="mk"><circle cx="731.1" cy="32.5" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="731.1" y="37.5" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">6</text></g></svg></div>
+        <figcaption><h3>Tu zona</h3><p>Una zona · stand de 6 × 6 m</p>
+          <ol><li>Pantalla LED con el ranking en vivo</li><li>Pared de marca para fotos y contenido</li><li>Estaciones de juego con tus retos</li><li>Tótem de misión con código QR</li><li>Loot Shop: canje de recompensas de tu marca</li><li>Cabezal de marca visible desde todo el recinto</li></ol></figcaption>
+      </figure>
+      <figure class="stand">
+        <div class="stand__art"><svg viewBox="250 -61 485 445" role="img" aria-label="Diseño de activación en lobby de cine o atrio de centro comercial" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Arial, sans-serif"><polygon points="289.9,214.0 515.0,344.0 515.0,337.8 289.9,207.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="695.2,240.0 515.0,344.0 515.0,337.8 695.2,233.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,103.8 695.2,233.8 515.0,337.8 289.9,207.8" fill="#1b2a44" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,108.9 686.2,233.7 515.0,332.5 298.9,207.7" fill="#1f3050" />
+<polygon points="488.0,124.6 659.1,223.4 659.1,83.0 488.0,-15.8" fill="#1a2740" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="668.1,218.2 659.1,223.4 659.1,83.0 668.1,77.8" fill="#131e33" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="497.0,-21.0 668.1,77.8 659.1,83.0 488.0,-15.8" fill="#24324a" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="494.7,103.5 652.3,194.5 652.3,90.5 494.7,-0.5" fill="url(#ledGrad)" />
+<text class="" transform="matrix(0.8660,0.5000,0,1,573.5,68.5)" font-size="13" font-weight="700" fill="#8fe2ff" text-anchor="middle">RETO EXPRESS · 5 MIN</text>
+<text class="" transform="matrix(0.8660,0.5000,0,1,573.5,104.9)" font-size="22" font-weight="800" fill="#fff" text-anchor="middle">¿Superas 01:24?</text>
+<polygon points="436.2,159.7 494.8,193.5 494.8,151.9 436.2,118.1" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="519.5,179.2 494.8,193.5 494.8,151.9 519.5,137.6" fill="#22314d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="461.0,103.8 519.5,137.6 494.8,151.9 436.2,118.1" fill="#3d5580" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="470.0,114.2 501.5,132.4 501.5,109.0 470.0,90.8" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="503.8,131.1 501.5,132.4 501.5,109.0 503.8,107.7" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="472.3,89.5 503.8,107.7 501.5,109.0 470.0,90.8" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="471.8,113.1 499.7,129.3 499.7,110.0 471.8,93.9" fill="url(#scrGrad)" />
+<polygon points="425.0,187.0 445.2,198.7 445.2,172.7 425.0,161.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="465.5,187.0 445.2,198.7 445.2,172.7 465.5,161.0" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="445.2,149.3 465.5,161.0 445.2,172.7 425.0,161.0" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="499.3,196.1 557.8,229.9 557.8,188.3 499.3,154.5" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="582.6,215.6 557.8,229.9 557.8,188.3 582.6,174.0" fill="#22314d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="524.0,140.2 582.6,174.0 557.8,188.3 499.3,154.5" fill="#3d5580" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,150.6 564.6,168.8 564.6,145.4 533.0,127.2" fill="#06101d" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="566.8,167.5 564.6,168.8 564.6,145.4 566.8,144.1" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="535.3,125.9 566.8,144.1 564.6,145.4 533.0,127.2" fill="#0b1422" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="534.8,149.5 562.7,165.7 562.7,146.4 534.8,130.3" fill="url(#scrGrad)" />
+<polygon points="488.0,223.4 508.3,235.1 508.3,209.1 488.0,197.4" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="528.5,223.4 508.3,235.1 508.3,209.1 528.5,197.4" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="508.3,185.7 528.5,197.4 508.3,209.1 488.0,197.4" fill="#0f1a2b" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,249.4 587.1,280.6 587.1,231.2 533.0,200.0" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="614.1,265.0 587.1,280.6 587.1,231.2 614.1,215.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="560.1,184.4 614.1,215.6 587.1,231.2 533.0,200.0" fill="#2a3b57" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="" transform="matrix(0.8660,0.5000,0,1,560.0,245.2)" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">REGÍSTRATE</text>
+<polygon points="310.1,206.5 325.9,215.6 325.9,80.4 310.1,71.3" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="341.7,206.5 325.9,215.6 325.9,80.4 341.7,71.3" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="325.9,62.2 341.7,71.3 325.9,80.4 310.1,71.3" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="501.5,317.0 517.3,326.1 517.3,190.9 501.5,181.8" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,317.0 517.3,326.1 517.3,190.9 533.0,181.8" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="517.3,172.7 533.0,181.8 517.3,190.9 501.5,181.8" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="310.1,71.3 517.3,190.9 517.3,159.7 310.1,40.1" fill="var(--brand)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="533.0,181.8 517.3,190.9 517.3,159.7 533.0,150.6" fill="var(--brand-dark)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<polygon points="325.9,31.0 533.0,150.6 517.3,159.7 310.1,40.1" fill="var(--brand-light)" stroke="rgba(255,255,255,.08)" stroke-width="0.6" stroke-linejoin="round"/>
+<text class="bn" data-max="200" transform="matrix(0.8660,0.5000,0,1,413.7,124.3)" font-size="24" font-weight="800" fill="#fff" text-anchor="middle">TU MARCA</text>
+<g class="mk"><circle cx="420.5" cy="81.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="420.5" y="86.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">1</text></g>
+<g class="mk"><circle cx="650.1" cy="68.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="650.1" y="73.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">2</text></g>
+<g class="mk"><circle cx="476.8" cy="72.3" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="476.8" y="77.3" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">3</text></g>
+<g class="mk"><circle cx="573.6" cy="185.4" r="13" fill="#0a121e" stroke="#ff2db0" stroke-width="2.5"/><text x="573.6" y="190.4" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">4</text></g></svg></div>
+        <figcaption><h3>Tu parada en cine o centro comercial</h3><p>Un país o todo el tour · espacio de 5 × 4 m</p>
+          <ol><li>Arco de entrada con tu marca</li><li>Pantalla del reto express de 5 minutos</li><li>Estaciones de reto patrocinado</li><li>Registro en la GameLobby Wallet</li></ol></figcaption>
+      </figure>
+    </div>
+    <p class="note">Ilustraciones de referencia. Medidas, materiales y ubicación se definen con cada marca.</p>
+  </div>
+</section>
+
 <!-- PAQUETE -->
 <section class="pkg" id="paquete">
   <div class="wrap">
     <div class="pkg__top">
       <div>
         <h2>Presenting Partner 2027</h2>
-        <p class="lead">Todo lo que ofrece el paquete principal de la Gran Final, más Panamá durante el tour y la continuidad en el Ecosistema. Un solo acuerdo y el nombre del evento.</p>
-      </div>
-      <div class="price">
-        <small>Inversión total</small>
-        <div class="amt">US$100,000</div>
-        <div class="was">Valor de lista <s>US$137,000</s></div>
-        <span class="save">US$37,000 en valor incluido</span>
+        <p class="lead">Todo lo que ofrece el paquete principal de la Gran Final, más Panamá durante el tour y la continuidad en el Ecosistema. Un solo acuerdo y el nombre del evento; la inversión la definimos juntos según los mercados y la exclusividad que elija tu marca.</p>
       </div>
     </div>
 
     <div class="parts">
-      <div class="part"><div class="val">US$100,000</div><h3>Presenting Partner Gran Final</h3><p>Soho Mall, agosto 2027. Máxima visibilidad, naming del evento y exclusividad de categoría en Panamá.</p></div>
-      <div class="part inc"><div class="val">Incluido · valor US$25,000</div><h3>Presenting Partner Panamá en el tour</h3><p>Circuito digital y parada en cine en Panamá, de mayo a julio.</p></div>
-      <div class="part inc"><div class="val">Incluido · valor US$12,000</div><h3>Ecosistema GameLobby sep–dic</h3><p>Cuatro meses (US$3,000/mes) de torneos de marca, misiones y recompensas de tu marca en gamelobby.gg.</p></div>
+      <div class="part"><div class="val">El nombre del evento</div><h3>Presenting Partner Gran Final</h3><p>Soho Mall, agosto 2027. Máxima visibilidad, naming del evento y exclusividad de categoría en Panamá.</p></div>
+      <div class="part inc"><div class="val">Incluido</div><h3>Presenting Partner Panamá en el tour</h3><p>Circuito digital y parada en cine en Panamá, de mayo a julio.</p></div>
+      <div class="part inc"><div class="val">Incluido</div><h3>Ecosistema GameLobby sep–dic</h3><p>Cuatro meses de torneos de marca, misiones y recompensas de tu marca en gamelobby.gg.</p></div>
     </div>
 
     <div class="benefits">
@@ -670,21 +947,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
       </ul></div>
     </div>
 
-    <div class="pay">
-      <h3>Pagos alineados con la temporada</h3>
-      <div class="pay__bar">
-        <div><b>US$15,000</b>Abril · firma y lanzamiento</div>
-        <div><b>US$15,000</b>Mayo</div>
-        <div><b>US$20,000</b>Junio</div>
-        <div><b>US$15,000</b>Julio</div>
-        <div><b>US$35,000</b>Agosto · Gran Final</div>
-      </div>
-    </div>
     <div class="excl">
       <h3>Exclusividad ampliada, opcional</h3>
       <div class="excl__grid">
-        <div><b>Regional · 6 países</b><span class="excl__amt">+ US$80,000</span><p>Ninguna otra operadora en el circuito, los streams, la plataforma ni la Wallet en Panamá, Costa Rica, Guatemala, El Salvador, Honduras y Nicaragua.</p></div>
-        <div><b>Por país</b><span class="excl__amt">Costo adicional por mercado</span><p>Exclusividad solo en los países donde tu marca quiera reforzar su presencia. Lo cotizamos según los mercados que elijan.</p></div>
+        <div><b>Regional · 6 países</b><p>Ninguna marca de tu categoría en el circuito, los streams, la plataforma ni la Wallet en Panamá, Costa Rica, Guatemala, El Salvador, Honduras y Nicaragua.</p></div>
+        <div><b>Por país</b><p>Exclusividad solo en los países donde tu marca quiera reforzar su presencia. Lo definimos según los mercados que elijan.</p></div>
       </div>
     </div>
   </div>
@@ -763,6 +1030,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
     pass.style.transform='rotateX('+(-y*18)+'deg) rotateY('+(x*24)+'deg)';
   });
   stage.addEventListener('pointerleave',function(){pass.style.transform='';});
+})();
+</script>
+
+<script>
+(function(){
+  var sec=document.getElementById('espacios'); if(!sec) return;
+  var nameIn=document.getElementById('cfg-name'), colorIn=document.getElementById('cfg-color');
+  function shade(hex,f){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;function c(v){return Math.max(0,Math.min(255,Math.round(f<0?v*(1+f):v+(255-v)*f)));}return 'rgb('+c(r)+','+c(g)+','+c(b)+')';}
+  function fit(){sec.querySelectorAll('.stand text[data-max]').forEach(function(t){t.removeAttribute('textLength');t.removeAttribute('lengthAdjust');var m=+t.getAttribute('data-max');try{if(t.getComputedTextLength()>m){t.setAttribute('textLength',m);t.setAttribute('lengthAdjust','spacingAndGlyphs');}}catch(e){}});}
+  function setColor(hex){sec.style.setProperty('--brand',hex);sec.style.setProperty('--brand-dark',shade(hex,-.35));sec.style.setProperty('--brand-light',shade(hex,.2));colorIn.value=hex;}
+  function setName(v){var n=(v||'').trim().toUpperCase()||'TU MARCA';
+    sec.querySelectorAll('.stand .bn').forEach(function(t){t.textContent=n;});
+    sec.querySelectorAll('.stand .bn-sm').forEach(function(t){t.textContent=n.split(' ')[0].slice(0,8);});
+    sec.querySelectorAll('.stand .bn-title').forEach(function(t){t.textContent='GRAN FINAL  ·  PRESENTADA POR '+n;});
+    fit();}
+  nameIn.addEventListener('input',function(){setName(nameIn.value);});
+  colorIn.addEventListener('input',function(){setColor(colorIn.value);});
+  sec.querySelectorAll('.cfg__presets button').forEach(function(b){b.addEventListener('click',function(){setColor(b.getAttribute('data-c'));});});
+  var q=new URLSearchParams(location.search);
+  if(q.get('marca')){nameIn.value=q.get('marca').slice(0,16);setName(nameIn.value);}
+  if(/^#[0-9a-f]{6}$/i.test(q.get('color')||'')) setColor(q.get('color'));
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fit);}else{fit();}
 })();
 </script>
 </body>
