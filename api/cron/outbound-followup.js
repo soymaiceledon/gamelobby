@@ -13,7 +13,7 @@ import { kv, sendEmail } from "../_email.js";
 // La prospección sale siempre desde el correo de Mai, no desde info@ (MAIL_FROM es para correos de la plataforma).
 export const OUTBOUND_FROM = process.env.OUTBOUND_FROM || "Mai Celedón <m.celedon@gamelobby.live>";
 export const OUTBOUND_REPLY_TO = "m.celedon@gamelobby.live";
-import { OUTBOUND_ROUNDS, pickDueSends, isLegacyContact, RESPONDIERON } from "../../lib/outbound-rounds.js";
+import { OUTBOUND_ROUNDS, pickDueSends, isLegacyContact, RESPONDIERON, linkPropuesta } from "../../lib/outbound-rounds.js";
 
 const FOLLOWUP2_DELAY_SEC = 2 * 24 * 3600;
 
@@ -122,7 +122,7 @@ export default async function handler(req, res) {
 
       if (state.status === "followup2_enviado") {
         const msg = (state.followup3Subject && state.followup3Text)
-          ? { subject: state.followup3Subject, text: state.followup3Text }
+          ? { subject: state.followup3Subject, text: linkPropuesta(state.followup3Text) }
           : buildFollowup3(state.empresa || id);
         const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: state.to, subject: msg.subject, text: msg.text });
         state.status = "followup3_enviado";
@@ -135,7 +135,7 @@ export default async function handler(req, res) {
 
       // status === "sent" (o cualquier otro caso base) -> correo 2
       const msg = (state.followupSubject && state.followupText)
-        ? { subject: state.followupSubject, text: state.followupText }
+        ? { subject: state.followupSubject, text: linkPropuesta(state.followupText) }
         : buildFollowup2(state.empresa || id);
       const sent = await sendEmail({ from: OUTBOUND_FROM, replyTo: OUTBOUND_REPLY_TO, to: state.to, subject: msg.subject, text: msg.text });
       state.status = "followup2_enviado";

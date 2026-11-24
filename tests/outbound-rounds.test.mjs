@@ -69,3 +69,12 @@ test("la prospección sale desde el correo de Mai, no desde info@", async () => 
   assert.ok(calls.length >= 3);
   for (const c of calls) assert.match(c, /from: OUTBOUND_FROM/);
 });
+
+test("a las marcas se les envía la propuesta Presenting Partner, no el media kit con precios", async () => {
+  const { OUTBOUND_ROUNDS, linkPropuesta } = await import("../lib/outbound-rounds.js");
+  for (const it of OUTBOUND_ROUNDS) {
+    for (const k of ["text", "followupText", "followup3Text"]) assert.ok(!(it[k] || "").includes("mediakit-xperience"), it.id + " " + k);
+  }
+  assert.equal(linkPropuesta("ver https://www.gamelobby.live/mediakit-xperience?marca=OXXO#stands ya"),
+    "ver https://www.gamelobby.live/propuesta/presenting-partner?marca=OXXO ya");
+});
