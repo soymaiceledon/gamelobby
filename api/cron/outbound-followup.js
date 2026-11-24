@@ -85,8 +85,9 @@ export default async function handler(req, res) {
         followup3Subject: item.followup3Subject || null,
         followup3Text: item.followup3Text || null,
       };
+      if (item.sinSeguimiento) state.status = "sin_seguimiento"; // respuestas 1 a 1: el seguimiento lo hace Mai
       await kv(["SET", `ob:${item.id}`, JSON.stringify(state)]);
-      await kv(["ZADD", "ob:queue", String(now + FOLLOWUP2_DELAY_SEC), item.id]);
+      if (!item.sinSeguimiento) await kv(["ZADD", "ob:queue", String(now + FOLLOWUP2_DELAY_SEC), item.id]);
       firstSends.push({ id: item.id, outcome: "correo1_enviado" });
       await new Promise((r) => setTimeout(r, 350));
     } catch (e) {

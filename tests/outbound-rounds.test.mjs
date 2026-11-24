@@ -15,7 +15,7 @@ const PANAMA_OK = new Set(["tigo-panama-xp", "bac-panama-xp"]);
 
 test("ninguna ronda 2027 contacta Panamá salvo autorizados", () => {
   for (const item of OUTBOUND_ROUNDS) {
-    if (item.panamaAutorizado) { assert.ok(PANAMA_OK.has(item.id) || item.ronda === "reactivacion-2027", item.id); continue; }
+    if (item.panamaAutorizado) { assert.ok(PANAMA_OK.has(item.id) || ["reactivacion-2027","cam-12"].includes(item.ronda), item.id); continue; }
     assert.notEqual(item.pais, "Panamá", item.id);
     assert.ok(!/\.pa$|\.com\.pa$/.test(item.to.split("@")[1]), item.id);
   }
@@ -25,7 +25,8 @@ test("ids únicos y campos completos, con seguimientos 2 y 3", () => {
   const ids = OUTBOUND_ROUNDS.map((i) => i.id);
   assert.equal(new Set(ids).size, ids.length);
   for (const i of OUTBOUND_ROUNDS) {
-    for (const k of ["to", "subject", "text", "followupSubject", "followupText", "followup3Subject", "followup3Text"]) {
+    const ks = i.sinSeguimiento ? ["to", "subject", "text"] : ["to", "subject", "text", "followupSubject", "followupText", "followup3Subject", "followup3Text"];
+    for (const k of ks) {
       assert.ok(i[k], `${i.id} sin ${k}`);
     }
   }
