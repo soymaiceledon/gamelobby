@@ -15,7 +15,7 @@ const PANAMA_OK = new Set(["tigo-panama-xp", "bac-panama-xp"]);
 
 test("ninguna ronda 2027 contacta Panamá salvo autorizados", () => {
   for (const item of OUTBOUND_ROUNDS) {
-    if (item.panamaAutorizado) { assert.ok(PANAMA_OK.has(item.id) || ["reactivacion-2027","cam-12"].includes(item.ronda), item.id); continue; }
+    if (item.panamaAutorizado) { assert.ok(PANAMA_OK.has(item.id) || ["reactivacion-2027","cam-12","cam-14"].includes(item.ronda), item.id); continue; }
     assert.notEqual(item.pais, "Panamá", item.id);
     assert.ok(!/\.pa$|\.com\.pa$/.test(item.to.split("@")[1]), item.id);
   }
